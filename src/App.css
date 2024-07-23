@@ -1,3 +1,4 @@
+/*Mobile First*/
 *,
 *::before,
 *::after {
@@ -8,6 +9,7 @@
   --font-size: 16px;
   --color-primary: white;
   --color-background: black;
+  --color-background-alpha: #51ff0050;
 }
 
 body {
@@ -31,18 +33,24 @@ body {
   padding-bottom: 100px;
 }
 
-#language-button {
+#language-btn {
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
   font-size: 33px;
   font-weight: 200;
   background-color: transparent;
   color: var(--color-primary);
-  position: absolute;
+  position: fixed;
   top: 16px;
   right: 16px;
   border: 1px solid transparent;
   border-radius: 50px;
   padding: 1rem;
+  z-index: 5;
+}
+
+#menu-btn {
+  background-color: transparent;
+  border: none;
 }
 
 #avatar {
@@ -70,12 +78,36 @@ body {
   font-size: 33px;
 }
 
+#mobile-menu {
+  gap: 30px;
+  justify-content: space-between;
+  font-size: calc(var(--font-size) * 1.8);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  padding: 100px 32px;
+  height: 100vh;
+  background-color: var(--color-background);
+  width: 100%;
+  z-index: 10;
+}
+
+#contacto > img {
+  width: 32px;
+  margin: 32px 20px 100px;
+}
+
+/*****************************************************/
+
 /* Estilos para pantallas medianas (tablets) */
 @media (min-width: 601px) and (max-width: 1024px) {
   body {
     font-size: calc(var(--font-size) * 1.1);
   }
 }
+
+/*****************************************************/
 
 /*----------------DESKTOP----------------*/
 @media (min-width: 1025px) {

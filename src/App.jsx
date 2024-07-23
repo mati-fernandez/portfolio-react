@@ -1,12 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import avatar from './assets/avatar.svg';
 import LanguageButton from './components/LanguageButton';
 import MobileHeader from './components/MobileHeader';
 import { useTranslation } from './i18n/TranslationContext';
+import MobileMenu from './components/MobileMenu';
 
 function App() {
   const { translate, setLanguage, language } = useTranslation();
+  const [showMenu, setShowMenu] = useState(false);
 
   function updateViewportHeight() {
     const vh = window.innerHeight * 0.01;
@@ -35,7 +37,8 @@ function App() {
       <LanguageButton language={language} setLanguage={setLanguage} />
       <img id="avatar" src={avatar} alt="avatar" />
       <p id="presentacion">{translate('description')}</p>
-      <MobileHeader />
+      {showMenu && <MobileMenu />}
+      <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
     </div>
   );
 }
