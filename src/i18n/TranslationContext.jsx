@@ -1,14 +1,18 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import translations from './index';
 
-const TranslationContext = createContext();
+export const TranslationContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const TranslationProvider = ({ children }) => {
   const [language, setLanguage] = useState('es');
 
   const translate = (key) => {
-    return translations[language][key] || key;
+    return (
+      key
+        .split('.')
+        .reduce((acc, part) => acc && acc[part], translations[language]) || key
+    );
   };
 
   return (
@@ -17,5 +21,3 @@ export const TranslationProvider = ({ children }) => {
     </TranslationContext.Provider>
   );
 };
-
-export const useTranslation = () => useContext(TranslationContext);

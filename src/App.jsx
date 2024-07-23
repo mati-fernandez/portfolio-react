@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import { TranslationProvider } from './i18n/TranslationContext';
 import './App.css';
-import avatar from './assets/avatar.svg';
-import LanguageButton from './components/LanguageButton';
+
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import Certifications from './pages/Certifications';
+import Exercises from './pages/Exercises';
 import MobileHeader from './components/MobileHeader';
-import { useTranslation } from './i18n/TranslationContext';
-import MobileMenu from './components/MobileMenu';
+import LanguageSetup from './helpers/LanguageSetup';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const { translate, setLanguage, language } = useTranslation();
   const [showMenu, setShowMenu] = useState(false);
 
   function updateViewportHeight() {
@@ -16,16 +19,11 @@ function App() {
     //Establece una variable CSS personalizada --vh con el valor calculado de la altura del viewport visible en píxeles.
   }
 
-  function detectAndSetLanguage() {
-    const userLanguage = navigator.language || navigator.userLanguage;
-    const detectedLanguage = userLanguage.startsWith('es') ? 'es' : 'en';
-    setLanguage(detectedLanguage);
-  }
+  document.addEventListener('contextmenu', (e) => e.preventDefault());
 
   useEffect(() => {
     updateViewportHeight();
     window.addEventListener('resize', updateViewportHeight);
-    detectAndSetLanguage();
 
     return () => {
       window.removeEventListener('resize', updateViewportHeight);
@@ -33,13 +31,38 @@ function App() {
   }, []);
 
   return (
-    <div id="container">
-      <LanguageButton language={language} setLanguage={setLanguage} />
-      <img id="avatar" src={avatar} alt="avatar" />
-      <p id="presentacion">{translate('description')}</p>
-      {showMenu && <MobileMenu />}
-      <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
-    </div>
+    <HashRouter>
+      <TranslationProvider>
+        <LanguageSetup />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home />}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
+          <Route
+            path="/projects"
+            element={<Projects />}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
+          <Route
+            path="/certifications"
+            element={
+              <Certifications showMenu={showMenu} setShowMenu={setShowMenu} />
+            }
+          />
+          <Route
+            path="/exercises"
+            element={<Exercises />}
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          />
+        </Routes>
+        <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
+      </TranslationProvider>
+    </HashRouter>
   );
 }
 

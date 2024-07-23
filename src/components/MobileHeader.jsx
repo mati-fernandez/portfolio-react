@@ -1,17 +1,28 @@
 import hamburguer from '../assets/hamburguer.svg';
+import MobileMenu from './MobileMenu';
+import { useContext } from 'react';
+// import { MenuContext } from '../context/MenuContext';
+import { TranslationContext } from '../i18n/TranslationContext';
 
-const MobileHeader = ({ setShowMenu, showMenu }) => {
+// eslint-disable-next-line react/prop-types
+const MobileHeader = ({ showMenu, setShowMenu }) => {
+  //   const { showMenu, setShowMenu } = useContext(MenuContext);
+  const { translate } = useContext(TranslationContext);
+
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
 
   return (
-    <header id="header-mobile">
-      <p id="name">Matias</p>
-      <button id="menu-btn" onClick={toggleMenu}>
-        <img src={hamburguer} alt="Menu button" />
-      </button>
-    </header>
+    <>
+      {showMenu && <MobileMenu translate={translate} />}
+      <header id="header-mobile">
+        <p id="name">Matias</p>
+        <button id="menu-btn" onClick={toggleMenu}>
+          <img src={hamburguer} alt="Menu button" />
+        </button>
+      </header>
+    </>
   );
 };
 
