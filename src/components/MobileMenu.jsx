@@ -4,6 +4,7 @@ import github from '../assets/github.svg';
 import LanguageButton from '../components/LanguageButton';
 import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
+import { Link } from 'react-router-dom';
 
 const MobileMenu = () => {
   const { language, setLanguage, translate } = useContext(TranslationContext);
@@ -12,13 +13,25 @@ const MobileMenu = () => {
     <>
       <LanguageButton language={language} setLanguage={setLanguage} />
       <nav id="mobile-menu">
-        <a>{translate('menu.item1')}</a>
-        <a>{translate('menu.item2')}</a>
-        <a>{translate('menu.item3')}</a>
-        <a>{translate('menu.item4')}</a>
+        <Link className="link" to="/">
+          {translate('menu.item1')}
+        </Link>
+        <Link className="link" to="/projects">
+          {translate('menu.item2')}
+        </Link>
+        <Link className="link" to="/certifications">
+          {translate('menu.item3')}
+        </Link>
+        <Link className="link" to="/exercises">
+          {translate('menu.item4')}
+        </Link>
         <div id="contacto">
-          <img src={linkedin} alt="linkedin" />
-          <img src={github} alt="github" />
+          <a href="https://www.linkedin.com/in/mati-fernandez/" target="blank">
+            <img className="contacto" src={linkedin} alt="linkedin" />
+          </a>
+          <a href="https://github.com/mati-fernandez" target="_blank">
+            <img className="contacto" src={github} alt="github" />
+          </a>
         </div>
       </nav>
     </>

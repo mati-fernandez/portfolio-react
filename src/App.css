@@ -18,6 +18,11 @@ html {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
 }
+/* Elimina el color de resaltado en dispositivos móviles */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
 
 body {
   height: 100%;
@@ -99,12 +104,20 @@ body {
   background-color: var(--color-background);
   width: 100%;
   z-index: 10;
-  & a {
-    display: flex;
-    flex-direction: column;
+  /* & img {
+    flex-direction: row;
     justify-content: center;
-    height: 100%;
-  }
+    width: 30px;
+  } */
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  justify-content: center;
+  height: 100%;
 }
 
 #mobile-menu > a:hover {
@@ -112,7 +125,7 @@ body {
   cursor: pointer;
 }
 
-#contacto > img {
+.contacto {
   width: 32px;
   margin: 32px 30px 100px;
   cursor: pointer;
