@@ -70,6 +70,7 @@ body {
 #avatar {
   margin: 100px 0 0;
   width: 150px;
+  border-radius: 100px;
 }
 
 #presentacion {

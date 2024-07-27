@@ -3,6 +3,7 @@ import MobileMenu from './MobileMenu';
 import { useContext } from 'react';
 // import { MenuContext } from '../context/MenuContext';
 import { TranslationContext } from '../i18n/TranslationContext';
+import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 const MobileHeader = ({ showMenu, setShowMenu }) => {
@@ -17,7 +18,9 @@ const MobileHeader = ({ showMenu, setShowMenu }) => {
     <>
       {showMenu && <MobileMenu translate={translate} />}
       <header id="header-mobile">
-        <p id="name">Matias</p>
+        <Link className="link" to="/">
+          <p id="name">Matias</p>
+        </Link>
         <button id="menu-btn" onClick={toggleMenu}>
           <img src={hamburguer} alt="Menu button" />
         </button>

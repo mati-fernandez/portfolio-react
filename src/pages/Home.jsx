@@ -1,4 +1,4 @@
-import avatar from '../assets/avatar.svg';
+import avatar from '../assets/avatar.png';
 import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
 
