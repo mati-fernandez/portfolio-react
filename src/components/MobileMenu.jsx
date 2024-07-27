@@ -2,29 +2,24 @@ import PropTypes from 'prop-types';
 import linkedin from '../assets/linkedin.svg';
 import github from '../assets/github.svg';
 import LanguageButton from '../components/LanguageButton';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
-import { Link } from 'react-router-dom';
+import MainMenu from './MainMenu';
+import ProjectsMenu from './ProjectsMenu';
 
 const MobileMenu = () => {
-  const { language, setLanguage, translate } = useContext(TranslationContext);
+  const { language, setLanguage } = useContext(TranslationContext);
+  const [menuContent, setMenuContent] = useState('main');
 
   return (
     <>
       <LanguageButton language={language} setLanguage={setLanguage} />
       <nav id="mobile-menu">
-        <Link className="link" to="/">
-          {translate('menu.item1')}
-        </Link>
-        <Link className="link" to="/projects">
-          {translate('menu.item2')}
-        </Link>
-        <Link className="link" to="/certifications">
-          {translate('menu.item3')}
-        </Link>
-        <Link className="link" to="/exercises">
-          {translate('menu.item4')}
-        </Link>
+        {menuContent === 'main' ? (
+          <MainMenu setMenuContent={setMenuContent} />
+        ) : (
+          <ProjectsMenu setMenuContent={setMenuContent} />
+        )}
         <div id="contacto">
           <a href="https://www.linkedin.com/in/mati-fernandez/" target="blank">
             <img className="contacto" src={linkedin} alt="linkedin" />

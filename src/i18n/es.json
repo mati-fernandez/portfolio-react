@@ -4,6 +4,14 @@
     "item1": "Inicio",
     "item2": "Proyectos",
     "item3": "Certificaciones",
-    "item4": "Ejercicios"
+    "item4": "Ejercicios",
+    "projects": {
+      "item1": "Máquina de Citas Aleatorias (React)",
+      "item2": "Previsualizdor de Markdown (React)",
+      "item3": "Caja de Ritmos (React)",
+      "item4": "Calculadora JS (React)",
+      "item5": "Reloj Pomodoro (React)",
+      "item6": "Portafolio Antiguo (Vanilla JS)"
+    }
   }
 }

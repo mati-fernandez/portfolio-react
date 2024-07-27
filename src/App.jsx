@@ -14,7 +14,6 @@ import { updateViewportHeight } from './helpers/updateViewportHeight';
 function App() {
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
-  const [menuContent, setMenuContent] = useState('main');
 
   useEffect(() => {
     document.addEventListener('contextmenu', (e) => e.preventDefault());

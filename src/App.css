@@ -105,11 +105,6 @@ body {
   background-color: var(--color-background);
   width: 100%;
   z-index: 10;
-  /* & img {
-    flex-direction: row;
-    justify-content: center;
-    width: 30px;
-  } */
 }
 
 .link {
@@ -121,6 +116,10 @@ body {
   height: 100%;
 }
 
+.project {
+  font-size: calc(var(--font-size) * 1.2);
+}
+
 #mobile-menu > a:hover {
   background-color: var(--color-background-alpha);
   cursor: pointer;
@@ -128,7 +127,7 @@ body {
 
 .contacto {
   width: 32px;
-  margin: 32px 30px 100px;
+  margin: 32px 30px;
   cursor: pointer;
 }
 
