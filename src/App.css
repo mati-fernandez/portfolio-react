@@ -150,6 +150,10 @@ body {
   :root {
     font-size: 32px;
   }
+  .contact-img {
+    max-height: 100px;
+    min-height: 64px;
+  }
 }
 
 /*****************************************************/
@@ -158,6 +162,10 @@ body {
 @media (min-width: 1025px) {
   :root {
     font-size: 48px;
+  }
+  .contact-img {
+    max-height: 200px;
+    min-height: 100px;
   }
 }
 
