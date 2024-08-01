@@ -12,7 +12,7 @@ html {
 }
 
 :root {
-  --font-size: 16px;
+  font-size: 16px;
   --color-primary: white;
   --color-background: black;
   --color-background-alpha: #4e644450;
@@ -21,7 +21,7 @@ html {
 body {
   height: 100%;
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
-  font-size: var(--font-size);
+  /* font-size: var(--font-size); */
   font-weight: 200;
   background-color: var(--color-background);
   color: var(--color-primary);
@@ -42,7 +42,7 @@ body {
 #language-btn {
   cursor: pointer;
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
-  font-size: 33px;
+  font-size: 1.3rem;
   font-weight: 200;
   background-color: transparent;
   color: var(--color-primary);
@@ -89,7 +89,7 @@ body {
 
 #mobile-menu {
   justify-content: space-around;
-  font-size: calc(var(--font-size) * 1.8);
+  font-size: 1.8rem;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -134,7 +134,7 @@ body {
 }
 
 .project {
-  font-size: calc(var(--font-size) * 1.2);
+  font-size: 1.2rem;
 }
 
 #mobile-menu > a:hover,
@@ -147,8 +147,8 @@ body {
 
 /* Estilos para pantallas medianas (tablets) */
 @media (min-width: 601px) and (max-width: 1024px) {
-  body {
-    font-size: calc(var(--font-size) * 1.1);
+  :root {
+    font-size: 32px;
   }
 }
 
@@ -156,8 +156,8 @@ body {
 
 /*----------------DESKTOP----------------*/
 @media (min-width: 1025px) {
-  body {
-    font-size: calc(var(--font-size) * 1.2);
+  :root {
+    font-size: 48px;
   }
 }
 
