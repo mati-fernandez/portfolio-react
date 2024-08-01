@@ -17,7 +17,7 @@ const MobileHeader = ({ showMenu, setShowMenu }) => {
   return (
     <>
       {showMenu && <MobileMenu translate={translate} />}
-      <header id="header-mobile">
+      <header id="mobile-header">
         <Link className="link" to="/">
           <p id="name">Matias</p>
         </Link>

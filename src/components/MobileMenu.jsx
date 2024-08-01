@@ -20,12 +20,12 @@ const MobileMenu = () => {
         ) : (
           <ProjectsMenu setMenuContent={setMenuContent} />
         )}
-        <div id="contacto">
+        <div id="contact">
           <a href="https://www.linkedin.com/in/mati-fernandez/" target="blank">
-            <img className="contacto" src={linkedin} alt="linkedin" />
+            <img className="contact-img" src={linkedin} alt="linkedin" />
           </a>
           <a href="https://github.com/mati-fernandez" target="_blank">
-            <img className="contacto" src={github} alt="github" />
+            <img className="contact-img" src={github} alt="github" />
           </a>
         </div>
       </nav>

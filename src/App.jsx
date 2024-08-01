@@ -15,14 +15,15 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
 
+  // Llamar a la función al cargar y al redimensionar la ventana
+  updateViewportHeight();
+  window.addEventListener('resize', updateViewportHeight);
+
   useEffect(() => {
     document.addEventListener('contextmenu', (e) => e.preventDefault());
-    updateViewportHeight();
-    window.addEventListener('resize', updateViewportHeight);
 
     return () => {
       document.removeEventListener('contextmenu', (e) => e.preventDefault());
-      window.removeEventListener('resize', updateViewportHeight);
     };
   }, []);
 
