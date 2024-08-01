@@ -4,14 +4,25 @@
     "item1": "Home",
     "item2": "Projects",
     "item3": "Certifications",
-    "item4": "Exercices",
-    "projects": {
-      "item1": "Random Quote Machine (React)",
-      "item2": "Markdown Previewer (React)",
-      "item3": "Drum Machine (React)",
-      "item4": "JS Calculator (React)",
-      "item5": "Pomodoro Clock (React)",
-      "item6": "Old Portfolio (Vanilla JS)"
-    }
+    "item4": "Exercices"
+  },
+  "projects": {
+    "item1": "Random Quote Machine (React)",
+    "item2": "Markdown Previewer (React)",
+    "item3": "Drum Machine (React)",
+    "item4": "JS Calculator (React)",
+    "item5": "Pomodoro Clock (React)",
+    "item6": "Old Portfolio (Vanilla JS)"
+  },
+  "certifications": {
+    "item1": "Responsive Web Design",
+    "item2": "JS Algorithms & Data Structures",
+    "item3": "Front End Development Libraries"
+  },
+  "exercises": {
+    "item1": "Document Object Module",
+    "item2": "Draw - Canvas Intro (PC)",
+    "item3": "Tetris - Vanilla JS (PC)",
+    "item4": "Monkeytype (PC)"
   }
 }

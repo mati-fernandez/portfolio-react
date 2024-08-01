@@ -4,14 +4,25 @@
     "item1": "Inicio",
     "item2": "Proyectos",
     "item3": "Certificaciones",
-    "item4": "Ejercicios",
-    "projects": {
-      "item1": "Máquina de Citas Aleatorias (React)",
-      "item2": "Previsualizdor de Markdown (React)",
-      "item3": "Caja de Ritmos (React)",
-      "item4": "Calculadora JS (React)",
-      "item5": "Reloj Pomodoro (React)",
-      "item6": "Portafolio Antiguo (Vanilla JS)"
-    }
+    "item4": "Ejercicios"
+  },
+  "projects": {
+    "item1": "Máquina de Citas Aleatorias (React)",
+    "item2": "Previsualizdor de Markdown (React)",
+    "item3": "Caja de Ritmos (React)",
+    "item4": "Calculadora JS (React)",
+    "item5": "Reloj Pomodoro (React)",
+    "item6": "Portafolio Antiguo (Vanilla JS)"
+  },
+  "certifications": {
+    "item1": "Diseño Web Responsivo",
+    "item2": "Algoritmos JS & Estructuras de datos",
+    "item3": "Librerías de Desarrollo de Interfaz"
+  },
+  "exercises": {
+    "item1": "Módulo de objeto de documento",
+    "item2": "Dibujo - Intro a Canvas (PC)",
+    "item3": "Tetris - JS Vainilla (PC)",
+    "item4": "Mecanografía (PC)"
   }
 }
