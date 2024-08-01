@@ -6,7 +6,7 @@ const Home = () => {
   const { translate } = useContext(TranslationContext);
 
   return (
-    <div id="container">
+    <div className="container">
       <img id="avatar" src={avatar} alt="avatar" />
       <p id="presentacion">{translate('description')}</p>
     </div>
