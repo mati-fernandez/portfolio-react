@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Link } from 'react-router-dom';
 import { TranslationProvider } from './i18n/TranslationContext';
 import './App.css';
 
@@ -10,16 +10,27 @@ import MobileHeader from './components/MobileHeader';
 import LanguageSetup from './helpers/LanguageSetup';
 import { useEffect, useState } from 'react';
 import { updateViewportHeight } from './helpers/updateViewportHeight';
+import DesktopHeader from './components/DesktopHeader';
+import { updateAspectRatio } from './helpers/updateAspectRatio';
+import LanguageButton from './components/LanguageButton';
+// import { changeSVGColor } from './helpers/changeSVGColor';
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
+  const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
+  const [svgColor, setSvgColor] = useState('none');
 
-  // Llamar a la función al cargar y al redimensionar la ventana
-  updateViewportHeight();
-  window.addEventListener('resize', updateViewportHeight);
+  function handleResize() {
+    updateViewportHeight();
+    setAspectRatio(updateAspectRatio());
+  }
+  // Llamar al redimensionar la ventana
+  window.addEventListener('resize', handleResize);
 
   useEffect(() => {
+    // changeSVGColor();
+    handleResize();
     document.addEventListener('contextmenu', (e) => e.preventDefault());
 
     return () => {
@@ -56,7 +67,17 @@ function App() {
         />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
-      <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
+      {aspectRatio === 'portrait' ? (
+        <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
+      ) : (
+        <>
+          <Link className="link" to="/">
+            <img id="logo" src="favicon.svg " alt="Matias" />
+          </Link>
+          <LanguageButton />
+          <DesktopHeader />
+        </>
+      )}
     </TranslationProvider>
   );
 }
