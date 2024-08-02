@@ -14,9 +14,8 @@ html {
 :root {
   font-size: 4vmin;
   --color-primary: white;
-  --color-secondary: #95c082;
+  --color-secondary: #506b44;
   --color-background: black;
-  --color-background-alpha: #4e644450;
 }
 
 body {
@@ -47,7 +46,7 @@ body {
 }
 
 #desktop-menu > a:hover {
-  background-color: var(--color-background-alpha);
+  background-color: var(--color-secondary);
 }
 
 .container {
@@ -74,7 +73,7 @@ body {
 }
 
 #logo:hover {
-  background-color: var(--color-background-alpha);
+  background-color: var(--color-secondary);
 }
 
 #language-btn {
@@ -95,7 +94,7 @@ body {
 }
 
 #language-btn:hover {
-  background-color: var(--color-background-alpha);
+  background-color: var(--color-secondary);
 }
 
 #name {
@@ -116,7 +115,7 @@ body {
 }
 
 #menu-btn:hover {
-  background-color: var(--color-background-alpha);
+  background-color: var(--color-secondary);
 }
 
 #menu-btn > img {
@@ -198,16 +197,20 @@ body {
 
 .link:hover {
   cursor: pointer;
-  background-color: var(--color-background-alpha);
+  background-color: var(--color-secondary);
 }
 
 #contact:hover {
-  background-color: var(--color-background-alpha);
+  background-color: var(--color-secondary);
 }
 
 /******** DESKTOP ********/
 
 @media (orientation: landscape) {
+  .container {
+    top: 45%;
+  }
+
   .mobile-menu {
     top: 50%;
     left: 50%;
