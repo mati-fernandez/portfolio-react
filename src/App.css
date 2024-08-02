@@ -32,39 +32,49 @@ body {
 
 #desktop-menu {
   box-sizing: border-box;
-  width: calc(100% - 2vw);
+  width: 100%;
   position: fixed;
   display: flex;
   justify-content: space-between;
-  margin: 0 2vw;
-  padding: 0 1rem;
-  bottom: 5vh;
+  bottom: 4vh;
+  padding: 0 5vw;
   z-index: 10;
 }
 
+#desktop-menu > a {
+  padding: 2vh;
+  border-radius: 50px;
+}
+
 #desktop-menu > a:hover {
-  color: var(--color-secondary);
+  background-color: var(--color-background-alpha);
 }
 
 .container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(var(--vh) * 100);
 }
 
 #logo {
+  border-radius: 50px;
   position: fixed;
-  top: 2vw;
-  left: 2vw;
+  top: 4vh;
+  left: 0;
   width: 1.3rem;
-  padding: 1rem;
+  padding: 2vh;
+  margin: 0 5vw;
   z-index: 11;
 }
 
 #logo:hover {
-  filter: hue-rotate(250deg);
+  background-color: var(--color-background-alpha);
 }
 
 #language-btn {
@@ -75,30 +85,40 @@ body {
   background-color: transparent;
   color: var(--color-primary);
   position: fixed;
-  top: 2vw;
-  right: 2vw;
+  top: 4vh;
+  right: 0;
   border: 1px solid transparent;
   border-radius: 50px;
-  padding: 1rem;
+  padding: 2vh;
+  margin: 0 5vw;
   z-index: 11;
 }
 
 #language-btn:hover {
-  color: var(--color-secondary);
+  background-color: var(--color-background-alpha);
 }
 
 #name {
   font-size: 3vh;
+  border-radius: 50px;
+  padding: 1vh 2vw;
 }
 
 #menu-btn {
+  box-sizing: content-box;
   display: flex;
   padding: 0;
   margin: 0;
   cursor: pointer;
   background-color: transparent;
-  border: none;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  padding: 2vw;
   height: 100%;
+}
+
+#menu-btn:hover {
+  background-color: var(--color-background-alpha);
 }
 
 #menu-btn > img {
@@ -110,7 +130,7 @@ body {
 }
 
 #presentacion {
-  margin: 2vw 8vw 10vmax;
+  margin: 2vh 13vw 10vh;
 }
 
 #mobile-header {
@@ -119,7 +139,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5vw;
+  padding: 0 2vw;
   bottom: 2.5vh;
   width: 100vw;
   height: 3vh;
@@ -170,12 +190,38 @@ body {
   cursor: pointer;
 }
 
+.contact-img:hover {
+  filter: invert(0.5);
+}
+
 .long-text {
   font-size: 1.2rem;
 }
 
-.mobile-menu > a:hover,
+.link:hover {
+  cursor: pointer;
+  background-color: var(--color-background-alpha);
+}
+
 #contact:hover {
   background-color: var(--color-background-alpha);
-  cursor: pointer;
+}
+
+/******** DESKTOP ********/
+
+@media (orientation: landscape) {
+  .mobile-menu {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 60vh;
+  }
+
+  .link {
+    font-size: 0.8rem;
+  }
+
+  #presentacion {
+    margin: 0 20vw;
+  }
 }

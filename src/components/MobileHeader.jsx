@@ -18,8 +18,8 @@ const MobileHeader = ({ showMenu, setShowMenu }) => {
     <>
       {showMenu && <MobileMenu translate={translate} />}
       <header id="mobile-header">
-        <Link className="link" to="/">
-          <p id="name">Matias</p>
+        <Link className="link" id="name" to="/">
+          <p>Matias</p>
         </Link>
         <button id="menu-btn" onClick={toggleMenu}>
           <img src={hamburguer} alt="Menu button" />

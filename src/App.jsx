@@ -8,29 +8,20 @@ import Certifications from './pages/Certifications';
 import Exercises from './pages/Exercises';
 import MobileHeader from './components/MobileHeader';
 import LanguageSetup from './helpers/LanguageSetup';
-import { useEffect, useState } from 'react';
-import { updateViewportHeight } from './helpers/updateViewportHeight';
+import LanguageButton from './components/LanguageButton';
 import DesktopHeader from './components/DesktopHeader';
 import { updateAspectRatio } from './helpers/updateAspectRatio';
-import LanguageButton from './components/LanguageButton';
-// import { changeSVGColor } from './helpers/changeSVGColor';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
   const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
-  const [svgColor, setSvgColor] = useState('none');
 
-  function handleResize() {
-    updateViewportHeight();
-    setAspectRatio(updateAspectRatio());
-  }
-  // Llamar al redimensionar la ventana
-  window.addEventListener('resize', handleResize);
+  window.addEventListener('resize', () => setAspectRatio(updateAspectRatio()));
 
   useEffect(() => {
-    // changeSVGColor();
-    handleResize();
+    setAspectRatio(updateAspectRatio());
     document.addEventListener('contextmenu', (e) => e.preventDefault());
 
     return () => {
@@ -38,7 +29,6 @@ function App() {
     };
   }, []);
 
-  // Resetea `showMenu` a false cada vez que la ubicación cambia
   useEffect(() => {
     setShowMenu(false);
   }, [location]);
