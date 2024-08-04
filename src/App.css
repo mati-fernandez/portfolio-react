@@ -2,6 +2,7 @@ Mobile First *,
 *::before,
 *::after,
 html {
+  overflow: hidden; /* Evita el scroll en el cuerpo y el html */
   box-sizing: border-box;
   user-select: none; /* Estándar moderno */
   -webkit-user-select: none; /* Safari */
@@ -12,10 +13,13 @@ html {
 }
 
 :root {
+  --vh: 1vh; /* Valor inicial para la variable */
   font-size: 4vmin;
   --color-primary: white;
   --color-secondary: #506b44;
   --color-background: black;
+  --color-background-secondary: #222;
+  --color-background-alpha: #222222dc;
 }
 
 body {
@@ -27,26 +31,6 @@ body {
   margin: 0 auto;
   padding: 0;
   text-align: center;
-}
-
-#desktop-menu {
-  box-sizing: border-box;
-  width: 100%;
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  bottom: 4vh;
-  padding: 0 5vw;
-  z-index: 10;
-}
-
-#desktop-menu > a {
-  padding: 2vh;
-  border-radius: 50px;
-}
-
-#desktop-menu > a:hover {
-  background-color: var(--color-secondary);
 }
 
 .container {
@@ -61,61 +45,36 @@ body {
   align-items: center;
 }
 
-#logo {
-  border-radius: 50px;
-  position: fixed;
-  top: 4vh;
-  left: 0;
-  width: 1.3rem;
-  padding: 2vh;
-  margin: 0 5vw;
-  z-index: 11;
-}
-
-#logo:hover {
-  background-color: var(--color-secondary);
-}
-
 #language-btn {
-  cursor: pointer;
+  pointer-events: auto;
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: 200;
-  background-color: transparent;
-  color: var(--color-primary);
   position: fixed;
-  top: 4vh;
-  right: 0;
-  border: 1px solid transparent;
-  border-radius: 50px;
-  padding: 2vh;
-  margin: 0 5vw;
+  top: 2vh;
+  right: 2vh;
   z-index: 11;
 }
 
 #language-btn:hover {
-  background-color: var(--color-secondary);
+  background-color: var(--color-background);
 }
 
 #name {
   font-size: 1.8rem;
   border-radius: 50px;
-  padding: 1vh 2vw;
+  padding: 0 2vw;
 }
 
 #menu-btn {
   display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-  background-color: transparent;
   border-radius: 50px;
   padding: 2vh;
-  margin-bottom: 1vh;
 }
 
 #menu-btn:hover {
-  background-color: var(--color-secondary);
+  background-color: var(--color-background);
 }
 
 #menu-btn > img {
@@ -130,31 +89,66 @@ body {
   margin: 2vh 13vw 10vh;
 }
 
+#wrapper {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  height: calc(var(--vh, 1vh) * 100);
+  /* Usa la variable para la altura del contenedor */
+  overflow: hidden;
+  /* Evita el scroll si el contenido excede la altura */
+}
+
+.alpha-bkg {
+  position: absolute;
+  top: 0;
+  height: calc(
+    var(--vh, 1vh) * 90
+  ); /* Usa la variable para la altura del contenedor */
+  overflow: hidden; /* Evita el scroll si el contenido excede la altura */
+  width: 100vw;
+  background-color: var(--color-background-alpha);
+}
+
 #mobile-header {
+  pointer-events: auto;
   box-sizing: border-box;
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2vw;
-  bottom: 2.5vh;
+  padding: 0 4vw;
+  bottom: 0vh;
   width: 100vw;
-  height: 3vh;
-  z-index: 10;
+  height: 10vh;
 }
 
-.mobile-menu {
+.menu {
   font-size: 1.8rem;
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+
+.modal {
+  pointer-events: auto;
   position: fixed;
   top: 50%;
+  height: 73vh;
+  /*En el celu se ve mejor en 23vh*/
   transform: translate(0, -50%);
-  padding: 7vh 0;
+}
+
+.page {
+  height: calc(
+    var(--vh, 1vh) * 90
+  ); /* Usa la variable para la altura del contenedor */
+  overflow: hidden; /* Evita el scroll si el contenido excede la altura */
+}
+
+.page > a {
+  border-radius: 0;
   background-color: var(--color-background);
-  width: 100%;
-  height: calc(100vh - 23vh); /*En el celu se ve mejor en 23vh*/
-  z-index: 10;
 }
 
 .link {
@@ -166,29 +160,32 @@ body {
   height: 100%;
 }
 
+.button {
+  cursor: pointer;
+  background-color: var(--color-background-secondary);
+  border-radius: 50px;
+  padding: 2vh;
+  display: flex;
+}
+
+.button:hover {
+  background-color: var(--color-background);
+}
+
 #contact {
   display: flex;
   justify-content: center;
+  gap: 10vw;
   align-items: center;
   height: 100%;
 }
 
-#contact > a {
-  margin: 0 5vw;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
 .contact-img {
+  border-radius: 50px;
   height: auto;
-  min-height: 10vmin;
+  min-height: 1.8rem;
   flex: 0 1 auto;
   cursor: pointer;
-}
-
-.contact-img:hover {
-  filter: invert(0.5);
 }
 
 .long-text {
@@ -200,22 +197,79 @@ body {
   background-color: var(--color-secondary);
 }
 
-#contact:hover {
-  background-color: var(--color-secondary);
-}
-
 /******** DESKTOP ********/
 
 @media (orientation: landscape) {
-  .container {
-    top: 45%;
+  #desktop-header {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 4vh;
+    width: 100%;
+    padding: 0;
   }
 
-  .mobile-menu {
+  #desktop-header > a {
+    background-color: var(--color-background-secondary);
+    border-radius: 50px;
+  }
+
+  #logo {
+    display: flex;
+    position: static;
+    border-radius: 50px;
+    width: 1.3rem;
+  }
+
+  .button:hover {
+    background-color: var(--color-secondary);
+  }
+
+  .contact-img {
+    display: flex;
+    width: 1.3rem;
+  }
+
+  #language-btn {
+    position: static;
+    margin: 0;
+  }
+
+  .page {
+    box-sizing: border-box;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 60vh;
+    transform: translate(0, -50%);
+    height: auto;
+    gap: 40px;
+    padding: 0 4vw;
+  }
+
+  .page > a {
+    border-radius: 50px;
+    background-color: var(--color-background-secondary);
+  }
+
+  /* FOOTER */
+  #desktop-menu {
+    border: 1px dashed red;
+    box-sizing: border-box;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    bottom: 4vh;
+    padding: 0 5vw;
+    z-index: 10;
+  }
+
+  #desktop-menu > a {
+    padding: 2vh;
+    border-radius: 50px;
   }
 
   .link {
@@ -225,4 +279,8 @@ body {
   #presentacion {
     margin: 0 20vw;
   }
+
+  /* .container {
+    top: 47vh;
+  } */
 }

@@ -8,16 +8,16 @@ const MainMenu = () => {
 
   return (
     <>
-      <Link className="link" to="/">
+      <Link className="button link" to="/">
         {translate('menu.item1')}
       </Link>
-      <Link className="link" to="/projects">
+      <Link className="button link" to="/projects">
         {translate('menu.item2')}
       </Link>
-      <Link className="link" to="/certifications">
+      <Link className="button link" to="/certifications">
         {translate('menu.item3')}
       </Link>
-      <Link className="link" to="/exercises">
+      <Link className="button link" to="/exercises">
         {translate('menu.item4')}
       </Link>
     </>

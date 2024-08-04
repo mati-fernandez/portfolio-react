@@ -10,20 +10,28 @@ const MobileMenu = () => {
   const { language, setLanguage } = useContext(TranslationContext);
 
   return (
-    <>
+    <div className="alpha-bkg">
       <LanguageButton language={language} setLanguage={setLanguage} />
-      <nav className="mobile-menu">
+      <nav className="modal menu">
         <MainMenu />
         <div id="contact">
-          <a href="https://www.linkedin.com/in/mati-fernandez/" target="blank">
+          <a
+            className="button"
+            href="https://www.linkedin.com/in/mati-fernandez/"
+            target="blank"
+          >
             <img className="contact-img" src={linkedin} alt="linkedin" />
           </a>
-          <a href="https://github.com/mati-fernandez" target="_blank">
+          <a
+            className="button"
+            href="https://github.com/mati-fernandez"
+            target="_blank"
+          >
             <img className="contact-img" src={github} alt="github" />
           </a>
         </div>
       </nav>
-    </>
+    </div>
   );
 };
 

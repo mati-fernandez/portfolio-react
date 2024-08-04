@@ -10,7 +10,7 @@ const LanguageButton = () => {
   };
 
   return (
-    <a id="language-btn" onClick={handleClick}>
+    <a className="button" id="language-btn" onClick={handleClick}>
       {language.toUpperCase()}
     </a>
   );

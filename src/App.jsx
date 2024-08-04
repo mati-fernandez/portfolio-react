@@ -1,26 +1,32 @@
-import { Routes, Route, useLocation, Link } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { TranslationProvider } from './i18n/TranslationContext';
+import { useEffect, useState } from 'react';
+import { updateViewportHeight } from './helpers/updateViewportHeight';
 import './App.css';
 
+// COMPONENTS/PAGES
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Certifications from './pages/Certifications';
 import Exercises from './pages/Exercises';
 import MobileHeader from './components/MobileHeader';
 import LanguageSetup from './helpers/LanguageSetup';
-import LanguageButton from './components/LanguageButton';
 import DesktopHeader from './components/DesktopHeader';
-import { updateAspectRatio } from './helpers/updateAspectRatio';
-import { useEffect, useState } from 'react';
+import DesktopFooter from './components/DesktopFooter';
+
+const updateAspectRatio = () =>
+  window.innerWidth / window.innerHeight < 1 ? 'portrait' : 'landscape';
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
   const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
 
-  window.addEventListener('resize', () => setAspectRatio(updateAspectRatio()));
-
   useEffect(() => {
+    updateViewportHeight();
+    window.addEventListener('resize', () =>
+      setAspectRatio(updateAspectRatio())
+    );
     setAspectRatio(updateAspectRatio());
     document.addEventListener('contextmenu', (e) => e.preventDefault());
 
@@ -61,11 +67,8 @@ function App() {
         <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
       ) : (
         <>
-          <Link className="link" to="/">
-            <img id="logo" src="favicon.svg " alt="Matias" />
-          </Link>
-          <LanguageButton />
           <DesktopHeader />
+          <DesktopFooter />
         </>
       )}
     </TranslationProvider>
