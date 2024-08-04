@@ -14,13 +14,17 @@ const MobileMenu = () => {
       <LanguageButton language={language} setLanguage={setLanguage} />
       <nav className="modal menu">
         <MainMenu />
-        <div id="contact">
+        <div id="contact-wrapper">
           <a
-            className="button"
+            className="button linkedin-a"
             href="https://www.linkedin.com/in/mati-fernandez/"
             target="blank"
           >
-            <img className="contact-img" src={linkedin} alt="linkedin" />
+            <img
+              className="contact-img linkedin"
+              src={linkedin}
+              alt="linkedin"
+            />
           </a>
           <a
             className="button"

@@ -10,11 +10,11 @@ const DesktopHeader = () => {
         <img id="logo" src="favicon.svg " alt="Matias" />
       </Link>
       <a
-        className="button"
+        className="button linkedin-a"
         href="https://www.linkedin.com/in/mati-fernandez/"
         target="blank"
       >
-        <img className="contact-img" src={linkedin} alt="linkedin" />
+        <img className="contact-img linkedin" src={linkedin} alt="linkedin" />
       </a>
       <a
         className="button"

@@ -1,8 +1,8 @@
-Mobile First *,
+/**************** MOBILE FIRST ****************/
+*,
 *::before,
 *::after,
 html {
-  overflow: hidden; /* Evita el scroll en el cuerpo y el html */
   box-sizing: border-box;
   user-select: none; /* Estándar moderno */
   -webkit-user-select: none; /* Safari */
@@ -13,13 +13,14 @@ html {
 }
 
 :root {
-  --vh: 1vh; /* Valor inicial para la variable */
   font-size: 4vmin;
+  /* VARIABLES */
+  --vh: 1vh; /* Valor inicial para la variable */
   --color-primary: white;
   --color-secondary: #506b44;
   --color-background: black;
   --color-background-secondary: #222;
-  --color-background-alpha: #222222dc;
+  --color-background-alpha: #222222ec;
 }
 
 body {
@@ -51,9 +52,10 @@ body {
   font-size: 1.8rem;
   font-weight: 200;
   position: fixed;
-  top: 2vh;
-  right: 2vh;
+  top: 0;
+  right: 0;
   z-index: 11;
+  margin: 4vw;
 }
 
 #language-btn:hover {
@@ -62,6 +64,7 @@ body {
 
 #name {
   font-size: 1.8rem;
+  margin: 0;
   border-radius: 50px;
   padding: 0 2vw;
 }
@@ -94,25 +97,20 @@ body {
   position: absolute;
   inset: 0;
   height: calc(var(--vh, 1vh) * 100);
-  /* Usa la variable para la altura del contenedor */
-  overflow: hidden;
-  /* Evita el scroll si el contenido excede la altura */
+  /* overflow: hidden; */
 }
 
 .alpha-bkg {
+  pointer-events: all;
   position: absolute;
   top: 0;
-  height: calc(
-    var(--vh, 1vh) * 90
-  ); /* Usa la variable para la altura del contenedor */
-  overflow: hidden; /* Evita el scroll si el contenido excede la altura */
+  height: calc(var(--vh, 1vh) * 90);
   width: 100vw;
   background-color: var(--color-background-alpha);
 }
 
 #mobile-header {
   pointer-events: auto;
-  box-sizing: border-box;
   position: absolute;
   display: flex;
   justify-content: space-between;
@@ -126,6 +124,7 @@ body {
 .menu {
   font-size: 1.8rem;
   display: flex;
+  justify-content: space-around;
   flex-direction: column;
   width: 100%;
 }
@@ -134,20 +133,22 @@ body {
   pointer-events: auto;
   position: fixed;
   top: 50%;
-  height: 73vh;
-  /*En el celu se ve mejor en 23vh*/
+  height: 63vh;
   transform: translate(0, -50%);
 }
 
+.modal > a {
+  border: 1px solid var(--color-secondary);
+}
+
 .page {
-  height: calc(
-    var(--vh, 1vh) * 90
-  ); /* Usa la variable para la altura del contenedor */
-  overflow: hidden; /* Evita el scroll si el contenido excede la altura */
+  height: calc(var(--vh, 1vh) * 90);
+  overflow: hidden;
+  padding: 10vh 0;
 }
 
 .page > a {
-  border-radius: 0;
+  border: 1px solid var(--color-secondary);
   background-color: var(--color-background);
 }
 
@@ -162,17 +163,17 @@ body {
 
 .button {
   cursor: pointer;
-  background-color: var(--color-background-secondary);
   border-radius: 50px;
   padding: 2vh;
   display: flex;
+  margin: 2vh 6vw;
 }
 
 .button:hover {
   background-color: var(--color-background);
 }
 
-#contact {
+#contact-wrapper {
   display: flex;
   justify-content: center;
   gap: 10vw;
@@ -182,24 +183,28 @@ body {
 
 .contact-img {
   border-radius: 50px;
-  height: auto;
-  min-height: 1.8rem;
   flex: 0 1 auto;
   cursor: pointer;
+  height: 2rem;
+}
+
+.linkedin-a {
+  padding: 2.4vh;
+}
+
+.linkedin {
+  border-radius: 0;
+  height: 1.8rem;
 }
 
 .long-text {
   font-size: 1.2rem;
 }
 
-.link:hover {
-  cursor: pointer;
-  background-color: var(--color-secondary);
-}
-
 /******** DESKTOP ********/
 
 @media (orientation: landscape) {
+  /**** HEADER ****/
   #desktop-header {
     position: fixed;
     display: flex;
@@ -215,11 +220,24 @@ body {
     border-radius: 50px;
   }
 
+  #desktop-header > a:hover {
+    background-color: var(--color-secondary);
+  }
+
   #logo {
     display: flex;
     position: static;
     border-radius: 50px;
-    width: 1.3rem;
+    height: 2rem;
+  }
+
+  .link {
+    font-size: 0.8rem;
+  }
+
+  .button {
+    background-color: var(--color-background-secondary);
+    margin: 0;
   }
 
   .button:hover {
@@ -228,12 +246,15 @@ body {
 
   .contact-img {
     display: flex;
-    width: 1.3rem;
   }
 
   #language-btn {
     position: static;
     margin: 0;
+  }
+
+  #presentacion {
+    margin: 0 20vw;
   }
 
   .page {
@@ -254,9 +275,8 @@ body {
     background-color: var(--color-background-secondary);
   }
 
-  /* FOOTER */
+  /**** FOOTER ****/
   #desktop-menu {
-    border: 1px dashed red;
     box-sizing: border-box;
     width: 100%;
     position: fixed;
@@ -271,16 +291,4 @@ body {
     padding: 2vh;
     border-radius: 50px;
   }
-
-  .link {
-    font-size: 0.8rem;
-  }
-
-  #presentacion {
-    margin: 0 20vw;
-  }
-
-  /* .container {
-    top: 47vh;
-  } */
 }
