@@ -152,6 +152,10 @@ body {
   background-color: var(--color-background);
 }
 
+.page > a:hover {
+  background-color: var(--color-background-secondary);
+}
+
 .link {
   display: flex;
   flex-direction: column;
@@ -275,6 +279,10 @@ body {
   .page > a {
     border-radius: 50px;
     background-color: var(--color-background-secondary);
+  }
+
+  .page > a:hover {
+    background-color: var(--color-secondary);
   }
 
   /**** FOOTER ****/
