@@ -49,13 +49,13 @@ body {
 #language-btn {
   pointer-events: auto;
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   font-weight: 200;
   position: fixed;
   top: 0;
   right: 0;
   z-index: 11;
-  margin: 4vw;
+  margin: 2vh 4vw;
 }
 
 #language-btn:hover {
@@ -124,21 +124,21 @@ body {
 .menu {
   font-size: 1.8rem;
   display: flex;
-  justify-content: space-around;
   flex-direction: column;
   width: 100%;
 }
 
 .modal {
   pointer-events: auto;
-  position: fixed;
-  top: 50%;
-  height: 63vh;
-  transform: translate(0, -50%);
+  position: absolute;
+  top: 0;
+  height: calc(var(--vh, 1vh) * 90);
+  padding-top: 11vh;
 }
 
 .modal > a {
   border: 1px solid var(--color-secondary);
+  line-height: 0;
 }
 
 .page {
