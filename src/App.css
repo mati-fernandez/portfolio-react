@@ -228,7 +228,7 @@ body {
     display: flex;
     position: static;
     border-radius: 50px;
-    height: 2rem;
+    height: 1.3rem;
   }
 
   .link {
@@ -246,11 +246,13 @@ body {
 
   .contact-img {
     display: flex;
+    height: 1.3rem;
   }
 
   #language-btn {
     position: static;
     margin: 0;
+    font-size: 1.1rem;
   }
 
   #presentacion {
