@@ -47,6 +47,9 @@ body {
 }
 
 #language-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   pointer-events: auto;
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
   font-size: 1.3rem;
@@ -180,25 +183,28 @@ body {
 #contact-wrapper {
   display: flex;
   justify-content: center;
-  gap: 10vw;
   align-items: center;
   height: 100%;
 }
 
 .contact-img {
   border-radius: 50px;
-  flex: 0 1 auto;
   cursor: pointer;
   height: 2rem;
 }
 
+#cv-mobile-a > img {
+  width: 2rem;
+}
+
 .linkedin-a {
-  padding: 2.4vh;
+  justify-content: center;
 }
 
 .linkedin {
+  width: 80%;
   border-radius: 0;
-  height: 1.8rem;
+  aspect-ratio: 1;
 }
 
 .long-text {
@@ -257,6 +263,11 @@ body {
     position: static;
     margin: 0;
     font-size: 1.1rem;
+  }
+
+  #cv-desktop {
+    font-size: 1rem;
+    aspect-ratio: 1;
   }
 
   #presentacion {

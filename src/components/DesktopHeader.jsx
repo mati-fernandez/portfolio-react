@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import LanguageButton from './LanguageButton';
 import linkedin from '../assets/linkedin.svg';
 import github from '../assets/github.svg';
@@ -6,9 +5,7 @@ import github from '../assets/github.svg';
 const DesktopHeader = () => {
   return (
     <div id="desktop-header">
-      <Link className="button" to="/">
-        <img id="logo" src="favicon.svg " alt="Matias" />
-      </Link>
+      <LanguageButton />
       <a
         className="button linkedin-a"
         href="https://www.linkedin.com/in/mati-fernandez/"
@@ -23,7 +20,14 @@ const DesktopHeader = () => {
       >
         <img className="contact-img" src={github} alt="github" />
       </a>
-      <LanguageButton />
+      <a
+        id="cv-desktop"
+        className="link button"
+        href="https://drive.google.com/file/d/17RJxIFZ5QLbsr7GWNuG990xwdhsyyle_/view"
+        target="_blank"
+      >
+        CV
+      </a>
     </div>
   );
 };

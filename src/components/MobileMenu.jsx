@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import linkedin from '../assets/linkedin.svg';
 import github from '../assets/github.svg';
+import cv from '../assets/cv.svg';
 import LanguageButton from '../components/LanguageButton';
 import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
@@ -32,6 +33,14 @@ const MobileMenu = () => {
             target="_blank"
           >
             <img className="contact-img" src={github} alt="github" />
+          </a>
+          <a
+            id="cv-mobile-a"
+            className="button"
+            href="https://drive.google.com/file/d/17RJxIFZ5QLbsr7GWNuG990xwdhsyyle_/view"
+            target="_blank"
+          >
+            <img src={cv} alt="Hoja de vida" />
           </a>
         </div>
       </nav>
