@@ -8,9 +8,6 @@ const MainMenu = () => {
 
   return (
     <>
-      <Link className="button link" to="/">
-        {translate('menu.item1')}
-      </Link>
       <Link className="button link" to="/projects">
         {translate('menu.item2')}
       </Link>
@@ -20,6 +17,13 @@ const MainMenu = () => {
       <Link className="button link" to="/exercises">
         {translate('menu.item4')}
       </Link>
+      <a
+        className="link button"
+        href="https://drive.google.com/file/d/17RJxIFZ5QLbsr7GWNuG990xwdhsyyle_/view"
+        target="_blank"
+      >
+        {translate('menu.item1')}
+      </a>
     </>
   );
 };
