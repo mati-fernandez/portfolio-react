@@ -58,7 +58,7 @@ body {
   top: 0;
   right: 0;
   z-index: 11;
-  margin: 2vh 4vw;
+  margin: 3vh 4vw;
 }
 
 #language-btn:hover {
@@ -134,9 +134,10 @@ body {
 .modal {
   pointer-events: auto;
   position: absolute;
-  top: 0;
-  height: calc(var(--vh, 1vh) * 90);
-  padding-top: 11vh;
+  top: 50%;
+  transform: translate(0, -50%);
+  height: calc(var(--vh, 1vh) * 85);
+  padding-top: 8vh;
 }
 
 .modal > a {

@@ -37,7 +37,7 @@ const MobileMenu = () => {
           <a
             id="cv-mobile-a"
             className="button"
-            href="https://drive.google.com/file/d/17RJxIFZ5QLbsr7GWNuG990xwdhsyyle_/view"
+            href="https://drive.google.com/drive/folders/17_6t9pEX7BIkTsfLXCYRqWZuI0Ygty0P?usp=sharing"
             target="_blank"
           >
             <img src={cv} alt="Hoja de vida" />
