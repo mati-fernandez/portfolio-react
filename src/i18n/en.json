@@ -7,7 +7,11 @@
     "item4": "Exercices"
   },
   "projects": {
-    "item1": "Random Quote Machine (React)",
+    "item1": {
+      "title": "Random Quote Machine (React)",
+      "description": "This must have been my first experience with asynchronous requests to an external API.",
+      "button": "Open"
+    },
     "item2": "Markdown Previewer (React)",
     "item3": "Drum Machine (React)",
     "item4": "JS Calculator (React)",

@@ -1,5 +1,7 @@
 import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
+import Modal from '../components/Modal';
+import imgrqm from '../assets/random-quote-machine.png';
 
 const Projects = () => {
   const { translate } = useContext(TranslationContext);
@@ -11,8 +13,21 @@ const Projects = () => {
         href="https://mati-fernandez.github.io/random-quote-machine/"
         target="_blank"
       >
-        {translate('projects.item1')}
+        {translate('projects.item1.title')}
       </a>
+      <Modal>
+        <h3>{translate('projects.item1.title')}</h3>
+        <img className="thumbnail" src={imgrqm} alt="Random quote machine" />
+        <p>{translate('projects.item1.description')}</p>
+        <div className="btn-panel">
+          <a href="#" className="link button">
+            {translate('projects.item1.button1')}
+          </a>
+          <a href="#" className="link button">
+            {translate('projects.item1.button2')}
+          </a>
+        </div>
+      </Modal>
       <a
         className="long-text button link"
         href="https://mati-fernandez.github.io/markdown-previewer/"

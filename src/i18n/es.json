@@ -7,7 +7,12 @@
     "item4": "Ejercicios"
   },
   "projects": {
-    "item1": "Máquina de Citas Aleatorias (React)",
+    "item1": {
+      "title": "Máquina de Citas Aleatorias (React)",
+      "description": "Esta debe haber sido mi primer experiencia con peticiones asíncronas hacia una API externa.",
+      "button1": "Cerrar",
+      "button2": "Abrir"
+    },
     "item2": "Previsualizdor de Markdown (React)",
     "item3": "Caja de Ritmos (React)",
     "item4": "Calculadora JS (React)",
