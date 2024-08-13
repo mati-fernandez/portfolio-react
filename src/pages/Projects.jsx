@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
-import Modal from '../components/Modal';
 import imgrqm from '../assets/random-quote-machine.png';
 
 const Projects = () => {
@@ -15,21 +14,23 @@ const Projects = () => {
       >
         {translate('projects.item1.title')}
       </a>
-      <Modal>
-        <h3>{translate('projects.item1.title')}</h3>
-        <figure>
-          <img src={imgrqm} alt="Random quote machine" />
-          <figcaption>{translate('projects.item1.description')}</figcaption>
-        </figure>
-        <div className="btn-panel">
-          <a href="#" className="link button">
-            {translate('projects.item1.button1')}
-          </a>
-          <a href="#" className="link button">
-            {translate('projects.item1.button2')}
-          </a>
+      <article className="modal is-open">
+        <div className="modal-container detail">
+          <h3>{translate('projects.item1.title')}</h3>
+          <figure>
+            <img src={imgrqm} alt="Random quote machine" />
+            <figcaption>{translate('projects.item1.description')}</figcaption>
+          </figure>
+          <div className="btn-panel">
+            <a href="#" className="link button">
+              {translate('projects.item1.button1')}
+            </a>
+            <a href="#" className="link button">
+              {translate('projects.item1.button2')}
+            </a>
+          </div>
         </div>
-      </Modal>
+      </article>
       <a
         className="long-text button link"
         href="https://mati-fernandez.github.io/markdown-previewer/"

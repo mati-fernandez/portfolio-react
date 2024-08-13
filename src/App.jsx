@@ -15,7 +15,7 @@ import DesktopHeader from './components/DesktopHeader';
 import DesktopFooter from './components/DesktopFooter';
 
 const updateAspectRatio = () =>
-  window.innerWidth / window.innerHeight < 1 ? 'portrait' : 'landscape';
+  window.innerWidth / window.innerHeight < 1.2 ? 'portrait' : 'landscape';
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);

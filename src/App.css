@@ -21,10 +21,11 @@ html {
   --color-background: black;
   --color-background-secondary: #222;
   --color-background-alpha: #222222ec;
+  --color-background-alpha-secondary: #222222ce;
 }
 
 body {
-  /* height: 100%; */
+  height: 100%;
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
   font-weight: 200;
   background-color: var(--color-background);
@@ -107,7 +108,14 @@ body {
   /* overflow: hidden; */
 }
 
-.alpha-bkg {
+.menu {
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal {
   z-index: 999;
   display: none;
   pointer-events: all;
@@ -130,18 +138,11 @@ body {
   height: 10vh;
 }
 
-.menu {
-  font-size: 1.8rem;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.alpha-bkg.is-open {
+.modal.is-open {
   display: flex;
 }
 
-.modal {
+.modal-container {
   pointer-events: auto;
   position: absolute;
   top: 50%;
@@ -151,7 +152,7 @@ body {
   padding-top: 8vh;
 }
 
-.modal > a {
+.modal-container > a {
   border: 1px solid var(--color-secondary);
   line-height: 0;
 }
@@ -161,20 +162,19 @@ body {
   font-size: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 10vh;
+  justify-content: space-around;
 }
 
 .detail h3 {
-  margin: 0;
   font-size: 6vw;
+  margin: 0;
 }
 
 figure {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 5vh;
+  margin: 3vh 0 0;
 }
 
 figure img {
@@ -182,18 +182,19 @@ figure img {
 }
 
 figcaption {
-  margin: 0;
   font-size: 4vw;
+  margin: 2vh;
 }
 
 .detail .btn-panel {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 2vh;
 }
 
 .detail .btn-panel .button {
   margin: 0;
-  font-size: 2vh;
+  font-size: 4vw;
   height: fit-content;
   width: fit-content;
   align-self: center;
@@ -270,9 +271,23 @@ figcaption {
   font-size: 1.2rem;
 }
 
+/******** Aspect 1:2 ********/
+
+@media (min-aspect-ratio: 0.85) {
+  .modal {
+    /* padding: 40px; */
+  }
+
+  .detail {
+    justify-content: center;
+    padding: 2vh;
+    /* background-color: aqua; */
+  }
+}
+
 /******** DESKTOP ********/
 
-@media (orientation: landscape) {
+@media (min-aspect-ratio: 1.2) {
   /**** HEADER ****/
   #desktop-header {
     position: fixed;
@@ -284,13 +299,14 @@ figcaption {
     padding: 0;
   }
 
-  .alpha-bkg {
+  .modal {
     z-index: 99;
     position: fixed;
     top: 50%;
     left: 50%;
     height: 100vh;
     transform: translate(-50%, -50%);
+    background-color: var(--color-background-alpha-secondary);
   }
 
   .detail {
@@ -306,7 +322,7 @@ figcaption {
     top: 5vh;
     left: 5vw;
     right: 5vw;
-    bottom: 5vw;
+    bottom: 5vh;
     border: 1px solid var(--color-secondary);
     border-radius: 200px;
     pointer-events: none;
@@ -316,6 +332,7 @@ figcaption {
 
   .detail h3 {
     font-size: 5vw;
+    margin-top: 5vh;
   }
 
   figure {
@@ -326,20 +343,18 @@ figcaption {
   }
 
   figure img {
-    width: 50%;
+    width: 60%;
     padding: 1vw;
   }
 
   figcaption {
     font-size: 2vw;
-    width: 50%;
+    width: 40%;
   }
 
-  /* .detail .btn-panel {
-  } */
-
   .detail .btn-panel .button {
-    font-size: 5vh;
+    font-size: 3vw;
+    margin-top: 12vh;
   }
 
   .detail .btn-panel .button:first-of-type {
