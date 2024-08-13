@@ -17,8 +17,10 @@ const Projects = () => {
       </a>
       <Modal>
         <h3>{translate('projects.item1.title')}</h3>
-        <img className="thumbnail" src={imgrqm} alt="Random quote machine" />
-        <p>{translate('projects.item1.description')}</p>
+        <figure>
+          <img src={imgrqm} alt="Random quote machine" />
+          <figcaption>{translate('projects.item1.description')}</figcaption>
+        </figure>
         <div className="btn-panel">
           <a href="#" className="link button">
             {translate('projects.item1.button1')}

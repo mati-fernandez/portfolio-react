@@ -2,7 +2,7 @@
 const Modal = ({ children }) => {
   return (
     <article className="alpha-bkg is-open">
-      <div className="modal project-detail">{children}</div>
+      <div className="modal detail">{children}</div>
     </article>
   );
 };

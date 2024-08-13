@@ -10,7 +10,8 @@
     "item1": {
       "title": "Random Quote Machine (React)",
       "description": "This must have been my first experience with asynchronous requests to an external API.",
-      "button": "Open"
+      "button1": "Close",
+      "button2": "Open project"
     },
     "item2": "Markdown Previewer (React)",
     "item3": "Drum Machine (React)",

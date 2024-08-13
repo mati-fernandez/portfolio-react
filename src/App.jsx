@@ -42,6 +42,14 @@ function App() {
   return (
     <TranslationProvider>
       <LanguageSetup />
+      {aspectRatio === 'portrait' ? (
+        <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
+      ) : (
+        <>
+          <DesktopHeader />
+          <DesktopFooter />
+        </>
+      )}
       <Routes>
         <Route
           path="/"
@@ -63,14 +71,6 @@ function App() {
         />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
-      {aspectRatio === 'portrait' ? (
-        <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
-      ) : (
-        <>
-          <DesktopHeader />
-          <DesktopFooter />
-        </>
-      )}
     </TranslationProvider>
   );
 }
