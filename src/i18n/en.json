@@ -9,37 +9,37 @@
   "projects": {
     "item1": {
       "title": "Random Quote Machine (React)",
-      "description": "This must have been my first experience with asynchronous requests to an external API.",
+      "description": "This must have been my first experience with asynchronous requests to an external API. Using the 'Axios' library in this case and state management in React",
       "button1": "Close",
       "button2": "Open project"
     },
     "item2": {
       "title": "Markdown Previewer (React)",
-      "description": "lñsdjfñlfds",
+      "description": "Text formatter to Markdown in which I implemented React's state management and used the 'marked' library",
       "button1": "Close",
       "button2": "Open project"
     },
     "item3": {
       "title": "Drum Machine (React)",
-      "description": "lñsdjfñlfds",
+      "description": "Sound box in which I implemented state and effect management in React, and grid in CSS",
       "button1": "Close",
       "button2": "Open project"
     },
     "item4": {
       "title": "JS Calculator (React)",
-      "description": "lñsdjfñlfds",
+      "description": "Calculator in which I put into practice state and effect management in React, and grid in CSS. I also remember that it made me think a lot to solve the logic of each possible situation to make it 'unbreakable'.",
       "button1": "Close",
       "button2": "Open project"
     },
     "item5": {
       "title": "Pomodoro Clock (React)",
-      "description": "lñsdjfñlfds",
+      "description": "In the pomodoro clock I implemented a more advanced handling of the state as well as the effect with the use of callbacks and dependency monitoring. It was not easy to pass all the tests since it has an advanced logic for the level I had up to that point. useRef was also used.",
       "button1": "Close",
       "button2": "Open project"
     },
     "item6": {
       "title": "Old Portfolio (Vanilla JS)",
-      "description": "lñsdjfñlfds",
+      "description": "In the old portfolio I was able to put into practice event-driven programming with Vanilla JavaScript giving free rein to my imagination and then understand the need for a more organized and component-oriented code with virtual DOM and other new features thanks to React in my next portfolio... (this one).",
       "button1": "Close",
       "button2": "Open project"
     }

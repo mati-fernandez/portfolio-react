@@ -155,6 +155,7 @@ body {
 .modal-container > a {
   border: 1px solid var(--color-secondary);
   line-height: 0;
+  background-color: var(--color-background-secondary);
 }
 
 .detail {
@@ -162,12 +163,12 @@ body {
   font-size: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .detail h3 {
   font-size: 6vw;
-  margin: 0;
+  margin: 2vh 0 -1vh;
 }
 
 figure {
@@ -175,11 +176,13 @@ figure {
   display: flex;
   flex-direction: column;
   margin: 3vh 0 0;
+  justify-self: center;
 }
 
 figure img {
   width: 90vw;
   max-height: 50vh;
+  object-fit: contain;
 }
 
 figcaption {
@@ -190,7 +193,7 @@ figcaption {
 .detail .btn-panel {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 2vh;
+  margin: 0 0 2vh;
 }
 
 .detail .btn-panel .button {
@@ -198,7 +201,7 @@ figcaption {
   font-size: 4vw;
   height: fit-content;
   width: fit-content;
-  align-self: center;
+  /* align-self: center; */
   border: 1px solid var(--color-secondary);
 }
 
@@ -208,7 +211,6 @@ figcaption {
   height: calc(var(--vh, 1vh) * 90);
   overflow: hidden;
   padding: 10vh 0;
-  gap: 3vh;
 }
 
 .page > a {
@@ -274,15 +276,16 @@ figcaption {
 
 /******** Aspect 1:2 ********/
 
-@media (min-aspect-ratio: 0.85) {
-  .modal {
-    /* padding: 40px; */
-  }
-
+@media (min-aspect-ratio: 0.53) {
   .detail {
     justify-content: center;
     padding: 2vh;
-    /* background-color: aqua; */
+  }
+  .detail h3 {
+    font-size: 1rem;
+  }
+  figcaption {
+    font-size: 0.7rem;
   }
   .page {
     gap: 0;
@@ -340,21 +343,32 @@ figcaption {
   }
 
   figure {
+    width: 90vw;
     position: absolute;
     display: flex;
     flex-direction: row;
     align-items: center;
+    align-self: center;
   }
 
   figure img {
-    max-height: none; /*cancela anterior*/
+    position: absolute;
+    left: -5vw;
+    max-height: 60vh;
     width: 60%;
     padding: 1vw;
+    object-fit: contain;
   }
 
   figcaption {
+    position: absolute;
+    right: 0;
     font-size: 2vw;
     width: 40%;
+    background-color: var(--color-background-secondary);
+    border: 1px solid var(--color-secondary);
+    border-radius: 50px;
+    padding: 1vw;
   }
 
   .detail .btn-panel .button {

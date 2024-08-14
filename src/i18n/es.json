@@ -9,20 +9,40 @@
   "projects": {
     "item1": {
       "title": "Máquina de Citas Aleatorias (React)",
-      "description": "Esta debe haber sido mi primer experiencia con peticiones asíncronas hacia una API externa.",
+      "description": "Esta debe haber sido mi primer experiencia con peticiones asíncronas hacia una API externa. Utilizando la librería 'Axios' en este caso y el manejo de estado en React",
       "button1": "Cerrar",
       "button2": "Abrir proyecto"
     },
     "item2": {
       "title": "Previsualizdor de Markdown (React)",
-      "description": "sñdfjsl",
+      "description": "Formateador de texto a Markdown en el cual puse en práctica el manejo de estado de React y utilicé la librería 'marked'",
       "button1": "Cerrar",
       "button2": "Abrir proyecto"
     },
-    "item3": "Caja de Ritmos (React)",
-    "item4": "Calculadora JS (React)",
-    "item5": "Reloj Pomodoro (React)",
-    "item6": "Portafolio Antiguo (Vanilla JS)"
+    "item3": {
+      "title": "Caja de Ritmos (React)",
+      "description": "Caja de sonidos en la cual puse en práctica el manejo de estado y de efecto en React, y de grid en Css",
+      "button1": "Cerrar",
+      "button2": "Abrir proyecto"
+    },
+    "item4": {
+      "title": "Calculadora JS (React)",
+      "description": "Calculadora en la cual puse en práctica el manejo de estado y de efecto en React, y de grid en Css. También recuerdo que me hizo pensar mucho para resolver la lógica de cada posible situación para hacerla 'irrompible'.",
+      "button1": "Cerrar",
+      "button2": "Abrir proyecto"
+    },
+    "item5": {
+      "title": "Reloj Pomodoro (React)",
+      "description": "En el reloj pomodoro puse en práctica un manejo mas avanzado del estado como también del efecto con la utilización de callbacks y el monitoreo de dependencias. No fue fácil pasar todos los test ya que tiene una lógica avanzada para el nivel que traía hasta ese momento. También se usó useRef.",
+      "button1": "Cerrar",
+      "button2": "Abrir proyecto"
+    },
+    "item6": {
+      "title": "Portafolio Antiguo (Vanilla JS)",
+      "description": "En el viejo portafolio pude poner en práctica la programación orientada a eventos con Vanilla JavaScript dándole rienda suelta a mi imaginación para luego entender la necesidad de un código más ordenado y orientado a componentes con DOM virtual  y otras nuevas características gracias a React en mi siguiente portafolio... (este).",
+      "button1": "Cerrar",
+      "button2": "Abrir proyecto"
+    }
   },
   "certifications": {
     "item1": "Diseño Web Responsivo",
