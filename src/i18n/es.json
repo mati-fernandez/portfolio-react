@@ -45,14 +45,49 @@
     }
   },
   "certifications": {
-    "item1": "Diseño Web Responsivo",
-    "item2": "Algoritmos JS & Estructuras de datos",
-    "item3": "Librerías de Desarrollo de Interfaz"
+    "item1": {
+      "title": "Diseño Web Responsivo",
+      "description": "Certificación que abarca los conceptos esenciales del diseño web, incluyendo CSS Flexbox, CSS Grid, y diseño adaptable a diferentes tamaños de pantalla.",
+      "button1": "Cerrar",
+      "button2": "Ver Certificación"
+    },
+    "item2": {
+      "title": "Algoritmos JS & Estructuras de datos",
+      "description": "Certificación en la que se cubren temas como algoritmos de ordenamiento, estructuras de datos comunes en JavaScript, y la resolución de problemas complejos.",
+      "button1": "Cerrar",
+      "button2": "Ver Certificación"
+    },
+    "item3": {
+      "title": "Librerías de Desarrollo de Interfaz",
+      "description": "Certificación enfocada en el uso de librerías populares como React, Redux, y herramientas para el desarrollo de interfaces de usuario.",
+      "button1": "Cerrar",
+      "button2": "Ver Certificación"
+    }
   },
   "exercises": {
-    "item1": "Modelo de objeto de documento",
-    "item2": "Dibujo - Intro a Canvas (PC)",
-    "item3": "Tetris - JS Vainilla",
-    "item4": "Mecanografía (PC)"
+    "item1": {
+      "title": "Modelo de objeto de documento",
+      "description": "Ejercicio práctico sobre la manipulación del DOM con JavaScript, explorando eventos y modificando el contenido dinámicamente.",
+      "button1": "Cerrar",
+      "button2": "Ver Ejercicio"
+    },
+    "item2": {
+      "title": "Dibujo - Intro a Canvas (PC)",
+      "description": "Introducción a la creación de gráficos en la web usando el elemento Canvas de HTML5 y JavaScript para dibujar formas y crear animaciones.",
+      "button1": "Cerrar",
+      "button2": "Ver Ejercicio"
+    },
+    "item3": {
+      "title": "Tetris - JS Vainilla",
+      "description": "Implementación del clásico juego de Tetris usando solo JavaScript, HTML y CSS, poniendo en práctica el manejo del tiempo y la manipulación del DOM.",
+      "button1": "Cerrar",
+      "button2": "Ver Ejercicio"
+    },
+    "item4": {
+      "title": "Mecanografía (PC)",
+      "description": "Ejercicio para mejorar la velocidad de escritura en teclado a través de la creación de una aplicación interactiva que mide y evalúa la velocidad de tipeo.",
+      "button1": "Cerrar",
+      "button2": "Ver Ejercicio"
+    }
   }
 }

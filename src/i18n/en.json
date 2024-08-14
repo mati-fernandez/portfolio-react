@@ -4,24 +4,24 @@
     "item1": "Home",
     "item2": "Projects",
     "item3": "Certifications",
-    "item4": "Exercices"
+    "item4": "Exercises"
   },
   "projects": {
     "item1": {
       "title": "Random Quote Machine (React)",
-      "description": "This must have been my first experience with asynchronous requests to an external API. Using the 'Axios' library in this case and state management in React",
+      "description": "This must have been my first experience with asynchronous requests to an external API. Using the 'Axios' library in this case and state management in React.",
       "button1": "Close",
       "button2": "Open project"
     },
     "item2": {
       "title": "Markdown Previewer (React)",
-      "description": "Text formatter to Markdown in which I implemented React's state management and used the 'marked' library",
+      "description": "Text formatter to Markdown in which I implemented React's state management and used the 'marked' library.",
       "button1": "Close",
       "button2": "Open project"
     },
     "item3": {
       "title": "Drum Machine (React)",
-      "description": "Sound box in which I implemented state and effect management in React, and grid in CSS",
+      "description": "Sound box in which I implemented state and effect management in React, and grid in CSS.",
       "button1": "Close",
       "button2": "Open project"
     },
@@ -45,14 +45,49 @@
     }
   },
   "certifications": {
-    "item1": "Responsive Web Design",
-    "item2": "JS Algorithms & Data Structures",
-    "item3": "Front End Development Libraries"
+    "item1": {
+      "title": "Responsive Web Design",
+      "description": "Certification covering the essential concepts of web design, including CSS Flexbox, CSS Grid, and responsive design for different screen sizes.",
+      "button1": "Close",
+      "button2": "View Certification"
+    },
+    "item2": {
+      "title": "JS Algorithms & Data Structures",
+      "description": "Certification covering topics like sorting algorithms, common data structures in JavaScript, and solving complex problems.",
+      "button1": "Close",
+      "button2": "View Certification"
+    },
+    "item3": {
+      "title": "Front End Development Libraries",
+      "description": "Certification focused on using popular libraries like React, Redux, and tools for building user interfaces.",
+      "button1": "Close",
+      "button2": "View Certification"
+    }
   },
   "exercises": {
-    "item1": "Document Object Model",
-    "item2": "Draw - Canvas Intro (PC)",
-    "item3": "Tetris - Vanilla JS",
-    "item4": "Monkeytype (PC)"
+    "item1": {
+      "title": "Document Object Model",
+      "description": "Practical exercise on DOM manipulation with JavaScript, exploring events and dynamically modifying content.",
+      "button1": "Close",
+      "button2": "View Exercise"
+    },
+    "item2": {
+      "title": "Draw - Canvas Intro (PC)",
+      "description": "Introduction to creating graphics on the web using the HTML5 Canvas element and JavaScript to draw shapes and create animations.",
+      "button1": "Close",
+      "button2": "View Exercise"
+    },
+    "item3": {
+      "title": "Tetris - Vanilla JS",
+      "description": "Implementation of the classic Tetris game using only JavaScript, HTML, and CSS, practicing timing management and DOM manipulation.",
+      "button1": "Close",
+      "button2": "View Exercise"
+    },
+    "item4": {
+      "title": "Monkeytype (PC)",
+      "description": "Exercise to improve typing speed through creating an interactive application that measures and evaluates typing speed.",
+      "button1": "Close",
+      "button2": "View Exercise"
+    }
   }
 }
