@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
 import imgrqm from '../assets/random-quote-machine.png';
 import { useModal } from '../hooks/useModal';
+import Modal from '../components/Modal';
 
 const Projects = () => {
   const { translate } = useContext(TranslationContext);
@@ -12,27 +13,15 @@ const Projects = () => {
       <a className="long-text button link" target="_blank" onClick={openModal1}>
         {translate('projects.item1.title')}
       </a>
-      <article className={`modal ${isOpen1 && 'is-open'}`}>
-        <div className="modal-container detail">
-          <h3>{translate('projects.item1.title')}</h3>
-          <figure>
-            <img src={imgrqm} alt="Random quote machine" />
-            <figcaption>{translate('projects.item1.description')}</figcaption>
-          </figure>
-          <div className="btn-panel">
-            <a className="link button" onClick={closeModal1}>
-              {translate('projects.item1.button1')}
-            </a>
-            <a
-              href="https://mati-fernandez.github.io/random-quote-machine/"
-              target="_blank"
-              className="link button"
-            >
-              {translate('projects.item1.button2')}
-            </a>
-          </div>
-        </div>
-      </article>
+      <Modal
+        title={translate('projects.item1.title')}
+        img={imgrqm}
+        description={translate('projects.item1.description')}
+        isOpen={isOpen1}
+        closeModal={closeModal1}
+        closeBtn={translate('projects.item1.button1')}
+        openBtn={translate('projects.item1.button2')}
+      />
       <a
         className="long-text button link"
         href="https://mati-fernandez.github.io/markdown-previewer/"

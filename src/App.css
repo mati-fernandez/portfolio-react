@@ -207,7 +207,7 @@ figcaption {
   height: calc(var(--vh, 1vh) * 90);
   overflow: hidden;
   padding: 10vh 0;
-  gap: 4vh;
+  gap: 3vh;
 }
 
 .page > a {
@@ -282,6 +282,9 @@ figcaption {
     justify-content: center;
     padding: 2vh;
     /* background-color: aqua; */
+  }
+  .page {
+    gap: 0;
   }
 }
 
