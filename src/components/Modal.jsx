@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 const Modal = ({
   title,
   img,
@@ -7,6 +8,7 @@ const Modal = ({
   closeModal,
   closeBtn,
   openBtn,
+  link,
 }) => {
   return (
     <article className={`modal ${isOpen && 'is-open'}`}>
@@ -20,11 +22,7 @@ const Modal = ({
           <a className="link button" onClick={closeModal}>
             {closeBtn}
           </a>
-          <a
-            href="https://mati-fernandez.github.io/random-quote-machine/"
-            target="_blank"
-            className="link button"
-          >
+          <a href={link} target="_blank" className="link button">
             {openBtn}
           </a>
         </div>

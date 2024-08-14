@@ -13,7 +13,12 @@
       "button1": "Cerrar",
       "button2": "Abrir proyecto"
     },
-    "item2": "Previsualizdor de Markdown (React)",
+    "item2": {
+      "title": "Previsualizdor de Markdown (React)",
+      "description": "sñdfjsl",
+      "button1": "Cerrar",
+      "button2": "Abrir proyecto"
+    },
     "item3": "Caja de Ritmos (React)",
     "item4": "Calculadora JS (React)",
     "item5": "Reloj Pomodoro (React)",

@@ -179,6 +179,7 @@ figure {
 
 figure img {
   width: 90vw;
+  max-height: 50vh;
 }
 
 figcaption {
@@ -346,6 +347,7 @@ figcaption {
   }
 
   figure img {
+    max-height: none; /*cancela anterior*/
     width: 60%;
     padding: 1vw;
   }

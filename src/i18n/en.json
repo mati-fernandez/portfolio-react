@@ -13,11 +13,36 @@
       "button1": "Close",
       "button2": "Open project"
     },
-    "item2": "Markdown Previewer (React)",
-    "item3": "Drum Machine (React)",
-    "item4": "JS Calculator (React)",
-    "item5": "Pomodoro Clock (React)",
-    "item6": "Old Portfolio (Vanilla JS)"
+    "item2": {
+      "title": "Markdown Previewer (React)",
+      "description": "lñsdjfñlfds",
+      "button1": "Close",
+      "button2": "Open project"
+    },
+    "item3": {
+      "title": "Drum Machine (React)",
+      "description": "lñsdjfñlfds",
+      "button1": "Close",
+      "button2": "Open project"
+    },
+    "item4": {
+      "title": "JS Calculator (React)",
+      "description": "lñsdjfñlfds",
+      "button1": "Close",
+      "button2": "Open project"
+    },
+    "item5": {
+      "title": "Pomodoro Clock (React)",
+      "description": "lñsdjfñlfds",
+      "button1": "Close",
+      "button2": "Open project"
+    },
+    "item6": {
+      "title": "Old Portfolio (Vanilla JS)",
+      "description": "lñsdjfñlfds",
+      "button1": "Close",
+      "button2": "Open project"
+    }
   },
   "certifications": {
     "item1": "Responsive Web Design",
