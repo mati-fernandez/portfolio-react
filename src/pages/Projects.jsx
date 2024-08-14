@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
 import { useModal } from '../hooks/useModal';
 import Modal from '../components/Modal';
@@ -21,7 +21,7 @@ const Projects = () => {
     useModal(),
   ];
 
-  const projects = [
+  const content = [
     {
       title: 'projects.item1.title',
       description: 'projects.item1.description',
@@ -86,22 +86,22 @@ const Projects = () => {
 
   return (
     <div className="page menu">
-      {projects.map((project, index) => (
-        <React.Fragment key={index}>
+      {content.map((content, index) => (
+        <div key={index}>
           <a className="long-text button link" onClick={modals[index][1]}>
-            {translate(project.title)}
+            {translate(content.title)}
           </a>
           <Modal
-            title={translate(project.title)}
-            img={project.img}
-            description={translate(project.description)}
+            title={translate(content.title)}
+            img={content.img}
+            description={translate(content.description)}
             isOpen={modals[index][0]}
             closeModal={modals[index][2]}
-            closeBtn={translate(project.buttons.close)}
-            openBtn={translate(project.buttons.open)}
-            link={project.link}
+            closeBtn={translate(content.buttons.close)}
+            openBtn={translate(content.buttons.open)}
+            link={content.link}
           />
-        </React.Fragment>
+        </div>
       ))}
     </div>
   );

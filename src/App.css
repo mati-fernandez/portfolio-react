@@ -213,7 +213,7 @@ figcaption {
   padding: 10vh 0;
 }
 
-.page > a {
+.page * a {
   border: 1px solid var(--color-secondary);
   height: fit-content;
 }
