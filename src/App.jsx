@@ -11,8 +11,8 @@ import Certifications from './pages/Certifications';
 import Exercises from './pages/Exercises';
 import MobileHeader from './components/MobileHeader';
 import LanguageSetup from './helpers/LanguageSetup';
-import DesktopHeader from './components/DesktopHeader';
-import DesktopFooter from './components/DesktopFooter';
+import DesktopHeader from './components/DesktopFooter';
+import DesktopFooter from './components/DesktopHeader';
 
 const updateAspectRatio = () =>
   window.innerWidth / window.innerHeight < 1.2 ? 'portrait' : 'landscape';
