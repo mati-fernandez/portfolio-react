@@ -62,10 +62,6 @@ body {
   margin: 3vh 4vw;
 }
 
-#language-btn:hover {
-  background-color: var(--color-background);
-}
-
 #name {
   font-size: 1.8rem;
   margin: 0;
@@ -73,19 +69,11 @@ body {
   padding: 2vw;
 }
 
-#name:hover {
-  background-color: var(--color-background-secondary);
-}
-
 #menu-btn {
   display: flex;
   cursor: pointer;
   border-radius: 50px;
   padding: 2vh;
-}
-
-#menu-btn:hover {
-  background-color: var(--color-background-secondary);
 }
 
 #menu-btn > img {
@@ -148,6 +136,7 @@ body {
   bottom: 0vh;
   width: 100vw;
   height: 10vh;
+  background-color: var(--color-background-alpha);
 }
 
 .modal.is-open {
@@ -234,10 +223,6 @@ figcaption {
   height: fit-content;
 }
 
-.page > a:hover {
-  background-color: var(--color-background-secondary);
-}
-
 .link {
   display: flex;
   flex-direction: column;
@@ -253,10 +238,6 @@ figcaption {
   padding: 2vh;
   display: flex;
   margin: 2vh 6vw;
-}
-
-.button:hover {
-  background-color: var(--color-background);
 }
 
 #contact-wrapper {
@@ -463,7 +444,7 @@ figcaption {
     width: 100%;
     position: fixed;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     bottom: 4vh;
     padding: 0 5vw;
   }
