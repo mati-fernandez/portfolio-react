@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { TranslationContext } from '../i18n/TranslationContext';
 import { useContext } from 'react';
 
@@ -8,18 +8,38 @@ const MainMenu = () => {
 
   return (
     <>
-      <Link className="button link" to="/">
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? 'active-button button link' : 'button link'
+        }
+        to="/"
+      >
         {translate('menu.item1')}
-      </Link>
-      <Link className="button link" to="/projects">
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? 'active-button button link' : 'button link'
+        }
+        to="/projects"
+      >
         {translate('menu.item2')}
-      </Link>
-      <Link className="button link" to="/certifications">
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? 'active-button button link' : 'button link'
+        }
+        to="/certifications"
+      >
         {translate('menu.item3')}
-      </Link>
-      <Link className="button link" to="/exercises">
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? 'active-button button link' : 'button link'
+        }
+        to="/exercises"
+      >
         {translate('menu.item4')}
-      </Link>
+      </NavLink>
     </>
   );
 };
