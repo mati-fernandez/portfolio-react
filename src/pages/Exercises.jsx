@@ -56,7 +56,7 @@ const Exercises = () => {
   ];
 
   return (
-    <div className="page menu">
+    <div className="page">
       {content.map((content, index) => (
         <div key={index}>
           <a className="long-text button link" onClick={modals[index][1]}>

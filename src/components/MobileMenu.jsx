@@ -11,9 +11,9 @@ const MobileMenu = () => {
   const { language, setLanguage } = useContext(TranslationContext);
 
   return (
-    <div className="modal is-open">
+    <div className="menu">
       <LanguageButton language={language} setLanguage={setLanguage} />
-      <nav className="modal-container menu">
+      <nav className="main-menu">
         <MainMenu />
         <div id="contact-wrapper">
           <a

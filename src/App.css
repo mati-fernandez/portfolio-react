@@ -109,21 +109,33 @@ body {
 }
 
 .menu {
-  font-size: 1.8rem;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.modal {
   z-index: 999;
-  display: none;
   pointer-events: all;
   position: absolute;
   top: 0;
   height: calc(var(--vh, 1vh) * 90);
   width: 100vw;
   background-color: var(--color-background-alpha);
+}
+
+.main-menu {
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: calc(var(--vh, 1vh) * 85);
+  padding-top: 8vh;
+}
+
+.main-menu > a {
+  border: 1px solid var(--color-secondary);
+  line-height: 0;
+  background-color: var(--color-background-secondary);
 }
 
 #mobile-header {
@@ -140,26 +152,29 @@ body {
 
 .modal.is-open {
   display: flex;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
-.modal-container {
-  pointer-events: auto;
+.modal {
+  z-index: 999;
+  display: none;
+  pointer-events: all;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: calc(var(--vh, 1vh) * 85);
-  padding-top: 8vh;
-}
-
-.modal-container > a {
-  border: 1px solid var(--color-secondary);
-  line-height: 0;
-  background-color: var(--color-background-secondary);
+  height: calc(var(--vh, 1vh) * 90);
+  width: 100vw;
+  background-color: var(--color-background-alpha);
 }
 
 .detail {
-  padding-top: 0;
+  padding-top: -3vh;
+  pointer-events: auto;
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 2rem;
   display: flex;
   flex-direction: column;
@@ -168,7 +183,7 @@ body {
 
 .detail h3 {
   font-size: 6vw;
-  margin: 2vh 0 -1vh;
+  margin-bottom: 0;
 }
 
 figure {
@@ -193,7 +208,7 @@ figcaption {
 .detail .btn-panel {
   display: flex;
   justify-content: space-around;
-  margin: 0 0 2vh;
+  margin: 0;
 }
 
 .detail .btn-panel .button {
@@ -207,6 +222,7 @@ figcaption {
 
 .page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   height: calc(var(--vh, 1vh) * 90);
   overflow: hidden;
@@ -425,7 +441,9 @@ figcaption {
     justify-content: center;
     position: absolute;
     top: 50%;
-    transform: translate(0, -50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
     height: auto;
     gap: 40px;
     padding: 0 4vw;

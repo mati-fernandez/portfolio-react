@@ -12,7 +12,7 @@ const Modal = ({
 }) => {
   return (
     <article className={`modal ${isOpen && 'is-open'}`}>
-      <div className="modal-container detail">
+      <div className="detail">
         <h3>{title}</h3>
         <figure>
           <img src={img} alt={`${title} Thumbnail`} />
