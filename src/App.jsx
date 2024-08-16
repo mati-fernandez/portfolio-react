@@ -13,6 +13,7 @@ import MobileHeader from './components/MobileHeader';
 import LanguageSetup from './helpers/LanguageSetup';
 import DesktopHeader from './components/DesktopFooter';
 import DesktopFooter from './components/DesktopHeader';
+import Modal from './components/Modal';
 
 const updateAspectRatio = () =>
   window.innerWidth / window.innerHeight < 1.2 ? 'portrait' : 'landscape';
@@ -21,6 +22,7 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const location = useLocation();
   const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
+  const [activeModal, setActiveModal] = useState('');
 
   useEffect(() => {
     updateViewportHeight();
@@ -40,7 +42,7 @@ function App() {
 
     if (location.pathname === '/') return;
 
-    const buttons = document.querySelectorAll('.page * a');
+    const buttons = Array.from(document.querySelectorAll('.page a')).reverse();
     const delayIncrement = 0.2;
 
     buttons.forEach((button, index) => {
@@ -57,7 +59,7 @@ function App() {
       icons.forEach((icon) => {
         icon.classList.remove('animate-icon');
       });
-    }, 1000);
+    }, 300);
 
     return () => clearTimeout(timeout);
   }, [location]);
@@ -65,6 +67,9 @@ function App() {
   return (
     <TranslationProvider>
       <LanguageSetup />
+      {activeModal && (
+        <Modal activeModal={activeModal} setActiveModal={setActiveModal} />
+      )}
       {aspectRatio === 'portrait' ? (
         <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
       ) : (
@@ -80,17 +85,35 @@ function App() {
         />
         <Route
           path="/projects"
-          element={<Projects showMenu={showMenu} setShowMenu={setShowMenu} />}
+          element={
+            <Projects
+              showMenu={showMenu}
+              setShowMenu={setShowMenu}
+              activeModal={activeModal}
+              setActiveModal={setActiveModal}
+            />
+          }
         />
         <Route
           path="/certifications"
           element={
-            <Certifications showMenu={showMenu} setShowMenu={setShowMenu} />
+            <Certifications
+              showMenu={showMenu}
+              setShowMenu={setShowMenu}
+              setActiveModal={setActiveModal}
+            />
           }
         />
         <Route
           path="/exercises"
-          element={<Exercises showMenu={showMenu} setShowMenu={setShowMenu} />}
+          element={
+            <Exercises
+              showMenu={showMenu}
+              setShowMenu={setShowMenu}
+              activeModal={activeModal}
+              setActiveModal={setActiveModal}
+            />
+          }
         />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
