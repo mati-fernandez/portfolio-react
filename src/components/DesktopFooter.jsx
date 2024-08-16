@@ -4,7 +4,7 @@ import github from '../assets/github.svg';
 
 const DesktopFooter = () => {
   return (
-    <div id="desktop-menu">
+    <div id="desktop-footer">
       <LanguageButton />
       <a
         className="button linkedin-a"

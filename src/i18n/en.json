@@ -73,7 +73,7 @@
     },
     "item2": {
       "title": "Draw - Canvas Intro (PC)",
-      "description": "Introduction to creating graphics on the web using the HTML5 Canvas element and JavaScript to draw shapes and create animations.",
+      "description": "Introduction to creating graphics on the web using the HTML5 Canvas element and JavaScript to draw.",
       "button1": "Close",
       "button2": "View Exercise"
     },

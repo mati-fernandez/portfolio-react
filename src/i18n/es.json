@@ -73,7 +73,7 @@
     },
     "item2": {
       "title": "Dibujo - Intro a Canvas (PC)",
-      "description": "Introducción a la creación de gráficos en la web usando el elemento Canvas de HTML5 y JavaScript para dibujar formas y crear animaciones.",
+      "description": "Introducción a la creación de gráficos en la web usando el elemento Canvas de HTML5 y JavaScript para dibujar.",
       "button1": "Cerrar",
       "button2": "Ver Ejercicio"
     },

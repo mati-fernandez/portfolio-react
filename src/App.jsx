@@ -38,6 +38,8 @@ function App() {
   useEffect(() => {
     setShowMenu(false);
 
+    if (location.pathname === '/') return;
+
     const buttons = document.querySelectorAll('.page * a');
     const delayIncrement = 0.2;
 
@@ -45,6 +47,19 @@ function App() {
       const delay = delayIncrement * (index / 4);
       button.style.animationDelay = `${delay}s`;
     });
+
+    const icons = document.querySelectorAll('#desktop-footer a');
+    icons.forEach((icon) => {
+      icon.classList.add('animate-icon');
+    });
+
+    const timeout = setTimeout(() => {
+      icons.forEach((icon) => {
+        icon.classList.remove('animate-icon');
+      });
+    }, 1000);
+
+    return () => clearTimeout(timeout);
   }, [location]);
 
   return (
