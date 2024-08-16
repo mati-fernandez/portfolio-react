@@ -18,6 +18,7 @@ html {
   --vh: 1vh; /* Valor inicial para la variable */
   --color-primary: white;
   --color-secondary: #506b44;
+  --color-secondary-alpha: #506b4480;
   --color-background: black;
   --color-background-secondary: #222;
   --color-background-alpha: #222222ec;
@@ -69,14 +70,14 @@ body {
   padding: 2vw;
 }
 
-#menu-btn {
+#hamburguer-btn {
   display: flex;
   cursor: pointer;
   border-radius: 50px;
   padding: 2vh;
 }
 
-#menu-btn > img {
+#hamburguer-btn > img {
   height: 1.8rem;
 }
 
@@ -106,7 +107,7 @@ body {
   background-color: var(--color-background-alpha);
 }
 
-.main-menu {
+#mobile-main-menu {
   font-size: 1.8rem;
   display: flex;
   flex-direction: column;
@@ -120,10 +121,11 @@ body {
   padding-top: 8vh;
 }
 
-.main-menu > a {
-  border: 1px solid var(--color-secondary);
+#mobile-main-menu > a {
+  /* border: 1px solid var(--color-secondary); */
   line-height: 0;
-  background-color: var(--color-background-secondary);
+  background-color: var(--color-secondary-alpha);
+  border-radius: 0;
 }
 
 #mobile-header {
@@ -205,7 +207,6 @@ figcaption {
   font-size: 4vw;
   height: fit-content;
   width: fit-content;
-  /* align-self: center; */
   border: 1px solid var(--color-secondary);
 }
 
@@ -218,9 +219,22 @@ figcaption {
   padding: 10vh 0;
 }
 
+@keyframes slideIn {
+  from {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .page * a {
   border: 1px solid var(--color-secondary);
   height: fit-content;
+  opacity: 0;
+  animation: slideIn 0.2s ease-out forwards;
 }
 
 .link {
@@ -300,12 +314,15 @@ figcaption {
     align-items: center;
     top: 2vh;
     width: 100%;
-    border-bottom: 1px solid var(--color-secondary);
-    padding-bottom: 2vh;
+    background-color: var(--color-background-secondary);
+  }
+
+  #desktop-header a {
+    border-radius: 0;
   }
 
   .active-button {
-    background-color: var(--color-secondary);
+    background-color: var(--color-background);
     color: var(--color-primary);
   }
 
@@ -404,7 +421,7 @@ figcaption {
   }
 
   .button:hover {
-    background-color: var(--color-background-secondary);
+    background-color: var(--color-secondary);
   }
 
   .contact-img {
@@ -443,8 +460,19 @@ figcaption {
     padding: 0 4vw;
   }
 
-  .page > a {
-    border-radius: 50px;
+  @keyframes slideIn {
+    from {
+      transform: translateX(100vw);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .page * a {
+    animation: slideIn 100ms ease-out forwards;
   }
 
   .page > a:hover {
@@ -460,7 +488,7 @@ figcaption {
     justify-content: space-around;
     bottom: 2vh;
     padding: 0 5vw;
-    border-top: 1px solid var(--color-secondary);
+    /* border-top: 1px solid var(--color-secondary); */
     padding-top: 2vh;
   }
 

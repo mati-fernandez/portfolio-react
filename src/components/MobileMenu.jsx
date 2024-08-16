@@ -13,7 +13,7 @@ const MobileMenu = () => {
   return (
     <div className="menu">
       <LanguageButton language={language} setLanguage={setLanguage} />
-      <nav className="main-menu">
+      <nav id="mobile-main-menu">
         <MainMenu />
         <div id="contact-wrapper">
           <a

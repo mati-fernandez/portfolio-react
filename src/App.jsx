@@ -37,6 +37,14 @@ function App() {
 
   useEffect(() => {
     setShowMenu(false);
+
+    const buttons = document.querySelectorAll('.page * a');
+    const delayIncrement = 0.2;
+
+    buttons.forEach((button, index) => {
+      const delay = delayIncrement * (index / 4);
+      button.style.animationDelay = `${delay}s`;
+    });
   }, [location]);
 
   return (

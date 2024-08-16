@@ -19,7 +19,7 @@ const MobileHeader = ({ showMenu, setShowMenu }) => {
         <Link className="link" to="/">
           <p id="name">Matias</p>
         </Link>
-        <a id="menu-btn" onClick={toggleMenu}>
+        <a id="hamburguer-btn" onClick={toggleMenu}>
           <img src={hamburguer} alt="Menu button" />
         </a>
       </header>

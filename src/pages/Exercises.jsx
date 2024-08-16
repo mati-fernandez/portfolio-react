@@ -3,7 +3,7 @@ import { TranslationContext } from '../i18n/TranslationContext';
 import { useModal } from '../hooks/useModal';
 import Modal from '../components/Modal';
 import imgdom from '../assets/dom-ejercicios.jpg';
-import imgcan from '../assets/dibujo-canvas.jpg';
+import imgcan from '../assets/dibujo-canvas.png';
 import imgtet from '../assets/tetris-vanilla.jpg';
 import imgmon from '../assets/monkeytype.jpg';
 
