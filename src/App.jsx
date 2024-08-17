@@ -70,7 +70,12 @@ function App() {
     <TranslationProvider>
       <LanguageSetup />
       {activeModal && (
-        <Modal activeModal={activeModal} setActiveModal={setActiveModal} />
+        <Modal
+          activeModal={activeModal.itemKey}
+          img={activeModal.img}
+          link={activeModal.link}
+          setActiveModal={setActiveModal}
+        />
       )}
       {aspectRatio === 'portrait' ? (
         <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
