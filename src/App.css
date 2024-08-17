@@ -127,6 +127,11 @@ body {
   border-radius: 0;
 }
 
+.active-button {
+  background-color: var(--color-background) !important;
+  color: var(--color-primary);
+}
+
 #mobile-header {
   pointer-events: auto;
   position: absolute;
@@ -157,12 +162,8 @@ body {
     transform: scale(0) translate(-50%, -50%);
     opacity: 0;
   }
-  80% {
-    transform: scale(100%) translate(-50%, -50%);
-    opacity: 1;
-  }
   100% {
-    transform: scale(90%) translate(-50%, -50%);
+    transform: scale(100%) translate(-50%, -50%);
     opacity: 1;
   }
 }
@@ -178,7 +179,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* animation: animate-modal 250ms ease-out forwards; */
+  animation: animate-modal 250ms ease-out forwards;
+  transform-origin: 0 0;
 }
 
 .detail h3 {
@@ -328,11 +330,6 @@ figcaption {
 
   #desktop-header a {
     border-radius: 0;
-  }
-
-  .active-button {
-    background-color: var(--color-background);
-    color: var(--color-primary);
   }
 
   .modal {
