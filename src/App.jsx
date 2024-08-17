@@ -46,7 +46,7 @@ function App() {
     const icons = Array.from(
       document.querySelectorAll('#desktop-footer a')
     ).reverse();
-    const delayIncrement = 0.2;
+    const delayIncrement = 0.1;
 
     buttons.forEach((button, index) => {
       const delay = index * delayIncrement;

@@ -179,7 +179,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  animation: animate-modal 250ms ease-out forwards;
+  animation: animate-modal 150ms ease-out forwards;
   transform-origin: 0 0;
 }
 
@@ -305,6 +305,7 @@ figcaption {
   }
   .detail h3 {
     font-size: 1rem;
+    margin-top: 2vh;
   }
   figcaption {
     font-size: 0.7rem;
@@ -484,7 +485,7 @@ figcaption {
   }
 
   .page a {
-    animation: slideIn 200ms ease-out forwards;
+    animation: slideIn 100ms ease-out forwards;
   }
 
   .page > a:hover {
