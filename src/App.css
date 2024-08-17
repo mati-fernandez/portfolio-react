@@ -152,6 +152,21 @@ body {
   background-color: var(--color-background-alpha);
 }
 
+@keyframes animate-modal {
+  0% {
+    transform: scale(0) translate(-50%, -50%);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(100%) translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(90%) translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
 .detail {
   padding-top: -3vh;
   pointer-events: auto;
@@ -163,6 +178,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* animation: animate-modal 250ms ease-out forwards; */
 }
 
 .detail h3 {
@@ -330,9 +346,10 @@ figcaption {
   }
 
   .detail {
+    top: 49%;
     gap: 50vh;
-    width: 90vw;
-    height: 90vh;
+    width: 85vw;
+    height: 80vh;
     /* border: 1px dashed red; */
   }
 
@@ -351,12 +368,12 @@ figcaption {
   }
 
   .detail h3 {
-    font-size: 5vw;
+    font-size: 4vw;
     margin-top: 5vh;
   }
 
   figure {
-    width: 90vw;
+    width: 80vw;
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -367,7 +384,7 @@ figcaption {
   figure img {
     position: absolute;
     left: -5vw;
-    max-height: 60vh;
+    max-height: 55vh;
     width: 60%;
     padding: 1vw;
     object-fit: contain;
@@ -376,7 +393,7 @@ figcaption {
   figcaption {
     position: absolute;
     right: 0;
-    font-size: 2vw;
+    font-size: 1.7vw;
     width: 40%;
     background-color: var(--color-background-secondary);
     border: 1px solid var(--color-secondary);
@@ -385,12 +402,12 @@ figcaption {
   }
 
   .detail .btn-panel .button {
-    font-size: 3vw;
-    margin-top: 12vh;
+    font-size: 1.5vw;
+    margin-top: 6vh;
   }
 
   .detail .btn-panel .button:first-of-type {
-    margin-left: 30px;
+    margin-left: 50px;
     background-color: var(--color-background-secondary);
   }
   .detail .btn-panel .button:first-of-type:hover {
@@ -398,7 +415,9 @@ figcaption {
   }
 
   .detail .btn-panel .button:last-of-type {
-    margin-right: 10px;
+    font-size: 2.2vw;
+    margin-top: 5vh;
+    margin-right: 30px;
     background-color: var(--color-background-secondary);
   }
   .detail .btn-panel .button:last-of-type:hover {
@@ -464,7 +483,7 @@ figcaption {
   }
 
   .page a {
-    animation: slideIn 100ms ease-out forwards;
+    animation: slideIn 500ms ease-out forwards;
   }
 
   .page > a:hover {
@@ -473,16 +492,18 @@ figcaption {
 
   /**** FOOTER ****/
   @keyframes icons {
-    30% {
-      transform: scale(80%);
+    0% {
+      transform: rotate(0turn);
     }
+
     100% {
-      transform: scale(100%);
+      transform: rotate(2turn);
     }
   }
 
   .animate-icon {
-    animation: icons 0.3s ease-in-out;
+    animation: icons 1.5s;
+    animation-timing-function: cubic-bezier(0, 0.75, 0.37, 0.95);
   }
 
   #desktop-footer {

@@ -43,26 +43,28 @@ function App() {
     if (location.pathname === '/') return;
 
     const buttons = Array.from(document.querySelectorAll('.page a')).reverse();
+    const icons = Array.from(
+      document.querySelectorAll('#desktop-footer a')
+    ).reverse();
     const delayIncrement = 0.2;
 
     buttons.forEach((button, index) => {
-      const delay = delayIncrement * (index / 4);
+      const delay = index * delayIncrement;
       button.style.animationDelay = `${delay}s`;
     });
 
-    const icons = document.querySelectorAll('#desktop-footer a');
     icons.forEach((icon) => {
-      icon.classList.add('animate-icon');
+      icon.classList.remove('animate-icon');
     });
-
     const timeout = setTimeout(() => {
-      icons.forEach((icon) => {
-        icon.classList.remove('animate-icon');
+      icons.forEach((icon, index) => {
+        const delay = index * delayIncrement;
+        icon.classList.add('animate-icon');
+        icon.style.animationDelay = `${delay}s`;
       });
-    }, 300);
-
+    }, 10);
     return () => clearTimeout(timeout);
-  }, [location]);
+  }, [location.pathname]);
 
   return (
     <TranslationProvider>
