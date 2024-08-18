@@ -17,19 +17,8 @@ const links = [
   'https://mati-fernandez.github.io/portfolio/',
 ];
 
-const imagePreLoad = (urls) => {
-  urls.map((url) => {
-    const img = new Image();
-    img.src = url;
-  });
-};
-
-const Projects = ({ setActiveModal }) => {
+const Projects = ({ handleOpenModal, imagePreLoad }) => {
   const { translate } = useContext(TranslationContext);
-
-  const handleOpenModal = (itemKey, img, link) => {
-    setActiveModal({ itemKey, img, link });
-  };
 
   useEffect(() => {
     const urls = [imgrqm, imgmdp, imgdm, imgcalc, imgpc, imgop];

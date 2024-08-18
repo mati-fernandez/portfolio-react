@@ -21,7 +21,7 @@ html {
   --color-secondary-alpha: #506b4480;
   --color-background: black;
   --color-background-secondary: #222;
-  --color-background-alpha: #222222ec;
+  --color-background-alpha: #0c1502ec;
   --color-background-alpha-secondary: #222222ce;
 }
 
@@ -196,26 +196,6 @@ figure {
   justify-self: center;
 }
 
-@keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.skeleton {
-  /* width: 90vw;
-  height: 50vh; */
-  background-color: #e0e0e0;
-  animation: pulse 1.5s infinite;
-  border-radius: 4px;
-}
-
 figure img {
   width: 90vw;
   max-height: 50vh;
@@ -265,7 +245,7 @@ figcaption {
   border: 1px solid var(--color-secondary);
   height: fit-content;
   opacity: 0;
-  animation: slideIn 0.2s ease-out forwards;
+  animation: slideIn 200ms ease-out forwards;
 }
 
 .link {
@@ -502,10 +482,6 @@ figcaption {
       transform: translateX(0);
       opacity: 1;
     }
-  }
-
-  .page a {
-    animation: slideIn 100ms ease-out forwards;
   }
 
   .page > a:hover {

@@ -24,6 +24,17 @@ function App() {
   const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
   const [activeModal, setActiveModal] = useState('');
 
+  const handleOpenModal = (itemKey, img, link) => {
+    setActiveModal({ itemKey, img, link });
+  };
+
+  const imagePreLoad = (urls) => {
+    urls.map((url) => {
+      const img = new Image();
+      img.src = url;
+    });
+  };
+
   useEffect(() => {
     updateViewportHeight();
     window.addEventListener('resize', () =>
@@ -98,6 +109,8 @@ function App() {
               setShowMenu={setShowMenu}
               activeModal={activeModal}
               setActiveModal={setActiveModal}
+              handleOpenModal={handleOpenModal}
+              imagePreLoad={imagePreLoad}
             />
           }
         />
@@ -108,6 +121,8 @@ function App() {
               showMenu={showMenu}
               setShowMenu={setShowMenu}
               setActiveModal={setActiveModal}
+              handleOpenModal={handleOpenModal}
+              imagePreLoad={imagePreLoad}
             />
           }
         />
@@ -119,6 +134,8 @@ function App() {
               setShowMenu={setShowMenu}
               activeModal={activeModal}
               setActiveModal={setActiveModal}
+              handleOpenModal={handleOpenModal}
+              imagePreLoad={imagePreLoad}
             />
           }
         />

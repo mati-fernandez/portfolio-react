@@ -11,19 +11,8 @@ const links = [
   'https://www.freecodecamp.org/certification/matifer/front-end-development-libraries',
 ];
 
-const imagePreLoad = (urls) => {
-  urls.map((url) => {
-    const img = new Image();
-    img.src = url;
-  });
-};
-
-const Certifications = ({ setActiveModal }) => {
+const Certifications = ({ handleOpenModal, imagePreLoad }) => {
   const { translate } = useContext(TranslationContext);
-
-  const handleOpenModal = (itemKey, img, link) => {
-    setActiveModal({ itemKey, img, link });
-  };
 
   useEffect(() => {
     const urls = [imgrwd, imgjs, imgfdl];
