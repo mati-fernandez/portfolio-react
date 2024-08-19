@@ -362,7 +362,7 @@ figcaption {
     border-radius: 200px;
     pointer-events: none;
     z-index: -1;
-    background-color: var(--color-background-alpha);
+    background-color: var(--color-secondary-alpha);
   }
 
   .detail h3 {
@@ -386,12 +386,11 @@ figcaption {
     left: -5vw;
     max-height: 55vh;
     width: 60%;
-    padding: 1vw;
+    /* padding: 1vw; Si no rompe nada borrar linea */
     object-fit: contain;
   }
 
   figcaption {
-    line-height: 20px;
     position: absolute;
     right: 0;
     font-size: 1.7vw;
