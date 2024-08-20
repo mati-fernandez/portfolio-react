@@ -41,7 +41,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: 72vmin;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,10 +83,6 @@ body {
 
 #avatar {
   width: 40vmin;
-}
-
-#presentacion {
-  margin: 2vh 13vw 10vh;
 }
 
 #wrapper {
@@ -333,6 +329,10 @@ figcaption {
     border-radius: 0;
   }
 
+  #presentacion {
+    font-size: 3vmin;
+  }
+
   .modal {
     z-index: 99;
     position: fixed;
@@ -451,10 +451,6 @@ figcaption {
   #cv-desktop {
     font-size: 1rem;
     aspect-ratio: 1;
-  }
-
-  #presentacion {
-    margin: 0 20vw;
   }
 
   .page {
