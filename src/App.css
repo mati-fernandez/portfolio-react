@@ -38,7 +38,7 @@ body {
 
 .container {
   position: fixed;
-  top: 43%;
+  top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 72vmin;
@@ -295,9 +295,6 @@ figcaption {
 /******** Aspect 1:2 ********/
 
 @media (min-aspect-ratio: 0.53) {
-  .container {
-    top: 46%;
-  }
   .detail {
     justify-content: center;
     padding: 2vh;
@@ -493,11 +490,16 @@ figcaption {
   /**** FOOTER ****/
   @keyframes icons {
     0% {
-      transform: rotate(0turn);
+      transform: translateY(0) rotate(0);
     }
-
+    30% {
+      transform: translateY(10px) rotate(1800deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(2800deg);
+    }
     100% {
-      transform: rotate(2turn);
+      transform: translateY(0) rotate(3240deg);
     }
   }
 
