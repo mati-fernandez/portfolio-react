@@ -21,7 +21,7 @@ html {
   --color-secondary-alpha: #506b4480;
   --color-background: black;
   --color-background-secondary: #222;
-  --color-background-alpha: #0c1502ec;
+  --color-background-alpha: #142303ec;
   --color-background-alpha-secondary: #222222ce;
 }
 
@@ -38,7 +38,7 @@ body {
 
 .container {
   position: fixed;
-  top: 50%;
+  top: 43%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 72vmin;
@@ -295,6 +295,9 @@ figcaption {
 /******** Aspect 1:2 ********/
 
 @media (min-aspect-ratio: 0.53) {
+  .container {
+    top: 46%;
+  }
   .detail {
     justify-content: center;
     padding: 2vh;
@@ -327,6 +330,10 @@ figcaption {
 
   #desktop-header a {
     border-radius: 0;
+  }
+
+  .container {
+    top: 51%;
   }
 
   #presentacion {
