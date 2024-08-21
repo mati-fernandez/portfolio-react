@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { TranslationProvider } from './i18n/TranslationContext';
 import { useEffect, useState } from 'react';
 import { updateViewportHeight } from './helpers/updateViewportHeight';
@@ -97,8 +97,9 @@ function App() {
         </>
       )}
       <Routes>
+        <Route path="/" element={<Navigate to="/:lang/home" />} />
         <Route
-          path="/"
+          path="/:lang/home"
           element={<Home showMenu={showMenu} setShowMenu={setShowMenu} />}
         />
         <Route

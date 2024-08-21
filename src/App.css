@@ -492,14 +492,20 @@ figcaption {
     0% {
       transform: translateY(0) rotate(0);
     }
-    30% {
-      transform: translateY(10px) rotate(1800deg);
+    15% {
+      transform: translateY(20px) rotate(1800deg);
     }
-    50% {
-      transform: translateY(-5px) rotate(2800deg);
+    25% {
+      transform: translateY(-12px) rotate(2880deg);
+    }
+    45% {
+      transform: translateY(10px) rotate(3960deg);
+    }
+    75% {
+      transform: translateY(-3px) rotate(3960deg);
     }
     100% {
-      transform: translateY(0) rotate(3240deg);
+      transform: translateY(0) rotate(3960deg);
     }
   }
 
