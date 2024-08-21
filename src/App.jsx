@@ -10,7 +10,6 @@ import Projects from './pages/Projects';
 import Certifications from './pages/Certifications';
 import Exercises from './pages/Exercises';
 import MobileHeader from './components/MobileHeader';
-import LanguageSetup from './helpers/LanguageSetup';
 import DesktopHeader from './components/DesktopFooter';
 import DesktopFooter from './components/DesktopHeader';
 import Modal from './components/Modal';
@@ -79,7 +78,6 @@ function App() {
 
   return (
     <TranslationProvider>
-      <LanguageSetup />
       {activeModal && (
         <Modal
           activeModal={activeModal.itemKey}
