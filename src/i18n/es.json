@@ -3,8 +3,8 @@
   "menu": {
     "item1": "Inicio",
     "item2": "Proyectos",
-    "item3": "Certificaciones",
-    "item4": "Ejercicios"
+    "item3": "Ejercicios",
+    "item4": "Certificaciones"
   },
   "projects": {
     "item1": {
@@ -38,10 +38,42 @@
       "button2": "Abrir proyecto"
     },
     "item6": {
-      "title": "Portafolio Antiguo (Vanilla JS)",
+      "title": "Portafolio Antiguo (JS Vainilla)",
       "description": "En el viejo portafolio pude poner en práctica la programación orientada a eventos con Vanilla JavaScript dándole rienda suelta a mi imaginación para luego entender la necesidad de un código más ordenado y orientado a componentes con DOM virtual  y otras nuevas características gracias a React en mi siguiente portafolio... (este).",
       "button1": "Cerrar",
       "button2": "Abrir proyecto"
+    }
+  },
+  "exercises": {
+    "item1": {
+      "title": "DOM (JS Vainilla)",
+      "description": "Ejercicio práctico sobre la manipulación del DOM con JavaScript, explorando eventos y modificando el contenido dinámicamente.",
+      "button1": "Cerrar",
+      "button2": "Ver Ejercicio"
+    },
+    "item2": {
+      "title": "Dibujo (JS Vainilla; para PC)",
+      "description": "Introducción a la creación de gráficos en la web usando el elemento Canvas de HTML5 y JavaScript para dibujar.",
+      "button1": "Cerrar",
+      "button2": "Ver Ejercicio"
+    },
+    "item3": {
+      "title": "Tetris (JS Vainilla)",
+      "description": "Implementación del clásico juego de Tetris usando solo JavaScript, HTML y CSS, poniendo en práctica el manejo del tiempo y la manipulación del DOM.",
+      "button1": "Cerrar",
+      "button2": "Ver Ejercicio"
+    },
+    "item4": {
+      "title": "Mecanografía (JS Vainilla; para PC)",
+      "description": "Ejercicio para mejorar la velocidad de escritura en teclado a través de la creación de una aplicación interactiva que mide y evalúa la velocidad de tipeo.",
+      "button1": "Cerrar",
+      "button2": "Ver Ejercicio"
+    },
+    "item5": {
+      "title": "Excel (JS Vainilla; para PC)",
+      "description": "En este ejercicio puse en práctica mi lógica de programación. Imita algunas funciones básicas de Excel. Pretendo seguir ampliando sus funcionalidades ya que me resulta un desafío interesante. ",
+      "button1": "Cerrar",
+      "button2": "Ver Ejercicio"
     }
   },
   "certifications": {
@@ -62,32 +94,6 @@
       "description": "Certificación enfocada en el uso de librerías populares como React, Redux, y herramientas para el desarrollo de interfaces de usuario.",
       "button1": "Cerrar",
       "button2": "Ver Certificación"
-    }
-  },
-  "exercises": {
-    "item1": {
-      "title": "Modelo de objeto de documento",
-      "description": "Ejercicio práctico sobre la manipulación del DOM con JavaScript, explorando eventos y modificando el contenido dinámicamente.",
-      "button1": "Cerrar",
-      "button2": "Ver Ejercicio"
-    },
-    "item2": {
-      "title": "Dibujo - Intro a Canvas (PC)",
-      "description": "Introducción a la creación de gráficos en la web usando el elemento Canvas de HTML5 y JavaScript para dibujar.",
-      "button1": "Cerrar",
-      "button2": "Ver Ejercicio"
-    },
-    "item3": {
-      "title": "Tetris - JS Vainilla",
-      "description": "Implementación del clásico juego de Tetris usando solo JavaScript, HTML y CSS, poniendo en práctica el manejo del tiempo y la manipulación del DOM.",
-      "button1": "Cerrar",
-      "button2": "Ver Ejercicio"
-    },
-    "item4": {
-      "title": "Mecanografía (PC)",
-      "description": "Ejercicio para mejorar la velocidad de escritura en teclado a través de la creación de una aplicación interactiva que mide y evalúa la velocidad de tipeo.",
-      "button1": "Cerrar",
-      "button2": "Ver Ejercicio"
     }
   }
 }

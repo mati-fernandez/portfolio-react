@@ -28,7 +28,7 @@ const MainMenu = () => {
         className={({ isActive }) =>
           isActive ? 'active-button button link' : 'button link'
         }
-        to="/certifications"
+        to="/exercises"
       >
         {translate('menu.item3')}
       </NavLink>
@@ -36,7 +36,7 @@ const MainMenu = () => {
         className={({ isActive }) =>
           isActive ? 'active-button button link' : 'button link'
         }
-        to="/exercises"
+        to="/certifications"
       >
         {translate('menu.item4')}
       </NavLink>

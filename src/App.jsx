@@ -115,11 +115,12 @@ function App() {
           }
         />
         <Route
-          path="/certifications"
+          path="/exercises"
           element={
-            <Certifications
+            <Exercises
               showMenu={showMenu}
               setShowMenu={setShowMenu}
+              activeModal={activeModal}
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
               imagePreLoad={imagePreLoad}
@@ -127,12 +128,11 @@ function App() {
           }
         />
         <Route
-          path="/exercises"
+          path="/certifications"
           element={
-            <Exercises
+            <Certifications
               showMenu={showMenu}
               setShowMenu={setShowMenu}
-              activeModal={activeModal}
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
               imagePreLoad={imagePreLoad}

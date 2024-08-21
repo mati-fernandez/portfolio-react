@@ -3,8 +3,8 @@
   "menu": {
     "item1": "Home",
     "item2": "Projects",
-    "item3": "Certifications",
-    "item4": "Exercises"
+    "item3": "Exercises",
+    "item4": "Certifications"
   },
   "projects": {
     "item1": {
@@ -44,6 +44,38 @@
       "button2": "Open project"
     }
   },
+  "exercises": {
+    "item1": {
+      "title": "DOM (Vanilla JS; for PC)",
+      "description": "Practical exercise on DOM manipulation with JavaScript, exploring events and dynamically modifying content.",
+      "button1": "Close",
+      "button2": "View Exercise"
+    },
+    "item2": {
+      "title": "Draw (Vanilla JS; for PC)",
+      "description": "Introduction to creating graphics on the web using the HTML5 Canvas element and JavaScript to draw.",
+      "button1": "Close",
+      "button2": "View Exercise"
+    },
+    "item3": {
+      "title": "Tetris (Vanilla JS)",
+      "description": "Implementation of the classic Tetris game using only JavaScript, HTML, and CSS, practicing timing management and DOM manipulation.",
+      "button1": "Close",
+      "button2": "View Exercise"
+    },
+    "item4": {
+      "title": "Monkeytype (Vanilla JS; for PC)",
+      "description": "Exercise to improve typing speed through creating an interactive application that measures and evaluates typing speed.",
+      "button1": "Close",
+      "button2": "View Exercise"
+    },
+    "item5": {
+      "title": "Excel (Vanilla JS; for PC)",
+      "description": "In this exercise I put my programming logic into practice. It imitates some basic Excel functions. I intend to continue expanding its functionalities as I find it an interesting challenge.",
+      "button1": "Close",
+      "button2": "View Exercise"
+    }
+  },
   "certifications": {
     "item1": {
       "title": "Responsive Web Design",
@@ -62,32 +94,6 @@
       "description": "Certification focused on using popular libraries like React, Redux, and tools for building user interfaces.",
       "button1": "Close",
       "button2": "View Certification"
-    }
-  },
-  "exercises": {
-    "item1": {
-      "title": "Document Object Model",
-      "description": "Practical exercise on DOM manipulation with JavaScript, exploring events and dynamically modifying content.",
-      "button1": "Close",
-      "button2": "View Exercise"
-    },
-    "item2": {
-      "title": "Draw - Canvas Intro (PC)",
-      "description": "Introduction to creating graphics on the web using the HTML5 Canvas element and JavaScript to draw.",
-      "button1": "Close",
-      "button2": "View Exercise"
-    },
-    "item3": {
-      "title": "Tetris - Vanilla JS",
-      "description": "Implementation of the classic Tetris game using only JavaScript, HTML, and CSS, practicing timing management and DOM manipulation.",
-      "button1": "Close",
-      "button2": "View Exercise"
-    },
-    "item4": {
-      "title": "Monkeytype (PC)",
-      "description": "Exercise to improve typing speed through creating an interactive application that measures and evaluates typing speed.",
-      "button1": "Close",
-      "button2": "View Exercise"
     }
   }
 }
