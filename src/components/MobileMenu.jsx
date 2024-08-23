@@ -8,17 +8,12 @@ import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
 import MainMenu from './MainMenu';
 
-const MobileMenu = ({ aspectRatio, setFromLanguageBtn }) => {
+const MobileMenu = () => {
   const { language, setLanguage } = useContext(TranslationContext);
 
   return (
     <div className="menu">
-      <LanguageButton
-        language={language}
-        setLanguage={setLanguage}
-        aspectRatio={aspectRatio}
-        setFromLanguageBtn={setFromLanguageBtn}
-      />
+      <LanguageButton language={language} setLanguage={setLanguage} />
       <nav id="mobile-main-menu">
         <MainMenu />
         <div id="contact-wrapper">

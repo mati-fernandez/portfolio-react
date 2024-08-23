@@ -352,7 +352,7 @@ figcaption {
 
   @keyframes glowing {
     50% {
-      background-color: var(--color-secondary);
+      background-color: var(--color-secondary-alpha);
     }
   }
 

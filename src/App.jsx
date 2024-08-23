@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useContext } from 'react';
@@ -24,8 +25,8 @@ function App() {
   const location = useLocation();
   const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
   const [activeModal, setActiveModal] = useState('');
-  const { language } = useContext(TranslationContext);
-  const [fromLanguageBtn, setFromLanguageBtn] = useState(false);
+  const { language, fromLanguageBtn, setFromLanguageBtn } =
+    useContext(TranslationContext);
 
   const handleOpenModal = (itemKey, img, link) => {
     setActiveModal({ itemKey, img, link });
@@ -38,6 +39,7 @@ function App() {
     });
   };
 
+  // VSUALIZACION
   useEffect(() => {
     updateViewportHeight();
     window.addEventListener('resize', () =>
@@ -51,19 +53,16 @@ function App() {
     };
   }, []);
 
+  // ANIMACIONES
   useEffect(() => {
     let headerTimeout = null;
     const delayIncrement = 0.1;
 
-    console.log('fromLanguageBtn', fromLanguageBtn);
-    if (fromLanguageBtn) {
-      //solo para portrait, lo gestiona LanguageButton (se hace aca para no romper el de desktop)
+    if (fromLanguageBtn && aspectRatio === 'portrait') {
       setFromLanguageBtn(false);
       return;
     }
     setShowMenu(false);
-
-    // No en la primer carga pero ahora cada vez que cambia location deberia tambien animar el container de izq a der para que coincida con la animacion de los icons quizas o encender todos los items del header de forma secuencial
 
     const buttons = Array.from(document.querySelectorAll('.page a')).reverse();
     const icons = Array.from(
@@ -103,7 +102,6 @@ function App() {
       clearTimeout(timeout), clearTimeout(headerTimeout);
     };
   }, [location.pathname]);
-
   useEffect(() => {
     let timeout = null;
     if (aspectRatio === 'portrait' && fromLanguageBtn) {
@@ -116,9 +114,7 @@ function App() {
     return () => clearTimeout(timeout);
   }, [language]);
 
-  // Si `language` aún no está definido, renderiza un loader o nada
   if (!language || language === '') {
-    console.log('language aún no fue definido');
     return null;
   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO
   return (
@@ -132,12 +128,7 @@ function App() {
         />
       )}
       {aspectRatio === 'portrait' ? (
-        <MobileHeader
-          showMenu={showMenu}
-          setShowMenu={setShowMenu}
-          aspectRatio={aspectRatio}
-          setFromLanguageBtn={setFromLanguageBtn}
-        />
+        <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
       ) : (
         <>
           <DesktopHeader />
@@ -145,7 +136,6 @@ function App() {
         </>
       )}
       <Routes>
-        {console.log('App render', language)}
         <Route path="/" element={<Navigate to={`/${language}/home`} />} />
         <Route
           path={`/${language}`}
@@ -194,6 +184,7 @@ function App() {
           }
         />
         {/* <Route path="*" element={<Navigate to={`/${language}/home`} />} /> */}
+        {/* El problema con este fallback es que si apreto btn language me manda acá */}
       </Routes>
     </>
   );

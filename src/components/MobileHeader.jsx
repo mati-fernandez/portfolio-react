@@ -6,12 +6,7 @@ import { TranslationContext } from '../i18n/TranslationContext';
 import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-const MobileHeader = ({
-  showMenu,
-  setShowMenu,
-  aspectRatio,
-  setFromLanguageBtn,
-}) => {
+const MobileHeader = ({ showMenu, setShowMenu }) => {
   const { translate } = useContext(TranslationContext);
 
   const toggleMenu = () => {
@@ -20,13 +15,7 @@ const MobileHeader = ({
 
   return (
     <div id="wrapper">
-      {showMenu && (
-        <MobileMenu
-          translate={translate}
-          aspectRatio={aspectRatio}
-          setFromLanguageBtn={setFromLanguageBtn}
-        />
-      )}
+      {showMenu && <MobileMenu translate={translate} />}
       <header id="mobile-header">
         <Link className="link" to="/">
           <p id="name">Matias</p>

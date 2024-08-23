@@ -1,18 +1,24 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
 
-const LanguageButton = ({ aspectRatio, setFromLanguageBtn }) => {
-  const { language, setLanguage } = useContext(TranslationContext);
+const LanguageButton = () => {
+  const { language, setLanguage, setFromLanguageBtn } =
+    useContext(TranslationContext);
   const [iconLabel, setIconLabel] = useState(language);
-  console.log('Desde btn language iconLabel', iconLabel);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIconLabel(language);
+      clearTimeout(timeout);
+    }, 600);
+  }, [language]);
 
   const handleClick = () => {
-    if (aspectRatio === 'portrait') setFromLanguageBtn(true);
+    setFromLanguageBtn(true);
     language === 'es' ? setLanguage('en') : setLanguage('es');
     const timeout = setTimeout(() => {
       language === 'es' ? setIconLabel('en') : setIconLabel('es');
-      console.log('Desde btn language iconLabel y el timeout', iconLabel);
       clearTimeout(timeout);
     }, 600);
   };
