@@ -52,25 +52,36 @@ function App() {
   }, []);
 
   useEffect(() => {
+    let headerTimeout = null;
+    const delayIncrement = 0.1;
+
     console.log('fromLanguageBtn', fromLanguageBtn);
     if (fromLanguageBtn) {
+      //solo para portrait, lo gestiona LanguageButton (se hace aca para no romper el de desktop)
       setFromLanguageBtn(false);
       return;
     }
     setShowMenu(false);
 
-    if (location.pathname === '/' || location.pathname.endsWith('home')) return;
+    // No en la primer carga pero ahora cada vez que cambia location deberia tambien animar el container de izq a der para que coincida con la animacion de los icons quizas o encender todos los items del header de forma secuencial
 
     const buttons = Array.from(document.querySelectorAll('.page a')).reverse();
     const icons = Array.from(
       document.querySelectorAll('#desktop-footer a')
     ).reverse();
-    const delayIncrement = 0.1;
-
-    buttons.forEach((button, index) => {
-      const delay = index * delayIncrement;
-      button.style.animationDelay = `${delay}s`;
-    });
+    const desktopHeaderBtns = Array.from(
+      document.querySelectorAll('#desktop-header a')
+    );
+    desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
+    if (location.pathname.endsWith('home')) {
+      headerTimeout = setTimeout(() => {
+        desktopHeaderBtns.forEach((item, index) => {
+          const delay = index * delayIncrement;
+          item.classList.add('glowing');
+          item.style.animationDelay = `${delay}s`;
+        });
+      }, 10);
+    }
 
     icons.forEach((icon) => {
       icon.classList.remove('animate-icon');
@@ -82,7 +93,15 @@ function App() {
         icon.style.animationDelay = `${delay}s`;
       });
     }, 10);
-    return () => clearTimeout(timeout);
+
+    buttons.forEach((button, index) => {
+      const delay = index * delayIncrement;
+      button.style.animationDelay = `${delay}s`;
+    });
+
+    return () => {
+      clearTimeout(timeout), clearTimeout(headerTimeout);
+    };
   }, [location.pathname]);
 
   useEffect(() => {

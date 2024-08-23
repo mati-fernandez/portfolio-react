@@ -350,6 +350,16 @@ figcaption {
     background-color: var(--color-background-secondary);
   }
 
+  @keyframes glowing {
+    50% {
+      background-color: var(--color-secondary);
+    }
+  }
+
+  .glowing {
+    animation: glowing 1s ease-in-out;
+  }
+
   #desktop-header a {
     border-radius: 0;
   }
