@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { TranslationProvider } from './i18n/TranslationContext';
+import { useContext } from 'react';
+import { TranslationContext } from './i18n/TranslationContext';
 import { useEffect, useState } from 'react';
 import { updateViewportHeight } from './helpers/updateViewportHeight';
 import './App.css';
@@ -22,6 +24,8 @@ function App() {
   const location = useLocation();
   const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
   const [activeModal, setActiveModal] = useState('');
+  const { language } = useContext(TranslationContext);
+  const [fromLanguageBtn, setFromLanguageBtn] = useState(false);
 
   const handleOpenModal = (itemKey, img, link) => {
     setActiveModal({ itemKey, img, link });
@@ -48,9 +52,14 @@ function App() {
   }, []);
 
   useEffect(() => {
+    console.log('fromLanguageBtn', fromLanguageBtn);
+    if (fromLanguageBtn) {
+      setFromLanguageBtn(false);
+      return;
+    }
     setShowMenu(false);
 
-    if (location.pathname === '/') return;
+    if (location.pathname === '/' || location.pathname.endsWith('home')) return;
 
     const buttons = Array.from(document.querySelectorAll('.page a')).reverse();
     const icons = Array.from(
@@ -76,8 +85,25 @@ function App() {
     return () => clearTimeout(timeout);
   }, [location.pathname]);
 
+  useEffect(() => {
+    let timeout = null;
+    if (aspectRatio === 'portrait' && fromLanguageBtn) {
+      const langBtn = document.querySelector('#language-btn');
+      langBtn.classList.remove('rotate');
+      timeout = setTimeout(() => {
+        langBtn.classList.add('rotate');
+      }, 10);
+    }
+    return () => clearTimeout(timeout);
+  }, [language]);
+
+  // Si `language` aún no está definido, renderiza un loader o nada
+  if (!language || language === '') {
+    console.log('language aún no fue definido');
+    return null;
+  } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO
   return (
-    <TranslationProvider>
+    <>
       {activeModal && (
         <Modal
           activeModal={activeModal.itemKey}
@@ -87,21 +113,31 @@ function App() {
         />
       )}
       {aspectRatio === 'portrait' ? (
-        <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
+        <MobileHeader
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+          aspectRatio={aspectRatio}
+          setFromLanguageBtn={setFromLanguageBtn}
+        />
       ) : (
         <>
           <DesktopHeader />
-          <DesktopFooter />
+          <DesktopFooter aspectRatio={aspectRatio} />
         </>
       )}
       <Routes>
-        <Route path="/" element={<Navigate to="/:lang/home" />} />
+        {console.log('App render', language)}
+        <Route path="/" element={<Navigate to={`/${language}/home`} />} />
         <Route
-          path="/:lang/home"
+          path={`/${language}`}
+          element={<Navigate to={`/${language}/home`} />}
+        />
+        <Route
+          path={`/${language}/home`}
           element={<Home showMenu={showMenu} setShowMenu={setShowMenu} />}
         />
         <Route
-          path="/projects"
+          path={`/${language}/projects`}
           element={
             <Projects
               showMenu={showMenu}
@@ -114,7 +150,7 @@ function App() {
           }
         />
         <Route
-          path="/exercises"
+          path={`/${language}/exercises`}
           element={
             <Exercises
               showMenu={showMenu}
@@ -127,7 +163,7 @@ function App() {
           }
         />
         <Route
-          path="/certifications"
+          path={`/${language}/certifications`}
           element={
             <Certifications
               showMenu={showMenu}
@@ -138,9 +174,9 @@ function App() {
             />
           }
         />
-        <Route path="*" element={<h1>Not Found</h1>} />
+        {/* <Route path="*" element={<Navigate to={`/${language}/home`} />} /> */}
       </Routes>
-    </TranslationProvider>
+    </>
   );
 }
 

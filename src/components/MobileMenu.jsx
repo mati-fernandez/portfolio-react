@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
 import linkedin from '../assets/linkedin.svg';
 import github from '../assets/github.svg';
@@ -7,12 +8,17 @@ import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
 import MainMenu from './MainMenu';
 
-const MobileMenu = () => {
+const MobileMenu = ({ aspectRatio, setFromLanguageBtn }) => {
   const { language, setLanguage } = useContext(TranslationContext);
 
   return (
     <div className="menu">
-      <LanguageButton language={language} setLanguage={setLanguage} />
+      <LanguageButton
+        language={language}
+        setLanguage={setLanguage}
+        aspectRatio={aspectRatio}
+        setFromLanguageBtn={setFromLanguageBtn}
+      />
       <nav id="mobile-main-menu">
         <MainMenu />
         <div id="contact-wrapper">

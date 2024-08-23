@@ -261,6 +261,31 @@ figcaption {
   margin: 2vh 6vw;
 }
 
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  15% {
+    transform: rotate(1800deg);
+  }
+  25% {
+    transform: rotate(2880deg);
+  }
+  45% {
+    transform: rotate(3960deg);
+  }
+  75% {
+    transform: rotate(3960deg);
+  }
+  100% {
+    transform: rotate(3960deg);
+  }
+}
+
+.rotate {
+  animation: rotate 1.5s ease-in-out;
+}
+
 #contact-wrapper {
   display: flex;
   justify-content: center;

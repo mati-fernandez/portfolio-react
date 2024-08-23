@@ -4,7 +4,7 @@ import { useContext } from 'react';
 
 // eslint-disable-next-line react/prop-types
 const MainMenu = () => {
-  const { translate } = useContext(TranslationContext);
+  const { translate, language } = useContext(TranslationContext);
 
   return (
     <>
@@ -12,7 +12,7 @@ const MainMenu = () => {
         className={({ isActive }) =>
           isActive ? 'active-button button link' : 'button link'
         }
-        to="/"
+        to={`/${language}/home`}
       >
         {translate('menu.item1')}
       </NavLink>
@@ -20,7 +20,7 @@ const MainMenu = () => {
         className={({ isActive }) =>
           isActive ? 'active-button button link' : 'button link'
         }
-        to="/projects"
+        to={`/${language}/projects`}
       >
         {translate('menu.item2')}
       </NavLink>
@@ -28,7 +28,7 @@ const MainMenu = () => {
         className={({ isActive }) =>
           isActive ? 'active-button button link' : 'button link'
         }
-        to="/exercises"
+        to={`/${language}/exercises`}
       >
         {translate('menu.item3')}
       </NavLink>
@@ -36,7 +36,7 @@ const MainMenu = () => {
         className={({ isActive }) =>
           isActive ? 'active-button button link' : 'button link'
         }
-        to="/certifications"
+        to={`/${language}/certifications`}
       >
         {translate('menu.item4')}
       </NavLink>
