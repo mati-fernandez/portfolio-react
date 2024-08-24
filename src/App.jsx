@@ -52,7 +52,6 @@ function App() {
       document.removeEventListener('contextmenu', (e) => e.preventDefault());
     };
   }, []);
-
   // ANIMACIONES
   useEffect(() => {
     let headerTimeout = null;
@@ -114,9 +113,9 @@ function App() {
     return () => clearTimeout(timeout);
   }, [language]);
 
-  if (!language || language === '') {
-    return null;
-  } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO
+  //   if (!language || language === '') {
+  //     return null;
+  //   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO
   return (
     <>
       {activeModal && (

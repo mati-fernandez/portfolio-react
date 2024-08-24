@@ -33,7 +33,6 @@ export const TranslationProvider = ({ children }) => {
     } else if (language && URLlang !== language && fromLanguageBtn) {
       const newPath = `/${language}/${pathParts.slice(2).join('/')}`;
       navigate(newPath, { replace: true });
-      setFromLanguageBtn(false);
     } else {
       setLanguage(URLlang);
     }
