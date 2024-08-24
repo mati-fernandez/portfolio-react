@@ -113,9 +113,9 @@ function App() {
     return () => clearTimeout(timeout);
   }, [language]);
 
-  //   if (!language || language === '') {
-  //     return null;
-  //   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO
+  if (!language || language === '') {
+    return null;
+  } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO y resta un warning de "No routes matched location".
   return (
     <>
       {activeModal && (
