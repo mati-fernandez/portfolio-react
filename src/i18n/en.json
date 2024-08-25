@@ -39,7 +39,7 @@
     },
     "item6": {
       "title": "Old Portfolio (Vanilla JS)",
-      "description": "In the old portfolio I was able to put into practice event-driven programming with Vanilla JavaScript giving free rein to my imagination and then understand the need for a more organized and component-oriented code with virtual DOM and other new features thanks to React in my next portfolio... (this one).",
+      "description": "In the old portfolio I was able to put into practice event-driven programming with Vanilla JavaScript and the responsive design",
       "button1": "Close",
       "button2": "Open project"
     }

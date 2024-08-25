@@ -39,7 +39,7 @@
     },
     "item6": {
       "title": "Portafolio Antiguo (JS Vainilla)",
-      "description": "En el viejo portafolio pude poner en práctica la programación orientada a eventos con Vanilla JavaScript dándole rienda suelta a mi imaginación para luego entender la necesidad de un código más ordenado y orientado a componentes con DOM virtual  y otras nuevas características gracias a React en mi siguiente portafolio... (este).",
+      "description": "En el viejo portafolio pude poner en práctica la programación orientada a eventos con Vanilla JavaScript y el diseño responsivo",
       "button1": "Cerrar",
       "button2": "Abrir proyecto"
     }

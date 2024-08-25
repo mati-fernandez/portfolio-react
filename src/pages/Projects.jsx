@@ -14,7 +14,7 @@ const links = [
   'https://mati-fernandez.github.io/drum-machine/',
   'https://mati-fernandez.github.io/js-calculator/',
   'https://mati-fernandez.github.io/pomodoro-clock/',
-  'https://mati-fernandez.github.io/portfolio/',
+  'https://mati-fernandez.github.io/portfolio-vanilla-js/',
 ];
 
 const Projects = ({ handleOpenModal, imagePreLoad }) => {
