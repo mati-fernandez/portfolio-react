@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
-import imgrwd from '../assets/certificado-responsive-web-design.jpg';
-import imgjs from '../assets/certificado-javascript-algorithms-and-data-structures.jpg';
-import imgfdl from '../assets/front-end-development-libraries.jpg';
+import imgrwd from '../assets/cert-resp.png';
+import imgjs from '../assets/cert-js.png';
+import imgfdl from '../assets/cert-front.png';
 
 const links = [
   'https://www.freecodecamp.org/certification/matifer/responsive-web-design',

@@ -17,11 +17,11 @@ html {
   /* VARIABLES */
   --vh: 1vh; /* Valor inicial para la variable */
   --color-primary: white;
-  --color-secondary: #506b44;
-  --color-secondary-alpha: #506b4480;
+  --color-secondary: #9a9a9a;
+  --color-secondary-alpha: #939e8f80;
   --color-background: black;
   --color-background-secondary: #222;
-  --color-background-alpha: #142303ec;
+  --color-background-alpha: #2e312bec;
   --color-background-alpha-secondary: #222222ce;
 }
 

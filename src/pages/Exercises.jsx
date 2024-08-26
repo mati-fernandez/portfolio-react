@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
-import imgdom from '../assets/dom-ejercicios.jpg';
+import imgdom from '../assets/dom-ejercicios.png';
 import imgcan from '../assets/dibujo-canvas.png';
-import imgtet from '../assets/tetris-vanilla.jpg';
-import imgmon from '../assets/monkeytype.jpg';
+import imgtet from '../assets/tetris-vanilla.png';
+import imgmon from '../assets/monkeytype.png';
 import imgexc from '../assets/excel.png';
 
 const links = [
