@@ -8,11 +8,11 @@ import imgmon from '../assets/monkeytype.png';
 import imgexc from '../assets/excel.png';
 
 const links = [
-  'https://mati-fernandez.github.io/portfolio/dom-ejercicios/index.html',
-  'https://mati-fernandez.github.io/portfolio/mis-proyectos/dibujo-canvas/index.html',
-  'https://mati-fernandez.github.io/portfolio/mis-proyectos/tetris-vanilla/index.html',
-  'https://mati-fernandez.github.io/portfolio/mis-proyectos/monkeytype/index.html',
-  'https://mati-fernandez.github.io/portfolio/mis-proyectos/excel/index.html',
+  'https://mati-fernandez.github.io/portfolio-vanilla-js/dom-ejercicios/index.html',
+  'https://mati-fernandez.github.io/portfolio-vanilla-js/mis-proyectos/dibujo-canvas/index.html',
+  'https://mati-fernandez.github.io/portfolio-vanilla-js/mis-proyectos/tetris-vanilla/index.html',
+  'https://mati-fernandez.github.io/portfolio-vanilla-js/mis-proyectos/monkeytype/index.html',
+  'https://mati-fernandez.github.io/portfolio-vanilla-js/mis-proyectos/excel/index.html',
 ];
 
 const Exercises = ({ handleOpenModal, imagePreLoad }) => {

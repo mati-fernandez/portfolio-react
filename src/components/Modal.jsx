@@ -8,23 +8,25 @@ const Modal = ({ activeModal, img, link, setActiveModal }) => {
   const closeModal = () => setActiveModal(null);
 
   return (
-    <article className={`modal`}>
+    <article className={`modal`} onClick={closeModal}>
       <div className="detail">
-        <h3>{translate(`${activeModal}.title`)}</h3>
-        <figure>
-          <img
-            src={img}
-            alt={`${translate(`${activeModal}.title`)} Thumbnail`}
-          />
-          <figcaption>{translate(`${activeModal}.description`)}</figcaption>
-        </figure>
-        <div className="btn-panel">
-          <a className="link button" onClick={closeModal}>
-            {translate(`${activeModal}.button1`)}
-          </a>
-          <a href={link} target="_blank" className="link button">
-            {translate(`${activeModal}.button2`)}
-          </a>
+        <div className="modalBkg" onClick={(e) => e.stopPropagation()}>
+          <h3>{translate(`${activeModal}.title`)}</h3>
+          <figure>
+            <img
+              src={img}
+              alt={`${translate(`${activeModal}.title`)} Thumbnail`}
+            />
+            <figcaption>{translate(`${activeModal}.description`)}</figcaption>
+          </figure>
+          <div className="btn-panel">
+            <a className="link button" onClick={closeModal}>
+              {translate(`${activeModal}.button1`)}
+            </a>
+            <a href={link} target="_blank" className="link button">
+              {translate(`${activeModal}.button2`)}
+            </a>
+          </div>
         </div>
       </div>
     </article>
