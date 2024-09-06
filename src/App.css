@@ -153,15 +153,30 @@ body {
   background-color: var(--color-background-alpha);
 }
 
-@keyframes animate-modal {
+@keyframes animate-modal-open {
   0% {
     transform: scale(0) translate(-50%, -50%);
     opacity: 0;
   }
   100% {
-    transform: scale(100%) translate(-50%, -50%);
+    transform: scale(1) translate(-50%, -50%);
     opacity: 1;
   }
+}
+@keyframes animate-modal-close {
+  0% {
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+/* Para ganar en especificidad */
+.detail.hidden {
+  animation: animate-modal-close 150ms ease-in-out forwards;
 }
 
 .detail {
@@ -175,7 +190,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  animation: animate-modal 150ms ease-out forwards;
+  animation: animate-modal-open 150ms ease-out forwards;
   transform-origin: 0 0;
 }
 

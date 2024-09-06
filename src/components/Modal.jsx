@@ -2,14 +2,27 @@
 import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
 
-const Modal = ({ activeModal, img, link, setActiveModal }) => {
+const Modal = ({
+  activeModal,
+  img,
+  link,
+  setActiveModal,
+  modalVisibility,
+  setModalVisibility,
+}) => {
   const { translate } = useContext(TranslationContext);
 
-  const closeModal = () => setActiveModal(null);
+  const closeModal = () => {
+    setModalVisibility(false);
+    const timeout = setTimeout(() => {
+      setActiveModal('');
+      clearTimeout(timeout);
+    }, 150);
+  };
 
   return (
     <article className={`modal`} onClick={closeModal}>
-      <div className="detail">
+      <div className={`detail${!modalVisibility ? ' hidden' : ''}`}>
         <div className="modalBkg" onClick={(e) => e.stopPropagation()}>
           <h3>{translate(`${activeModal}.title`)}</h3>
           <figure>

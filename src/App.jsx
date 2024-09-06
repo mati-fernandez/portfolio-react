@@ -22,13 +22,15 @@ const updateAspectRatio = () =>
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
-  const location = useLocation();
   const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
   const [activeModal, setActiveModal] = useState('');
+  const [modalVisibility, setModalVisibility] = useState(false);
   const { language, fromLanguageBtn, setFromLanguageBtn } =
     useContext(TranslationContext);
+  const location = useLocation();
 
   const handleOpenModal = (itemKey, img, link) => {
+    setModalVisibility(true);
     setActiveModal({ itemKey, img, link });
   };
 
@@ -124,6 +126,8 @@ function App() {
           img={activeModal.img}
           link={activeModal.link}
           setActiveModal={setActiveModal}
+          modalVisibility={modalVisibility}
+          setModalVisibility={setModalVisibility}
         />
       )}
       {aspectRatio === 'portrait' ? (
