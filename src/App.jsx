@@ -134,7 +134,6 @@ function App() {
   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO y resta un warning de "No routes matched location".
   return (
     <>
-      {/* {console.log(theme)} */}
       {activeModal && (
         <Modal
           activeModal={activeModal.itemKey}

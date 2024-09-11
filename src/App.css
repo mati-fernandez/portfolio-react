@@ -13,6 +13,17 @@ html {
   transition: background-color 0.8s ease-in-out, font-weight 0.8s ease-in-out;
 }
 
+body {
+  height: 100%;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  transition: background-color 0.8s ease-in-out;
+}
+
 :root {
   font-size: 4vmin;
   /* VARIABLES */
@@ -62,18 +73,6 @@ p:not(#name) {
 svg {
   fill: var(--icon-fill);
   transition: fill 0.8s ease-in-out;
-}
-
-body {
-  height: 100%;
-  font-family: 'Raleway', Arial, Helvetica, sans-serif;
-  font-weight: 200;
-  background-color: var(--color-background);
-  color: var(--color-primary);
-  margin: 0 auto;
-  padding: 0;
-  text-align: center;
-  transition: background-color 0.8s ease-in-out;
 }
 
 .container {
