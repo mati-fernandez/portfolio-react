@@ -1,24 +1,24 @@
-import LanguageButton from './LanguageButton';
-import linkedin from '../assets/linkedin.svg';
-import github from '../assets/github.svg';
+import Linkedin from '../assets/Linkedin';
+import Github from '../assets/Github';
+import ThemeButton from './ThemeButton';
 
 const DesktopFooter = () => {
   return (
     <div id="desktop-footer">
-      <LanguageButton />
+      <ThemeButton />
       <a
         className="button linkedin-a"
         href="https://www.linkedin.com/in/mati-fernandez/"
         target="blank"
       >
-        <img className="contact-img linkedin" src={linkedin} alt="linkedin" />
+        <Linkedin />
       </a>
       <a
         className="button"
         href="https://github.com/mati-fernandez"
         target="_blank"
       >
-        <img className="contact-img" src={github} alt="github" />
+        <Github />
       </a>
       <a
         id="cv-desktop"

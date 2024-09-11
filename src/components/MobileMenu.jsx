@@ -1,19 +1,21 @@
 /* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
-import linkedin from '../assets/linkedin.svg';
-import github from '../assets/github.svg';
+import Linkedin from '../assets/Linkedin';
+import Github from '../assets/Github';
 import cv from '../assets/cv.svg';
 import LanguageButton from '../components/LanguageButton';
 import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
 import MainMenu from './MainMenu';
+import ThemeButton from './ThemeButton';
 
 const MobileMenu = () => {
   const { language, setLanguage } = useContext(TranslationContext);
 
   return (
     <div className="menu">
-      <LanguageButton language={language} setLanguage={setLanguage} />
+      {/* <LanguageButton language={language} setLanguage={setLanguage} /> */}
+      <ThemeButton />
       <nav id="mobile-main-menu">
         <MainMenu />
         <div id="contact-wrapper">
@@ -22,18 +24,14 @@ const MobileMenu = () => {
             href="https://www.linkedin.com/in/mati-fernandez/"
             target="blank"
           >
-            <img
-              className="contact-img linkedin"
-              src={linkedin}
-              alt="linkedin"
-            />
+            <Linkedin />
           </a>
           <a
             className="button"
             href="https://github.com/mati-fernandez"
             target="_blank"
           >
-            <img className="contact-img" src={github} alt="github" />
+            <Github />
           </a>
           <a
             id="cv-mobile-a"

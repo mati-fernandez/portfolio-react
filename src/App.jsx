@@ -3,6 +3,7 @@
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { TranslationContext } from './i18n/TranslationContext';
+import { ThemeContext } from './context/ThemeContext';
 import { useEffect, useState } from 'react';
 import { updateViewportHeight } from './helpers/updateViewportHeight';
 import './App.css';
@@ -27,6 +28,8 @@ function App() {
   const [modalVisibility, setModalVisibility] = useState(false);
   const { language, fromLanguageBtn, setFromLanguageBtn } =
     useContext(TranslationContext);
+  const { theme } = useContext(ThemeContext);
+
   const location = useLocation();
 
   const handleOpenModal = (itemKey, img, link) => {
@@ -59,15 +62,12 @@ function App() {
     let headerTimeout = null;
     const delayIncrement = 0.1;
 
-    if (fromLanguageBtn && aspectRatio === 'portrait') {
-      setFromLanguageBtn(false);
-      return;
-    }
+    if (aspectRatio === 'portrait') return;
     setShowMenu(false);
 
     const buttons = Array.from(document.querySelectorAll('.page a')).reverse();
     const icons = Array.from(
-      document.querySelectorAll('#desktop-footer a')
+      document.querySelectorAll('#desktop-footer a, #desktop-footer button')
     ).reverse();
     const desktopHeaderBtns = Array.from(
       document.querySelectorAll('#desktop-header a')
@@ -102,18 +102,24 @@ function App() {
     return () => {
       clearTimeout(timeout), clearTimeout(headerTimeout);
     };
-  }, [location.pathname]);
+  }, [location.pathname, theme]);
+
+  // Theme y rotation mobile
   useEffect(() => {
     let timeout = null;
-    if (aspectRatio === 'portrait' && fromLanguageBtn) {
-      const langBtn = document.querySelector('#language-btn');
-      langBtn.classList.remove('rotate');
+    const themeBtn = document.querySelector('#theme-btn');
+
+    if (themeBtn && aspectRatio === 'portrait') {
+      themeBtn.classList.remove('rotate');
       timeout = setTimeout(() => {
-        langBtn.classList.add('rotate');
+        themeBtn.classList.add('rotate');
       }, 10);
     }
+
+    document.body.setAttribute('data-theme', theme);
+
     return () => clearTimeout(timeout);
-  }, [language]);
+  }, [theme]);
 
   if (!language || language === '') {
     return null;
@@ -135,7 +141,7 @@ function App() {
       ) : (
         <>
           <DesktopHeader />
-          <DesktopFooter aspectRatio={aspectRatio} />
+          <DesktopFooter />
         </>
       )}
       <Routes>

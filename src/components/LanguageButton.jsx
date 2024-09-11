@@ -24,9 +24,9 @@ const LanguageButton = () => {
   };
 
   return (
-    <a className="button" id="language-btn" onClick={handleClick}>
+    <button className="button" id="language-btn" onClick={handleClick}>
       {iconLabel.toUpperCase()}
-    </a>
+    </button>
   );
 };
 
