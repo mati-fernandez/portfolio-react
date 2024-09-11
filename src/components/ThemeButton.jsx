@@ -6,7 +6,7 @@ import Sun from '../assets/Sun';
 import Moon from '../assets/Moon';
 
 const ThemeButton = () => {
-  const { theme, setTheme, setFromThemeBtn } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
   const [icon, setIcon] = useState(theme === 'dark' ? <Sun /> : <Moon />);
 
   useEffect(() => {
@@ -18,7 +18,6 @@ const ThemeButton = () => {
   }, [theme]);
 
   const handleClick = () => {
-    setFromThemeBtn(true);
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 

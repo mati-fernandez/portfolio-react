@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { TranslationContext } from './i18n/TranslationContext';
 import { ThemeContext } from './context/ThemeContext';
 import { useEffect, useState } from 'react';
@@ -31,6 +31,7 @@ function App() {
   const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
 
   const location = useLocation();
+  const prevThemeRef = useRef(theme);
 
   const handleOpenModal = (itemKey, img, link) => {
     setModalVisibility(true);
@@ -62,9 +63,12 @@ function App() {
     let headerTimeout = null;
     const delayIncrement = 0.1;
 
-    if (aspectRatio === 'portrait' && (fromLanguageBtn || fromThemeBtn)) {
+    if (
+      aspectRatio === 'portrait' &&
+      (prevThemeRef.current !== theme || fromLanguageBtn)
+    ) {
+      prevThemeRef.current = theme;
       setFromLanguageBtn(false);
-      setFromThemeBtn(false);
       return;
     }
     setShowMenu(false);
@@ -130,6 +134,7 @@ function App() {
   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO y resta un warning de "No routes matched location".
   return (
     <>
+      {/* {console.log(theme)} */}
       {activeModal && (
         <Modal
           activeModal={activeModal.itemKey}
