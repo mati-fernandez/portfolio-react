@@ -14,7 +14,7 @@ const MobileMenu = () => {
 
   return (
     <div className="menu">
-      {/* <LanguageButton language={language} setLanguage={setLanguage} /> */}
+      <LanguageButton language={language} setLanguage={setLanguage} />
       <ThemeButton />
       <nav id="mobile-main-menu">
         <MainMenu />

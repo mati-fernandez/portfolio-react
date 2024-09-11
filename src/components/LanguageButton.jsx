@@ -1,32 +1,27 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
 
 const LanguageButton = () => {
   const { language, setLanguage, setFromLanguageBtn } =
     useContext(TranslationContext);
-  const [iconLabel, setIconLabel] = useState(language);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIconLabel(language);
-      clearTimeout(timeout);
-    }, 600);
-  }, [language]);
-
-  const handleClick = () => {
+  const handleLanguageChange = (event) => {
+    const newLanaguage = event.target.value;
     setFromLanguageBtn(true);
-    language === 'es' ? setLanguage('en') : setLanguage('es');
-    const timeout = setTimeout(() => {
-      language === 'es' ? setIconLabel('en') : setIconLabel('es');
-      clearTimeout(timeout);
-    }, 600);
+    setLanguage(newLanaguage);
   };
 
   return (
-    <button className="button" id="language-btn" onClick={handleClick}>
-      {iconLabel.toUpperCase()}
-    </button>
+    <select
+      className="glowing"
+      id="language-btn"
+      value={language}
+      onChange={handleLanguageChange}
+    >
+      <option value="es">ES</option>
+      <option value="en">EN</option>
+    </select>
   );
 };
 

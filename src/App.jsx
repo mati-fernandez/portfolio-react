@@ -28,7 +28,7 @@ function App() {
   const [modalVisibility, setModalVisibility] = useState(false);
   const { language, fromLanguageBtn, setFromLanguageBtn } =
     useContext(TranslationContext);
-  const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   const location = useLocation();
   const prevThemeRef = useRef(theme);
@@ -54,8 +54,21 @@ function App() {
     setAspectRatio(updateAspectRatio());
     document.addEventListener('contextmenu', (e) => e.preventDefault());
 
+    // Remover inline styles de body al finalizar carga de App
+    const removeInlineStyles = () => {
+      const body = document.querySelector('body');
+      if (body) {
+        body.style.backgroundColor = '';
+        body.style.fontWeight = '';
+      }
+    };
+
+    // Espera a que la página cargue completamente
+    window.addEventListener('load', removeInlineStyles);
+
     return () => {
       document.removeEventListener('contextmenu', (e) => e.preventDefault());
+      window.removeEventListener('load', removeInlineStyles);
     };
   }, []);
   // ANIMACIONES
@@ -78,7 +91,7 @@ function App() {
       document.querySelectorAll('#desktop-footer a, #desktop-footer button')
     ).reverse();
     const desktopHeaderBtns = Array.from(
-      document.querySelectorAll('#desktop-header a')
+      document.querySelectorAll('#desktop-header a, select')
     );
     desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
     if (location.pathname.endsWith('home')) {

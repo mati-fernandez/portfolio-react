@@ -10,7 +10,7 @@ html {
   -ms-user-select: none; /* Internet Explorer/Edge */
   /* Elimina el color de resaltado en dispositivos móviles */
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 0.8s ease-in-out, font-weight 0.8s ease-in-out;
+  transition: background-color 0.8s ease-in-out;
 }
 
 body {
@@ -21,7 +21,7 @@ body {
   margin: 0 auto;
   padding: 0;
   text-align: center;
-  transition: background-color 0.8s ease-in-out;
+  transition: background-color 0.8s ease-in-out, font-weight 0.8s ease-in-out;
 }
 
 :root {
@@ -55,7 +55,7 @@ body {
   --border: 2px solid var(--color-primary);
   --icon-fill: black;
   --title-color: dark;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 :hover:not(body, .menu) .button:not(svg, .active-button) {
@@ -88,18 +88,21 @@ svg {
 }
 
 #language-btn {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  color: var(--color-primary);
+  background-color: transparent;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
   pointer-events: auto;
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
   font-size: 1.3rem;
-  font-weight: 200;
+  font-weight: inherit;
   position: fixed;
   top: 0;
   right: 0;
   z-index: 11;
-  margin: 3vh 4vw;
+  margin: 4.5vh 8vw;
 }
 
 #theme-btn {
@@ -540,7 +543,9 @@ figcaption {
   #language-btn {
     position: static;
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
+    border-radius: 0;
+    height: 100%;
   }
 
   #theme-btn {
