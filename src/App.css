@@ -10,12 +10,39 @@ html {
   -ms-user-select: none; /* Internet Explorer/Edge */
   /* Elimina el color de resaltado en dispositivos móviles */
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 0.8s ease-in-out;
+  transition: background-color 0.8s ease-in-out, font-weight 0.8s ease-in-out;
 }
 
-*:hover:not(body, .menu, svg),
-.button {
-  transition: none;
+[data-theme='dark'] {
+  --color-primary: white;
+  --color-secondary: #9a9a9a;
+  --color-secondary-alpha: #939e8f80;
+  --color-background: black;
+  --color-background-secondary: #222;
+  --color-background-alpha: #2e312bec;
+  --color-background-alpha-secondary: #222222ce;
+  --border: 1px solid var(--color-secondary);
+  --icon-fill: white;
+  --title-color: white;
+  font-weight: 100;
+}
+
+[data-theme='light'] {
+  --color-primary: black;
+  --color-secondary: #d3d2d2;
+  --color-secondary-alpha: #89a18480;
+  --color-background: rgb(233, 233, 233);
+  --color-background-secondary: #ffffff;
+  --color-background-alpha: #ffffffec;
+  --color-background-alpha-secondary: #d8d8d8ce;
+  --border: 2px solid var(--color-primary);
+  --icon-fill: black;
+  --title-color: dark;
+  font-weight: 500;
+}
+
+:hover:not(body, .menu) .button:not(svg, .active-button) {
+  transition: color 0.8s ease-in-out;
 }
 
 a {
@@ -35,32 +62,6 @@ svg {
   font-size: 4vmin;
   /* VARIABLES */
   --vh: 1vh; /* Valor inicial para la variable */
-}
-
-[data-theme='dark'] {
-  --color-primary: white;
-  --color-secondary: #9a9a9a;
-  --color-secondary-alpha: #939e8f80;
-  --color-background: black;
-  --color-background-secondary: #222;
-  --color-background-alpha: #2e312bec;
-  --color-background-alpha-secondary: #222222ce;
-  --border: 1px solid var(--color-secondary);
-  --icon-fill: white;
-}
-
-[data-theme='light'] {
-  --color-primary: black;
-  --color-secondary: #d3d2d2;
-  --color-secondary-alpha: #89a18480;
-  --color-background: rgb(233, 233, 233);
-  --color-background-alpha: rgba(221, 221, 221, 0.629);
-  --color-background-secondary: #ffffff;
-  --color-background-alpha: #a6ae9eec;
-  --color-background-alpha-secondary: #d8d8d8ce;
-  --icon-fill: black;
-  --border: 2px solid var(--color-primary);
-  font-weight: 400;
 }
 
 body {
@@ -243,7 +244,7 @@ body {
 .detail h3 {
   font-size: 6vw;
   margin-bottom: 0;
-  color: white;
+  color: var(--title-color);
 }
 
 figure {
@@ -276,7 +277,7 @@ figcaption {
   font-size: 4vw;
   height: fit-content;
   width: fit-content;
-  border: 1px solid var(--color-secondary);
+  border: var(--border);
 }
 
 .page {
