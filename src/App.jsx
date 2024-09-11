@@ -28,7 +28,7 @@ function App() {
   const [modalVisibility, setModalVisibility] = useState(false);
   const { language, fromLanguageBtn, setFromLanguageBtn } =
     useContext(TranslationContext);
-  const { theme } = useContext(ThemeContext);
+  const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
 
   const location = useLocation();
 
@@ -62,7 +62,11 @@ function App() {
     let headerTimeout = null;
     const delayIncrement = 0.1;
 
-    if (aspectRatio === 'portrait') return;
+    if (aspectRatio === 'portrait' && (fromLanguageBtn || fromThemeBtn)) {
+      setFromLanguageBtn(false);
+      setFromThemeBtn(false);
+      return;
+    }
     setShowMenu(false);
 
     const buttons = Array.from(document.querySelectorAll('.page a')).reverse();

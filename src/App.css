@@ -10,12 +10,34 @@ html {
   -ms-user-select: none; /* Internet Explorer/Edge */
   /* Elimina el color de resaltado en dispositivos móviles */
   -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.8s ease-in-out;
+}
+
+*:hover:not(body, .menu, svg),
+.button {
+  transition: none;
+}
+
+a {
+  transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
+}
+
+p:not(#name) {
+  transition: color 0.8s ease-in-out;
+}
+
+svg {
+  fill: var(--icon-fill);
+  transition: fill 0.8s ease-in-out;
 }
 
 :root {
   font-size: 4vmin;
   /* VARIABLES */
   --vh: 1vh; /* Valor inicial para la variable */
+}
+
+[data-theme='dark'] {
   --color-primary: white;
   --color-secondary: #9a9a9a;
   --color-secondary-alpha: #939e8f80;
@@ -23,25 +45,22 @@ html {
   --color-background-secondary: #222;
   --color-background-alpha: #2e312bec;
   --color-background-alpha-secondary: #222222ce;
-}
-
-[data-theme='dark'] {
-  --color-primary: white;
-  --color-background: black;
-  --color-background-secondary: #222;
+  --border: 1px solid var(--color-secondary);
   --icon-fill: white;
 }
 
 [data-theme='light'] {
   --color-primary: black;
-  --color-background: rgb(221, 221, 221);
+  --color-secondary: #d3d2d2;
+  --color-secondary-alpha: #89a18480;
+  --color-background: rgb(233, 233, 233);
+  --color-background-alpha: rgba(221, 221, 221, 0.629);
   --color-background-secondary: #ffffff;
+  --color-background-alpha: #a6ae9eec;
+  --color-background-alpha-secondary: #d8d8d8ce;
   --icon-fill: black;
+  --border: 2px solid var(--color-primary);
   font-weight: 400;
-}
-
-svg {
-  fill: var(--icon-fill);
 }
 
 body {
@@ -53,6 +72,7 @@ body {
   margin: 0 auto;
   padding: 0;
   text-align: center;
+  transition: background-color 0.8s ease-in-out;
 }
 
 .container {
@@ -86,11 +106,11 @@ body {
   position: fixed;
   pointer-events: auto;
   z-index: 11;
-  margin: 1vh 4vw;
 }
 
 #name {
   font-size: 1.8rem;
+  font-weight: 400;
   margin: 0;
   border-radius: 50px;
   padding: 2vw;
@@ -103,8 +123,8 @@ body {
   padding: 2vh;
 }
 
-#hamburguer-btn > img {
-  height: 1.8rem;
+#hamburguer-svg {
+  height: 2.1rem;
 }
 
 #avatar {
@@ -280,7 +300,7 @@ figcaption {
 }
 
 .page a {
-  border: 1px solid var(--color-secondary);
+  border: var(--border);
   height: fit-content;
   opacity: 0;
   animation: slideIn 200ms ease-out forwards;
@@ -332,11 +352,13 @@ figcaption {
   height: 2rem;
 }
 
-#cv-mobile-a > img {
-  width: 2rem;
-}
+/* #linkedin-a {
+  padding: 1vh 2vh;
+  margin: unset;
+} */
 
-.linkedin-a {
+#desktop-footer a {
+  align-items: center;
   justify-content: center;
 }
 
@@ -344,6 +366,10 @@ figcaption {
   width: 80%;
   border-radius: 0;
   aspect-ratio: 1;
+}
+
+#cv {
+  width: 66px;
 }
 
 .long-text {

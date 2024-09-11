@@ -7,13 +7,15 @@ const DesktopFooter = () => {
     <div id="desktop-footer">
       <ThemeButton />
       <a
-        className="button linkedin-a"
+        id="linkedin-a"
+        className="button"
         href="https://www.linkedin.com/in/mati-fernandez/"
         target="blank"
       >
         <Linkedin />
       </a>
       <a
+        id="github-a"
         className="button"
         href="https://github.com/mati-fernandez"
         target="_blank"

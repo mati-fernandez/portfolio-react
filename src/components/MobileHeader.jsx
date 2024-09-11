@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import hamburguer from '../assets/hamburguer.svg';
+import Hamburguer from '../assets/Hamburguer';
 import MobileMenu from './MobileMenu';
 import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
@@ -21,7 +21,7 @@ const MobileHeader = ({ showMenu, setShowMenu }) => {
           <p id="name">Matias</p>
         </Link>
         <a id="hamburguer-btn" onClick={toggleMenu}>
-          <img src={hamburguer} alt="Menu button" />
+          <Hamburguer />
         </a>
       </header>
     </div>

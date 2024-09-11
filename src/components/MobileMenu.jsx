@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import Linkedin from '../assets/Linkedin';
 import Github from '../assets/Github';
-import cv from '../assets/cv.svg';
+import Cv from '../assets/Cv';
 import LanguageButton from '../components/LanguageButton';
 import { useContext } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
@@ -39,7 +39,7 @@ const MobileMenu = () => {
             href="https://drive.google.com/drive/folders/17_6t9pEX7BIkTsfLXCYRqWZuI0Ygty0P?usp=sharing"
             target="_blank"
           >
-            <img src={cv} alt="Hoja de vida" />
+            <Cv />
           </a>
         </div>
       </nav>

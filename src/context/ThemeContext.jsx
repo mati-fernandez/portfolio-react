@@ -6,12 +6,15 @@ export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('dark');
+  const [fromThemeBtn, setFromThemeBtn] = useState(false);
 
   return (
     <ThemeContext.Provider
       value={{
         theme,
         setTheme,
+        fromThemeBtn,
+        setFromThemeBtn,
       }}
     >
       {children}
