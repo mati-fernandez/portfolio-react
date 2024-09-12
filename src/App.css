@@ -41,6 +41,7 @@ body {
   --border: 1px solid var(--color-secondary);
   --icon-fill: white;
   --title-color: white;
+  --h3-font-weight: 100;
   font-weight: 100;
 }
 
@@ -55,6 +56,7 @@ body {
   --border: 2px solid var(--color-primary);
   --icon-fill: black;
   --title-color: dark;
+  --h3-font-weight: 500;
   font-weight: 400;
 }
 
@@ -460,17 +462,22 @@ figcaption {
     border: 1px solid var(--color-secondary);
     border-radius: 200px;
     z-index: -1;
-    background-color: var(--color-secondary-alpha);
+    background-color: var(--color-background);
   }
 
   .detail h3 {
     position: absolute;
     font-size: 4vw;
-    top: -50px;
+    top: -8%;
     left: 50%;
     transform: translateX(-50%);
     text-wrap: nowrap;
     z-index: 9;
+    font-weight: var(--h3-font-weight);
+    background-color: var(--color-background-secondary);
+    border-radius: 50px;
+    padding: 0 1.2vw;
+    border: var(--border);
   }
 
   figure {
@@ -496,9 +503,9 @@ figcaption {
     width: 60%;
     height: fit-content;
     background-color: var(--color-background-secondary);
-    border: 1px solid var(--color-secondary);
+    border: 1px solid var(--color-primary);
     border-radius: 50px;
-    padding: 1vw;
+    padding: 1vh 1.3vw;
   }
 
   .detail .btn-panel .button {
@@ -618,11 +625,17 @@ figcaption {
   #desktop-footer {
     box-sizing: border-box;
     width: 100%;
+    height: 11vh;
     position: fixed;
     display: flex;
     justify-content: space-around;
     bottom: 2vh;
     padding: 0 5vw;
     padding-top: 2vh;
+  }
+
+  #desktop-footer * {
+    display: flex;
+    align-items: center; /*Centra svg dentro de su padre*/
   }
 }

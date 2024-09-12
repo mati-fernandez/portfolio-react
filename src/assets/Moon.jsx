@@ -1,8 +1,10 @@
 const Moon = () => {
   return (
     <svg
+      width="33px"
+      height="33px"
       alt="moon-icon"
-      className="contact-img linkedin"
+      className="contact-img"
       fill="currentColor"
       xmlnsXlink="http://www.w3.org/2000/svg"
       viewBox="0 0 384 512"
