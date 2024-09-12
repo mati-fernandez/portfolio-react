@@ -91,7 +91,7 @@ function App() {
       document.querySelectorAll('#desktop-footer a, #desktop-footer button')
     ).reverse();
     const desktopHeaderBtns = Array.from(
-      document.querySelectorAll('#desktop-header a, select')
+      document.querySelectorAll('#desktop-header a')
     );
     desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
     if (location.pathname.endsWith('home')) {

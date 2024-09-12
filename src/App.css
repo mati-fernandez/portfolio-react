@@ -53,11 +53,11 @@ body {
   --color-background-secondary: #ffffff;
   --color-background-alpha: #ffffffec;
   --color-background-alpha-secondary: #d8d8d8ce;
-  --border: 2px solid var(--color-primary);
+  --border: 1px solid var(--color-primary);
   --icon-fill: black;
   --title-color: dark;
-  --h3-font-weight: 500;
-  font-weight: 400;
+  --h3-font-weight: 300;
+  font-weight: 300;
 }
 
 :hover:not(body, .menu) .button:not(svg, .active-button) {
@@ -68,6 +68,13 @@ a {
   transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
 }
 
+a,
+button {
+  display: flex;
+  align-items: center; /*Centra svg dentro de su padre*/
+  justify-content: center;
+}
+
 p:not(#name) {
   transition: color 0.8s ease-in-out;
 }
@@ -75,6 +82,8 @@ p:not(#name) {
 svg {
   fill: var(--icon-fill);
   transition: fill 0.8s ease-in-out;
+  width: 8vw;
+  height: 8vw;
 }
 
 .container {
@@ -416,8 +425,13 @@ figcaption {
 
   @keyframes glowing {
     50% {
-      background-color: var(--color-secondary-alpha);
+      background-color: var(--color-secondary);
     }
+  }
+
+  svg {
+    width: auto;
+    height: auto;
   }
 
   .glowing {
@@ -426,6 +440,10 @@ figcaption {
 
   #desktop-header a {
     border-radius: 0;
+  }
+
+  select {
+    padding: 0;
   }
 
   .container {
@@ -632,10 +650,5 @@ figcaption {
     bottom: 2vh;
     padding: 0 5vw;
     padding-top: 2vh;
-  }
-
-  #desktop-footer * {
-    display: flex;
-    align-items: center; /*Centra svg dentro de su padre*/
   }
 }
