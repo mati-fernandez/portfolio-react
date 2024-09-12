@@ -90,6 +90,11 @@ select:focus-visible {
   outline: none;
 }
 
+option {
+  color: var(--color-primary);
+  background-color: var(--color-background);
+}
+
 .container {
   position: fixed;
   top: 46%;
