@@ -9,6 +9,15 @@ const ThemeButton = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const [icon, setIcon] = useState(theme === 'dark' ? <Sun /> : <Moon />);
 
+  // Remover inline styles de body al finalizar carga de App
+  const removeInlineStyles = () => {
+    const body = document.querySelector('body');
+    if (body) {
+      body.style.backgroundColor = '';
+      body.style.fontWeight = '';
+    }
+  };
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIcon(theme === 'dark' ? <Sun /> : <Moon />);
@@ -18,6 +27,7 @@ const ThemeButton = () => {
   }, [theme]);
 
   const handleClick = () => {
+    removeInlineStyles();
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
 

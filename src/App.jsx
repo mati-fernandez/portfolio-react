@@ -54,21 +54,8 @@ function App() {
     setAspectRatio(updateAspectRatio());
     document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-    // Remover inline styles de body al finalizar carga de App
-    const removeInlineStyles = () => {
-      const body = document.querySelector('body');
-      if (body) {
-        body.style.backgroundColor = '';
-        body.style.fontWeight = '';
-      }
-    };
-
-    // Espera a que la página cargue completamente
-    window.addEventListener('load', removeInlineStyles);
-
     return () => {
       document.removeEventListener('contextmenu', (e) => e.preventDefault());
-      window.removeEventListener('load', removeInlineStyles);
     };
   }, []);
   // ANIMACIONES

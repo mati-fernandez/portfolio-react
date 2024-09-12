@@ -42,7 +42,7 @@ body {
   --icon-fill: white;
   --title-color: white;
   --h3-font-weight: 100;
-  font-weight: 100;
+  font-weight: 200;
 }
 
 [data-theme='light'] {
@@ -57,7 +57,7 @@ body {
   --icon-fill: black;
   --title-color: dark;
   --h3-font-weight: 300;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 :hover:not(body, .menu) .button:not(svg, .active-button) {
@@ -84,6 +84,10 @@ svg {
   transition: fill 0.8s ease-in-out;
   width: 8vw;
   height: 8vw;
+}
+
+select:focus-visible {
+  outline: none;
 }
 
 .container {
@@ -275,7 +279,7 @@ figure img {
 }
 
 figcaption {
-  font-size: 4vw;
+  font-size: 4.3vw;
   margin: 2vh;
 }
 
@@ -366,11 +370,6 @@ figcaption {
   height: 2rem;
 }
 
-/* #linkedin-a {
-  padding: 1vh 2vh;
-  margin: unset;
-} */
-
 #desktop-footer a {
   align-items: center;
   justify-content: center;
@@ -402,7 +401,7 @@ figcaption {
     margin-top: 2vh;
   }
   figcaption {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
   .page {
     padding: 0;
@@ -429,11 +428,6 @@ figcaption {
     }
   }
 
-  svg {
-    width: auto;
-    height: auto;
-  }
-
   .glowing {
     animation: glowing 1s ease-in-out;
   }
@@ -444,6 +438,10 @@ figcaption {
 
   select {
     padding: 0;
+  }
+
+  svg {
+    width: auto;
   }
 
   .container {

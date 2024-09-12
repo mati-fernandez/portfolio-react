@@ -13,12 +13,7 @@ const LanguageButton = () => {
   };
 
   return (
-    <select
-      className="glowing"
-      id="language-btn"
-      value={language}
-      onChange={handleLanguageChange}
-    >
+    <select id="language-btn" value={language} onChange={handleLanguageChange}>
       <option value="es">ES</option>
       <option value="en">EN</option>
     </select>
