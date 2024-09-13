@@ -34,10 +34,10 @@ const Modal = ({
           </figure>
           <div className="btn-panel">
             <a className="link button" onClick={closeModal}>
-              {translate(`${activeModal}.button1`)}
+              {translate(`${activeModal}.close`)}
             </a>
             <a href={link} target="_blank" className="link button">
-              {translate(`${activeModal}.button2`)}
+              {translate(`${activeModal}.open`)}
             </a>
           </div>
         </div>

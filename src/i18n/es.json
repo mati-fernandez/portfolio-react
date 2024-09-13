@@ -1,99 +1,100 @@
 {
   "description": "Soy un desarrollador web en crecimiento, creando proyectos con JavaScript y React mientras exploro nuevas tecnologías.",
   "menu": {
-    "item1": "Inicio",
-    "item2": "Proyectos",
-    "item3": "Ejercicios",
-    "item4": "Certificaciones"
+    "home": "Inicio",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "exercises": "Ejercicios",
+    "certifications": "Certificaciones"
   },
   "projects": {
-    "item1": {
+    "rqm": {
       "title": "Máquina de Citas Aleatorias (React)",
       "description": "Esta debe haber sido mi primer experiencia con peticiones asíncronas hacia una API externa. Utilizando la librería 'Axios' en este caso y el manejo de estado en React",
-      "button1": "Cerrar",
-      "button2": "Abrir proyecto"
+      "close": "Cerrar",
+      "open": "Abrir proyecto"
     },
-    "item2": {
+    "mdp": {
       "title": "Previsualizdor de Markdown (React)",
       "description": "Formateador de texto a Markdown en el cual puse en práctica el manejo de estado de React y utilicé la librería 'marked'",
-      "button1": "Cerrar",
-      "button2": "Abrir proyecto"
+      "close": "Cerrar",
+      "open": "Abrir proyecto"
     },
-    "item3": {
+    "dm": {
       "title": "Caja de Ritmos (React)",
       "description": "Caja de sonidos en la cual puse en práctica el manejo de estado y de efecto en React, y de grid en Css",
-      "button1": "Cerrar",
-      "button2": "Abrir proyecto"
+      "close": "Cerrar",
+      "open": "Abrir proyecto"
     },
-    "item4": {
+    "calc": {
       "title": "Calculadora JS (React)",
       "description": "Calculadora en la cual puse en práctica el manejo de estado y de efecto en React, y de grid en Css. También recuerdo que me hizo pensar mucho para resolver la lógica de cada posible situación para hacerla 'irrompible'.",
-      "button1": "Cerrar",
-      "button2": "Abrir proyecto"
+      "close": "Cerrar",
+      "open": "Abrir proyecto"
     },
-    "item5": {
+    "pc": {
       "title": "Reloj Pomodoro (React)",
       "description": "En el reloj pomodoro puse en práctica un manejo mas avanzado del estado como también del efecto con la utilización de callbacks y el monitoreo de dependencias. No fue fácil pasar todos los test ya que tiene una lógica avanzada para el nivel que traía hasta ese momento. También se usó useRef.",
-      "button1": "Cerrar",
-      "button2": "Abrir proyecto"
+      "close": "Cerrar",
+      "open": "Abrir proyecto"
     },
-    "item6": {
+    "op": {
       "title": "Portafolio Antiguo (JS Vainilla)",
       "description": "En el viejo portafolio pude poner en práctica la programación orientada a eventos con Vanilla JavaScript y el diseño responsivo.",
-      "button1": "Cerrar",
-      "button2": "Abrir proyecto"
+      "close": "Cerrar",
+      "open": "Abrir proyecto"
     }
   },
   "exercises": {
-    "item1": {
+    "dom": {
       "title": "DOM (JS Vainilla)",
       "description": "Ejercicio práctico sobre la manipulación del DOM con JavaScript, explorando eventos y modificando el contenido dinámicamente.",
-      "button1": "Cerrar",
-      "button2": "Ver Ejercicio"
+      "close": "Cerrar",
+      "open": "Ver Ejercicio"
     },
-    "item2": {
+    "draw": {
       "title": "Dibujo (JS Vainilla; para PC)",
       "description": "Introducción a la creación de gráficos en la web usando el elemento Canvas de HTML5 y JavaScript para dibujar.",
-      "button1": "Cerrar",
-      "button2": "Ver Ejercicio"
+      "close": "Cerrar",
+      "open": "Ver Ejercicio"
     },
-    "item3": {
+    "tetris": {
       "title": "Tetris (JS Vainilla)",
       "description": "Implementación del clásico juego de Tetris usando solo JavaScript, HTML y CSS, poniendo en práctica el manejo del tiempo y la manipulación del DOM.",
-      "button1": "Cerrar",
-      "button2": "Ver Ejercicio"
+      "close": "Cerrar",
+      "open": "Ver Ejercicio"
     },
-    "item4": {
+    "monkeytype": {
       "title": "Mecanografía (JS Vainilla; para PC)",
       "description": "Ejercicio para mejorar la velocidad de escritura en teclado a través de la creación de una aplicación interactiva que mide y evalúa la velocidad de tipeo.",
-      "button1": "Cerrar",
-      "button2": "Ver Ejercicio"
+      "close": "Cerrar",
+      "open": "Ver Ejercicio"
     },
-    "item5": {
+    "excel": {
       "title": "Excel (JS Vainilla; para PC)",
       "description": "En este ejercicio puse en práctica mi lógica de programación. Imita algunas funciones básicas de Excel. Pretendo seguir ampliando sus funcionalidades ya que me resulta un desafío interesante. ",
-      "button1": "Cerrar",
-      "button2": "Ver Ejercicio"
+      "close": "Cerrar",
+      "open": "Ver Ejercicio"
     }
   },
   "certifications": {
-    "item1": {
+    "rwd": {
       "title": "Diseño Web Responsivo",
       "description": "Certificación que abarca los conceptos esenciales del diseño web, incluyendo CSS Flexbox, CSS Grid, y diseño adaptable a diferentes tamaños de pantalla.",
-      "button1": "Cerrar",
-      "button2": "Ver Certificación"
+      "close": "Cerrar",
+      "open": "Ver Certificación"
     },
-    "item2": {
+    "javascript": {
       "title": "Algoritmos JS & Estructuras de datos",
       "description": "Certificación en la que se cubren temas como algoritmos de ordenamiento, estructuras de datos comunes en JavaScript, y la resolución de problemas complejos.",
-      "button1": "Cerrar",
-      "button2": "Ver Certificación"
+      "close": "Cerrar",
+      "open": "Ver Certificación"
     },
-    "item3": {
+    "fdl": {
       "title": "Librerías de Desarrollo de Interfaz",
       "description": "Certificación enfocada en el uso de librerías populares como React, Redux, y herramientas para el desarrollo de interfaces de usuario.",
-      "button1": "Cerrar",
-      "button2": "Ver Certificación"
+      "close": "Cerrar",
+      "open": "Ver Certificación"
     }
   }
 }

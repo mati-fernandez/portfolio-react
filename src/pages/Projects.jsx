@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
@@ -29,39 +30,39 @@ const Projects = ({ handleOpenModal, imagePreLoad }) => {
     <div className="page">
       <a
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.item1', imgrqm, links[0])}
+        onClick={() => handleOpenModal('projects.rqm', imgrqm, links[0])}
       >
-        {translate('projects.item1.title')}
+        {translate('projects.rqm.title')}
       </a>
       <a
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.item2', imgmdp, links[1])}
+        onClick={() => handleOpenModal('projects.mdp', imgmdp, links[1])}
       >
-        {translate('projects.item2.title')}
+        {translate('projects.mdp.title')}
       </a>
       <a
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.item3', imgdm, links[2])}
+        onClick={() => handleOpenModal('projects.dm', imgdm, links[2])}
       >
-        {translate('projects.item3.title')}
+        {translate('projects.dm.title')}
       </a>
       <a
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.item4', imgcalc, links[3])}
+        onClick={() => handleOpenModal('projects.calc', imgcalc, links[3])}
       >
-        {translate('projects.item4.title')}
+        {translate('projects.calc.title')}
       </a>
       <a
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.item5', imgpc, links[4])}
+        onClick={() => handleOpenModal('projects.pc', imgpc, links[4])}
       >
-        {translate('projects.item5.title')}
+        {translate('projects.pc.title')}
       </a>
       <a
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.item6', imgop, links[5])}
+        onClick={() => handleOpenModal('projects.op', imgop, links[5])}
       >
-        {translate('projects.item6.title')}
+        {translate('projects.op.title')}
       </a>
     </div>
   );

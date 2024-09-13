@@ -14,7 +14,15 @@ const MainMenu = () => {
         }
         to={`/${language}/home`}
       >
-        {translate('menu.item1')}
+        {translate('menu.home')}
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? 'active-button button link' : 'button link'
+        }
+        to={`/${language}/skills`}
+      >
+        {translate('menu.skills')}
       </NavLink>
       <NavLink
         className={({ isActive }) =>
@@ -22,7 +30,7 @@ const MainMenu = () => {
         }
         to={`/${language}/projects`}
       >
-        {translate('menu.item2')}
+        {translate('menu.projects')}
       </NavLink>
       <NavLink
         className={({ isActive }) =>
@@ -30,7 +38,7 @@ const MainMenu = () => {
         }
         to={`/${language}/exercises`}
       >
-        {translate('menu.item3')}
+        {translate('menu.exercises')}
       </NavLink>
       <NavLink
         className={({ isActive }) =>
@@ -38,7 +46,7 @@ const MainMenu = () => {
         }
         to={`/${language}/certifications`}
       >
-        {translate('menu.item4')}
+        {translate('menu.certifications')}
       </NavLink>
     </>
   );

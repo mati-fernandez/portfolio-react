@@ -1,99 +1,101 @@
 {
   "description": "I'm a growing web developer, building projects with JavaScript and React while exploring new technologies.",
   "menu": {
-    "item1": "Home",
-    "item2": "Projects",
-    "item3": "Exercises",
-    "item4": "Certifications"
+    "home": "Home",
+    "skills": "Skills",
+    "projects": "Projects",
+    "exercises": "Exercises",
+    "certifications": "Certifications"
   },
   "projects": {
-    "item1": {
+    "rqm": {
       "title": "Random Quote Machine (React)",
       "description": "This must have been my first experience with asynchronous requests to an external API. Using the 'Axios' library in this case and state management in React.",
-      "button1": "Close",
-      "button2": "Open project"
+      "close": "Close",
+      "open": "Open project"
     },
-    "item2": {
+    "mdp": {
       "title": "Markdown Previewer (React)",
       "description": "Text formatter to Markdown in which I implemented React's state management and used the 'marked' library.",
-      "button1": "Close",
-      "button2": "Open project"
+      "close": "Close",
+      "open": "Open project"
     },
-    "item3": {
+    "dm": {
       "title": "Drum Machine (React)",
       "description": "Sound box in which I implemented state and effect management in React, and grid in CSS.",
-      "button1": "Close",
-      "button2": "Open project"
+      "close": "Close",
+      "open": "Open project"
     },
-    "item4": {
+    "calc": {
       "title": "JS Calculator (React)",
       "description": "Calculator in which I put into practice state and effect management in React, and grid in CSS. I also remember that it made me think a lot to solve the logic of each possible situation to make it 'unbreakable'.",
-      "button1": "Close",
-      "button2": "Open project"
+      "close": "Close",
+      "open": "Open project"
     },
-    "item5": {
+    "pc": {
       "title": "Pomodoro Clock (React)",
       "description": "In the pomodoro clock I implemented a more advanced handling of the state as well as the effect with the use of callbacks and dependency monitoring. It was not easy to pass all the tests since it has an advanced logic for the level I had up to that point. useRef was also used.",
-      "button1": "Close",
-      "button2": "Open project"
+      "close": "Close",
+      "open": "Open project"
     },
-    "item6": {
+    "op": {
       "title": "Old Portfolio (Vanilla JS)",
       "description": "In the old portfolio I was able to put into practice event-driven programming with Vanilla JavaScript and the responsive design.",
-      "button1": "Close",
-      "button2": "Open project"
+      "close": "Close",
+      "open": "Open project"
     }
   },
+
   "exercises": {
-    "item1": {
+    "dom": {
       "title": "DOM (Vanilla JS; for PC)",
       "description": "Practical exercise on DOM manipulation with JavaScript, exploring events and dynamically modifying content.",
-      "button1": "Close",
-      "button2": "View Exercise"
+      "close": "Close",
+      "open": "View Exercise"
     },
-    "item2": {
+    "draw": {
       "title": "Draw (Vanilla JS; for PC)",
       "description": "Introduction to creating graphics on the web using the HTML5 Canvas element and JavaScript to draw.",
-      "button1": "Close",
-      "button2": "View Exercise"
+      "close": "Close",
+      "open": "View Exercise"
     },
-    "item3": {
+    "tetris": {
       "title": "Tetris (Vanilla JS)",
       "description": "Implementation of the classic Tetris game using only JavaScript, HTML, and CSS, practicing timing management and DOM manipulation.",
-      "button1": "Close",
-      "button2": "View Exercise"
+      "close": "Close",
+      "open": "View Exercise"
     },
-    "item4": {
+    "monkeytype": {
       "title": "Monkeytype (Vanilla JS; for PC)",
       "description": "Exercise to improve typing speed through creating an interactive application that measures and evaluates typing speed.",
-      "button1": "Close",
-      "button2": "View Exercise"
+      "close": "Close",
+      "open": "View Exercise"
     },
-    "item5": {
+    "excel": {
       "title": "Excel (Vanilla JS; for PC)",
       "description": "In this exercise I put my programming logic into practice. It imitates some basic Excel functions. I intend to continue expanding its functionalities as I find it an interesting challenge.",
-      "button1": "Close",
-      "button2": "View Exercise"
+      "close": "Close",
+      "open": "View Exercise"
     }
   },
   "certifications": {
-    "item1": {
+    "rwd": {
       "title": "Responsive Web Design",
       "description": "Certification covering the essential concepts of web design, including CSS Flexbox, CSS Grid, and responsive design for different screen sizes.",
-      "button1": "Close",
-      "button2": "View Certification"
+      "close": "Close",
+      "open": "View Certification"
     },
-    "item2": {
+    "javascript": {
       "title": "JS Algorithms & Data Structures",
       "description": "Certification covering topics like sorting algorithms, common data structures in JavaScript, and solving complex problems.",
-      "button1": "Close",
-      "button2": "View Certification"
+      "close": "Close",
+      "open": "View Certification"
     },
-    "item3": {
+    "fdl": {
       "title": "Front End Development Libraries",
       "description": "Certification focused on using popular libraries like React, Redux, and tools for building user interfaces.",
-      "button1": "Close",
-      "button2": "View Certification"
+      "close": "Close",
+      "open": "View Certification"
     }
   }
 }

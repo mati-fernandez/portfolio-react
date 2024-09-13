@@ -27,33 +27,35 @@ const Exercises = ({ handleOpenModal, imagePreLoad }) => {
     <div className="page">
       <a
         className="long-text button link"
-        onClick={() => handleOpenModal('exercises.item1', imgdom, links[0])}
+        onClick={() => handleOpenModal('exercises.dom', imgdom, links[0])}
       >
-        {translate('exercises.item1.title')}
+        {translate('exercises.dom.title')}
       </a>
       <a
         className="long-text button link"
-        onClick={() => handleOpenModal('exercises.item2', imgcan, links[1])}
+        onClick={() => handleOpenModal('exercises.draw', imgcan, links[1])}
       >
-        {translate('exercises.item2.title')}
+        {translate('exercises.draw.title')}
       </a>
       <a
         className="long-text button link"
-        onClick={() => handleOpenModal('exercises.item3', imgtet, links[2])}
+        onClick={() => handleOpenModal('exercises.tetris', imgtet, links[2])}
       >
-        {translate('exercises.item3.title')}
+        {translate('exercises.tetris.title')}
       </a>
       <a
         className="long-text button link"
-        onClick={() => handleOpenModal('exercises.item4', imgmon, links[3])}
+        onClick={() =>
+          handleOpenModal('exercises.monkeytype', imgmon, links[3])
+        }
       >
-        {translate('exercises.item4.title')}
+        {translate('exercises.monkeytype.title')}
       </a>
       <a
         className="long-text button link"
         onClick={() => handleOpenModal('exercises.item5', imgexc, links[4])}
       >
-        {translate('exercises.item5.title')}
+        {translate('exercises.excel.title')}
       </a>
     </div>
   );

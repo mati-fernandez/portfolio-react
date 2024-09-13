@@ -10,6 +10,7 @@ import './App.css';
 
 // COMPONENTS/PAGES
 import Home from './pages/Home';
+import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Certifications from './pages/Certifications';
 import Exercises from './pages/Exercises';
@@ -161,6 +162,16 @@ function App() {
         <Route
           path={`/${language}/home`}
           element={<Home showMenu={showMenu} setShowMenu={setShowMenu} />}
+        />
+        <Route
+          path={`/${language}/skills`}
+          element={
+            <Skills
+              showMenu={showMenu}
+              setShowMenu={setShowMenu}
+              imagePreLoad={imagePreLoad}
+            />
+          }
         />
         <Route
           path={`/${language}/projects`}

@@ -23,25 +23,23 @@ const Certifications = ({ handleOpenModal, imagePreLoad }) => {
     <div className="page">
       <a
         className="long-text button link"
-        onClick={() =>
-          handleOpenModal('certifications.item1', imgrwd, links[0])
-        }
+        onClick={() => handleOpenModal('certifications.rwd', imgrwd, links[0])}
       >
-        {translate('certifications.item1.title')}
-      </a>
-      <a
-        className="long-text button link"
-        onClick={() => handleOpenModal('certifications.item2', imgjs, links[1])}
-      >
-        {translate('certifications.item2.title')}
+        {translate('certifications.rwd.title')}
       </a>
       <a
         className="long-text button link"
         onClick={() =>
-          handleOpenModal('certifications.item3', imgfdl, links[2])
+          handleOpenModal('certifications.javascript', imgjs, links[1])
         }
       >
-        {translate('certifications.item3.title')}
+        {translate('certifications.javascript.title')}
+      </a>
+      <a
+        className="long-text button link"
+        onClick={() => handleOpenModal('certifications.fdl', imgfdl, links[2])}
+      >
+        {translate('certifications.fdl.title')}
       </a>
     </div>
   );
