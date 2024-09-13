@@ -16,6 +16,7 @@ const LanguageButton = () => {
     <select id="language-btn" value={language} onChange={handleLanguageChange}>
       <option value="es">ES</option>
       <option value="en">EN</option>
+      <option value="pt">PT</option>
     </select>
   );
 };

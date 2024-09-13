@@ -510,10 +510,6 @@ figcaption {
     border-radius: 0;
   }
 
-  select {
-    padding: 0;
-  }
-
   svg {
     width: auto;
   }
@@ -677,6 +673,7 @@ figcaption {
     font-size: 0.8rem;
     border-radius: 0;
     height: 100%;
+    padding: 0;
   }
 
   #theme-btn {

@@ -136,7 +136,11 @@ const Skills = ({ imagePreLoad }) => {
           <div className="skill-container">
             <img src={english} className="tech english" alt="Inglés" />
             <span className="skill-name">
-              {language === 'es' ? 'Inglés' : 'English'}
+              {language === 'es'
+                ? 'Inglés'
+                : language === 'en'
+                ? 'English'
+                : 'Inglês'}
             </span>
           </div>
           <div className="progress-bar">

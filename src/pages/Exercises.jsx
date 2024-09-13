@@ -53,7 +53,7 @@ const Exercises = ({ handleOpenModal, imagePreLoad }) => {
       </a>
       <a
         className="long-text button link"
-        onClick={() => handleOpenModal('exercises.item5', imgexc, links[4])}
+        onClick={() => handleOpenModal('exercises.excel', imgexc, links[4])}
       >
         {translate('exercises.excel.title')}
       </a>

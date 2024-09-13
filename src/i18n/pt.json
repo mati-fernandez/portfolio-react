@@ -1,0 +1,100 @@
+{
+  "description": "Sou um desenvolvedor web em crescimento, criando projetos com JavaScript e React enquanto exploro novas tecnologias.",
+  "menu": {
+    "home": "Início",
+    "skills": "Habilidades",
+    "projects": "Projetos",
+    "exercises": "Exercícios",
+    "certifications": "Certificações"
+  },
+  "projects": {
+    "rqm": {
+      "title": "Máquina de Citações Aleatórias (React)",
+      "description": "Essa foi provavelmente minha primeira experiência com requisições assíncronas para uma API externa. Utilizando a biblioteca 'Axios' neste caso e o gerenciamento de estado no React.",
+      "close": "Fechar",
+      "open": "Abrir projeto"
+    },
+    "mdp": {
+      "title": "Visualizador de Markdown (React)",
+      "description": "Formatador de texto para Markdown em que pratiquei o gerenciamento de estado no React e utilizei a biblioteca 'marked'.",
+      "close": "Fechar",
+      "open": "Abrir projeto"
+    },
+    "dm": {
+      "title": "Caixa de Ritmos (React)",
+      "description": "Caixa de sons em que pratiquei o gerenciamento de estado e efeitos no React, além de grid no CSS.",
+      "close": "Fechar",
+      "open": "Abrir projeto"
+    },
+    "calc": {
+      "title": "Calculadora JS (React)",
+      "description": "Calculadora onde pratiquei o gerenciamento de estado e efeitos no React, além de grid no CSS. Também me fez pensar bastante para resolver a lógica de cada possível situação e torná-la 'inquebrável'.",
+      "close": "Fechar",
+      "open": "Abrir projeto"
+    },
+    "pc": {
+      "title": "Relógio Pomodoro (React)",
+      "description": "No relógio Pomodoro, pratiquei um gerenciamento mais avançado de estado, além de efeitos utilizando callbacks e monitoramento de dependências. Não foi fácil passar todos os testes, pois tem uma lógica avançada para o nível que eu tinha até aquele momento. Também usei useRef.",
+      "close": "Fechar",
+      "open": "Abrir projeto"
+    },
+    "op": {
+      "title": "Portfólio Antigo (JS Puro)",
+      "description": "No portfólio antigo, pratiquei programação orientada a eventos com JavaScript Puro e design responsivo.",
+      "close": "Fechar",
+      "open": "Abrir projeto"
+    }
+  },
+  "exercises": {
+    "dom": {
+      "title": "DOM (JS Puro)",
+      "description": "Exercício prático sobre a manipulação do DOM com JavaScript, explorando eventos e modificando o conteúdo dinamicamente.",
+      "close": "Fechar",
+      "open": "Ver Exercício"
+    },
+    "draw": {
+      "title": "Desenho (JS Puro; para PC)",
+      "description": "Introdução à criação de gráficos na web usando o elemento Canvas do HTML5 e JavaScript para desenhar.",
+      "close": "Fechar",
+      "open": "Ver Exercício"
+    },
+    "tetris": {
+      "title": "Tetris (JS Puro)",
+      "description": "Implementação do clássico jogo de Tetris usando apenas JavaScript, HTML e CSS, praticando o gerenciamento de tempo e a manipulação do DOM.",
+      "close": "Fechar",
+      "open": "Ver Exercício"
+    },
+    "monkeytype": {
+      "title": "Digitação (JS Puro; para PC)",
+      "description": "Exercício para melhorar a velocidade de digitação através da criação de uma aplicação interativa que mede e avalia a velocidade de digitação.",
+      "close": "Fechar",
+      "open": "Ver Exercício"
+    },
+    "excel": {
+      "title": "Excel (JS Puro; para PC)",
+      "description": "Neste exercício, pratiquei minha lógica de programação. Imita algumas funções básicas do Excel. Pretendo continuar expandindo suas funcionalidades, já que acho um desafio interessante.",
+      "close": "Fechar",
+      "open": "Ver Exercício"
+    }
+  },
+  "certifications": {
+    "rwd": {
+      "title": "Design Web Responsivo",
+      "description": "Certificação que abrange os conceitos essenciais do design web, incluindo CSS Flexbox, CSS Grid, e design adaptável para diferentes tamanhos de tela.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    },
+    "javascript": {
+      "title": "Algoritmos JS & Estruturas de Dados",
+      "description": "Certificação que cobre temas como algoritmos de ordenação, estruturas de dados comuns em JavaScript e a resolução de problemas complexos.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    },
+    "fdl": {
+      "title": "Bibliotecas de Desenvolvimento de Interface",
+      "description": "Certificação focada no uso de bibliotecas populares como React, Redux e ferramentas para o desenvolvimento de interfaces de usuário.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    }
+  }
+}

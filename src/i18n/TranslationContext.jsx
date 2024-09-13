@@ -18,11 +18,18 @@ export const TranslationProvider = ({ children }) => {
       URLlang = 'es';
     } else if (pathParts.includes('en')) {
       URLlang = 'en';
+    } else if (pathParts.includes('pt') || pathParts.includes('br')) {
+      URLlang = 'pt';
     }
 
     if (!URLlang) {
       const userLanguage = navigator.language || navigator.userLanguage;
-      const detectedLanguage = userLanguage.startsWith('es') ? 'es' : 'en';
+      console.log('Idioma detectado:', userLanguage); // Para verificar qué idioma se está detectando
+      const detectedLanguage = userLanguage.startsWith('es')
+        ? 'es'
+        : userLanguage.startsWith('pt')
+        ? 'pt'
+        : 'en';
       const newPath = `/${detectedLanguage}/${pathParts.slice(2).join('/')}`;
       navigate(newPath, { replace: true });
       setLanguage(detectedLanguage);
