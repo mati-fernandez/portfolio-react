@@ -74,6 +74,7 @@ function App() {
     }
     setShowMenu(false);
 
+    const progress = Array.from(document.querySelectorAll('.progress'));
     const buttons = Array.from(document.querySelectorAll('.page a')).reverse();
     const icons = Array.from(
       document.querySelectorAll('#desktop-footer a, #desktop-footer button')
@@ -81,6 +82,16 @@ function App() {
     const desktopHeaderBtns = Array.from(
       document.querySelectorAll('#desktop-header a')
     );
+
+    progress.forEach((item) => item.classList.remove('fill-progress'));
+    const fillTimeout = setTimeout(() => {
+      progress.forEach((item, index) => {
+        const delay = index * delayIncrement;
+        item.classList.add('fill-progress');
+        item.style.animationDelay = `${delay}s`;
+      });
+    }, 10);
+
     desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
     if (location.pathname.endsWith('home')) {
       headerTimeout = setTimeout(() => {
@@ -109,7 +120,9 @@ function App() {
     });
 
     return () => {
-      clearTimeout(timeout), clearTimeout(headerTimeout);
+      clearTimeout(timeout),
+        clearTimeout(fillTimeout),
+        clearTimeout(headerTimeout);
     };
   }, [location.pathname, theme]);
 

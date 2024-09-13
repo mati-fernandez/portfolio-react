@@ -36,6 +36,7 @@ body {
 
 [data-theme='dark'] {
   --color-primary: white;
+  --color-secondary: #9a9a9a;
   --color-secondary-alpha: #939e8f80;
   --color-background: black;
   --color-background-secondary: #222;
@@ -116,7 +117,6 @@ option {
   background-color: transparent;
   border: none;
   cursor: pointer;
-
   pointer-events: auto;
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
   font-size: 1.3rem;
@@ -125,7 +125,8 @@ option {
   top: 0;
   right: 0;
   z-index: 11;
-  margin: 4.5vh 8vw;
+  margin: 2vh 6vw;
+  padding: 2vh;
 }
 
 #theme-btn {
@@ -261,6 +262,16 @@ option {
   height: calc(var(--font-size-landscape) * 0.6);
   margin-left: 10px;
   overflow: hidden;
+}
+
+@keyframes progress {
+  0% {
+    width: 0;
+  }
+}
+
+.fill-progress {
+  animation: progress 200ms ease-out backwards;
 }
 
 .progress {
