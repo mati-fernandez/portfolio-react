@@ -7,6 +7,7 @@ import { ThemeContext } from './context/ThemeContext';
 import { useEffect, useState } from 'react';
 import { updateViewportHeight } from './helpers/updateViewportHeight';
 import './App.css';
+import { useNavigationHandler } from './components/NavigationHandler';
 
 // COMPONENTS/PAGES
 import Home from './pages/Home';
@@ -30,6 +31,33 @@ function App() {
   const { language, fromLanguageBtn, setFromLanguageBtn } =
     useContext(TranslationContext);
   const { theme } = useContext(ThemeContext);
+
+  useNavigationHandler(
+    activeModal,
+    setActiveModal,
+    setModalVisibility,
+    showMenu,
+    setShowMenu
+  );
+
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      if (activeModal) {
+        // Mostrar advertencia de salida
+        event.preventDefault();
+        event.returnValue = '';
+
+        // Cerrar el modal si el usuario realmente quiere salir
+        setActiveModal('');
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [activeModal, setActiveModal]);
 
   const location = useLocation();
   const prevThemeRef = useRef(theme);
@@ -106,7 +134,7 @@ function App() {
     icons.forEach((icon) => {
       icon.classList.remove('animate-icon');
     });
-    const timeout = setTimeout(() => {
+    const iconTimeout = setTimeout(() => {
       icons.forEach((icon, index) => {
         const delay = index * delayIncrement;
         icon.classList.add('animate-icon');
@@ -120,7 +148,7 @@ function App() {
     });
 
     return () => {
-      clearTimeout(timeout),
+      clearTimeout(iconTimeout),
         clearTimeout(fillTimeout),
         clearTimeout(headerTimeout);
     };
