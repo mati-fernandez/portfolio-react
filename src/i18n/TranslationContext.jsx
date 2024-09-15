@@ -12,8 +12,9 @@ export const TranslationProvider = ({ children }) => {
   const [fromLanguageBtn, setFromLanguageBtn] = useState(false);
 
   useEffect(() => {
-    const pathParts = location.hash.split('/').filter(Boolean);
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
     let URLlang = '';
+
     if (pathParts.includes('es')) {
       URLlang = 'es';
     } else if (pathParts.includes('en')) {
@@ -30,15 +31,15 @@ export const TranslationProvider = ({ children }) => {
         : userLanguage.startsWith('pt')
         ? 'pt'
         : 'en';
-      const newPath = `/${detectedLanguage}/${pathParts.slice(2).join('/')}`;
+      const newPath = `/${detectedLanguage}/${pathParts.slice(1).join('/')}`;
       navigate(newPath, { replace: true });
       setLanguage(detectedLanguage);
     } else if (!language) {
       setLanguage(URLlang);
-      const newPath = `/${language}/${pathParts.slice(2).join('/')}`;
+      const newPath = `/${URLlang}/${pathParts.slice(1).join('/')}`;
       navigate(newPath, { replace: true });
     } else if (language && URLlang !== language && fromLanguageBtn) {
-      const newPath = `/${language}/${pathParts.slice(2).join('/')}`;
+      const newPath = `/${language}/${pathParts.slice(1).join('/')}`;
       navigate(newPath, { replace: true });
     } else {
       setLanguage(URLlang);

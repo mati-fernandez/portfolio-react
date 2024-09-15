@@ -1,13 +1,19 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import {
+  RouterProvider,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from 'react-router-dom';
 import { useContext, useRef } from 'react';
 import { TranslationContext } from './i18n/TranslationContext';
 import { ThemeContext } from './context/ThemeContext';
 import { useEffect, useState } from 'react';
 import { updateViewportHeight } from './helpers/updateViewportHeight';
 import './App.css';
-import { useNavigationHandler } from './components/NavigationHandler';
+import { usePreventNavigation } from './hooks/PreventNavigation';
 
 // COMPONENTS/PAGES
 import Home from './pages/Home';
@@ -32,13 +38,13 @@ function App() {
     useContext(TranslationContext);
   const { theme } = useContext(ThemeContext);
 
-  useNavigationHandler(
-    activeModal,
-    setActiveModal,
-    setModalVisibility,
-    showMenu,
-    setShowMenu
-  );
+  //   usePreventNavigation(
+  //     modalVisibility,
+  //     setModalVisibility,
+  //     setActiveModal,
+  //     showMenu,
+  //     setShowMenu
+  //   );
 
   useEffect(() => {
     const handleBeforeUnload = (event) => {
