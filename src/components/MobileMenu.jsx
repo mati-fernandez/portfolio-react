@@ -9,7 +9,7 @@ import { TranslationContext } from '../i18n/TranslationContext';
 import MainMenu from './MainMenu';
 import ThemeButton from './ThemeButton';
 
-const MobileMenu = () => {
+const MobileMenu = ({ setFromMenuBtn }) => {
   const { language, setLanguage } = useContext(TranslationContext);
 
   return (
@@ -17,7 +17,7 @@ const MobileMenu = () => {
       <LanguageButton language={language} setLanguage={setLanguage} />
       <ThemeButton />
       <nav id="mobile-main-menu">
-        <MainMenu />
+        <MainMenu setFromMenuBtn={setFromMenuBtn} />
         <div id="contact-wrapper">
           <a
             className="button linkedin-a"

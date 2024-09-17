@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+  useNavigate,
+} from 'react-router-dom';
 import { useContext, useRef } from 'react';
 import { TranslationContext } from './i18n/TranslationContext';
 import { ThemeContext } from './context/ThemeContext';
@@ -27,13 +33,16 @@ function App() {
   const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
   const [activeModal, setActiveModal] = useState('');
   const [modalVisibility, setModalVisibility] = useState(false);
+  const [fromMenuBtn, setFromMenuBtn] = useState(false);
   const { language, fromLanguageBtn, setFromLanguageBtn } =
     useContext(TranslationContext);
   const { theme } = useContext(ThemeContext);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const prevThemeRef = useRef(theme);
-
+  const prevHistory = useRef([null, location.pathname]);
+  console.log(location.pathname);
   const handleOpenModal = (itemKey, img, link) => {
     setModalVisibility(true);
     setActiveModal({ itemKey, img, link });
@@ -47,16 +56,21 @@ function App() {
   };
 
   // CLOSE MODAL OR MENU ON NAVIGATION (HashRouter can't manipulate history)
+  // Para el modal sirve este hack pero para el menu deberia ver si la accion fue navegar el hisory y no la navegacion directa de los links del menu
   useEffect(() => {
-    if (activeModal || showMenu) {
+    // En el if no usar activeModal porque provoca bucle al tener timeout en el set
+    if (modalVisibility || (showMenu && !fromMenuBtn)) {
       setShowMenu(false);
+      setFromMenuBtn(false);
       setModalVisibility(false);
       const timeout = setTimeout(() => {
         setActiveModal('');
         clearTimeout(timeout);
       }, 150);
+      navigate(1);
     }
-  }, [location]);
+  }, [location.pathname]);
+  console.log(fromMenuBtn);
 
   // VSUALIZACION
   useEffect(() => {
@@ -171,7 +185,11 @@ function App() {
         />
       )}
       {aspectRatio === 'portrait' ? (
-        <MobileHeader showMenu={showMenu} setShowMenu={setShowMenu} />
+        <MobileHeader
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+          setFromMenuBtn={setFromMenuBtn}
+        />
       ) : (
         <>
           <DesktopHeader />

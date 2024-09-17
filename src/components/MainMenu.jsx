@@ -3,8 +3,12 @@ import { TranslationContext } from '../i18n/TranslationContext';
 import { useContext } from 'react';
 
 // eslint-disable-next-line react/prop-types
-const MainMenu = () => {
+const MainMenu = ({ setFromMenuBtn }) => {
   const { translate, language } = useContext(TranslationContext);
+
+  const handleClick = () => {
+    setFromMenuBtn(true);
+  };
 
   return (
     <>
@@ -13,6 +17,7 @@ const MainMenu = () => {
           isActive ? 'active-button button link' : 'button link'
         }
         to={`/${language}/home`}
+        onClick={handleClick}
       >
         {translate('menu.home')}
       </NavLink>
@@ -21,6 +26,7 @@ const MainMenu = () => {
           isActive ? 'active-button button link' : 'button link'
         }
         to={`/${language}/skills`}
+        onClick={handleClick}
       >
         {translate('menu.skills')}
       </NavLink>
@@ -29,6 +35,7 @@ const MainMenu = () => {
           isActive ? 'active-button button link' : 'button link'
         }
         to={`/${language}/projects`}
+        onClick={handleClick}
       >
         {translate('menu.projects')}
       </NavLink>
@@ -37,6 +44,7 @@ const MainMenu = () => {
           isActive ? 'active-button button link' : 'button link'
         }
         to={`/${language}/exercises`}
+        onClick={handleClick}
       >
         {translate('menu.exercises')}
       </NavLink>
@@ -45,6 +53,7 @@ const MainMenu = () => {
           isActive ? 'active-button button link' : 'button link'
         }
         to={`/${language}/certifications`}
+        onClick={handleClick}
       >
         {translate('menu.certifications')}
       </NavLink>
