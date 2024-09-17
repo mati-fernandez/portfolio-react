@@ -391,11 +391,14 @@ figcaption {
   }
 }
 
+.slide-in {
+  animation: slideIn 200ms ease-out forwards;
+}
+
 .page a {
   border: var(--border);
   height: fit-content;
   opacity: 0;
-  animation: slideIn 200ms ease-out forwards;
 }
 
 .link {

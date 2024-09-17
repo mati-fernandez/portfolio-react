@@ -34,15 +34,14 @@ function App() {
   const [activeModal, setActiveModal] = useState('');
   const [modalVisibility, setModalVisibility] = useState(false);
   const [fromMenuBtn, setFromMenuBtn] = useState(false);
+  const [notFirstLoad, setNotFirstLoad] = useState([]);
   const { language, fromLanguageBtn, setFromLanguageBtn } =
     useContext(TranslationContext);
-  const { theme } = useContext(ThemeContext);
+  const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
 
   const location = useLocation();
   const navigate = useNavigate();
   const prevThemeRef = useRef(theme);
-  const prevHistory = useRef([null, location.pathname]);
-  console.log(location.pathname);
   const handleOpenModal = (itemKey, img, link) => {
     setModalVisibility(true);
     setActiveModal({ itemKey, img, link });
@@ -55,11 +54,10 @@ function App() {
     });
   };
 
-  // CLOSE MODAL OR MENU ON NAVIGATION (HashRouter can't manipulate history)
-  // Para el modal sirve este hack pero para el menu deberia ver si la accion fue navegar el hisory y no la navegacion directa de los links del menu
+  // CLOSE MODAL OR MENU ON NAVIGATION 'Prevent Navigation' Hack:
   useEffect(() => {
     // En el if no usar activeModal porque provoca bucle al tener timeout en el set
-    if (modalVisibility || (showMenu && !fromMenuBtn)) {
+    if (modalVisibility || (showMenu && !fromMenuBtn && !fromLanguageBtn)) {
       setShowMenu(false);
       setFromMenuBtn(false);
       setModalVisibility(false);
@@ -70,7 +68,6 @@ function App() {
       navigate(1);
     }
   }, [location.pathname]);
-  console.log(fromMenuBtn);
 
   // VSUALIZACION
   useEffect(() => {
@@ -87,9 +84,6 @@ function App() {
   }, []);
   // ANIMACIONES
   useEffect(() => {
-    let headerTimeout = null;
-    const delayIncrement = 0.1;
-
     if (
       aspectRatio === 'portrait' &&
       (prevThemeRef.current !== theme || fromLanguageBtn)
@@ -109,47 +103,73 @@ function App() {
       document.querySelectorAll('#desktop-header a')
     );
 
-    progress.forEach((item) => item.classList.remove('fill-progress'));
-    const fillTimeout = setTimeout(() => {
-      progress.forEach((item, index) => {
-        const delay = index * delayIncrement;
-        item.classList.add('fill-progress');
-        item.style.animationDelay = `${delay}s`;
+    // SI NO ES PRIMERA CARGA, CANCELA ANIMACIONES SALVO EN HOME Y CAMBIO DE TEMA
+    if (
+      notFirstLoad.includes(location.pathname) &&
+      !fromThemeBtn &&
+      !location.pathname.includes('home')
+    ) {
+      console.log('removiendo anim');
+      console.log(notFirstLoad);
+      progress.forEach((item) => item.classList.remove('fill-progress'));
+      desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
+      icons.forEach((icon) => {
+        icon.classList.remove('animate-icon');
       });
-    }, 10);
+      buttons.forEach((button) => {
+        button.classList.remove = 'slide-in';
+        button.style.opacity = 1;
+      });
+    } else {
+      // SI ES PRIMERA CARGA...
+      setFromThemeBtn(false);
+      notFirstLoad.push(location.pathname);
+      let headerTimeout = null;
+      const delayIncrement = 0.1;
 
-    desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
-    if (location.pathname.endsWith('home')) {
-      headerTimeout = setTimeout(() => {
-        desktopHeaderBtns.forEach((item, index) => {
+      progress.forEach((item) => item.classList.remove('fill-progress'));
+      const fillTimeout = setTimeout(() => {
+        progress.forEach((item, index) => {
           const delay = index * delayIncrement;
-          item.classList.add('glowing');
+          item.classList.add('fill-progress');
           item.style.animationDelay = `${delay}s`;
         });
       }, 10);
-    }
 
-    icons.forEach((icon) => {
-      icon.classList.remove('animate-icon');
-    });
-    const timeout = setTimeout(() => {
-      icons.forEach((icon, index) => {
-        const delay = index * delayIncrement;
-        icon.classList.add('animate-icon');
-        icon.style.animationDelay = `${delay}s`;
+      desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
+      if (location.pathname.endsWith('home')) {
+        headerTimeout = setTimeout(() => {
+          desktopHeaderBtns.forEach((item, index) => {
+            const delay = index * delayIncrement;
+            item.classList.add('glowing');
+            item.style.animationDelay = `${delay}s`;
+          });
+        }, 10);
+      }
+
+      icons.forEach((icon) => {
+        icon.classList.remove('animate-icon');
       });
-    }, 10);
+      const footerTimeout = setTimeout(() => {
+        icons.forEach((icon, index) => {
+          const delay = index * delayIncrement;
+          icon.classList.add('animate-icon');
+          icon.style.animationDelay = `${delay}s`;
+        });
+      }, 10);
 
-    buttons.forEach((button, index) => {
-      const delay = index * delayIncrement;
-      button.style.animationDelay = `${delay}s`;
-    });
+      buttons.forEach((button, index) => {
+        const delay = index * delayIncrement;
+        button.classList.add('slide-in');
+        button.style.animationDelay = `${delay}s`;
+      });
 
-    return () => {
-      clearTimeout(timeout),
-        clearTimeout(fillTimeout),
-        clearTimeout(headerTimeout);
-    };
+      return () => {
+        clearTimeout(footerTimeout),
+          clearTimeout(fillTimeout),
+          clearTimeout(headerTimeout);
+      };
+    }
   }, [location.pathname, theme]);
 
   // Theme y rotation mobile
