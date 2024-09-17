@@ -1,19 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import {
-  RouterProvider,
-  Routes,
-  Route,
-  useLocation,
-  Navigate,
-} from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useContext, useRef } from 'react';
 import { TranslationContext } from './i18n/TranslationContext';
 import { ThemeContext } from './context/ThemeContext';
 import { useEffect, useState } from 'react';
 import { updateViewportHeight } from './helpers/updateViewportHeight';
 import './App.css';
-import { usePreventNavigation } from './hooks/PreventNavigation';
+// import { usePreventNavigation } from './hooks/PreventNavigation';
 
 // COMPONENTS/PAGES
 import Home from './pages/Home';
@@ -40,30 +34,11 @@ function App() {
 
   //   usePreventNavigation(
   //     modalVisibility,
-  //     setModalVisibility,
-  //     setActiveModal,
-  //     showMenu,
-  //     setShowMenu
+  //     setModalVisibility
+  //     // setActiveModal,
+  //     // showMenu,
+  //     // setShowMenu
   //   );
-
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      if (activeModal) {
-        // Mostrar advertencia de salida
-        event.preventDefault();
-        event.returnValue = '';
-
-        // Cerrar el modal si el usuario realmente quiere salir
-        setActiveModal('');
-      }
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, [activeModal, setActiveModal]);
 
   const location = useLocation();
   const prevThemeRef = useRef(theme);
