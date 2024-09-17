@@ -24,7 +24,6 @@ export const TranslationProvider = ({ children }) => {
 
     if (!URLlang) {
       const userLanguage = navigator.language || navigator.userLanguage;
-      console.log('Idioma detectado:', userLanguage); // Para verificar qué idioma se está detectando
       const detectedLanguage = userLanguage.startsWith('es')
         ? 'es'
         : userLanguage.startsWith('pt')

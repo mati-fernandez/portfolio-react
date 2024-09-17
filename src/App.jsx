@@ -46,6 +46,18 @@ function App() {
     });
   };
 
+  // CLOSE MODAL OR MENU ON NAVIGATION (HashRouter can't manipulate history)
+  useEffect(() => {
+    if (activeModal || showMenu) {
+      setShowMenu(false);
+      setModalVisibility(false);
+      const timeout = setTimeout(() => {
+        setActiveModal('');
+        clearTimeout(timeout);
+      }, 150);
+    }
+  }, [location]);
+
   // VSUALIZACION
   useEffect(() => {
     updateViewportHeight();
