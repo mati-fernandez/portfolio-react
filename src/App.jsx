@@ -41,7 +41,6 @@ function App() {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const prevThemeRef = useRef(theme);
   const handleOpenModal = (itemKey, img, link) => {
     setModalVisibility(true);
     setActiveModal({ itemKey, img, link });
@@ -82,94 +81,103 @@ function App() {
       document.removeEventListener('contextmenu', (e) => e.preventDefault());
     };
   }, []);
+
   // ANIMACIONES
   useEffect(() => {
-    if (
-      aspectRatio === 'portrait' &&
-      (prevThemeRef.current !== theme || fromLanguageBtn)
-    ) {
-      prevThemeRef.current = theme;
-      setFromLanguageBtn(false);
-      return;
-    }
-    setShowMenu(false);
+    // Pequeño retraso porque al cambiar de idioma y volver hacia atrás, el query no llegaba a agarrar los .page a
+    const timeout = setTimeout(() => {
+      const progress = Array.from(document.querySelectorAll('.progress'));
+      const buttons = Array.from(
+        document.querySelectorAll('.page a')
+      ).reverse();
+      const icons = Array.from(
+        document.querySelectorAll('#desktop-footer a, #desktop-footer button')
+      ).reverse();
+      const desktopHeaderBtns = Array.from(
+        document.querySelectorAll('#desktop-header a')
+      );
 
-    const progress = Array.from(document.querySelectorAll('.progress'));
-    const buttons = Array.from(document.querySelectorAll('.page a')).reverse();
-    const icons = Array.from(
-      document.querySelectorAll('#desktop-footer a, #desktop-footer button')
-    ).reverse();
-    const desktopHeaderBtns = Array.from(
-      document.querySelectorAll('#desktop-header a')
-    );
+      if (aspectRatio === 'portrait' && !fromThemeBtn && !fromLanguageBtn) {
+        setShowMenu(false);
+      }
+      if (fromLanguageBtn) setFromLanguageBtn(false);
+      if (fromThemeBtn) setFromThemeBtn(false);
 
-    // SI NO ES PRIMERA CARGA, CANCELA ANIMACIONES SALVO EN HOME Y CAMBIO DE TEMA
-    if (
-      notFirstLoad.includes(location.pathname) &&
-      !fromThemeBtn &&
-      !location.pathname.includes('home')
-    ) {
-      console.log('removiendo anim');
+      // SI NO ES PRIMERA CARGA, CANCELA ANIMACIONES SALVO EN HOME Y CAMBIO DE TEMA
       console.log(notFirstLoad);
-      progress.forEach((item) => item.classList.remove('fill-progress'));
-      desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
-      icons.forEach((icon) => {
-        icon.classList.remove('animate-icon');
-      });
-      buttons.forEach((button) => {
-        button.classList.remove = 'slide-in';
-        button.style.opacity = 1;
-      });
-    } else {
-      // SI ES PRIMERA CARGA...
-      setFromThemeBtn(false);
-      notFirstLoad.push(location.pathname);
-      let headerTimeout = null;
-      const delayIncrement = 0.1;
-
-      progress.forEach((item) => item.classList.remove('fill-progress'));
-      const fillTimeout = setTimeout(() => {
-        progress.forEach((item, index) => {
-          const delay = index * delayIncrement;
-          item.classList.add('fill-progress');
-          item.style.animationDelay = `${delay}s`;
+      const lastWord = location.pathname.match(/(\w+)$/)?.[0] || ''; // Captura la última palabra del pathname
+      if (
+        notFirstLoad.includes(lastWord) &&
+        !fromThemeBtn &&
+        !fromLanguageBtn &&
+        !location.pathname.includes('home')
+      ) {
+        console.log(buttons);
+        console.log('removiendo anim');
+        progress.forEach((item) => item.classList.remove('fill-progress'));
+        desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
+        icons.forEach((icon) => {
+          icon.classList.remove('animate-icon');
         });
-      }, 10);
+        buttons.forEach((button) => {
+          button.classList.remove = 'slide-in';
+          button.style.opacity = 1;
+          console.log('Entró');
+        });
+      } else {
+        // SI ES PRIMERA CARGA...
+        setFromThemeBtn(false);
+        setFromLanguageBtn(false);
+        setNotFirstLoad((prevState) => [...prevState, lastWord]);
 
-      desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
-      if (location.pathname.endsWith('home')) {
-        headerTimeout = setTimeout(() => {
-          desktopHeaderBtns.forEach((item, index) => {
+        let headerTimeout = null;
+        const delayIncrement = 0.1;
+
+        progress.forEach((item) => item.classList.remove('fill-progress'));
+        const fillTimeout = setTimeout(() => {
+          progress.forEach((item, index) => {
             const delay = index * delayIncrement;
-            item.classList.add('glowing');
+            item.classList.add('fill-progress');
             item.style.animationDelay = `${delay}s`;
           });
         }, 10);
-      }
 
-      icons.forEach((icon) => {
-        icon.classList.remove('animate-icon');
-      });
-      const footerTimeout = setTimeout(() => {
-        icons.forEach((icon, index) => {
-          const delay = index * delayIncrement;
-          icon.classList.add('animate-icon');
-          icon.style.animationDelay = `${delay}s`;
+        desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
+        if (location.pathname.endsWith('home')) {
+          headerTimeout = setTimeout(() => {
+            desktopHeaderBtns.forEach((item, index) => {
+              const delay = index * delayIncrement;
+              item.classList.add('glowing');
+              item.style.animationDelay = `${delay}s`;
+            });
+          }, 10);
+        }
+
+        icons.forEach((icon) => {
+          icon.classList.remove('animate-icon');
         });
-      }, 10);
+        const footerTimeout = setTimeout(() => {
+          icons.forEach((icon, index) => {
+            const delay = index * delayIncrement;
+            icon.classList.add('animate-icon');
+            icon.style.animationDelay = `${delay}s`;
+          });
+        }, 10);
 
-      buttons.forEach((button, index) => {
-        const delay = index * delayIncrement;
-        button.classList.add('slide-in');
-        button.style.animationDelay = `${delay}s`;
-      });
+        buttons.forEach((button, index) => {
+          const delay = index * delayIncrement;
+          button.classList.add('slide-in');
+          button.style.animationDelay = `${delay}s`;
+        });
 
-      return () => {
-        clearTimeout(footerTimeout),
-          clearTimeout(fillTimeout),
-          clearTimeout(headerTimeout);
-      };
-    }
+        return () => {
+          clearTimeout(footerTimeout),
+            clearTimeout(fillTimeout),
+            clearTimeout(headerTimeout);
+        };
+      }
+    }, 100);
+    return () => clearTimeout(timeout);
   }, [location.pathname, theme]);
 
   // Theme y rotation mobile
