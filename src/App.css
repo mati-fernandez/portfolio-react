@@ -32,11 +32,15 @@ body {
   --font-size-portrait: calc((1vw + 1vh) * 1.2);
   --color-general-primary: rgb(76, 150, 199);
   --color-general-secondary: grey;
+  --color-general-secondary-alpha: #222222c5;
+  --border-general: 1px solid black;
 }
 
 [data-theme='dark'] {
+  --color-box-shadow: #737d60;
   --color-primary: white;
   --color-secondary: #9a9a9a;
+  --color-terciary: #394733;
   --color-secondary-alpha: #939e8f80;
   --color-background: black;
   --color-background-secondary: #222;
@@ -50,8 +54,10 @@ body {
 }
 
 [data-theme='light'] {
+  --color-box-shadow: #424739;
   --color-primary: black;
   --color-secondary: #d3d2d2;
+  --color-terciary: #c4e3b8;
   --color-secondary-alpha: #89a18480;
   --color-background: rgb(233, 233, 233);
   --color-background-secondary: #ffffff;
@@ -369,6 +375,9 @@ figcaption {
   height: fit-content;
   width: fit-content;
   border: var(--border);
+  background-color: var(--color-terciary);
+  box-shadow: inset -1px -1px 3px 3px var(--color-box-shadow);
+  font-weight: 400;
 }
 
 .page {
@@ -396,9 +405,11 @@ figcaption {
 }
 
 .page a {
-  border: var(--border);
+  border: none;
   height: fit-content;
   opacity: 0;
+  background-color: var(--color-terciary);
+  box-shadow: inset -1px -1px 5px 5px var(--color-box-shadow);
 }
 
 .link {
@@ -639,19 +650,19 @@ figcaption {
 
   .detail .btn-panel .button:first-of-type {
     left: 9vw;
-    background-color: var(--color-background-secondary);
+    /* background-color: var(--color-background-secondary); */
   }
   .detail .btn-panel .button:first-of-type:hover {
-    background-color: var(--color-background);
+    background-color: var(--color-general-secondary);
   }
 
   .detail .btn-panel .button:last-of-type {
     font-size: 2.2vw;
     right: 9vw;
-    background-color: var(--color-background-secondary);
+    /* background-color: var(--color-background-secondary); */
   }
   .detail .btn-panel .button:last-of-type:hover {
-    background-color: var(--color-background);
+    background-color: var(--color-general-secondary);
   }
 
   .link {
