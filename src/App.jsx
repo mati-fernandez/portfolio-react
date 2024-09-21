@@ -7,7 +7,7 @@ import {
   Navigate,
   useNavigate,
 } from 'react-router-dom';
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
 import { TranslationContext } from './i18n/TranslationContext';
 import { ThemeContext } from './context/ThemeContext';
 import { useEffect, useState } from 'react';
@@ -104,7 +104,6 @@ function App() {
       if (fromThemeBtn) setFromThemeBtn(false);
 
       // SI NO ES PRIMERA CARGA, CANCELA ANIMACIONES SALVO EN HOME Y CAMBIO DE TEMA
-      console.log(notFirstLoad);
       const lastWord = location.pathname.match(/(\w+)$/)?.[0] || ''; // Captura la última palabra del pathname
       if (
         notFirstLoad.includes(lastWord) &&
@@ -112,8 +111,6 @@ function App() {
         !fromLanguageBtn &&
         !location.pathname.includes('home')
       ) {
-        console.log(buttons);
-        console.log('removiendo anim');
         progress.forEach((item) => item.classList.remove('fill-progress'));
         desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
         icons.forEach((icon) => {
@@ -122,7 +119,6 @@ function App() {
         buttons.forEach((button) => {
           button.classList.remove = 'slide-in';
           button.style.opacity = 1;
-          console.log('Entró');
         });
       } else {
         // SI ES PRIMERA CARGA...
@@ -224,6 +220,7 @@ function App() {
           <DesktopFooter />
         </>
       )}
+
       <Routes>
         <Route path="/" element={<Navigate to={`/${language}/home`} />} />
         <Route
