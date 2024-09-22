@@ -12,6 +12,7 @@ import redux from '../assets/redux.png';
 import router from '../assets/react-router.png';
 import figma from '../assets/figma.png';
 import english from '../assets/english.png';
+import nextjs from '../assets/nextjs.png';
 
 const Skills = ({ imagePreLoad }) => {
   const { language } = useContext(TranslationContext);
@@ -103,6 +104,15 @@ const Skills = ({ imagePreLoad }) => {
           </div>
           <div className="progress-bar">
             <div className="progress" style={{ width: '50%' }}></div>
+          </div>
+        </li>
+        <li>
+          <div className="skill-container">
+            <img src={nextjs} className="tech" alt="Next.js" />
+            <span className="skill-name">Next.js</span>
+          </div>
+          <div className="progress-bar">
+            <div className="progress" style={{ width: '11%' }}></div>
           </div>
         </li>
         <li>
