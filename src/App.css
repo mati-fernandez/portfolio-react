@@ -10,7 +10,6 @@ html {
   -ms-user-select: none; /* Internet Explorer/Edge */
   /* Elimina el color de resaltado en dispositivos móviles */
   -webkit-tap-highlight-color: transparent;
-  transition: background-color 0.8s ease-in-out;
 }
 
 body {
