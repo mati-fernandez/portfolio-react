@@ -179,6 +179,7 @@ option {
   height: calc(var(--vh, 1vh) * 90);
   width: 100vw;
   background-color: var(--color-background-alpha);
+  transition: background-color 0.8s ease-in-out;
 }
 
 #mobile-main-menu {
@@ -217,6 +218,7 @@ option {
   width: 100vw;
   height: 10vh;
   background-color: var(--color-background-alpha);
+  transition: background-color 0.8s ease-in-out;
 }
 
 .skills-list {
