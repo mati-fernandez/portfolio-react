@@ -80,13 +80,13 @@
   "certifications": {
     "rwd": {
       "title": "Design Web Responsivo",
-      "description": "Certificação que abrange os conceitos essenciais do design web, incluindo CSS Flexbox, CSS Grid, e design adaptável para diferentes tamanhos de tela.",
+      "description": "Certificação que abrange os conceitos essenciais do design web, incluindo CSS Flexbox, CSS Grid, e design adaptável para diferentes tamanhos de tela. Se você entrar, poderá ver os projetos realizados neste curso...",
       "close": "Fechar",
       "open": "Ver Certificação"
     },
     "javascript": {
       "title": "Algoritmos JS & Estruturas de Dados",
-      "description": "Certificação que cobre temas como algoritmos de ordenação, estruturas de dados comuns em JavaScript e a resolução de problemas complexos.",
+      "description": "Certificação que cobre temas como algoritmos de ordenação, estruturas de dados comuns em JavaScript e a resolução de problemas complexos. Se você entrar, poderá ver os projetos realizados neste curso...",
       "close": "Fechar",
       "open": "Ver Certificação"
     },
