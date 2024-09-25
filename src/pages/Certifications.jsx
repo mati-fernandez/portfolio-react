@@ -5,6 +5,7 @@ import { TranslationContext } from '../i18n/TranslationContext';
 import imgrwd from '../assets/cert-resp.png';
 import imgjs from '../assets/cert-js.png';
 import imgfdl from '../assets/cert-front.png';
+import Info from '../assets/Info';
 
 const links = [
   'https://www.freecodecamp.org/certification/matifer/responsive-web-design',
@@ -22,6 +23,7 @@ const Certifications = ({ handleOpenModal, imagePreLoad }) => {
 
   return (
     <div className="page">
+      <Info handleOpenModal={handleOpenModal} itemKey={'certifications.info'} />
       <a
         className="long-text button link"
         onClick={() => handleOpenModal('certifications.rwd', imgrwd, links[0])}

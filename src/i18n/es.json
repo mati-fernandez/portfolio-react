@@ -51,6 +51,11 @@
     }
   },
   "exercises": {
+    "info": {
+      "title": "Sección ejercicios",
+      "text": "En esta sección recopilo algunos trabajos realizados durante cursos. Es decir, no los hice solo, pero me enseñaron algo.",
+      "continue": "Continuar"
+    },
     "dom": {
       "title": "DOM (JS Vainilla)",
       "description": "Ejercicio práctico sobre la manipulación del DOM con JavaScript, explorando eventos y modificando el contenido dinámicamente.",
@@ -83,15 +88,20 @@
     }
   },
   "certifications": {
+    "info": {
+      "title": "Sección certificaciones",
+      "text": "Si ingresas en 'Ver certificación' en cada una de ellas, podrás ver los proyectos realizados en ese curso.",
+      "continue": "Continuar"
+    },
     "rwd": {
       "title": "Diseño Web Responsivo",
-      "description": "Certificación que abarca los conceptos esenciales del diseño web, incluyendo CSS Flexbox, CSS Grid, y diseño adaptable a diferentes tamaños de pantalla. Si ingresas podrás ver los proyectos realizados en este curso...",
+      "description": "Certificación que abarca los conceptos esenciales del diseño web, incluyendo CSS Flexbox, CSS Grid, y diseño adaptable a diferentes tamaños de pantalla.",
       "close": "Cerrar",
       "open": "Ver Certificación"
     },
     "javascript": {
       "title": "Algoritmos JS & Estructuras de datos",
-      "description": "Certificación en la que se cubren temas como algoritmos de ordenamiento, estructuras de datos comunes en JavaScript, y la resolución de problemas complejos. Si ingresas podrás ver los proyectos realizados en este curso...",
+      "description": "Certificación en la que se cubren temas como algoritmos de ordenamiento, estructuras de datos comunes en JavaScript, y la resolución de problemas complejos.",
       "close": "Cerrar",
       "open": "Ver Certificación"
     },

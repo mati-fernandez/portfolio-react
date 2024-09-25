@@ -789,7 +789,7 @@ figcaption {
   }
 
   .page > a:hover {
-    background-color: var(--color-terciary);
+    background-color: var(--color-general-primary);
   }
 
   /**** FOOTER ****/

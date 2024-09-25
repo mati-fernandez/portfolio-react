@@ -51,6 +51,11 @@
     }
   },
   "exercises": {
+    "info": {
+      "title": "Seção de exercícios",
+      "text": "Nesta seção, eu reuni alguns trabalhos realizados durante cursos. Ou seja, não os fiz sozinho, mas eles me ensinaram algo.",
+      "continue": "Continuar"
+    },
     "dom": {
       "title": "DOM (JS Puro)",
       "description": "Exercício prático sobre a manipulação do DOM com JavaScript, explorando eventos e modificando o conteúdo dinamicamente.",
@@ -83,6 +88,11 @@
     }
   },
   "certifications": {
+    "info": {
+      "title": "Seção de certificações",
+      "text": "Se você clicar em 'Ver Certificação' em cada uma delas, poderá ver os projetos realizados neste curso.",
+      "continue": "Continuar"
+    },
     "rwd": {
       "title": "Design Web Responsivo",
       "description": "Certificação que abrange os conceitos essenciais do design web, incluindo CSS Flexbox, CSS Grid, e design adaptável para diferentes tamanhos de tela. Se você entrar, poderá ver os projetos realizados neste curso...",

@@ -52,6 +52,11 @@
   },
 
   "exercises": {
+    "info": {
+      "title": "Exercises section",
+      "text": "In this section, I have compiled some work done during courses. That means I didn't do them on my own, but they taught me something.",
+      "continue": "Continue"
+    },
     "dom": {
       "title": "DOM (Vanilla JS; for PC)",
       "description": "Practical exercise on DOM manipulation with JavaScript, exploring events and dynamically modifying content.",
@@ -84,6 +89,11 @@
     }
   },
   "certifications": {
+    "info": {
+      "title": "Certifications section",
+      "text": "If you click on 'View Certification' for each one, you will be able to see the projects completed during that course.",
+      "continue": "Continue"
+    },
     "rwd": {
       "title": "Responsive Web Design",
       "description": "Certification covering the essential concepts of web design, including CSS Flexbox, CSS Grid, and responsive design for different screen sizes. If you enter, you will be able to see the projects completed in this course...",

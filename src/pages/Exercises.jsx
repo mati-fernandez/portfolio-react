@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
@@ -6,6 +7,7 @@ import imgcan from '../assets/dibujo-canvas.png';
 import imgtet from '../assets/tetris-vanilla.png';
 import imgmon from '../assets/monkeytype.png';
 import imgexc from '../assets/excel.png';
+import Info from '../assets/Info';
 
 const links = [
   'https://mati-fernandez.github.io/portfolio-vanilla-js/dom-ejercicios/index.html',
@@ -25,6 +27,7 @@ const Exercises = ({ handleOpenModal, imagePreLoad }) => {
 
   return (
     <div className="page">
+      <Info handleOpenModal={handleOpenModal} itemKey={'exercises.info'} />
       <a
         className="long-text button link"
         onClick={() => handleOpenModal('exercises.dom', imgdom, links[0])}
