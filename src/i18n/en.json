@@ -47,6 +47,7 @@
   },
 
   "exercises": {
+    "tooltip": "In this section, you will find projects that I completed during different courses. Therefore, they are not my own, but they helped me to learn.",
     "dom": {
       "title": "DOM (Vanilla JS; for PC)",
       "description": "Practical exercise on DOM manipulation with JavaScript, exploring events and dynamically modifying content.",

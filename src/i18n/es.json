@@ -46,6 +46,7 @@
     }
   },
   "exercises": {
+    "tooltip": "En esta sección encontrarás proyectos que hice durante diferentes cursos, por lo tanto no son propios, pero me sirvieron para aprender",
     "dom": {
       "title": "DOM (JS Vainilla)",
       "description": "Ejercicio práctico sobre la manipulación del DOM con JavaScript, explorando eventos y modificando el contenido dinámicamente.",

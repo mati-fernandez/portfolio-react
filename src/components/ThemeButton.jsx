@@ -6,8 +6,7 @@ import Sun from '../assets/Sun';
 import Moon from '../assets/Moon';
 
 const ThemeButton = () => {
-  const { theme, setTheme, fromThemeBtn, setFromThemeBtn } =
-    useContext(ThemeContext);
+  const { theme, setTheme, setFromThemeBtn } = useContext(ThemeContext);
   const [icon, setIcon] = useState(theme === 'dark' ? <Sun /> : <Moon />);
 
   // Remover inline styles de body al finalizar carga de App

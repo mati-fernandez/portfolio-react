@@ -1,10 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import { TranslationContext } from '../i18n/TranslationContext';
+import { TooltipContext } from '../context/TooltipContext';
 import { useContext } from 'react';
+import Tooltip from './Tooltip';
 
 // eslint-disable-next-line react/prop-types
-const MainMenu = ({ setFromMenuBtn }) => {
+const MainMenu = ({ setFromMenuBtn, aspectRatio }) => {
   const { translate, language } = useContext(TranslationContext);
+  const { handleMouseEnter, handleMouseLeave, handleMouseMove } =
+    useContext(TooltipContext);
 
   const handleClick = () => {
     setFromMenuBtn(true);
@@ -45,9 +49,15 @@ const MainMenu = ({ setFromMenuBtn }) => {
         }
         to={`/${language}/exercises`}
         onClick={handleClick}
+        onMouseEnter={(e) =>
+          handleMouseEnter(e, translate('exercises.tooltip'))
+        }
+        onMouseLeave={handleMouseLeave}
+        onMouseMove={handleMouseMove}
       >
         {translate('menu.exercises')}
       </NavLink>
+      <Tooltip aspectRatio={aspectRatio} />
       <NavLink
         className={({ isActive }) =>
           isActive ? 'active-button button link' : 'button link'

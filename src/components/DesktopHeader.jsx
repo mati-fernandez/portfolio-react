@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import LanguageButton from './LanguageButton';
 import MainMenu from './MainMenu';
 
-const DesktopHeader = () => {
+const DesktopHeader = ({ aspectRatio }) => {
   return (
     <div id="desktop-header">
-      <MainMenu />
+      <MainMenu aspectRatio={aspectRatio} />
       <LanguageButton />
     </div>
   );

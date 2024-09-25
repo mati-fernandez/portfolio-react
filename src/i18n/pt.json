@@ -46,6 +46,7 @@
     }
   },
   "exercises": {
+    "tooltip": "Nesta seção, você encontrará projetos que eu fiz durante diferentes cursos. Portanto, não são meus, mas me ajudaram a aprender.",
     "dom": {
       "title": "DOM (JS Puro)",
       "description": "Exercício prático sobre a manipulação do DOM com JavaScript, explorando eventos e modificando o conteúdo dinamicamente.",
