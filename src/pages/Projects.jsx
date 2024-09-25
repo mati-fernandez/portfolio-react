@@ -8,6 +8,7 @@ import imgdm from '../assets/drum-machine.png';
 import imgcalc from '../assets/js-calculator.png';
 import imgpc from '../assets/pomodoro-clock.png';
 import imgop from '../assets/old-portfolio.png';
+import Info from '../assets/Info';
 
 const links = [
   'https://mati-fernandez.github.io/random-quote-machine/',
@@ -28,6 +29,7 @@ const Projects = ({ handleOpenModal, imagePreLoad }) => {
 
   return (
     <div className="page">
+      <Info handleOpenModal={handleOpenModal} itemKey={'projects.info'} />
       <a
         className="long-text button link"
         onClick={() => handleOpenModal('projects.rqm', imgrqm, links[0])}

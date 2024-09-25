@@ -24,6 +24,7 @@ import MobileHeader from './components/MobileHeader';
 import DesktopHeader from './components/DesktopFooter';
 import DesktopFooter from './components/DesktopHeader';
 import Modal from './components/Modal';
+import InfoModal from './components/InfoModal';
 
 const updateAspectRatio = () =>
   window.innerWidth / window.innerHeight < 1.2 ? 'portrait' : 'landscape';
@@ -41,6 +42,7 @@ function App() {
 
   const location = useLocation();
   const navigate = useNavigate();
+
   const handleOpenModal = (itemKey, img, link) => {
     setModalVisibility(true);
     setActiveModal({ itemKey, img, link });
@@ -198,15 +200,24 @@ function App() {
   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO y resta un warning de "No routes matched location".
   return (
     <>
-      {activeModal && (
-        <Modal
+      {activeModal && activeModal.itemKey.includes('info') ? (
+        <InfoModal
           activeModal={activeModal.itemKey}
-          img={activeModal.img}
-          link={activeModal.link}
           setActiveModal={setActiveModal}
           modalVisibility={modalVisibility}
           setModalVisibility={setModalVisibility}
         />
+      ) : (
+        activeModal && (
+          <Modal
+            activeModal={activeModal.itemKey}
+            img={activeModal.img}
+            link={activeModal.link}
+            setActiveModal={setActiveModal}
+            modalVisibility={modalVisibility}
+            setModalVisibility={setModalVisibility}
+          />
+        )
       )}
       {aspectRatio === 'portrait' ? (
         <MobileHeader

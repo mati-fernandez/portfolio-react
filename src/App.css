@@ -13,7 +13,10 @@ html {
 }
 
 body {
-  height: 100%;
+  position: relative;
+  height: calc(
+    var(--vh, 1vh) * 100
+  ); /*No cambiar, evita overflow xq considera el encabezado web (solo te das cuenta desde el tel físico)*/
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
   background-color: var(--color-background);
   color: var(--color-primary);
@@ -86,6 +89,50 @@ button {
 
 p:not(#name) {
   transition: color 0.8s ease-in-out;
+}
+
+.infoBtn {
+  fill: var(--icon-fill);
+  position: absolute;
+  top: 1.5vh;
+  right: 2vh;
+  width: 5vw;
+  height: 5vh;
+  cursor: pointer;
+}
+
+/* Para ganar en especificidad */
+.infoModal.hidden {
+  animation: animate-modal-close 150ms ease-in-out forwards;
+}
+
+.infoModal {
+  width: 80%;
+  pointer-events: auto;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  font-size: 1.2rem;
+  align-content: center;
+  animation: animate-modal-open 150ms ease-out forwards;
+  transform-origin: 0 0;
+  & h3 {
+    margin: 0;
+  }
+  & a {
+    background-color: var(--color-terciary);
+    font-size: 4vw;
+    width: fit-content;
+    margin: auto;
+    border: var(--border);
+  }
+}
+
+.infoBkg {
+  padding: 3vh 4vw;
+  border: 1px solid var(--color-primary);
+  background-color: #222;
+  z-index: -1;
 }
 
 svg {
@@ -293,7 +340,7 @@ option {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100%;
   width: 100vw;
   background-color: var(--color-background-alpha);
 }
@@ -377,8 +424,8 @@ figcaption {
   width: fit-content;
   border: var(--border);
   background-color: var(--color-terciary);
-  box-shadow: inset -1px -1px 3px 3px var(--color-box-shadow);
-  font-weight: 400;
+  /* box-shadow: inset -1px -1px 3px 3px var(--color-box-shadow); */
+  /* font-weight: 400; */
 }
 
 .page {
@@ -410,7 +457,8 @@ figcaption {
   height: fit-content;
   opacity: 0;
   background-color: var(--color-terciary);
-  box-shadow: inset -1px -1px 5px 5px var(--color-box-shadow);
+  /* box-shadow: inset -1px -1px 5px 5px var(--color-box-shadow); */
+  border: var(--border);
 }
 
 .link {
@@ -529,6 +577,13 @@ figcaption {
     width: auto;
   }
 
+  .infoBtn {
+    top: 15vh;
+    right: 3vw;
+    width: 3vw;
+    height: 3vh;
+  }
+
   .container {
     top: 51%;
   }
@@ -598,6 +653,16 @@ figcaption {
     border-radius: 200px;
     z-index: -1;
     background-color: var(--color-background);
+  }
+
+  .infoModal {
+    top: 50%;
+    & p {
+      font-size: 1rem;
+    }
+    & a {
+      font-size: 1rem;
+    }
   }
 
   .detail h3 {
@@ -702,16 +767,11 @@ figcaption {
   }
 
   .page {
+    height: 100vh;
     box-sizing: border-box;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: auto;
+    align-content: center;
     gap: 40px;
     padding: 0 4vw;
   }

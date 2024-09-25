@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';

@@ -8,6 +8,11 @@
     "certifications": "Certificações"
   },
   "projects": {
+    "info": {
+      "title": "Seção de projetos",
+      "text": "Nesta seção, apresento trabalhos de minha autoria, sejam desafios que me pediram em um curso ou ideias que tive por conta própria.",
+      "continue": "Continuar"
+    },
     "rqm": {
       "title": "Máquina de Citações Aleatórias (React)",
       "description": "Essa foi provavelmente minha primeira experiência com requisições assíncronas para uma API externa. Utilizando a biblioteca 'Axios' neste caso e o gerenciamento de estado no React.",

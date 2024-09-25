@@ -8,6 +8,11 @@
     "certifications": "Certifications"
   },
   "projects": {
+    "info": {
+      "title": "Projects section",
+      "text": "In this section, I showcase works of my own authorship, whether they are challenges assigned to me in a course or ideas I came up with on my own.",
+      "continue": "Continue"
+    },
     "rqm": {
       "title": "Random Quote Machine (React)",
       "description": "This must have been my first experience with asynchronous requests to an external API. Using the 'Axios' library in this case and state management in React.",
