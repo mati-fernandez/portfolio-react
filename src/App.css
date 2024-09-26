@@ -92,6 +92,10 @@ p:not(#name) {
   transition: color 0.8s ease-in-out;
 }
 
+.infoBtnTransition {
+  transition: opacity 1.5s ease-out;
+}
+
 .infoBtn {
   fill: var(--icon-fill);
   position: absolute;
@@ -100,6 +104,7 @@ p:not(#name) {
   width: 5vw;
   height: 5vh;
   cursor: pointer;
+  opacity: 0;
 }
 
 /* Para ganar en especificidad */
@@ -108,12 +113,13 @@ p:not(#name) {
 }
 
 .infoModal {
+  white-space: pre-wrap; /*Para que interprete los \n del .json*/
   width: 80%;
   pointer-events: auto;
   position: absolute;
   top: 45%;
   left: 50%;
-  font-size: 1.2rem;
+  font-size: 1rem;
   align-content: center;
   animation: animate-modal-open 150ms ease-out forwards;
   transform-origin: 0 0;
@@ -132,7 +138,7 @@ p:not(#name) {
 .infoBkg {
   padding: 3vh 4vw;
   border: 1px solid var(--color-primary);
-  background-color: var(--color-secondary);
+  background-color: var(--color-background);
   z-index: -1;
 }
 
@@ -654,7 +660,6 @@ figcaption {
   }
 
   .infoModal {
-    width: 65%;
     top: 50%;
     & p {
       font-size: 1rem;

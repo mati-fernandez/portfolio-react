@@ -87,6 +87,7 @@ function App() {
   // ANIMACIONES
   useEffect(() => {
     // Pequeño retraso porque al cambiar de idioma y volver hacia atrás, el query no llegaba a agarrar los .page a
+    // SetTimeOut necesario para "dar tiempo" a que se desmonte bien el componente
     const timeout = setTimeout(() => {
       const progress = Array.from(document.querySelectorAll('.progress'));
       const buttons = Array.from(
@@ -110,8 +111,7 @@ function App() {
       if (
         notFirstLoad.includes(lastWord) &&
         !fromThemeBtn &&
-        !fromLanguageBtn &&
-        !location.pathname.includes('home')
+        !fromLanguageBtn
       ) {
         progress.forEach((item) => item.classList.remove('fill-progress'));
         desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
@@ -174,7 +174,7 @@ function App() {
             clearTimeout(headerTimeout);
         };
       }
-    }, 100);
+    }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
   }, [location.pathname, theme]);
 
@@ -240,7 +240,14 @@ function App() {
         />
         <Route
           path={`/${language}/home`}
-          element={<Home showMenu={showMenu} setShowMenu={setShowMenu} />}
+          element={
+            <Home
+              showMenu={showMenu}
+              setShowMenu={setShowMenu}
+              handleOpenModal={handleOpenModal}
+              notFirstLoad={notFirstLoad}
+            />
+          }
         />
         <Route
           path={`/${language}/skills`}
@@ -249,6 +256,7 @@ function App() {
               showMenu={showMenu}
               setShowMenu={setShowMenu}
               imagePreLoad={imagePreLoad}
+              notFirstLoad={notFirstLoad}
             />
           }
         />
@@ -262,6 +270,7 @@ function App() {
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
               imagePreLoad={imagePreLoad}
+              notFirstLoad={notFirstLoad}
             />
           }
         />
@@ -275,6 +284,7 @@ function App() {
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
               imagePreLoad={imagePreLoad}
+              notFirstLoad={notFirstLoad}
             />
           }
         />
@@ -287,6 +297,7 @@ function App() {
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
               imagePreLoad={imagePreLoad}
+              notFirstLoad={notFirstLoad}
             />
           }
         />

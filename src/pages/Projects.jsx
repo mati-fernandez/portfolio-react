@@ -19,7 +19,7 @@ const links = [
   'https://mati-fernandez.github.io/portfolio-vanilla-js/',
 ];
 
-const Projects = ({ handleOpenModal, imagePreLoad }) => {
+const Projects = ({ notFirstLoad, handleOpenModal, imagePreLoad }) => {
   const { translate } = useContext(TranslationContext);
 
   useEffect(() => {
@@ -29,7 +29,11 @@ const Projects = ({ handleOpenModal, imagePreLoad }) => {
 
   return (
     <div className="page">
-      <Info handleOpenModal={handleOpenModal} itemKey={'projects.info'} />
+      <Info
+        notFirstLoad={notFirstLoad}
+        handleOpenModal={handleOpenModal}
+        itemKey={'projects.info'}
+      />
       <a
         className="long-text button link"
         onClick={() => handleOpenModal('projects.rqm', imgrqm, links[0])}

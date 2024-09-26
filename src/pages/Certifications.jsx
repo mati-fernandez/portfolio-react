@@ -13,7 +13,7 @@ const links = [
   'https://www.freecodecamp.org/certification/matifer/front-end-development-libraries',
 ];
 
-const Certifications = ({ handleOpenModal, imagePreLoad }) => {
+const Certifications = ({ notFirstLoad, handleOpenModal, imagePreLoad }) => {
   const { translate } = useContext(TranslationContext);
 
   useEffect(() => {
@@ -23,7 +23,11 @@ const Certifications = ({ handleOpenModal, imagePreLoad }) => {
 
   return (
     <div className="page">
-      <Info handleOpenModal={handleOpenModal} itemKey={'certifications.info'} />
+      <Info
+        notFirstLoad={notFirstLoad}
+        handleOpenModal={handleOpenModal}
+        itemKey={'certifications.info'}
+      />
       <a
         className="long-text button link"
         onClick={() => handleOpenModal('certifications.rwd', imgrwd, links[0])}

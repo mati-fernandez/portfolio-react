@@ -17,7 +17,7 @@ const links = [
   'https://mati-fernandez.github.io/portfolio-vanilla-js/mis-proyectos/excel/index.html',
 ];
 
-const Exercises = ({ handleOpenModal, imagePreLoad }) => {
+const Exercises = ({ notFirstLoad, handleOpenModal, imagePreLoad }) => {
   const { translate } = useContext(TranslationContext);
 
   useEffect(() => {
@@ -27,7 +27,11 @@ const Exercises = ({ handleOpenModal, imagePreLoad }) => {
 
   return (
     <div className="page">
-      <Info handleOpenModal={handleOpenModal} itemKey={'exercises.info'} />
+      <Info
+        notFirstLoad={notFirstLoad}
+        handleOpenModal={handleOpenModal}
+        itemKey={'exercises.info'}
+      />
       <a
         className="long-text button link"
         onClick={() => handleOpenModal('exercises.dom', imgdom, links[0])}

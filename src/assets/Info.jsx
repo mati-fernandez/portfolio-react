@@ -1,10 +1,33 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
+
 /* eslint-disable react/prop-types */
-const Info = ({ handleOpenModal, itemKey }) => {
+const Info = ({ notFirstLoad, handleOpenModal, itemKey }) => {
+  const location = useLocation();
+  const infoRef = useRef(null);
+  useEffect(() => {
+    const $info = infoRef.current;
+    const lastWord = location.pathname.match(/(\w+)$/)?.[0] || '';
+    if (notFirstLoad.includes(lastWord))
+      $info.classList.remove('infoBtnTransition');
+    const timeout = setTimeout(() => {
+      //Necesario para "dar tiempo" a que se desmonte bien el componente
+      $info.style.opacity = 0.5;
+    }, 10);
+    console.log('HOLAAAA');
+    return () => {
+      $info.style.opacity = 0;
+      clearTimeout(timeout);
+    };
+  }, [location.pathname]);
+
   return (
     <svg
+      ref={infoRef}
       onClick={() => handleOpenModal(itemKey)}
       alt="Info"
-      className="infoBtn"
+      className="infoBtn infoBtnTransition"
       fill="currentColor"
       xmlnsXlink="http://www.w3.org/2000/svg"
       x="0px"
