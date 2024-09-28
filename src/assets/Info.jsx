@@ -13,11 +13,10 @@ const Info = ({ notFirstLoad, handleOpenModal, itemKey }) => {
       $info.classList.remove('infoBtnTransition');
     const timeout = setTimeout(() => {
       //Necesario para "dar tiempo" a que se desmonte bien el componente
-      $info.style.opacity = 0.5;
+      //   $info.style.opacity = 0.5;
+      //   $info.style.rotate = '3turn';
     }, 10);
-    console.log('HOLAAAA');
     return () => {
-      $info.style.opacity = 0;
       clearTimeout(timeout);
     };
   }, [location.pathname]);

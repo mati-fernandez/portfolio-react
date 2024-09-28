@@ -92,8 +92,19 @@ p:not(#name) {
   transition: color 0.8s ease-in-out;
 }
 
+@keyframes slideInRotate {
+  0% {
+    opacity: 0;
+    transform: translateY(-3vh) rotate(0deg);
+  }
+  100% {
+    opacity: 0.5;
+    transform: translateY(0) rotate(1080deg);
+  }
+}
+
 .infoBtnTransition {
-  transition: opacity 1.5s ease-out;
+  animation: slideInRotate 1s ease-out forwards;
 }
 
 .infoBtn {
@@ -104,7 +115,7 @@ p:not(#name) {
   width: 5vw;
   height: 5vh;
   cursor: pointer;
-  opacity: 0;
+  opacity: 0.5;
 }
 
 /* Para ganar en especificidad */
@@ -579,6 +590,21 @@ figcaption {
 
   svg {
     width: auto;
+  }
+
+  @keyframes slideInRotate {
+    0% {
+      opacity: 0;
+      transform: translateX(-100vw) rotate(0deg);
+    }
+    100% {
+      opacity: 0.5;
+      transform: translateX(0) rotate(1080deg);
+    }
+  }
+
+  .infoBtnTransition {
+    animation: slideInRotate 0.3s ease-out forwards;
   }
 
   .infoBtn {
