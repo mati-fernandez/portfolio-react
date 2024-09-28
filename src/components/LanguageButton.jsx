@@ -10,6 +10,7 @@ const LanguageButton = () => {
     const newLanaguage = event.target.value;
     setFromLanguageBtn(true);
     setLanguage(newLanaguage);
+    localStorage.setItem('language', newLanaguage);
   };
 
   return (
