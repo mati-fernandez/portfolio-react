@@ -20,11 +20,11 @@ const MobileHeader = ({ showMenu, setShowMenu, setFromMenuBtn }) => {
         <MobileMenu translate={translate} setFromMenuBtn={setFromMenuBtn} />
       )}
       <header id="mobile-header">
-        <Link className="link" to="/" onClick={toggleMenu}>
+        <Link className="link" to="/" onClick={() => setShowMenu(false)}>
           <p id="name">Matias</p>
         </Link>
         <a id="hamburguer-btn" onClick={toggleMenu}>
-          <Hamburguer />
+          <Hamburguer showMenu={showMenu} />
         </a>
       </header>
     </div>

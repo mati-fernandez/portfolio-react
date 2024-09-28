@@ -214,7 +214,6 @@ option {
 }
 
 #hamburguer-btn {
-  display: flex;
   cursor: pointer;
   border-radius: 50px;
   padding: 2vh;
@@ -222,6 +221,12 @@ option {
 
 #hamburguer-svg {
   height: 2.1rem;
+}
+
+#close-menu {
+  font-size: 2.1rem;
+  font-weight: 400;
+  transform: translate(-25%);
 }
 
 #avatar {
@@ -590,21 +595,6 @@ figcaption {
 
   svg {
     width: auto;
-  }
-
-  @keyframes slideInRotate {
-    0% {
-      opacity: 0;
-      transform: translateX(-100vw) rotate(0deg);
-    }
-    100% {
-      opacity: 0.5;
-      transform: translateX(0) rotate(1080deg);
-    }
-  }
-
-  .infoBtnTransition {
-    animation: slideInRotate 0.3s ease-out forwards;
   }
 
   .infoBtn {

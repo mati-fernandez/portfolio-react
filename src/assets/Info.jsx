@@ -11,14 +11,6 @@ const Info = ({ notFirstLoad, handleOpenModal, itemKey }) => {
     const lastWord = location.pathname.match(/(\w+)$/)?.[0] || '';
     if (notFirstLoad.includes(lastWord))
       $info.classList.remove('infoBtnTransition');
-    const timeout = setTimeout(() => {
-      //Necesario para "dar tiempo" a que se desmonte bien el componente
-      //   $info.style.opacity = 0.5;
-      //   $info.style.rotate = '3turn';
-    }, 10);
-    return () => {
-      clearTimeout(timeout);
-    };
   }, [location.pathname]);
 
   return (
