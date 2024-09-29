@@ -20,6 +20,13 @@ const ThemeButton = () => {
   }, [theme]);
 
   const handleClick = () => {
+    const header =
+      document.querySelector('#desktop-header') ??
+      document.querySelector('#mobile-header');
+    document.querySelector('body').style.transition =
+      'background-color 0.8s ease-in-out, font-weight 0.8s ease-in-out';
+    header.style.transition =
+      'background-color 0.8s ease-in-out, font-weight 0.8s ease-in-out';
     setTheme(theme === 'light' ? 'dark' : 'light');
     setFromThemeBtn(true);
   };

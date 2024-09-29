@@ -21,8 +21,8 @@ import Projects from './pages/Projects';
 import Certifications from './pages/Certifications';
 import Exercises from './pages/Exercises';
 import MobileHeader from './components/MobileHeader';
-import DesktopHeader from './components/DesktopFooter';
-import DesktopFooter from './components/DesktopHeader';
+import DesktopHeader from './components/DesktopHeader';
+import DesktopFooter from './components/DesktopFooter';
 import Modal from './components/Modal';
 import InfoModal from './components/InfoModal';
 

@@ -13,13 +13,13 @@ export const ThemeProvider = ({ children }) => {
   const removeInlineStyles = () => {
     const body = document.querySelector('body');
     if (body) {
-      body.style.backgroundColor = '';
-      body.style.fontWeight = '';
+      body.removeAttribute('style');
     }
   };
 
   useEffect(() => {
     removeInlineStyles();
+    console.log('HOLAAASSS');
   }, []);
 
   return (
