@@ -550,7 +550,18 @@ figcaption {
   font-size: 1.2rem;
 }
 
-/******** Aspect 1:2 ********/
+.long-content {
+  height: 90vh;
+  box-sizing: border-box;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  & a {
+    margin: 1vh 2vh;
+  }
+}
+
+/******** Aspect 0.53 ********/
 
 @media (min-aspect-ratio: 0.53) {
   .detail {
@@ -577,7 +588,7 @@ figcaption {
     font-size: var(--font-size-portrait);
     line-height: 10vh;
     & img {
-      margin: 5px;
+      margin-right: 5px;
     }
     & span {
       margin-right: 0;

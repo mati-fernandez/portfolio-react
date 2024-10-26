@@ -116,6 +116,54 @@
       "description": "Certification focused on using popular libraries like React, Redux, and tools for building user interfaces.",
       "close": "Close",
       "open": "View Certification"
+    },
+    "html": {
+      "title": "HTML",
+      "description": "In my first steps in the web world, I attended this introductory course on HTML.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "html5css3": {
+      "title": "HTML5 and CSS3",
+      "description": "In my first steps in the web world, I attended this introductory course on HTML5 and CSS3.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "bbdd": {
+      "title": "Introduction to Databases and SQL",
+      "description": "In my first steps in the web world, I attended this introductory course on databases and SQL.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "flash": {
+      "title": "Flash",
+      "description": "In my first steps in the web world, I attended this introductory course on Flash, but I already had experience using it.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "presu": {
+      "title": "Digital Budgeting",
+      "description": "In my first steps in the web world, I attended this course on digital budgeting.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "photo": {
+      "title": "Photoshop",
+      "description": "In my first steps in the web world, I attended this Photoshop course.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "cssdivs": {
+      "title": "CSS and DIVs",
+      "description": "In my first steps in the web world, I attended this course on CSS and DIVs.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "jquery": {
+      "title": "jQuery",
+      "description": "In my first steps in the web world, I attended this jQuery course.",
+      "close": "Close",
+      "open": "View Certification"
     }
   }
 }

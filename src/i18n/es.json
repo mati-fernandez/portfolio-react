@@ -115,6 +115,54 @@
       "description": "Certificación enfocada en el uso de librerías populares como React, Redux, y herramientas para el desarrollo de interfaces de usuario.",
       "close": "Cerrar",
       "open": "Ver Certificación"
+    },
+    "html": {
+      "title": "HTML",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso introductorio a HTML",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "html5css3": {
+      "title": "HTM5 y CSS3",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso introductorio a HTML5 y CSS3",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "bbdd": {
+      "title": "Introducción a Bases de datos y SQL",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso introductorio bases de datos y sql",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "flash": {
+      "title": "Flash",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso introductorio a Flash, pero en realidad ya tenía experiencia usándolo",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "presu": {
+      "title": "Presupuesto Web",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso sobre presupuesto digital.",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "photo": {
+      "title": "Photoshop",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso de Photoshop.",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "cssdivs": {
+      "title": "CSS y DIVs",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso sobre CSS y DIVs.",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "jquery": {
+      "title": "jQuery",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso de jQuery.",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
     }
   }
 }
