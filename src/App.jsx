@@ -39,6 +39,12 @@ function App() {
   const { language, fromLanguageBtn, setFromLanguageBtn } =
     useContext(TranslationContext);
   const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
+  const [viewMore, setViewMore] = useState({
+    projects: false,
+    exercises: false,
+    certifications: false,
+  });
+  const [actualPage, setActualPage] = useState(null);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -91,14 +97,31 @@ function App() {
     const timeout = setTimeout(() => {
       const progress = Array.from(document.querySelectorAll('.progress'));
       const buttons = Array.from(
-        document.querySelectorAll('.page a')
+        document.querySelectorAll('.page a:not(.view-more, .secondary)')
       ).reverse();
+      const secondaryButtons = Array.from(
+        document.querySelectorAll('.page a:not(.view-more)')
+      );
       const icons = Array.from(
         document.querySelectorAll('#desktop-footer a, #desktop-footer button')
       ).reverse();
       const desktopHeaderBtns = Array.from(
         document.querySelectorAll('#desktop-header a')
       );
+      const $viewMore = document.querySelector('.view-more');
+      const handleViewMore = (e) => {
+        if (e && e.target.matches('.view-more'))
+          setViewMore((prevState) => ({
+            ...prevState,
+            [lastWord]: true,
+          }));
+        if ($viewMore) $viewMore.style.display = 'none';
+      };
+      if (viewMore[actualPage] === true)
+        secondaryButtons.forEach((button) => {
+          button.style.display = 'block';
+          button.style.opacity = 1;
+        });
 
       if (aspectRatio === 'portrait' && !fromThemeBtn && !fromLanguageBtn) {
         setShowMenu(false);
@@ -107,12 +130,19 @@ function App() {
       if (fromThemeBtn) setFromThemeBtn(false);
 
       // SI NO ES PRIMERA CARGA, CANCELA ANIMACIONES SALVO EN HOME Y CAMBIO DE TEMA
+
       const lastWord = location.pathname.match(/(\w+)$/)?.[0] || ''; // Captura la última palabra del pathname
+      setActualPage(lastWord);
       if (
         notFirstLoad.includes(lastWord) &&
         !fromThemeBtn &&
         !fromLanguageBtn
       ) {
+        if ($viewMore) {
+          $viewMore.style.animation = 'none';
+          $viewMore.style.display = 'block';
+        }
+        if (viewMore[lastWord]) handleViewMore();
         progress.forEach((item) => item.classList.remove('fill-progress'));
         desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
         icons.forEach((icon) => {
@@ -124,12 +154,21 @@ function App() {
         });
       } else {
         // SI ES PRIMERA CARGA...
+        document.addEventListener('click', handleViewMore);
         setFromThemeBtn(false);
         setFromLanguageBtn(false);
         setNotFirstLoad((prevState) => [...prevState, lastWord]);
 
         let headerTimeout = null;
         const delayIncrement = 0.1;
+
+        // Fade in del view more, se remueve la animación para que funcione el hover
+        const fadeIn = setTimeout(() => {
+          if ($viewMore) {
+            $viewMore.style.display = 'block';
+            $viewMore.style.animationFillMode = '';
+          }
+        }, 1500);
 
         progress.forEach((item) => item.classList.remove('fill-progress'));
         const fillTimeout = setTimeout(() => {
@@ -169,16 +208,18 @@ function App() {
         });
 
         return () => {
+          document.removeEventListener('click', handleViewMore);
           clearTimeout(footerTimeout),
             clearTimeout(fillTimeout),
-            clearTimeout(headerTimeout);
+            clearTimeout(headerTimeout),
+            clearTimeout(fadeIn);
         };
       }
     }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
-  }, [location.pathname, theme]);
+  }, [location.pathname, theme, viewMore]);
 
-  // Theme y rotation mobile
+  // Theme btn rotation mobile
   useEffect(() => {
     let timeout = null;
     const themeBtn = document.querySelector('#theme-btn');
@@ -298,6 +339,8 @@ function App() {
               handleOpenModal={handleOpenModal}
               imagePreLoad={imagePreLoad}
               notFirstLoad={notFirstLoad}
+              viewMore={viewMore}
+              actualPage={actualPage}
             />
           }
         />

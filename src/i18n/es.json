@@ -1,4 +1,7 @@
 {
+  "buttons": {
+    "view-more": "Ver más..."
+  },
   "info": {
     "title": "Portfolio React",
     "text": "En este proyecto, experimenté mejoras en la legibilidad y modularidad del código en comparación con el portfolio anterior, que fue realizado en Vanilla JS. \n\n Puse en práctica el uso de hooks como useState y useEffect, hooks personalizados, contexto, componentes, estilos complejos con CSS, renderizado condicional con JSX, manejo de rutas con React Router, entre otras cosas.",

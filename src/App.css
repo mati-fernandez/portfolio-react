@@ -457,6 +457,7 @@ figcaption {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: calc(var(--vh, 1vh) * 90);
   overflow: hidden;
   padding: 10vh 0;
@@ -477,12 +478,32 @@ figcaption {
   animation: slideIn 200ms ease-out forwards;
 }
 
-.page a {
+.page a:not(.view-more) {
   border: none;
   height: fit-content;
   opacity: 0;
   background-color: var(--color-general-primary-alpha);
   border: var(--border);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.view-more {
+  display: none;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-basis: 100%;
+  opacity: 0.5;
+  background: none;
+  text-decoration: none;
+  color: var(--color-primary);
+  animation: fadeIn 1s ease-out;
 }
 
 .link {
@@ -849,8 +870,16 @@ figcaption {
     }
   }
 
-  .page > a:hover {
+  .page > a:hover:not(.view-more) {
     background-color: var(--color-general-primary);
+  }
+
+  .view-more {
+    font-size: 0.7rem;
+  }
+
+  .view-more:hover {
+    opacity: 1;
   }
 
   /**** FOOTER ****/
