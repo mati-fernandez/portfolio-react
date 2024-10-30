@@ -21,9 +21,10 @@ import Projects from './pages/Projects';
 import Certifications from './pages/Certifications';
 import Exercises from './pages/Exercises';
 import MobileHeader from './components/MobileHeader';
-import DesktopHeader from './components/DesktopFooter';
-import DesktopFooter from './components/DesktopHeader';
+import DesktopHeader from './components/DesktopHeader';
+import DesktopFooter from './components/DesktopFooter';
 import Modal from './components/Modal';
+import InfoModal from './components/InfoModal';
 
 const updateAspectRatio = () =>
   window.innerWidth / window.innerHeight < 1.2 ? 'portrait' : 'landscape';
@@ -41,6 +42,7 @@ function App() {
 
   const location = useLocation();
   const navigate = useNavigate();
+
   const handleOpenModal = (itemKey, img, link) => {
     setModalVisibility(true);
     setActiveModal({ itemKey, img, link });
@@ -85,6 +87,7 @@ function App() {
   // ANIMACIONES
   useEffect(() => {
     // Pequeño retraso porque al cambiar de idioma y volver hacia atrás, el query no llegaba a agarrar los .page a
+    // SetTimeOut necesario para "dar tiempo" a que se desmonte bien el componente
     const timeout = setTimeout(() => {
       const progress = Array.from(document.querySelectorAll('.progress'));
       const buttons = Array.from(
@@ -108,8 +111,7 @@ function App() {
       if (
         notFirstLoad.includes(lastWord) &&
         !fromThemeBtn &&
-        !fromLanguageBtn &&
-        !location.pathname.includes('home')
+        !fromLanguageBtn
       ) {
         progress.forEach((item) => item.classList.remove('fill-progress'));
         desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
@@ -172,7 +174,7 @@ function App() {
             clearTimeout(headerTimeout);
         };
       }
-    }, 100);
+    }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
   }, [location.pathname, theme]);
 
@@ -198,15 +200,24 @@ function App() {
   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO y resta un warning de "No routes matched location".
   return (
     <>
-      {activeModal && (
-        <Modal
+      {activeModal && activeModal.itemKey.includes('info') ? (
+        <InfoModal
           activeModal={activeModal.itemKey}
-          img={activeModal.img}
-          link={activeModal.link}
           setActiveModal={setActiveModal}
           modalVisibility={modalVisibility}
           setModalVisibility={setModalVisibility}
         />
+      ) : (
+        activeModal && (
+          <Modal
+            activeModal={activeModal.itemKey}
+            img={activeModal.img}
+            link={activeModal.link}
+            setActiveModal={setActiveModal}
+            modalVisibility={modalVisibility}
+            setModalVisibility={setModalVisibility}
+          />
+        )
       )}
       {aspectRatio === 'portrait' ? (
         <MobileHeader
@@ -229,7 +240,14 @@ function App() {
         />
         <Route
           path={`/${language}/home`}
-          element={<Home showMenu={showMenu} setShowMenu={setShowMenu} />}
+          element={
+            <Home
+              showMenu={showMenu}
+              setShowMenu={setShowMenu}
+              handleOpenModal={handleOpenModal}
+              notFirstLoad={notFirstLoad}
+            />
+          }
         />
         <Route
           path={`/${language}/skills`}
@@ -238,6 +256,7 @@ function App() {
               showMenu={showMenu}
               setShowMenu={setShowMenu}
               imagePreLoad={imagePreLoad}
+              notFirstLoad={notFirstLoad}
             />
           }
         />
@@ -251,6 +270,7 @@ function App() {
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
               imagePreLoad={imagePreLoad}
+              notFirstLoad={notFirstLoad}
             />
           }
         />
@@ -264,6 +284,7 @@ function App() {
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
               imagePreLoad={imagePreLoad}
+              notFirstLoad={notFirstLoad}
             />
           }
         />
@@ -276,6 +297,7 @@ function App() {
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
               imagePreLoad={imagePreLoad}
+              notFirstLoad={notFirstLoad}
             />
           }
         />

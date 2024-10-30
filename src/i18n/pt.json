@@ -1,4 +1,9 @@
 {
+  "info": {
+    "title": "Portfolio em React",
+    "text": "Neste projeto, experimentei melhorias na legibilidade e modularidade do código em comparação com o portfolio anterior, que foi feito em Vanilla JS. \n\n Coloquei em prática o uso de hooks como useState e useEffect, hooks personalizados, contexto, componentes, estilos complexos com CSS, renderização condicional com JSX, e gerenciamento de rotas com React Router, entre outras coisas.",
+    "continue": "Continuar"
+  },
   "description": "Sou um desenvolvedor web em crescimento, criando projetos com JavaScript e React enquanto exploro novas tecnologias.",
   "menu": {
     "home": "Início",
@@ -8,6 +13,11 @@
     "certifications": "Certificações"
   },
   "projects": {
+    "info": {
+      "title": "Seção de projetos",
+      "text": "Nesta seção, apresento trabalhos de minha autoria, sejam desafios que me pediram em um curso ou ideias que tive por conta própria.",
+      "continue": "Continuar"
+    },
     "rqm": {
       "title": "Máquina de Citações Aleatórias (React)",
       "description": "Essa foi provavelmente minha primeira experiência com requisições assíncronas para uma API externa. Utilizando a biblioteca 'Axios' neste caso e o gerenciamento de estado no React.",
@@ -46,6 +56,11 @@
     }
   },
   "exercises": {
+    "info": {
+      "title": "Seção de exercícios",
+      "text": "Nesta seção, eu reuni alguns trabalhos realizados durante cursos. Ou seja, não os fiz sozinho, mas eles me ensinaram algo.",
+      "continue": "Continuar"
+    },
     "dom": {
       "title": "DOM (JS Puro)",
       "description": "Exercício prático sobre a manipulação do DOM com JavaScript, explorando eventos e modificando o conteúdo dinamicamente.",
@@ -78,21 +93,74 @@
     }
   },
   "certifications": {
+    "info": {
+      "title": "Seção de certificações",
+      "text": "Se você clicar em 'Ver Certificação' em cada uma delas, poderá ver os projetos realizados neste curso.",
+      "continue": "Continuar"
+    },
     "rwd": {
       "title": "Design Web Responsivo",
-      "description": "Certificação que abrange os conceitos essenciais do design web, incluindo CSS Flexbox, CSS Grid, e design adaptável para diferentes tamanhos de tela.",
+      "description": "Certificação que abrange os conceitos essenciais do design web, incluindo CSS Flexbox, CSS Grid, e design adaptável para diferentes tamanhos de tela. Se você entrar, poderá ver os projetos realizados neste curso...",
       "close": "Fechar",
       "open": "Ver Certificação"
     },
     "javascript": {
       "title": "Algoritmos JS & Estruturas de Dados",
-      "description": "Certificação que cobre temas como algoritmos de ordenação, estruturas de dados comuns em JavaScript e a resolução de problemas complexos.",
+      "description": "Certificação que cobre temas como algoritmos de ordenação, estruturas de dados comuns em JavaScript e a resolução de problemas complexos. Se você entrar, poderá ver os projetos realizados neste curso...",
       "close": "Fechar",
       "open": "Ver Certificação"
     },
     "fdl": {
       "title": "Bibliotecas de Desenvolvimento de Interface",
       "description": "Certificação focada no uso de bibliotecas populares como React, Redux e ferramentas para o desenvolvimento de interfaces de usuário.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    },
+    "html": {
+      "title": "HTML",
+      "description": "Nos meus primeiros passos no mundo web, participei deste curso introdutório de HTML.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    },
+    "html5css3": {
+      "title": "HTML5 e CSS3",
+      "description": "Nos meus primeiros passos no mundo web, participei deste curso introdutório de HTML5 e CSS3.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    },
+    "bbdd": {
+      "title": "Introdução a Bancos de Dados e SQL",
+      "description": "Nos meus primeiros passos no mundo web, participei deste curso introdutório de bancos de dados e SQL.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    },
+    "flash": {
+      "title": "Flash",
+      "description": "Nos meus primeiros passos no mundo web, participei deste curso introdutório de Flash, mas já tinha experiência usando-o.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    },
+    "presu": {
+      "title": "Orçamento Digital",
+      "description": "Nos meus primeiros passos no mundo web, participei deste curso sobre orçamento digital.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    },
+    "photo": {
+      "title": "Photoshop",
+      "description": "Nos meus primeiros passos no mundo web, participei deste curso de Photoshop.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    },
+    "cssdivs": {
+      "title": "CSS e DIVs",
+      "description": "Nos meus primeiros passos no mundo web, participei deste curso sobre CSS e DIVs.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    },
+    "jquery": {
+      "title": "jQuery",
+      "description": "Nos meus primeiros passos no mundo web, participei deste curso de jQuery.",
       "close": "Fechar",
       "open": "Ver Certificação"
     }

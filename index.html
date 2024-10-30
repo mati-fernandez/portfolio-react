@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Matias</title>
   </head>
-  <body style="background-color: black; font-weight: 100">
+  <body style="background-color: black; color: white; transition: none">
     <!-- Template para usar shadow DOM -->
     <template id="loader-template">
       <style>
@@ -47,8 +47,19 @@
     </template>
     <div id="loader-container"></div>
     <div id="root"></div>
+    <!-- Detección temprana, previa a la carga de App del theme -->
     <script>
-      // Crear shadow DOM para aislar el loader
+      const prefersLightMode = window.matchMedia(
+        '(prefers-color-scheme: light)'
+      ).matches;
+      if (prefersLightMode) {
+        document.body.setAttribute('data-theme', 'light');
+      } else {
+        document.body.setAttribute('data-theme', 'dark');
+      }
+    </script>
+    <!-- Crear shadow DOM para aislar el loader -->
+    <script>
       const loaderContainer = document.getElementById('loader-container');
       const shadowRoot = loaderContainer.attachShadow({ mode: 'open' });
       const loaderTemplate = document.getElementById('loader-template');

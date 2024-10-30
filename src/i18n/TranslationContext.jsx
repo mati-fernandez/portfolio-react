@@ -7,7 +7,9 @@ import { useNavigate } from 'react-router-dom';
 export const TranslationContext = createContext();
 
 export const TranslationProvider = ({ children }) => {
-  const [language, setLanguage] = useState('');
+  const [language, setLanguage] = useState(
+    localStorage.getItem('language') ?? ''
+  );
   const navigate = useNavigate();
   const [fromLanguageBtn, setFromLanguageBtn] = useState(false);
 
@@ -34,9 +36,7 @@ export const TranslationProvider = ({ children }) => {
       setLanguage(detectedLanguage);
     } else if (!language) {
       setLanguage(URLlang);
-      const newPath = `/${language}/${pathParts.slice(2).join('/')}`;
-      navigate(newPath, { replace: true });
-    } else if (language && URLlang !== language && fromLanguageBtn) {
+    } else if (language && URLlang !== language) {
       const newPath = `/${language}/${pathParts.slice(2).join('/')}`;
       navigate(newPath, { replace: true });
     } else {

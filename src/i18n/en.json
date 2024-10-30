@@ -1,4 +1,9 @@
 {
+  "info": {
+    "title": "React Portfolio",
+    "text": "In this project, I experienced improvements in code readability and modularity compared to the previous portfolio, which was built with Vanilla JS. \n\n I applied the use of hooks like useState and useEffect, custom hooks, context, components, complex CSS styles, conditional rendering with JSX, and routing with React Router, among other things.",
+    "continue": "Continue"
+  },
   "description": "I'm a growing web developer, building projects with JavaScript and React while exploring new technologies.",
   "menu": {
     "home": "Home",
@@ -8,6 +13,11 @@
     "certifications": "Certifications"
   },
   "projects": {
+    "info": {
+      "title": "Projects section",
+      "text": "In this section, I showcase works of my own authorship, whether they are challenges assigned to me in a course or ideas I came up with on my own.",
+      "continue": "Continue"
+    },
     "rqm": {
       "title": "Random Quote Machine (React)",
       "description": "This must have been my first experience with asynchronous requests to an external API. Using the 'Axios' library in this case and state management in React.",
@@ -47,6 +57,11 @@
   },
 
   "exercises": {
+    "info": {
+      "title": "Exercises section",
+      "text": "In this section, I have compiled some work done during courses. That means I didn't do them on my own, but they taught me something.",
+      "continue": "Continue"
+    },
     "dom": {
       "title": "DOM (Vanilla JS; for PC)",
       "description": "Practical exercise on DOM manipulation with JavaScript, exploring events and dynamically modifying content.",
@@ -79,21 +94,74 @@
     }
   },
   "certifications": {
+    "info": {
+      "title": "Certifications section",
+      "text": "If you click on 'View Certification' for each one, you will be able to see the projects completed during that course.",
+      "continue": "Continue"
+    },
     "rwd": {
       "title": "Responsive Web Design",
-      "description": "Certification covering the essential concepts of web design, including CSS Flexbox, CSS Grid, and responsive design for different screen sizes.",
+      "description": "Certification covering the essential concepts of web design, including CSS Flexbox, CSS Grid, and responsive design for different screen sizes. If you enter, you will be able to see the projects completed in this course...",
       "close": "Close",
       "open": "View Certification"
     },
     "javascript": {
       "title": "JS Algorithms & Data Structures",
-      "description": "Certification covering topics like sorting algorithms, common data structures in JavaScript, and solving complex problems.",
+      "description": "Certification covering topics like sorting algorithms, common data structures in JavaScript, and solving complex problems. If you enter, you will be able to see the projects completed in this course...",
       "close": "Close",
       "open": "View Certification"
     },
     "fdl": {
       "title": "Front End Development Libraries",
       "description": "Certification focused on using popular libraries like React, Redux, and tools for building user interfaces.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "html": {
+      "title": "HTML",
+      "description": "In my first steps in the web world, I attended this introductory course on HTML.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "html5css3": {
+      "title": "HTML5 and CSS3",
+      "description": "In my first steps in the web world, I attended this introductory course on HTML5 and CSS3.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "bbdd": {
+      "title": "Introduction to Databases and SQL",
+      "description": "In my first steps in the web world, I attended this introductory course on databases and SQL.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "flash": {
+      "title": "Flash",
+      "description": "In my first steps in the web world, I attended this introductory course on Flash, but I already had experience using it.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "presu": {
+      "title": "Digital Budgeting",
+      "description": "In my first steps in the web world, I attended this course on digital budgeting.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "photo": {
+      "title": "Photoshop",
+      "description": "In my first steps in the web world, I attended this Photoshop course.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "cssdivs": {
+      "title": "CSS and DIVs",
+      "description": "In my first steps in the web world, I attended this course on CSS and DIVs.",
+      "close": "Close",
+      "open": "View Certification"
+    },
+    "jquery": {
+      "title": "jQuery",
+      "description": "In my first steps in the web world, I attended this jQuery course.",
       "close": "Close",
       "open": "View Certification"
     }

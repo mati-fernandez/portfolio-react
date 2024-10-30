@@ -1,4 +1,9 @@
 {
+  "info": {
+    "title": "Portfolio React",
+    "text": "En este proyecto, experimenté mejoras en la legibilidad y modularidad del código en comparación con el portfolio anterior, que fue realizado en Vanilla JS. \n\n Puse en práctica el uso de hooks como useState y useEffect, hooks personalizados, contexto, componentes, estilos complejos con CSS, renderizado condicional con JSX, manejo de rutas con React Router, entre otras cosas.",
+    "continue": "Continuar"
+  },
   "description": "Soy un desarrollador web en crecimiento, creando proyectos con JavaScript y React mientras exploro nuevas tecnologías.",
   "menu": {
     "home": "Inicio",
@@ -8,6 +13,11 @@
     "certifications": "Certificaciones"
   },
   "projects": {
+    "info": {
+      "title": "Sección proyectos",
+      "text": "En esta sección muestro trabajos de mi autoría, ya sea un desafío que me pidieron en un curso o alguna idea que tuve por mi cuenta.",
+      "continue": "Continuar"
+    },
     "rqm": {
       "title": "Máquina de Citas Aleatorias (React)",
       "description": "Esta debe haber sido mi primer experiencia con peticiones asíncronas hacia una API externa. Utilizando la librería 'Axios' en este caso y el manejo de estado en React",
@@ -46,6 +56,11 @@
     }
   },
   "exercises": {
+    "info": {
+      "title": "Sección ejercicios",
+      "text": "En esta sección recopilo algunos trabajos realizados durante cursos. Es decir, no los hice solo, pero me enseñaron algo.",
+      "continue": "Continuar"
+    },
     "dom": {
       "title": "DOM (JS Vainilla)",
       "description": "Ejercicio práctico sobre la manipulación del DOM con JavaScript, explorando eventos y modificando el contenido dinámicamente.",
@@ -78,6 +93,11 @@
     }
   },
   "certifications": {
+    "info": {
+      "title": "Sección certificaciones",
+      "text": "Si ingresas en 'Ver certificación' en cada una de ellas, podrás ver los proyectos realizados en ese curso.",
+      "continue": "Continuar"
+    },
     "rwd": {
       "title": "Diseño Web Responsivo",
       "description": "Certificación que abarca los conceptos esenciales del diseño web, incluyendo CSS Flexbox, CSS Grid, y diseño adaptable a diferentes tamaños de pantalla.",
@@ -93,6 +113,54 @@
     "fdl": {
       "title": "Librerías de Desarrollo de Interfaz",
       "description": "Certificación enfocada en el uso de librerías populares como React, Redux, y herramientas para el desarrollo de interfaces de usuario.",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "html": {
+      "title": "HTML",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso introductorio a HTML",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "html5css3": {
+      "title": "HTM5 y CSS3",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso introductorio a HTML5 y CSS3",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "bbdd": {
+      "title": "Introducción a Bases de datos y SQL",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso introductorio bases de datos y sql",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "flash": {
+      "title": "Flash",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso introductorio a Flash, pero en realidad ya tenía experiencia usándolo",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "presu": {
+      "title": "Presupuesto Web",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso sobre presupuesto digital.",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "photo": {
+      "title": "Photoshop",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso de Photoshop.",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "cssdivs": {
+      "title": "CSS y DIVs",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso sobre CSS y DIVs.",
+      "close": "Cerrar",
+      "open": "Ver Certificación"
+    },
+    "jquery": {
+      "title": "jQuery",
+      "description": "En mis primeros pasos en el mundo web, asistí a este curso de jQuery.",
       "close": "Cerrar",
       "open": "Ver Certificación"
     }
