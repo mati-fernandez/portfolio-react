@@ -710,12 +710,13 @@ figcaption {
   }
 
   .infoModal {
+    width: 50%;
     top: 50%;
     & p {
-      font-size: 1rem;
+      font-size: 0.7rem;
     }
     & a {
-      font-size: 1rem;
+      font-size: 0.7rem;
       font-weight: normal;
     }
     & p {
