@@ -53,42 +53,42 @@ const Certifications = ({
           handleOpenModal={handleOpenModal}
           itemKey={'certifications.info'}
         />
-        <a
+        <button
           className="long-text button link"
           onClick={() =>
             handleOpenModal('certifications.rwd', imgrwd, links[0])
           }
         >
           {translate('certifications.rwd.title')}
-        </a>
-        <a
+        </button>
+        <button
           className="long-text button link"
           onClick={() =>
             handleOpenModal('certifications.javascript', imgjs, links[1])
           }
         >
           {translate('certifications.javascript.title')}
-        </a>
-        <a
+        </button>
+        <button
           className="long-text button link"
           onClick={() =>
             handleOpenModal('certifications.fdl', imgfdl, links[2])
           }
         >
           {translate('certifications.fdl.title')}
-        </a>
+        </button>
         {/* ------------------- Enlaces secundarios ---------------------- */}
         {(viewMore[actualPage] && (
           <>
-            <a
+            <button
               className="long-text button link secondary"
               onClick={() =>
                 handleOpenModal('certifications.html', imghtml, links[3])
               }
             >
               {translate('certifications.html.title')}
-            </a>
-            <a
+            </button>
+            <button
               className="long-text button link secondary"
               onClick={() =>
                 handleOpenModal(
@@ -99,64 +99,64 @@ const Certifications = ({
               }
             >
               {translate('certifications.html5css3.title')}
-            </a>
-            <a
+            </button>
+            <button
               className="long-text button link secondary"
               onClick={() =>
                 handleOpenModal('certifications.bbdd', imgbbdd, links[5])
               }
             >
               {translate('certifications.bbdd.title')}
-            </a>
-            <a
+            </button>
+            <button
               className="long-text button link secondary"
               onClick={() =>
                 handleOpenModal('certifications.flash', imgflash, links[6])
               }
             >
               {translate('certifications.flash.title')}
-            </a>
-            <a
+            </button>
+            <button
               className="long-text button link secondary"
               onClick={() =>
                 handleOpenModal('certifications.presu', imgpresu, links[7])
               }
             >
               {translate('certifications.presu.title')}
-            </a>
-            <a
+            </button>
+            <button
               className="long-text button link secondary"
               onClick={() =>
                 handleOpenModal('certifications.photo', imgphoto, links[8])
               }
             >
               {translate('certifications.photo.title')}
-            </a>
-            <a
+            </button>
+            <button
               className="long-text button link secondary"
               onClick={() =>
                 handleOpenModal('certifications.cssdivs', imgcssdivs, links[9])
               }
             >
               {translate('certifications.cssdivs.title')}
-            </a>
-            <a
+            </button>
+            <button
               className="long-text button link secondary"
               onClick={() =>
                 handleOpenModal('certifications.jquery', imgjquery, links[10])
               }
             >
               {translate('certifications.jquery.title')}
-            </a>
-            <a ref={$viewLess} className="view-less">
+            </button>
+            <button ref={$viewLess} className="view-less">
               {translate('buttons.view-less')}
-            </a>
+            </button>
           </>
         )) || (
           /*.............................Ver más................................*/
-          <a ref={$viewMore} className="view-more">
+          <button ref={$viewMore} className="view-more">
             {translate('buttons.view-more')}
-          </a>
+          </button>
         )}
       </div>
     </>

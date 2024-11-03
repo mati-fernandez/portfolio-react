@@ -87,6 +87,15 @@ button {
   justify-content: center;
 }
 
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
 p:not(#name) {
   transition: color 0.8s ease-in-out;
 }
@@ -480,7 +489,7 @@ figcaption {
   animation: slideIn 200ms ease-out forwards;
 }
 
-.page a:not(.view-more, .view-less) {
+.page button:not(.view-more, .view-less) {
   border: none;
   height: fit-content;
   background-color: var(--color-general-primary-alpha);
@@ -590,7 +599,7 @@ figcaption {
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
-  & a {
+  & button {
     margin: 1vh 2vh;
   }
 }

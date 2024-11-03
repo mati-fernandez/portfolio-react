@@ -32,38 +32,38 @@ const Exercises = ({ notFirstLoad, handleOpenModal, imagePreLoad }) => {
         handleOpenModal={handleOpenModal}
         itemKey={'exercises.info'}
       />
-      <a
+      <button
         className="long-text button link"
         onClick={() => handleOpenModal('exercises.dom', imgdom, links[0])}
       >
         {translate('exercises.dom.title')}
-      </a>
-      <a
+      </button>
+      <button
         className="long-text button link"
         onClick={() => handleOpenModal('exercises.draw', imgcan, links[1])}
       >
         {translate('exercises.draw.title')}
-      </a>
-      <a
+      </button>
+      <button
         className="long-text button link"
         onClick={() => handleOpenModal('exercises.tetris', imgtet, links[2])}
       >
         {translate('exercises.tetris.title')}
-      </a>
-      <a
+      </button>
+      <button
         className="long-text button link"
         onClick={() =>
           handleOpenModal('exercises.monkeytype', imgmon, links[3])
         }
       >
         {translate('exercises.monkeytype.title')}
-      </a>
-      <a
+      </button>
+      <button
         className="long-text button link"
         onClick={() => handleOpenModal('exercises.excel', imgexc, links[4])}
       >
         {translate('exercises.excel.title')}
-      </a>
+      </button>
     </div>
   );
 };

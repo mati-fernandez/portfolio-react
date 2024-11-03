@@ -34,42 +34,42 @@ const Projects = ({ notFirstLoad, handleOpenModal, imagePreLoad }) => {
         handleOpenModal={handleOpenModal}
         itemKey={'projects.info'}
       />
-      <a
+      <button
         className="long-text button link"
         onClick={() => handleOpenModal('projects.rqm', imgrqm, links[0])}
       >
         {translate('projects.rqm.title')}
-      </a>
-      <a
+      </button>
+      <button
         className="long-text button link"
         onClick={() => handleOpenModal('projects.mdp', imgmdp, links[1])}
       >
         {translate('projects.mdp.title')}
-      </a>
-      <a
+      </button>
+      <button
         className="long-text button link"
         onClick={() => handleOpenModal('projects.dm', imgdm, links[2])}
       >
         {translate('projects.dm.title')}
-      </a>
-      <a
+      </button>
+      <button
         className="long-text button link"
         onClick={() => handleOpenModal('projects.calc', imgcalc, links[3])}
       >
         {translate('projects.calc.title')}
-      </a>
-      <a
+      </button>
+      <button
         className="long-text button link"
         onClick={() => handleOpenModal('projects.pc', imgpc, links[4])}
       >
         {translate('projects.pc.title')}
-      </a>
-      <a
+      </button>
+      <button
         className="long-text button link"
         onClick={() => handleOpenModal('projects.op', imgop, links[5])}
       >
         {translate('projects.op.title')}
-      </a>
+      </button>
     </div>
   );
 };
