@@ -36,6 +36,8 @@ const Certifications = ({
   imagePreLoad,
   viewMore,
   actualPage,
+  $viewMore,
+  $viewLess,
 }) => {
   const { translate } = useContext(TranslationContext);
 
@@ -77,7 +79,7 @@ const Certifications = ({
           {translate('certifications.fdl.title')}
         </a>
         {/* ------------------- Enlaces secundarios ---------------------- */}
-        {viewMore[actualPage] && (
+        {(viewMore[actualPage] && (
           <>
             <a
               className="long-text button link secondary"
@@ -147,12 +149,17 @@ const Certifications = ({
             >
               {translate('certifications.jquery.title')}
             </a>
+            <NavLink ref={$viewLess} className="view-less fade-in">
+              {translate('buttons.view-less')}
+            </NavLink>
           </>
+        )) || (
+          /*.............................Ver más................................*/
+          <NavLink ref={$viewMore} className="view-more fade-in">
+            {translate('buttons.view-more')}
+          </NavLink>
         )}
       </div>
-
-      {/*.............................Ver más................................*/}
-      <NavLink className="view-more">{translate('buttons.view-more')}</NavLink>
     </>
   );
 };

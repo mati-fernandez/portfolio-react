@@ -129,7 +129,6 @@ p:not(#name) {
   position: absolute;
   top: 45%;
   left: 50%;
-  font-size: 1rem;
   align-content: center;
   animation: animate-modal-open 150ms ease-out forwards;
   transform-origin: 0 0;
@@ -141,7 +140,6 @@ p:not(#name) {
   }
   & a {
     background-color: var(--color-general-primary-alpha);
-    font-size: 4vw;
     width: fit-content;
     margin: auto;
     border: var(--border);
@@ -478,18 +476,24 @@ figcaption {
   animation: slideIn 200ms ease-out forwards;
 }
 
-.page a:not(.view-more) {
+.page a:not(.view-more, .view-less) {
   border: none;
   height: fit-content;
-  opacity: 0;
   background-color: var(--color-general-primary-alpha);
   border: var(--border);
+  & :not(.secondary) {
+    opacity: 0;
+  }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out;
 }
 
 .view-more {
@@ -503,7 +507,18 @@ figcaption {
   background: none;
   text-decoration: none;
   color: var(--color-primary);
-  animation: fadeIn 1s ease-out;
+}
+
+.view-less {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-basis: 100%;
+  opacity: 0.5;
+  background: none;
+  text-decoration: none;
+  color: var(--color-primary);
 }
 
 .link {
@@ -731,12 +746,13 @@ figcaption {
   }
 
   .infoModal {
+    width: 50%;
     top: 50%;
     & p {
-      font-size: 1rem;
+      font-size: 0.7rem;
     }
     & a {
-      font-size: 1rem;
+      font-size: 0.7rem;
       font-weight: normal;
     }
     & p {

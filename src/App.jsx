@@ -7,7 +7,7 @@ import {
   Navigate,
   useNavigate,
 } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { TranslationContext } from './i18n/TranslationContext';
 import { ThemeContext } from './context/ThemeContext';
 import { useEffect, useState } from 'react';
@@ -44,10 +44,15 @@ function App() {
     exercises: false,
     certifications: false,
   });
-  const [actualPage, setActualPage] = useState(null);
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  const getActualPage = () => location.pathname.match(/(\w+)$/)?.[0] || ''; // Captura la última palabra del pathname
+
+  const $viewMore = useRef(null);
+  const $viewLess = useRef(null);
+  const [actualPage, setActualPage] = useState(getActualPage());
 
   const handleOpenModal = (itemKey, img, link) => {
     setModalVisibility(true);
@@ -61,8 +66,25 @@ function App() {
     });
   };
 
-  // CLOSE MODAL OR MENU ON NAVIGATION 'Prevent Navigation' Hack:
+  const handleViewMore = (e) => {
+    if (e && e.target.matches('.view-more')) {
+      setViewMore((prevState) => ({
+        ...prevState,
+        [actualPage]: true,
+      }));
+      $viewMore.current.style.display = 'none';
+    }
+    if (e && e.target.matches('.view-less')) {
+      setViewMore((prevState) => ({
+        ...prevState,
+        [actualPage]: false,
+      }));
+      $viewLess.current.style.display = 'none';
+    }
+  };
+
   useEffect(() => {
+    // CLOSE MODAL OR MENU ON NAVIGATION 'Prevent Navigation' Hack:
     // En el if no usar activeModal porque provoca bucle al tener timeout en el set
     if (modalVisibility || (showMenu && !fromMenuBtn && !fromLanguageBtn)) {
       setShowMenu(false);
@@ -74,6 +96,8 @@ function App() {
       }, 150);
       navigate(1);
     }
+
+    setActualPage(getActualPage());
   }, [location.pathname]);
 
   // VSUALIZACION
@@ -97,31 +121,15 @@ function App() {
     const timeout = setTimeout(() => {
       const progress = Array.from(document.querySelectorAll('.progress'));
       const buttons = Array.from(
-        document.querySelectorAll('.page a:not(.view-more, .secondary)')
+        document.querySelectorAll('.page a:not(.view-more, .view-less)')
       ).reverse();
-      const secondaryButtons = Array.from(
-        document.querySelectorAll('.page a:not(.view-more)')
-      );
+      console.log(buttons);
       const icons = Array.from(
         document.querySelectorAll('#desktop-footer a, #desktop-footer button')
       ).reverse();
       const desktopHeaderBtns = Array.from(
         document.querySelectorAll('#desktop-header a')
       );
-      const $viewMore = document.querySelector('.view-more');
-      const handleViewMore = (e) => {
-        if (e && e.target.matches('.view-more'))
-          setViewMore((prevState) => ({
-            ...prevState,
-            [lastWord]: true,
-          }));
-        if ($viewMore) $viewMore.style.display = 'none';
-      };
-      if (viewMore[actualPage] === true)
-        secondaryButtons.forEach((button) => {
-          button.style.display = 'block';
-          button.style.opacity = 1;
-        });
 
       if (aspectRatio === 'portrait' && !fromThemeBtn && !fromLanguageBtn) {
         setShowMenu(false);
@@ -129,20 +137,18 @@ function App() {
       if (fromLanguageBtn) setFromLanguageBtn(false);
       if (fromThemeBtn) setFromThemeBtn(false);
 
-      // SI NO ES PRIMERA CARGA, CANCELA ANIMACIONES SALVO EN HOME Y CAMBIO DE TEMA
+      // SI NO ES PRIMERA CARGA, CANCELA ANIMACIONES SALVO EN HOME Y CAMBIO DE TEMA en cuanto a footer
 
-      const lastWord = location.pathname.match(/(\w+)$/)?.[0] || ''; // Captura la última palabra del pathname
-      setActualPage(lastWord);
       if (
-        notFirstLoad.includes(lastWord) &&
+        notFirstLoad.includes(actualPage) &&
         !fromThemeBtn &&
         !fromLanguageBtn
       ) {
-        if ($viewMore) {
-          $viewMore.style.animation = 'none';
-          $viewMore.style.display = 'block';
+        if ($viewMore.current) {
+          $viewMore.current.style.animation = 'none';
+          $viewMore.current.style.display = 'block';
         }
-        if (viewMore[lastWord]) handleViewMore();
+        if (viewMore[actualPage]) handleViewMore();
         progress.forEach((item) => item.classList.remove('fill-progress'));
         desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
         icons.forEach((icon) => {
@@ -157,16 +163,20 @@ function App() {
         document.addEventListener('click', handleViewMore);
         setFromThemeBtn(false);
         setFromLanguageBtn(false);
-        setNotFirstLoad((prevState) => [...prevState, lastWord]);
+        setNotFirstLoad((prevState) => [...prevState, actualPage]);
 
         let headerTimeout = null;
         const delayIncrement = 0.1;
 
-        // Fade in del view more, se remueve la animación para que funcione el hover
+        // Fade in del view more
         const fadeIn = setTimeout(() => {
-          if ($viewMore) {
-            $viewMore.style.display = 'block';
-            $viewMore.style.animationFillMode = '';
+          //Se comprueba si el botón existe en esa página
+          console.log('Entró al timeout');
+          if ($viewMore.current) {
+            console.log('Entró al if del t.o.');
+            $viewMore.current.style.display = 'block';
+            //Se remueve el fill mode (forward en este caso) para que funcione el hover
+            $viewMore.current.style.animationFillMode = '';
           }
         }, 1500);
 
@@ -217,7 +227,7 @@ function App() {
       }
     }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
-  }, [location.pathname, theme, viewMore]);
+  }, [location.pathname, theme, viewMore, modalVisibility]);
 
   // Theme btn rotation mobile
   useEffect(() => {
@@ -341,6 +351,8 @@ function App() {
               notFirstLoad={notFirstLoad}
               viewMore={viewMore}
               actualPage={actualPage}
+              $viewMore={$viewMore}
+              $viewLess={$viewLess}
             />
           }
         />

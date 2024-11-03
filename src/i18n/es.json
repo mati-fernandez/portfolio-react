@@ -1,6 +1,7 @@
 {
   "buttons": {
-    "view-more": "Ver más..."
+    "view-more": "Ver más...",
+    "view-less": "Ver menos..."
   },
   "info": {
     "title": "Portfolio React",
