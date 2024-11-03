@@ -490,19 +490,16 @@ figcaption {
   from {
     opacity: 0;
   }
+  to {
+    opacity: 0.5;
+  }
 }
 
 .fade-in {
-  animation: fadeIn 1s ease-out;
+  animation: fadeIn 1s ease-out forwards;
 }
 
 .view-more {
-  display: none;
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  flex-basis: 100%;
   opacity: 0.5;
   background: none;
   text-decoration: none;
@@ -510,11 +507,6 @@ figcaption {
 }
 
 .view-less {
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  flex-basis: 100%;
   opacity: 0.5;
   background: none;
   text-decoration: none;
@@ -886,7 +878,7 @@ figcaption {
     }
   }
 
-  .page > a:hover:not(.view-more) {
+  .page > a:hover:not(.view-more, .view-less) {
     background-color: var(--color-general-primary);
   }
 
@@ -894,7 +886,15 @@ figcaption {
     font-size: 0.7rem;
   }
 
+  .view-less {
+    font-size: 0.7rem;
+  }
+
   .view-more:hover {
+    opacity: 1;
+  }
+
+  .view-less:hover {
     opacity: 1;
   }
 

@@ -100,7 +100,7 @@
   "certifications": {
     "info": {
       "title": "Certifications section",
-      "text": "If you click on 'View Certification' for each one, you will be able to see the projects completed during that course.",
+      "text": "If you click on 'View Certification', for each one (freeCodeCamp) you will be able to see the projects completed during that course.",
       "continue": "Continue"
     },
     "rwd": {

@@ -72,14 +72,14 @@ function App() {
         ...prevState,
         [actualPage]: true,
       }));
-      $viewMore.current.style.display = 'none';
+      if ($viewMore) $viewMore.current.style.display = 'none';
     }
     if (e && e.target.matches('.view-less')) {
       setViewMore((prevState) => ({
         ...prevState,
         [actualPage]: false,
       }));
-      $viewLess.current.style.display = 'none';
+      if ($viewLess) $viewLess.current.style.display = 'none';
     }
   };
 
@@ -119,11 +119,12 @@ function App() {
     // Pequeño retraso porque al cambiar de idioma y volver hacia atrás, el query no llegaba a agarrar los .page a
     // SetTimeOut necesario para "dar tiempo" a que se desmonte bien el componente
     const timeout = setTimeout(() => {
+      let fadeIn = null;
+      let removeFadeIn = null;
       const progress = Array.from(document.querySelectorAll('.progress'));
       const buttons = Array.from(
         document.querySelectorAll('.page a:not(.view-more, .view-less)')
       ).reverse();
-      console.log(buttons);
       const icons = Array.from(
         document.querySelectorAll('#desktop-footer a, #desktop-footer button')
       ).reverse();
@@ -169,16 +170,20 @@ function App() {
         const delayIncrement = 0.1;
 
         // Fade in del view more
-        const fadeIn = setTimeout(() => {
-          //Se comprueba si el botón existe en esa página
-          console.log('Entró al timeout');
-          if ($viewMore.current) {
-            console.log('Entró al if del t.o.');
-            $viewMore.current.style.display = 'block';
-            //Se remueve el fill mode (forward en este caso) para que funcione el hover
-            $viewMore.current.style.animationFillMode = '';
-          }
-        }, 1500);
+        //Se comprueba si el botón existe en esa página
+        if ($viewMore.current) {
+          //Se oculta en la primera carga para esperar la animación de entrada
+          $viewMore.current.style.opacity = 0;
+          // Despues de llegar los enlaces de pagina aparece view more
+          fadeIn = setTimeout(() => {
+            $viewMore.current.classList.add('fade-in');
+            // Saco el forwards para que funcione el hover
+            removeFadeIn = setTimeout(() => {
+              $viewMore.current.style.opacity = 0.5;
+              $viewMore.current.classList.remove('fade-in');
+            }, 1000);
+          }, 1500);
+        }
 
         progress.forEach((item) => item.classList.remove('fill-progress'));
         const fillTimeout = setTimeout(() => {
@@ -222,7 +227,8 @@ function App() {
           clearTimeout(footerTimeout),
             clearTimeout(fillTimeout),
             clearTimeout(headerTimeout),
-            clearTimeout(fadeIn);
+            clearTimeout(fadeIn),
+            clearTimeout(removeFadeIn);
         };
       }
     }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente

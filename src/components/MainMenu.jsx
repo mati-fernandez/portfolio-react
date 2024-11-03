@@ -7,7 +7,7 @@ const MainMenu = ({ setFromMenuBtn }) => {
   const { translate, language } = useContext(TranslationContext);
 
   const handleClick = () => {
-    setFromMenuBtn(true);
+    if (setFromMenuBtn) setFromMenuBtn(true);
   };
 
   return (

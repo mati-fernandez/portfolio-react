@@ -99,7 +99,7 @@
   "certifications": {
     "info": {
       "title": "Sección certificaciones",
-      "text": "Si ingresas en 'Ver certificación' en cada una de ellas, podrás ver los proyectos realizados en ese curso.",
+      "text": "Si ingresas en 'Ver certificación', en cada una de ellas (freeCodeCamp) podrás ver los proyectos realizados en ese curso.",
       "continue": "Continuar"
     },
     "rwd": {

@@ -149,13 +149,13 @@ const Certifications = ({
             >
               {translate('certifications.jquery.title')}
             </a>
-            <NavLink ref={$viewLess} className="view-less fade-in">
+            <NavLink ref={$viewLess} className="view-less">
               {translate('buttons.view-less')}
             </NavLink>
           </>
         )) || (
           /*.............................Ver más................................*/
-          <NavLink ref={$viewMore} className="view-more fade-in">
+          <NavLink ref={$viewMore} className="view-more">
             {translate('buttons.view-more')}
           </NavLink>
         )}
