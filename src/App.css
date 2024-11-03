@@ -897,7 +897,7 @@ figcaption {
     }
   }
 
-  .page > a:hover:not(.view-more, .view-less) {
+  .page > button:hover:not(.view-more, .view-less) {
     background-color: var(--color-general-primary);
   }
 

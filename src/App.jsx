@@ -72,18 +72,22 @@ function App() {
 
   const handleViewMore = (e) => {
     if (e.target.matches('.view-more')) {
+      console.log('Mostrando más para la página:', actualPage);
+
       setViewMore((prevState) => ({
         ...prevState,
         [actualPage]: true,
       }));
-      if ($viewMore) $viewMore.current.style.display = 'none';
+      if ($viewMore.current) $viewMore.current.style.display = 'none';
+      console.log($viewLess, 'view less full obj');
     }
     if (e.target.matches('.view-less')) {
       setViewMore((prevState) => ({
         ...prevState,
         [actualPage]: false,
       }));
-      if ($viewLess) $viewLess.current.style.display = 'none';
+      if ($viewLess.current) $viewLess.current.style.display = 'none';
+      console.log($viewLess, 'view less full obj');
     }
   };
 
@@ -182,7 +186,9 @@ function App() {
           fadeIn = setTimeout(() => {
             $viewMore.current.classList.add('fade-in');
             // Saco el forwards para que funcione el hover
+            console.log($viewMore.current);
             removeFadeIn = setTimeout(() => {
+              console.log($viewMore.current);
               $viewMore.current.style.opacity = 0.5;
               $viewMore.current.classList.remove('fade-in');
             }, 1000);
@@ -237,7 +243,7 @@ function App() {
       }
     }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
-  }, [location.pathname, theme, viewMore, modalVisibility]);
+  }, [location.pathname, theme, viewMore, modalVisibility, actualPage]); // No sacar actualPage de las deps porque evita error
 
   // Theme btn rotation mobile
   useEffect(() => {
