@@ -7,7 +7,7 @@ import {
   Navigate,
   useNavigate,
 } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { TranslationContext } from './i18n/TranslationContext';
 import { ThemeContext } from './context/ThemeContext';
 import { useEffect, useState } from 'react';
@@ -39,9 +39,24 @@ function App() {
   const { language, fromLanguageBtn, setFromLanguageBtn } =
     useContext(TranslationContext);
   const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
+  const [viewMore, setViewMore] = useState({
+    projects: false,
+    exercises: false,
+    certifications: false,
+  });
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  const getActualPage = () => {
+    const actual = location.pathname.match(/(\w+)$/)?.[0] || ''; // Captura la última palabra del pathname
+    console.log(actual);
+    return actual;
+  };
+
+  const $viewMore = useRef(null);
+  const $viewLess = useRef(null);
+  const [actualPage, setActualPage] = useState(getActualPage());
 
   const handleOpenModal = (itemKey, img, link) => {
     setModalVisibility(true);
@@ -55,8 +70,25 @@ function App() {
     });
   };
 
-  // CLOSE MODAL OR MENU ON NAVIGATION 'Prevent Navigation' Hack:
+  const handleViewMore = (e) => {
+    if (e && e.target.matches('.view-more')) {
+      setViewMore((prevState) => ({
+        ...prevState,
+        [actualPage]: true,
+      }));
+      if ($viewMore) $viewMore.current.style.display = 'none';
+    }
+    if (e && e.target.matches('.view-less')) {
+      setViewMore((prevState) => ({
+        ...prevState,
+        [actualPage]: false,
+      }));
+      if ($viewLess) $viewLess.current.style.display = 'none';
+    }
+  };
+
   useEffect(() => {
+    // CLOSE MODAL OR MENU ON NAVIGATION 'Prevent Navigation' Hack:
     // En el if no usar activeModal porque provoca bucle al tener timeout en el set
     if (modalVisibility || (showMenu && !fromMenuBtn && !fromLanguageBtn)) {
       setShowMenu(false);
@@ -68,6 +100,8 @@ function App() {
       }, 150);
       navigate(1);
     }
+
+    setActualPage(getActualPage());
   }, [location.pathname]);
 
   // VSUALIZACION
@@ -89,9 +123,11 @@ function App() {
     // Pequeño retraso porque al cambiar de idioma y volver hacia atrás, el query no llegaba a agarrar los .page a
     // SetTimeOut necesario para "dar tiempo" a que se desmonte bien el componente
     const timeout = setTimeout(() => {
+      let fadeIn = null;
+      let removeFadeIn = null;
       const progress = Array.from(document.querySelectorAll('.progress'));
       const buttons = Array.from(
-        document.querySelectorAll('.page a')
+        document.querySelectorAll('.page a:not(.view-more, .view-less)')
       ).reverse();
       const icons = Array.from(
         document.querySelectorAll('#desktop-footer a, #desktop-footer button')
@@ -106,13 +142,18 @@ function App() {
       if (fromLanguageBtn) setFromLanguageBtn(false);
       if (fromThemeBtn) setFromThemeBtn(false);
 
-      // SI NO ES PRIMERA CARGA, CANCELA ANIMACIONES SALVO EN HOME Y CAMBIO DE TEMA
-      const lastWord = location.pathname.match(/(\w+)$/)?.[0] || ''; // Captura la última palabra del pathname
+      // SI NO ES PRIMERA CARGA, CANCELA ANIMACIONES SALVO EN HOME Y CAMBIO DE TEMA en cuanto a footer
+
       if (
-        notFirstLoad.includes(lastWord) &&
+        notFirstLoad.includes(actualPage) &&
         !fromThemeBtn &&
         !fromLanguageBtn
       ) {
+        if ($viewMore.current) {
+          $viewMore.current.style.animation = 'none';
+          $viewMore.current.style.display = 'block';
+        }
+        if (viewMore[actualPage]) handleViewMore();
         progress.forEach((item) => item.classList.remove('fill-progress'));
         desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
         icons.forEach((icon) => {
@@ -124,12 +165,29 @@ function App() {
         });
       } else {
         // SI ES PRIMERA CARGA...
+        document.addEventListener('click', handleViewMore);
         setFromThemeBtn(false);
         setFromLanguageBtn(false);
-        setNotFirstLoad((prevState) => [...prevState, lastWord]);
+        setNotFirstLoad((prevState) => [...prevState, actualPage]);
 
         let headerTimeout = null;
         const delayIncrement = 0.1;
+
+        // Fade in del view more
+        //Se comprueba si el botón existe en esa página
+        if ($viewMore.current) {
+          //Se oculta en la primera carga para esperar la animación de entrada
+          $viewMore.current.style.opacity = 0;
+          // Despues de llegar los enlaces de pagina aparece view more
+          fadeIn = setTimeout(() => {
+            $viewMore.current.classList.add('fade-in');
+            // Saco el forwards para que funcione el hover
+            removeFadeIn = setTimeout(() => {
+              $viewMore.current.style.opacity = 0.5;
+              $viewMore.current.classList.remove('fade-in');
+            }, 1000);
+          }, 1500);
+        }
 
         progress.forEach((item) => item.classList.remove('fill-progress'));
         const fillTimeout = setTimeout(() => {
@@ -169,16 +227,19 @@ function App() {
         });
 
         return () => {
+          document.removeEventListener('click', handleViewMore);
           clearTimeout(footerTimeout),
             clearTimeout(fillTimeout),
-            clearTimeout(headerTimeout);
+            clearTimeout(headerTimeout),
+            clearTimeout(fadeIn),
+            clearTimeout(removeFadeIn);
         };
       }
     }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
-  }, [location.pathname, theme]);
+  }, [location.pathname, theme, viewMore, modalVisibility]);
 
-  // Theme y rotation mobile
+  // Theme btn rotation mobile
   useEffect(() => {
     let timeout = null;
     const themeBtn = document.querySelector('#theme-btn');
@@ -298,6 +359,10 @@ function App() {
               handleOpenModal={handleOpenModal}
               imagePreLoad={imagePreLoad}
               notFirstLoad={notFirstLoad}
+              viewMore={viewMore}
+              actualPage={actualPage}
+              $viewMore={$viewMore}
+              $viewLess={$viewLess}
             />
           }
         />

@@ -19,7 +19,6 @@ export const ThemeProvider = ({ children }) => {
 
   useEffect(() => {
     removeInlineStyles();
-    console.log('HOLAAASSS');
   }, []);
 
   return (
