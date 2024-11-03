@@ -14,7 +14,6 @@ import imgphoto from '../assets/cert-photo.jpeg';
 import imgcssdivs from '../assets/cert-css-divs.jpeg';
 import imgjquery from '../assets/cert-jquery.jpeg';
 import Info from '../assets/Info';
-import { NavLink } from 'react-router-dom';
 
 const links = [
   'https://www.freecodecamp.org/certification/matifer/responsive-web-design',
@@ -149,15 +148,15 @@ const Certifications = ({
             >
               {translate('certifications.jquery.title')}
             </a>
-            <NavLink ref={$viewLess} className="view-less">
+            <a ref={$viewLess} className="view-less">
               {translate('buttons.view-less')}
-            </NavLink>
+            </a>
           </>
         )) || (
           /*.............................Ver más................................*/
-          <NavLink ref={$viewMore} className="view-more">
+          <a ref={$viewMore} className="view-more">
             {translate('buttons.view-more')}
-          </NavLink>
+          </a>
         )}
       </div>
     </>

@@ -505,6 +505,7 @@ figcaption {
 
 .view-more {
   opacity: 0.5;
+  cursor: pointer;
   background: none;
   text-decoration: none;
   color: var(--color-primary);
@@ -512,6 +513,7 @@ figcaption {
 
 .view-less {
   opacity: 0.5;
+  cursor: pointer;
   background: none;
   text-decoration: none;
   color: var(--color-primary);

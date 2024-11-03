@@ -71,14 +71,14 @@ function App() {
   };
 
   const handleViewMore = (e) => {
-    if (e && e.target.matches('.view-more')) {
+    if (e.target.matches('.view-more')) {
       setViewMore((prevState) => ({
         ...prevState,
         [actualPage]: true,
       }));
       if ($viewMore) $viewMore.current.style.display = 'none';
     }
-    if (e && e.target.matches('.view-less')) {
+    if (e.target.matches('.view-less')) {
       setViewMore((prevState) => ({
         ...prevState,
         [actualPage]: false,
@@ -153,7 +153,7 @@ function App() {
           $viewMore.current.style.animation = 'none';
           $viewMore.current.style.display = 'block';
         }
-        if (viewMore[actualPage]) handleViewMore();
+        // if (viewMore[actualPage]) handleViewMore();
         progress.forEach((item) => item.classList.remove('fill-progress'));
         desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
         icons.forEach((icon) => {
