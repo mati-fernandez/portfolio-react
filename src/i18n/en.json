@@ -1,8 +1,4 @@
 {
-  "buttons": {
-    "view-more": "View more...",
-    "view-less": "View less..."
-  },
   "info": {
     "title": "React Portfolio",
     "text": "In this project, I experienced improvements in code readability and modularity compared to the previous portfolio, which was built with Vanilla JS. \n\n I applied the use of hooks like useState and useEffect, custom hooks, context, components, complex CSS styles, conditional rendering with JSX, and routing with React Router, among other things.",
@@ -98,6 +94,10 @@
     }
   },
   "certifications": {
+    "buttons": {
+      "view-more": "View secondary certifications...",
+      "view-less": "Hide secondary certifications..."
+    },
     "info": {
       "title": "Certifications section",
       "text": "If you click on 'View Certification', for each one (freeCodeCamp) you will be able to see the projects completed during that course.",

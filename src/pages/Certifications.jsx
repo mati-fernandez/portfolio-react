@@ -149,13 +149,13 @@ const Certifications = ({
               {translate('certifications.jquery.title')}
             </button>
             <button ref={$viewLess} className="view-less">
-              {translate('buttons.view-less')}
+              {translate('certifications.buttons.view-less')}
             </button>
           </>
         )) || (
           /*.............................Ver más................................*/
           <button ref={$viewMore} className="view-more">
-            {translate('buttons.view-more')}
+            {translate('certifications.buttons.view-more')}
           </button>
         )}
       </div>
