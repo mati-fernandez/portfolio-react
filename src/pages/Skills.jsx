@@ -15,6 +15,7 @@ import english from '../assets/english.png';
 import nextjs from '../assets/nextjs.png';
 import ts from '../assets/ts.png';
 import prisma from '../assets/prisma.png';
+import sql from '../assets/sql.png';
 
 const Skills = ({ imagePreLoad }) => {
   const { language } = useContext(TranslationContext);
@@ -179,8 +180,8 @@ const Skills = ({ imagePreLoad }) => {
         </li>
         <li>
           <div className="skill-container">
-            <img src={nextjs} className="tech" alt="Next.js" />
-            <span className="skill-name">Next.js</span>
+            <img src={sql} className="tech" alt="Next.js" />
+            <span className="skill-name">SQL</span>
           </div>
           <div className="progress-bar">
             <div className="progress" style={{ width: '11%' }}></div>
