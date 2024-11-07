@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { TranslationContext } from '../i18n/TranslationContext';
 
 const Modal = ({
@@ -11,6 +11,7 @@ const Modal = ({
   setModalVisibility,
 }) => {
   const { translate } = useContext(TranslationContext);
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
 
   const closeModal = () => {
     setModalVisibility(false);
@@ -26,9 +27,11 @@ const Modal = ({
         <div className="modalBkg" onClick={(e) => e.stopPropagation()}>
           <h3>{translate(`${activeModal}.title`)}</h3>
           <figure>
+            {!isImgLoaded && <div className="modal-img-loader" />}
             <img
               src={img}
               alt={`${translate(`${activeModal}.title`)} Thumbnail`}
+              onLoad={() => setIsImgLoaded(true)}
             />
             <figcaption>{translate(`${activeModal}.description`)}</figcaption>
           </figure>
