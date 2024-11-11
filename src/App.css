@@ -25,7 +25,7 @@
   --border: 1px solid var(--color-primary);
   --icon-fill: white;
   --title-color: white;
-  --h3-font-weight: 100;
+  --h3-font-weight: 400;
   --font-weight: 400;
 }
 
@@ -42,7 +42,7 @@
   --border: 1px solid var(--color-primary);
   --icon-fill: black;
   --title-color: dark;
-  --h3-font-weight: 300;
+  --h3-font-weight: 600;
   --font-weight: 500;
 }
 

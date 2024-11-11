@@ -13,21 +13,30 @@ import imgpresu from '../assets/cert-presu.jpeg';
 import imgphoto from '../assets/cert-photo.jpeg';
 import imgcssdivs from '../assets/cert-css-divs.jpeg';
 import imgjquery from '../assets/cert-jquery.jpeg';
+import imgics from '../assets/cert-ics.png';
 import Info from '../assets/Info';
 
-const links = [
-  'https://www.freecodecamp.org/certification/matifer/responsive-web-design',
-  'https://www.freecodecamp.org/certification/matifer/javascript-algorithms-and-data-structures',
-  'https://www.freecodecamp.org/certification/matifer/front-end-development-libraries',
-  'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/9621',
-  'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/13704',
-  'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/9672',
-  'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/9628',
-  'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/12631',
-  'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/9614',
-  'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/13571',
-  'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/13273',
-];
+const links = {
+  rwd: 'https://www.freecodecamp.org/certification/matifer/responsive-web-design',
+  javascript:
+    'https://www.freecodecamp.org/certification/matifer/javascript-algorithms-and-data-structures',
+  fdl: 'https://www.freecodecamp.org/certification/matifer/front-end-development-libraries',
+  ics: 'https://www.credly.com/badges/86f90a98-4290-4eb1-8c12-909598a92c6d',
+  html: 'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/9621',
+  html5css3:
+    'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/13704',
+  bbdd: 'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/9672',
+  flash:
+    'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/9628',
+  presu:
+    'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/12631',
+  photo:
+    'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/9614',
+  cssdivs:
+    'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/13571',
+  jquery:
+    'https://www.educacionit.com/perfil/matias-fernandez-93622/certificado/13273',
+};
 
 const Certifications = ({
   notFirstLoad,
@@ -56,7 +65,7 @@ const Certifications = ({
         <button
           className="long-text button link"
           onClick={() =>
-            handleOpenModal('certifications.rwd', imgrwd, links[0])
+            handleOpenModal('certifications.rwd', imgrwd, links.rwd)
           }
         >
           {translate('certifications.rwd.title')}
@@ -64,7 +73,11 @@ const Certifications = ({
         <button
           className="long-text button link"
           onClick={() =>
-            handleOpenModal('certifications.javascript', imgjs, links[1])
+            handleOpenModal(
+              'certifications.javascript',
+              imgjs,
+              links.javascript
+            )
           }
         >
           {translate('certifications.javascript.title')}
@@ -72,7 +85,7 @@ const Certifications = ({
         <button
           className="long-text button link"
           onClick={() =>
-            handleOpenModal('certifications.fdl', imgfdl, links[2])
+            handleOpenModal('certifications.fdl', imgfdl, links.fdl)
           }
         >
           {translate('certifications.fdl.title')}
@@ -83,7 +96,15 @@ const Certifications = ({
             <button
               className="long-text button link secondary"
               onClick={() =>
-                handleOpenModal('certifications.html', imghtml, links[3])
+                handleOpenModal('certifications.ics', imgics, links.ics)
+              }
+            >
+              {translate('certifications.ics.title')}
+            </button>
+            <button
+              className="long-text button link secondary"
+              onClick={() =>
+                handleOpenModal('certifications.html', imghtml, links.html)
               }
             >
               {translate('certifications.html.title')}
@@ -94,7 +115,7 @@ const Certifications = ({
                 handleOpenModal(
                   'certifications.html5css3',
                   imghtml5css3,
-                  links[4]
+                  links.html5css3
                 )
               }
             >
@@ -103,7 +124,7 @@ const Certifications = ({
             <button
               className="long-text button link secondary"
               onClick={() =>
-                handleOpenModal('certifications.bbdd', imgbbdd, links[5])
+                handleOpenModal('certifications.bbdd', imgbbdd, links.bbdd)
               }
             >
               {translate('certifications.bbdd.title')}
@@ -111,7 +132,7 @@ const Certifications = ({
             <button
               className="long-text button link secondary"
               onClick={() =>
-                handleOpenModal('certifications.flash', imgflash, links[6])
+                handleOpenModal('certifications.flash', imgflash, links.flash)
               }
             >
               {translate('certifications.flash.title')}
@@ -119,7 +140,7 @@ const Certifications = ({
             <button
               className="long-text button link secondary"
               onClick={() =>
-                handleOpenModal('certifications.presu', imgpresu, links[7])
+                handleOpenModal('certifications.presu', imgpresu, links.presu)
               }
             >
               {translate('certifications.presu.title')}
@@ -127,7 +148,7 @@ const Certifications = ({
             <button
               className="long-text button link secondary"
               onClick={() =>
-                handleOpenModal('certifications.photo', imgphoto, links[8])
+                handleOpenModal('certifications.photo', imgphoto, links.photo)
               }
             >
               {translate('certifications.photo.title')}
@@ -135,7 +156,11 @@ const Certifications = ({
             <button
               className="long-text button link secondary"
               onClick={() =>
-                handleOpenModal('certifications.cssdivs', imgcssdivs, links[9])
+                handleOpenModal(
+                  'certifications.cssdivs',
+                  imgcssdivs,
+                  links.cssdivs
+                )
               }
             >
               {translate('certifications.cssdivs.title')}
@@ -143,7 +168,11 @@ const Certifications = ({
             <button
               className="long-text button link secondary"
               onClick={() =>
-                handleOpenModal('certifications.jquery', imgjquery, links[10])
+                handleOpenModal(
+                  'certifications.jquery',
+                  imgjquery,
+                  links.jquery
+                )
               }
             >
               {translate('certifications.jquery.title')}

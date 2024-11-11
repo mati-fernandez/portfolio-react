@@ -121,6 +121,12 @@
       "close": "Close",
       "open": "View Certification"
     },
+    "ics": {
+      "title": "Introduction to Cybersecurity",
+      "description": "I took this course to verify basic knowledge in cybersecurity.",
+      "close": "Close",
+      "open": "View Certification"
+    },
     "html": {
       "title": "HTML",
       "description": "In my first steps in the web world, I attended this introductory course on HTML.",

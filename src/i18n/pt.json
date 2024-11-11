@@ -120,6 +120,12 @@
       "close": "Fechar",
       "open": "Ver Certificação"
     },
+    "ics": {
+      "title": "Introdução à segurança cibernética",
+      "description": "Fiz este curso para verificar conhecimentos básicos em segurança cibernética.",
+      "close": "Fechar",
+      "open": "Ver Certificação"
+    },
     "html": {
       "title": "HTML",
       "description": "Nos meus primeiros passos no mundo web, participei deste curso introdutório de HTML.",
