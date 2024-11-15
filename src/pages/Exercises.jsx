@@ -7,6 +7,7 @@ import imgcan from '../assets/dibujo-canvas.png';
 import imgtet from '../assets/tetris-vanilla.png';
 import imgmon from '../assets/monkeytype.png';
 import imgexc from '../assets/excel.png';
+import imgnextjsblog from '../assets/nextjs-blog.png';
 import Info from '../assets/Info';
 
 const links = [
@@ -15,6 +16,7 @@ const links = [
   'https://mati-fernandez.github.io/portfolio-vanilla-js/mis-proyectos/tetris-vanilla/index.html',
   'https://mati-fernandez.github.io/portfolio-vanilla-js/mis-proyectos/monkeytype/index.html',
   'https://mati-fernandez.github.io/portfolio-vanilla-js/mis-proyectos/excel/index.html',
+  'https://mati-nextjs-blog.vercel.app/',
 ];
 
 const Exercises = ({ notFirstLoad, handleOpenModal, imagePreLoad }) => {
@@ -63,6 +65,14 @@ const Exercises = ({ notFirstLoad, handleOpenModal, imagePreLoad }) => {
         onClick={() => handleOpenModal('exercises.excel', imgexc, links[4])}
       >
         {translate('exercises.excel.title')}
+      </button>
+      <button
+        className="long-text button link"
+        onClick={() =>
+          handleOpenModal('exercises.nextjs-blog', imgnextjsblog, links[5])
+        }
+      >
+        {translate('exercises.nextjs-blog.title')}
       </button>
     </div>
   );
