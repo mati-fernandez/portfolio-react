@@ -344,14 +344,17 @@ option {
 
 .skills-list img {
   margin-right: 15px;
+  opacity: 0;
 }
 
 .skills-list img.landscape {
   max-width: calc(var(--font-size-landscape) * 2);
+  opacity: 1;
 }
 
 .skills-list img.portrait {
   max-height: calc(var(--font-size-landscape) * 1.8);
+  opacity: 1;
 }
 
 #js-icon {
