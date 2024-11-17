@@ -93,7 +93,7 @@
     },
     "nextjs-blog": {
       "title": "Blog (Next.js)",
-      "description": "Proyecto para principiantes. Comenzando a familiarizarse con Nextjs y su estructura. En esta ocación se trata de un blog que usa las bibliotecas 'gray-matter' y 'markdown-it' para dar formato a los artículos.",
+      "description": "Proyecto para principiantes. Comenzando a familiarizarse con Next.js y su estructura. En esta ocasión se trata de un blog que usa las bibliotecas 'gray-matter' y 'markdown-it' para dar formato a los artículos.",
       "close": "Cerrar",
       "open": "Ver Ejercicio"
     }
