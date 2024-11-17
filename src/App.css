@@ -630,6 +630,10 @@ figcaption {
   }
 }
 
+.expanded .long-text {
+  font-size: 0.9rem;
+}
+
 /******** Aspect 0.53 ********/
 
 @media (min-aspect-ratio: 0.53) {

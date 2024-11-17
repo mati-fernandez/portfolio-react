@@ -56,7 +56,11 @@ const Certifications = ({
 
   return (
     <>
-      <div className="page long-content">
+      <div
+        className={`page long-content ${
+          viewMore.certifications ? 'expanded' : ''
+        }`}
+      >
         <Info
           notFirstLoad={notFirstLoad}
           handleOpenModal={handleOpenModal}
