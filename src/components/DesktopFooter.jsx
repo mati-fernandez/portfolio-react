@@ -1,8 +1,15 @@
 import Linkedin from '../assets/Linkedin';
 import Github from '../assets/Github';
 import ThemeButton from './ThemeButton';
+import { TranslationContext } from '../context/TranslationContext';
+import { useContext } from 'react';
 
 const DesktopFooter = () => {
+  const { translations } = useContext(TranslationContext);
+  // Si translations aún no está cargado
+  if (!translations || Object.keys(translations).length === 0) {
+    return;
+  }
   return (
     <div id="desktop-footer">
       <ThemeButton />

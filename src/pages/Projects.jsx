@@ -77,10 +77,10 @@ const Projects = ({ notFirstLoad, handleOpenModal, imagePreLoad }) => {
       <button
         className="long-text button link"
         onClick={() =>
-          handleOpenModal('projects.projectsList.op', imgop, links[5])
+          handleOpenModal('projects.projectsList.portfolioJS', imgop, links[5])
         }
       >
-        {translate('projects.projectsList.op.title')}
+        {translate('projects.projectsList.portfolioJS.title')}
       </button>
     </div>
   );

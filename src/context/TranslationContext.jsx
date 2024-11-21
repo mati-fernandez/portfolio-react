@@ -16,6 +16,7 @@ export const TranslationProvider = ({ children }) => {
 
   // CARGA INICIAL DE IMAGENES CON FETCH
   const loadImages = async () => {
+    console.log('loadImages ejecutado');
     try {
       const response = await fetch(
         'https://portfolio-4oh.pages.dev/images.json'
@@ -46,7 +47,7 @@ export const TranslationProvider = ({ children }) => {
         console.log('Translations setted:', translations);
       } catch (error) {
         console.error('Error al cargar las traducciones:', error);
-        setTranslations({}); // Si falla, asegura un estado vacío
+        // setTranslations({}); // Si falla, asegura un estado vacío
       }
     };
     if (language) {
@@ -87,8 +88,7 @@ export const TranslationProvider = ({ children }) => {
 
   const translate = (key) => {
     return (
-      key.split('.').reduce((acc, part) => acc && acc[part], translations) ||
-      key
+      key.split('.').reduce((acc, part) => acc && acc[part], translations) || ''
     );
   };
 

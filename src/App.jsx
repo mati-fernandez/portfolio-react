@@ -36,8 +36,14 @@ function App() {
   const [modalVisibility, setModalVisibility] = useState(false);
   const [fromMenuBtn, setFromMenuBtn] = useState(false);
   const [notFirstLoad, setNotFirstLoad] = useState([]);
-  const { language, fromLanguageBtn, setFromLanguageBtn, loadImages, images } =
-    useContext(TranslationContext);
+  const {
+    language,
+    fromLanguageBtn,
+    setFromLanguageBtn,
+    loadImages,
+    images,
+    translations,
+  } = useContext(TranslationContext);
   const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
   const [viewMore, setViewMore] = useState({
     projects: false,
@@ -168,7 +174,7 @@ function App() {
           button.classList.remove = 'slide-in';
           button.style.opacity = 1;
         });
-      } else {
+      } else if (translations) {
         // SI ES PRIMERA CARGA...
         document.addEventListener('click', handleViewMore);
         setFromThemeBtn(false);
@@ -244,7 +250,14 @@ function App() {
       }
     }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
-  }, [location.pathname, theme, viewMore, modalVisibility, actualPage]); // No sacar actualPage de las deps porque evita error
+  }, [
+    location.pathname,
+    theme,
+    viewMore,
+    modalVisibility,
+    actualPage,
+    translations,
+  ]); // No sacar actualPage de las deps porque evita error
 
   // Theme btn rotation mobile
   useEffect(() => {
@@ -266,6 +279,7 @@ function App() {
   if (!language || language === '') {
     return null;
   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO y resta un warning de "No routes matched location".
+
   return (
     <>
       {activeModal && activeModal.itemKey.includes('info') ? (

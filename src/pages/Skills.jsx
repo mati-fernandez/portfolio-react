@@ -2,39 +2,11 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from 'react';
 import { TranslationContext } from '../context/TranslationContext';
-import html from '../assets/html-5.png';
-import css from '../assets/css-3.png';
-import sass from '../assets/sass.png';
-import js from '../assets/js.png';
-import git from '../assets/git.png';
-import react from '../assets/react.png';
-import redux from '../assets/redux.png';
-import router from '../assets/react-router.png';
-import figma from '../assets/figma.png';
-import english from '../assets/english.png';
-import nextjs from '../assets/nextjs.png';
-import ts from '../assets/ts.png';
-import prisma from '../assets/prisma.png';
-import sql from '../assets/sql.png';
 
-const Skills = ({ imagePreLoad }) => {
-  const { language, translations, images } = useContext(TranslationContext);
+const Skills = () => {
+  const { images } = useContext(TranslationContext);
 
   useEffect(() => {
-    const urls = [
-      html,
-      css,
-      sass,
-      js,
-      git,
-      react,
-      redux,
-      router,
-      figma,
-      english,
-    ];
-    imagePreLoad(urls);
-
     // Asignación de aspect ratio a imágenes de habilidades
     document.querySelectorAll('.skills-list img').forEach((img) => {
       img.addEventListener('load', () => {
@@ -53,16 +25,18 @@ const Skills = ({ imagePreLoad }) => {
   }, []);
 
   // Si translations aún no está cargado, mostramos el loading
-  if (!translations || !images) {
+  if (!images) {
     return <div className="loader"></div>;
   }
+
+  const data = images.skills;
+  console.log('data:', data);
 
   return (
     <div className="page">
       <ul className="skills-list">
-        {images.skills.forEach((skill) => {
-          const data = images.skills;
-          <li>
+        {Object.keys(data).map((skill) => (
+          <li key={skill}>
             <div className="skill-container">
               <img
                 src={data[skill].src}
@@ -72,10 +46,13 @@ const Skills = ({ imagePreLoad }) => {
               <span className="skill-name">{data[skill].alt}</span>
             </div>
             <div className="progress-bar">
-              <div className="progress" style={data[skill].progress}></div>
+              <div
+                className="progress"
+                style={{ width: data[skill].progress }}
+              ></div>
             </div>
-          </li>;
-        })}
+          </li>
+        ))}
       </ul>
     </div>
   );
