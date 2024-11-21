@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from 'react';
-import { TranslationContext } from '../i18n/TranslationContext';
+import { TranslationContext } from '../context/TranslationContext';
 import imgrqm from '../assets/random-quote-machine.png';
 import imgmdp from '../assets/markdown-previewer.png';
 import imgdm from '../assets/drum-machine.png';
@@ -36,39 +36,51 @@ const Projects = ({ notFirstLoad, handleOpenModal, imagePreLoad }) => {
       />
       <button
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.rqm', imgrqm, links[0])}
+        onClick={() =>
+          handleOpenModal('projects.projectsList.rqm', imgrqm, links[0])
+        }
       >
-        {translate('projects.rqm.title')}
+        {translate('projects.projectsList.rqm.title')}
       </button>
       <button
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.mdp', imgmdp, links[1])}
+        onClick={() =>
+          handleOpenModal('projects.projectsList.mdp', imgmdp, links[1])
+        }
       >
-        {translate('projects.mdp.title')}
+        {translate('projects.projectsList.mdp.title')}
       </button>
       <button
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.dm', imgdm, links[2])}
+        onClick={() =>
+          handleOpenModal('projects.projectsList.dm', imgdm, links[2])
+        }
       >
-        {translate('projects.dm.title')}
+        {translate('projects.projectsList.dm.title')}
       </button>
       <button
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.calc', imgcalc, links[3])}
+        onClick={() =>
+          handleOpenModal('projects.projectsList.calc', imgcalc, links[3])
+        }
       >
-        {translate('projects.calc.title')}
+        {translate('projects.projectsList.calc.title')}
       </button>
       <button
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.pc', imgpc, links[4])}
+        onClick={() =>
+          handleOpenModal('projects.projectsList.pc', imgpc, links[4])
+        }
       >
-        {translate('projects.pc.title')}
+        {translate('projects.projectsList.pc.title')}
       </button>
       <button
         className="long-text button link"
-        onClick={() => handleOpenModal('projects.op', imgop, links[5])}
+        onClick={() =>
+          handleOpenModal('projects.projectsList.op', imgop, links[5])
+        }
       >
-        {translate('projects.op.title')}
+        {translate('projects.projectsList.op.title')}
       </button>
     </div>
   );

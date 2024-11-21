@@ -72,11 +72,15 @@ body {
   text-align: center;
 }
 
+#root {
+  height: inherit;
+}
+
 :hover:not(body, .menu) .button:not(svg, .active-button) {
   transition: color 0.8s ease-in-out;
 }
 
-.modal-img-loader {
+.loader {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -207,7 +211,7 @@ option {
   top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 72vmin;
+  width: 75vmin;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -538,6 +542,14 @@ figcaption {
   animation: fadeIn 1s ease-out forwards;
 }
 
+.long-content .view-more {
+  margin-top: 2vh;
+}
+
+.long-content .view-less {
+  margin-top: 2vh;
+}
+
 .view-more {
   opacity: 0.5;
   cursor: pointer;
@@ -630,6 +642,11 @@ figcaption {
   }
 }
 
+/*Clases pegadas porque son hermanas*/
+.long-content.expanded {
+  line-height: 1.5vw;
+}
+/*Clase separada porque es hija*/
 .expanded .long-text {
   font-size: 0.9rem;
 }
@@ -713,10 +730,11 @@ figcaption {
 
   .container {
     top: 51%;
+    width: 100vmin;
   }
 
-  #presentacion {
-    font-size: 3vmin;
+  #description {
+    font-size: 2.7vmin;
   }
 
   .skills-list {
@@ -912,7 +930,7 @@ figcaption {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    gap: 40px;
+    gap: 1.8vw;
     padding: 0 4vw;
   }
 

@@ -8,7 +8,7 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import { useContext, useRef } from 'react';
-import { TranslationContext } from './i18n/TranslationContext';
+import { TranslationContext } from './context/TranslationContext';
 import { ThemeContext } from './context/ThemeContext';
 import { useEffect, useState } from 'react';
 import { updateViewportHeight } from './helpers/updateViewportHeight';
@@ -36,7 +36,7 @@ function App() {
   const [modalVisibility, setModalVisibility] = useState(false);
   const [fromMenuBtn, setFromMenuBtn] = useState(false);
   const [notFirstLoad, setNotFirstLoad] = useState([]);
-  const { language, fromLanguageBtn, setFromLanguageBtn } =
+  const { language, fromLanguageBtn, setFromLanguageBtn, loadImages, images } =
     useContext(TranslationContext);
   const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
   const [viewMore, setViewMore] = useState({
@@ -106,6 +106,7 @@ function App() {
     }
 
     setActualPage(getActualPage());
+    if (!notFirstLoad.includes(actualPage)) loadImages();
   }, [location.pathname]);
 
   // VSUALIZACION
@@ -324,6 +325,7 @@ function App() {
               setShowMenu={setShowMenu}
               imagePreLoad={imagePreLoad}
               notFirstLoad={notFirstLoad}
+              images={images}
             />
           }
         />

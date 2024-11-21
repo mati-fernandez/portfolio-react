@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from 'react';
-import { TranslationContext } from '../i18n/TranslationContext';
+import { TranslationContext } from '../context/TranslationContext';
 import imgdom from '../assets/dom-ejercicios.png';
 import imgcan from '../assets/dibujo-canvas.png';
 import imgtet from '../assets/tetris-vanilla.png';
@@ -36,43 +36,59 @@ const Exercises = ({ notFirstLoad, handleOpenModal, imagePreLoad }) => {
       />
       <button
         className="long-text button link"
-        onClick={() => handleOpenModal('exercises.dom', imgdom, links[0])}
+        onClick={() =>
+          handleOpenModal('exercises.exercisesList.dom', imgdom, links[0])
+        }
       >
-        {translate('exercises.dom.title')}
-      </button>
-      <button
-        className="long-text button link"
-        onClick={() => handleOpenModal('exercises.draw', imgcan, links[1])}
-      >
-        {translate('exercises.draw.title')}
-      </button>
-      <button
-        className="long-text button link"
-        onClick={() => handleOpenModal('exercises.tetris', imgtet, links[2])}
-      >
-        {translate('exercises.tetris.title')}
+        {translate('exercises.exercisesList.dom.title')}
       </button>
       <button
         className="long-text button link"
         onClick={() =>
-          handleOpenModal('exercises.monkeytype', imgmon, links[3])
+          handleOpenModal('exercises.exercisesList.draw', imgcan, links[1])
         }
       >
-        {translate('exercises.monkeytype.title')}
-      </button>
-      <button
-        className="long-text button link"
-        onClick={() => handleOpenModal('exercises.excel', imgexc, links[4])}
-      >
-        {translate('exercises.excel.title')}
+        {translate('exercises.exercisesList.draw.title')}
       </button>
       <button
         className="long-text button link"
         onClick={() =>
-          handleOpenModal('exercises.nextjs-blog', imgnextjsblog, links[5])
+          handleOpenModal('exercises.exercisesList.tetris', imgtet, links[2])
         }
       >
-        {translate('exercises.nextjs-blog.title')}
+        {translate('exercises.exercisesList.tetris.title')}
+      </button>
+      <button
+        className="long-text button link"
+        onClick={() =>
+          handleOpenModal(
+            'exercises.exercisesList.monkeytype',
+            imgmon,
+            links[3]
+          )
+        }
+      >
+        {translate('exercises.exercisesList.monkeytype.title')}
+      </button>
+      <button
+        className="long-text button link"
+        onClick={() =>
+          handleOpenModal('exercises.exercisesList.excel', imgexc, links[4])
+        }
+      >
+        {translate('exercises.exercisesList.excel.title')}
+      </button>
+      <button
+        className="long-text button link"
+        onClick={() =>
+          handleOpenModal(
+            'exercises.exercisesList.nextjs-blog',
+            imgnextjsblog,
+            links[5]
+          )
+        }
+      >
+        {translate('exercises.exercisesList.nextjs-blog.title')}
       </button>
     </div>
   );

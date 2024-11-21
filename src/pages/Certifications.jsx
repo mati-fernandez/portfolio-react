@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from 'react';
-import { TranslationContext } from '../i18n/TranslationContext';
+import { TranslationContext } from '../context/TranslationContext';
 import imgrwd from '../assets/cert-resp.png';
 import imgjs from '../assets/cert-js.png';
 import imgfdl from '../assets/cert-front.png';
@@ -69,30 +69,38 @@ const Certifications = ({
         <button
           className="long-text button link"
           onClick={() =>
-            handleOpenModal('certifications.rwd', imgrwd, links.rwd)
+            handleOpenModal(
+              'certifications.certificationsList.rwd',
+              imgrwd,
+              links.rwd
+            )
           }
         >
-          {translate('certifications.rwd.title')}
+          {translate('certifications.certificationsList.rwd.title')}
         </button>
         <button
           className="long-text button link"
           onClick={() =>
             handleOpenModal(
-              'certifications.javascript',
+              'certifications.certificationsList.javascript',
               imgjs,
               links.javascript
             )
           }
         >
-          {translate('certifications.javascript.title')}
+          {translate('certifications.certificationsList.javascript.title')}
         </button>
         <button
           className="long-text button link"
           onClick={() =>
-            handleOpenModal('certifications.fdl', imgfdl, links.fdl)
+            handleOpenModal(
+              'certifications.certificationsList.fdl',
+              imgfdl,
+              links.fdl
+            )
           }
         >
-          {translate('certifications.fdl.title')}
+          {translate('certifications.certificationsList.fdl.title')}
         </button>
         {/* ------------------- Enlaces secundarios ---------------------- */}
         {(viewMore[actualPage] && (
@@ -100,86 +108,110 @@ const Certifications = ({
             <button
               className="long-text button link secondary"
               onClick={() =>
-                handleOpenModal('certifications.ics', imgics, links.ics)
+                handleOpenModal(
+                  'certifications.certificationsList.ics',
+                  imgics,
+                  links.ics
+                )
               }
             >
-              {translate('certifications.ics.title')}
-            </button>
-            <button
-              className="long-text button link secondary"
-              onClick={() =>
-                handleOpenModal('certifications.html', imghtml, links.html)
-              }
-            >
-              {translate('certifications.html.title')}
+              {translate('certifications.certificationsList.ics.title')}
             </button>
             <button
               className="long-text button link secondary"
               onClick={() =>
                 handleOpenModal(
-                  'certifications.html5css3',
+                  'certifications.certificationsList.html',
+                  imghtml,
+                  links.html
+                )
+              }
+            >
+              {translate('certifications.certificationsList.html.title')}
+            </button>
+            <button
+              className="long-text button link secondary"
+              onClick={() =>
+                handleOpenModal(
+                  'certifications.certificationsList.html5css3',
                   imghtml5css3,
                   links.html5css3
                 )
               }
             >
-              {translate('certifications.html5css3.title')}
-            </button>
-            <button
-              className="long-text button link secondary"
-              onClick={() =>
-                handleOpenModal('certifications.bbdd', imgbbdd, links.bbdd)
-              }
-            >
-              {translate('certifications.bbdd.title')}
-            </button>
-            <button
-              className="long-text button link secondary"
-              onClick={() =>
-                handleOpenModal('certifications.flash', imgflash, links.flash)
-              }
-            >
-              {translate('certifications.flash.title')}
-            </button>
-            <button
-              className="long-text button link secondary"
-              onClick={() =>
-                handleOpenModal('certifications.presu', imgpresu, links.presu)
-              }
-            >
-              {translate('certifications.presu.title')}
-            </button>
-            <button
-              className="long-text button link secondary"
-              onClick={() =>
-                handleOpenModal('certifications.photo', imgphoto, links.photo)
-              }
-            >
-              {translate('certifications.photo.title')}
+              {translate('certifications.certificationsList.html5css3.title')}
             </button>
             <button
               className="long-text button link secondary"
               onClick={() =>
                 handleOpenModal(
-                  'certifications.cssdivs',
+                  'certifications.certificationsList.bbdd',
+                  imgbbdd,
+                  links.bbdd
+                )
+              }
+            >
+              {translate('certifications.certificationsList.bbdd.title')}
+            </button>
+            <button
+              className="long-text button link secondary"
+              onClick={() =>
+                handleOpenModal(
+                  'certifications.certificationsList.flash',
+                  imgflash,
+                  links.flash
+                )
+              }
+            >
+              {translate('certifications.certificationsList.flash.title')}
+            </button>
+            <button
+              className="long-text button link secondary"
+              onClick={() =>
+                handleOpenModal(
+                  'certifications.certificationsList.presu',
+                  imgpresu,
+                  links.presu
+                )
+              }
+            >
+              {translate('certifications.certificationsList.presu.title')}
+            </button>
+            <button
+              className="long-text button link secondary"
+              onClick={() =>
+                handleOpenModal(
+                  'certifications.certificationsList.photo',
+                  imgphoto,
+                  links.photo
+                )
+              }
+            >
+              {translate('certifications.certificationsList.photo.title')}
+            </button>
+            <button
+              className="long-text button link secondary"
+              onClick={() =>
+                handleOpenModal(
+                  'certifications.certificationsList.cssdivs',
                   imgcssdivs,
                   links.cssdivs
                 )
               }
             >
-              {translate('certifications.cssdivs.title')}
+              {translate('certifications.certificationsList.cssdivs.title')}
             </button>
             <button
               className="long-text button link secondary"
               onClick={() =>
                 handleOpenModal(
-                  'certifications.jquery',
+                  'certifications.certificationsList.jquery',
                   imgjquery,
                   links.jquery
                 )
               }
             >
-              {translate('certifications.jquery.title')}
+              {translate('certifications.certificationsList.jquery.title')}
             </button>
             <button ref={$viewLess} className="view-less">
               {translate('certifications.buttons.view-less')}

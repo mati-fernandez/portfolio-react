@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from 'react';
-import { TranslationContext } from '../i18n/TranslationContext';
+import { TranslationContext } from '../context/TranslationContext';
 import html from '../assets/html-5.png';
 import css from '../assets/css-3.png';
 import sass from '../assets/sass.png';
@@ -18,7 +18,7 @@ import prisma from '../assets/prisma.png';
 import sql from '../assets/sql.png';
 
 const Skills = ({ imagePreLoad }) => {
-  const { language } = useContext(TranslationContext);
+  const { language, translations, images } = useContext(TranslationContext);
 
   useEffect(() => {
     const urls = [
@@ -52,141 +52,30 @@ const Skills = ({ imagePreLoad }) => {
     });
   }, []);
 
+  // Si translations aún no está cargado, mostramos el loading
+  if (!translations || !images) {
+    return <div className="loader"></div>;
+  }
+
   return (
     <div className="page">
       <ul className="skills-list">
-        <li>
-          <div className="skill-container">
-            <img src={html} className="tech" alt="HTML 5" />
-            <span className="skill-name">HTML 5</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '55%' }}></div>
-          </div>
-        </li>
-        <li>
-          <div className="skill-container">
-            <img src={css} className="tech" alt="CSS 3" />
-            <span className="skill-name">CSS 3</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '63%' }}></div>
-          </div>
-        </li>
-        <li>
-          <div className="skill-container">
-            <img src={sass} className="tech" alt="Sass" />
-            <span className="skill-name">Sass</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '22%' }}></div>
-          </div>
-        </li>
-        <li>
-          <div className="skill-container">
-            <img id="js-icon" src={js} className="tech" alt="JavaScript" />
-            <span className="skill-name">JavaScript</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '63%' }}></div>
-          </div>
-        </li>{' '}
-        <li>
-          <div className="skill-container">
-            <img id="ts-icon" src={ts} className="tech" alt="TypeScript" />
-            <span className="skill-name">TypeScript</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '11%' }}></div>
-          </div>
-        </li>
-        <li>
-          <div className="skill-container">
-            <img src={git} className="tech" alt="Git" />
-            <span className="skill-name">Git</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '33%' }}></div>
-          </div>
-        </li>
-        <li>
-          <div className="skill-container">
-            <img src={react} className="tech" alt="React JS" />
-            <span className="skill-name">React JS</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '60%' }}></div>
-          </div>
-        </li>
-        <li>
-          <div className="skill-container">
-            <img src={nextjs} className="tech" alt="Next.js" />
-            <span className="skill-name">Next.js</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '11%' }}></div>
-          </div>
-        </li>{' '}
-        <li>
-          <div className="skill-container">
-            <img src={prisma} className="tech" alt="Prisma" />
-            <span className="skill-name">Prisma</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '11%' }}></div>
-          </div>
-        </li>
-        <li>
-          <div className="skill-container">
-            <img src={redux} className="tech" alt="Redux" />
-            <span className="skill-name">Redux</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '11%' }}></div>
-          </div>
-        </li>
-        <li>
-          <div id="router" className="skill-container">
-            <img src={router} className="tech" alt="React Router v6" />
-            <span className="skill-name"> Router v6 </span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '33%' }}></div>
-          </div>
-        </li>
-        <li>
-          <div className="skill-container">
-            <img src={figma} className="tech" alt="Figma" />
-            <span className="skill-name">Figma</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '52%' }}></div>
-          </div>
-        </li>
-        <li>
-          <div className="skill-container">
-            <img src={english} className="tech english" alt="Inglés" />
-            <span className="skill-name">
-              {language === 'es'
-                ? 'Inglés'
-                : language === 'en'
-                ? 'English'
-                : 'Inglês'}
-            </span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '65%' }}></div>
-          </div>
-        </li>
-        <li>
-          <div className="skill-container">
-            <img src={sql} className="tech" alt="Next.js" />
-            <span className="skill-name">SQL</span>
-          </div>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: '11%' }}></div>
-          </div>
-        </li>
+        {images.skills.forEach((skill) => {
+          const data = images.skills;
+          <li>
+            <div className="skill-container">
+              <img
+                src={data[skill].src}
+                alt={data[skill].alt}
+                className="tech"
+              />
+              <span className="skill-name">{data[skill].alt}</span>
+            </div>
+            <div className="progress-bar">
+              <div className="progress" style={data[skill].progress}></div>
+            </div>
+          </li>;
+        })}
       </ul>
     </div>
   );
