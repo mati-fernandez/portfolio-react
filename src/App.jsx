@@ -250,14 +250,7 @@ function App() {
       }
     }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
-  }, [
-    location.pathname,
-    theme,
-    viewMore,
-    modalVisibility,
-    actualPage,
-    translations,
-  ]); // No sacar actualPage de las deps porque evita error
+  }, [theme, viewMore, modalVisibility, actualPage, translations]); // No sacar actualPage de las deps porque evita error
 
   // Theme btn rotation mobile
   useEffect(() => {
