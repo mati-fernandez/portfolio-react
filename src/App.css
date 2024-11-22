@@ -268,7 +268,6 @@ option {
 
 #avatar {
   width: 40vmin;
-  transition: all 3s ease-out;
 }
 
 #description {
@@ -333,6 +332,7 @@ option {
 }
 
 .skills-list {
+  margin-left: -3rem;
   padding: 0;
   list-style: none;
   width: 90%;
@@ -353,18 +353,8 @@ option {
 
 .skills-list img {
   margin-right: 15px;
-  opacity: 0;
-  transition: all 1s ease-in;
-}
-
-.skills-list img.landscape {
-  max-width: calc(var(--font-size-landscape) * 2);
-  opacity: 1;
-}
-
-.skills-list img.portrait {
-  max-height: calc(var(--font-size-landscape) * 1.8);
-  opacity: 1;
+  max-width: 1rem;
+  max-height: 1rem;
 }
 
 #js-icon {
@@ -634,7 +624,7 @@ figcaption {
 }
 
 .long-text {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
 
 .long-content {
@@ -744,9 +734,10 @@ figcaption {
   }
 
   .skills-list {
+    margin-left: 2rem;
     margin-bottom: 20px;
     padding: 0;
-    line-height: calc(var(--font-size-landscape) * 3);
+    line-height: 6vh;
     width: 80%;
   }
 
@@ -760,12 +751,8 @@ figcaption {
     width: 15%;
   }
 
-  .skills-list img.landscape {
-    max-width: calc(var(--font-size-landscape) * 1.8);
-  }
-
-  .skills-list img.portrait {
-    max-height: calc(var(--font-size-landscape) * 1.6);
+  .skills-list img {
+    margin-right: 0.5rem;
   }
 
   #js-icon {

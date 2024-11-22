@@ -1,28 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { TranslationContext } from '../context/TranslationContext';
 
 const Skills = () => {
   const { images } = useContext(TranslationContext);
-
-  useEffect(() => {
-    // Asignación de aspect ratio a imágenes de habilidades
-    document.querySelectorAll('.skills-list img').forEach((img) => {
-      img.addEventListener('load', () => {
-        if (img.naturalWidth > img.naturalHeight) {
-          img.classList.add('landscape');
-        } else {
-          img.classList.add('portrait');
-        }
-      });
-
-      // Si la imagen ya se cargó (para navegadores que no disparan 'load' en imágenes ya cargadas)
-      if (img.complete) {
-        img.dispatchEvent(new Event('load'));
-      }
-    });
-  }, []);
 
   // Si translations aún no está cargado, mostramos el loading
   if (!images) {
