@@ -6,10 +6,7 @@ import { TranslationContext } from '../context/TranslationContext';
 const Skills = () => {
   const { images } = useContext(TranslationContext);
 
-  // Si translations aún no está cargado, mostramos el loading
-  if (!images) {
-    return <div className="loader"></div>;
-  }
+  // NO SIRVIÓ NI USEMEMO (PARA LA ESTRUCTURA DEL JSX AHORRANDO EL MAPEO REITERADO) NI PRECARGA DE IMAGENES PARA MEJORAR EL TIEMPO DE CARGA
 
   const data = images.skills;
   console.log('data:', data);

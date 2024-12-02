@@ -8,28 +8,44 @@ const InfoModal = ({
   modalVisibility,
   setModalVisibility,
 }) => {
-  const { translate } = useContext(TranslationContext);
+  const { translations, images } = useContext(TranslationContext);
 
   const closeModal = () => {
     setModalVisibility(false);
     const timeout = setTimeout(() => {
-      setActiveModal('');
+      setActiveModal({
+        itemKey: null,
+        imgKey: null,
+      });
       clearTimeout(timeout);
     }, 150);
   };
 
+  //   if (!activeModal?.itemKey) {
+  //     return null; // O un loader, si aplica
+  //   }
+  console.log('Translations desde InfoModal', translations);
+  console.log('activeModal desde InfoModal:', activeModal);
+
   return (
-    <article className={`modal`} onClick={closeModal}>
-      <div className={`infoModal${!modalVisibility ? ' hidden' : ''}`}>
-        <div className="infoBkg" onClick={(e) => e.stopPropagation()}>
-          <h3>{translate(`${activeModal}.title`)}</h3>
-          <p>{translate(`${activeModal}.text`)}</p>
-          <a className="link button" onClick={closeModal}>
-            {translate(`${activeModal}.continue`)}
-          </a>
-        </div>
-      </div>
-    </article>
+    <>
+      {activeModal.itemKey === null ||
+      translations[activeModal.itemKey] === undefined ? (
+        <div className="loader"></div>
+      ) : (
+        <article className={`modal`} onClick={closeModal}>
+          <div className={`infoModal${!modalVisibility ? ' hidden' : ''}`}>
+            <div className="infoBkg" onClick={(e) => e.stopPropagation()}>
+              <h3>{translations[activeModal.itemKey].title}</h3>
+              <p>{translations[activeModal.itemKey].text}</p>
+              <a className="link button" onClick={closeModal}>
+                {translations[activeModal.itemKey].continue}
+              </a>
+            </div>
+          </div>
+        </article>
+      )}
+    </>
   );
 };
 

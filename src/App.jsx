@@ -32,7 +32,10 @@ const updateAspectRatio = () =>
 function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
-  const [activeModal, setActiveModal] = useState('');
+  const [activeModal, setActiveModal] = useState({
+    itemKey: null,
+    imgKey: null,
+  });
   const [modalVisibility, setModalVisibility] = useState(false);
   const [fromMenuBtn, setFromMenuBtn] = useState(false);
   const [notFirstLoad, setNotFirstLoad] = useState([]);
@@ -64,9 +67,13 @@ function App() {
   const $viewLess = useRef(null);
   const [actualPage, setActualPage] = useState(getActualPage());
 
-  const handleOpenModal = (itemKey, img, link) => {
+  const handleOpenModal = (itemKey, imgKey) => {
+    setActiveModal((prev) => {
+      console.log('Prev state:', prev);
+      console.log('New state:', { ...prev, itemKey, imgKey });
+      return { ...prev, itemKey, imgKey };
+    });
     setModalVisibility(true);
-    setActiveModal({ itemKey, img, link });
   };
 
   const imagePreLoad = (urls) => {
@@ -105,7 +112,10 @@ function App() {
       setFromMenuBtn(false);
       setModalVisibility(false);
       const timeout = setTimeout(() => {
-        setActiveModal('');
+        setActiveModal({
+          itemKey: null,
+          imgKey: null,
+        });
         clearTimeout(timeout);
       }, 150);
       navigate(1);
@@ -269,25 +279,28 @@ function App() {
     return () => clearTimeout(timeout);
   }, [theme]);
 
+  // Si translations aún no está cargado, mostramos el loading
+  if (!translations || !images) {
+    return <div className="loader"></div>;
+  }
+
   if (!language || language === '') {
     return null;
   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO y resta un warning de "No routes matched location".
-
+  console.log('activeModal desde App.jsx:', activeModal);
   return (
     <>
-      {activeModal && activeModal.itemKey.includes('info') ? (
+      {activeModal.itemKey !== null && activeModal.itemKey.includes('info') ? (
         <InfoModal
-          activeModal={activeModal.itemKey}
+          activeModal={activeModal}
           setActiveModal={setActiveModal}
           modalVisibility={modalVisibility}
           setModalVisibility={setModalVisibility}
         />
       ) : (
-        activeModal && (
+        activeModal.itemKey !== null && (
           <Modal
-            activeModal={activeModal.itemKey}
-            img={activeModal.img}
-            link={activeModal.link}
+            activeModal={activeModal}
             setActiveModal={setActiveModal}
             modalVisibility={modalVisibility}
             setModalVisibility={setModalVisibility}
