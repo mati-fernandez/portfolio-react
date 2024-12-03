@@ -85,7 +85,6 @@ function App() {
         ...prevState,
         [actualPage]: true,
       }));
-      if ($viewMore.current) $viewMore.current.style.display = 'none';
       console.log($viewLess, 'view less full obj');
     }
     if (e.target.matches('.view-less')) {
@@ -93,7 +92,6 @@ function App() {
         ...prevState,
         [actualPage]: false,
       }));
-      if ($viewLess.current) $viewLess.current.style.display = 'none';
       console.log($viewLess, 'view less full obj');
     }
   };
