@@ -92,20 +92,29 @@ export const TranslationProvider = ({ children }) => {
     );
   };
 
+  const getImage = (key) => {
+    return key.split('.').reduce((acc, part) => acc && acc[part], images) || '';
+  };
+
   return (
-    <TranslationContext.Provider
-      value={{
-        images,
-        loadImages,
-        translate,
-        translations,
-        setLanguage,
-        language,
-        fromLanguageBtn,
-        setFromLanguageBtn,
-      }}
-    >
-      {children}
-    </TranslationContext.Provider>
+    <>
+      {!translations ? (
+        <div className="loader"></div>
+      ) : (
+        <TranslationContext.Provider
+          value={{
+            getImage,
+            loadImages,
+            translate,
+            setLanguage,
+            language,
+            fromLanguageBtn,
+            setFromLanguageBtn,
+          }}
+        >
+          {children}
+        </TranslationContext.Provider>
+      )}
+    </>
   );
 };

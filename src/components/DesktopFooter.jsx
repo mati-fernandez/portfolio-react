@@ -5,11 +5,11 @@ import { TranslationContext } from '../context/TranslationContext';
 import { useContext } from 'react';
 
 const DesktopFooter = () => {
-  const { translations } = useContext(TranslationContext);
+  //   const { translations } = useContext(TranslationContext);
   // Si translations aún no está cargado
-  if (!translations || Object.keys(translations).length === 0) {
-    return;
-  }
+  //   if (!translations || Object.keys(translations).length === 0) {
+  //     return;
+  //   }
   return (
     <div id="desktop-footer">
       <ThemeButton />

@@ -39,14 +39,8 @@ function App() {
   const [modalVisibility, setModalVisibility] = useState(false);
   const [fromMenuBtn, setFromMenuBtn] = useState(false);
   const [notFirstLoad, setNotFirstLoad] = useState([]);
-  const {
-    language,
-    fromLanguageBtn,
-    setFromLanguageBtn,
-    loadImages,
-    images,
-    translations,
-  } = useContext(TranslationContext);
+  const { language, fromLanguageBtn, setFromLanguageBtn, loadImages } =
+    useContext(TranslationContext);
   const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
   const [viewMore, setViewMore] = useState({
     projects: false,
@@ -184,7 +178,7 @@ function App() {
           button.classList.remove = 'slide-in';
           button.style.opacity = 1;
         });
-      } else if (translations) {
+      } else {
         // SI ES PRIMERA CARGA...
         document.addEventListener('click', handleViewMore);
         setFromThemeBtn(false);
@@ -260,7 +254,7 @@ function App() {
       }
     }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
-  }, [theme, viewMore, modalVisibility, actualPage, translations]); // No sacar actualPage de las deps porque evita error
+  }, [theme, viewMore, modalVisibility, actualPage]); // No sacar actualPage de las deps porque evita error
 
   // Theme btn rotation mobile
   useEffect(() => {
@@ -278,11 +272,6 @@ function App() {
 
     return () => clearTimeout(timeout);
   }, [theme]);
-
-  // Si translations aún no está cargado, mostramos el loading
-  if (!translations || !images) {
-    return <div className="loader"></div>;
-  }
 
   if (!language || language === '') {
     return null;
@@ -345,7 +334,6 @@ function App() {
               setShowMenu={setShowMenu}
               imagePreLoad={imagePreLoad}
               notFirstLoad={notFirstLoad}
-              images={images}
             />
           }
         />

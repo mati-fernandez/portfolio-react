@@ -8,7 +8,7 @@ const Modal = ({
   modalVisibility,
   setModalVisibility,
 }) => {
-  const { translations, images } = useContext(TranslationContext);
+  const { translate, getImage } = useContext(TranslationContext);
   const [isImgLoaded, setIsImgLoaded] = useState(false);
 
   const closeModal = () => {
@@ -28,34 +28,32 @@ const Modal = ({
     }
   }, [activeModal, setModalVisibility]);
 
-  if (activeModal.itemKey === null) return;
-
   return (
     <article className={`modal`} onClick={closeModal}>
       <div className={`detail${!modalVisibility ? ' hidden' : ''}`}>
         <div className="modalBkg" onClick={(e) => e.stopPropagation()}>
-          <h3>{translations[activeModal.itemKey]?.title || 'undefined'}</h3>
+          <h3>{translate(activeModal.itemKey)?.title || 'undefined'}</h3>
           <figure>
             {!isImgLoaded && <div className="loader" />}
             <img
-              src={activeModal.img}
-              alt={translations[activeModal.itemKey]?.title || 'undefined'}
+              src={getImage(activeModal.imgKey).src}
+              alt={translate(activeModal.itemKey).title || 'undefined'}
               onLoad={() => setIsImgLoaded(true)}
             />
             <figcaption>
-              {translations[activeModal.itemKey]?.description || 'undefined'}
+              {translate(activeModal.itemKey)?.description || 'undefined'}
             </figcaption>
           </figure>
           <div className="btn-panel">
             <a className="link button" onClick={closeModal}>
-              {`${translations[activeModal.itemKey]}.close`}
+              {translate(activeModal.itemKey).close}
             </a>
             <a
-              href={`${translations[activeModal.itemKey]}.link`}
+              href={getImage(activeModal.imgKey).link}
               target="_blank"
               className="link button"
             >
-              {`${translations[activeModal.itemKey]}.open`}
+              {translate(activeModal.itemKey).open}
             </a>
           </div>
         </div>

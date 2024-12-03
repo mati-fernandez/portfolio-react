@@ -4,11 +4,11 @@ import { useContext } from 'react';
 import { TranslationContext } from '../context/TranslationContext';
 
 const Skills = () => {
-  const { images } = useContext(TranslationContext);
+  const { getImage } = useContext(TranslationContext);
 
   // NO SIRVIÓ NI USEMEMO (PARA LA ESTRUCTURA DEL JSX AHORRANDO EL MAPEO REITERADO) NI PRECARGA DE IMAGENES PARA MEJORAR EL TIEMPO DE CARGA
 
-  const data = images.skills;
+  const data = getImage('skills');
   console.log('data:', data);
 
   return (
