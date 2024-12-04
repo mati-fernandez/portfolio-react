@@ -1,14 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import {
-  Routes,
-  Route,
-  useLocation,
-  Navigate,
-  useNavigate,
-} from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useContext, useRef } from 'react';
 import { TranslationContext } from './context/TranslationContext';
+import { PageContext } from './context/PageContext';
 import { ThemeContext } from './context/ThemeContext';
 import { useEffect, useState } from 'react';
 import { updateViewportHeight } from './helpers/updateViewportHeight';
@@ -42,24 +37,10 @@ function App() {
   const { language, fromLanguageBtn, setFromLanguageBtn, loadImages } =
     useContext(TranslationContext);
   const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
-  const [viewMore, setViewMore] = useState({
-    projects: false,
-    exercises: false,
-    certifications: false,
-  });
+  const { actualPage, viewMore, $viewLess, $viewMore } =
+    useContext(PageContext);
 
-  const location = useLocation();
   const navigate = useNavigate();
-
-  const getActualPage = () => {
-    const actual = location.pathname.match(/(\w+)$/)?.[0] || ''; // Captura la última palabra del pathname
-    console.log(actual);
-    return actual;
-  };
-
-  const $viewMore = useRef(null);
-  const $viewLess = useRef(null);
-  const [actualPage, setActualPage] = useState(getActualPage());
 
   const handleOpenModal = (itemKey, imgKey) => {
     setActiveModal((prev) => {
@@ -75,25 +56,6 @@ function App() {
       const img = new Image();
       img.src = url;
     });
-  };
-
-  const handleViewMore = (e) => {
-    if (e.target.matches('.view-more')) {
-      console.log('Mostrando más para la página:', actualPage);
-
-      setViewMore((prevState) => ({
-        ...prevState,
-        [actualPage]: true,
-      }));
-      console.log($viewLess, 'view less full obj');
-    }
-    if (e.target.matches('.view-less')) {
-      setViewMore((prevState) => ({
-        ...prevState,
-        [actualPage]: false,
-      }));
-      console.log($viewLess, 'view less full obj');
-    }
   };
 
   useEffect(() => {
@@ -113,7 +75,6 @@ function App() {
       navigate(1);
     }
 
-    setActualPage(getActualPage());
     if (!notFirstLoad.includes(actualPage)) loadImages();
   }, [location.pathname]);
 
@@ -178,7 +139,6 @@ function App() {
         });
       } else {
         // SI ES PRIMERA CARGA...
-        document.addEventListener('click', handleViewMore);
         setFromThemeBtn(false);
         setFromLanguageBtn(false);
         setNotFirstLoad((prevState) => [...prevState, actualPage]);
@@ -242,7 +202,6 @@ function App() {
         });
 
         return () => {
-          document.removeEventListener('click', handleViewMore);
           clearTimeout(footerTimeout),
             clearTimeout(fillTimeout),
             clearTimeout(headerTimeout),
@@ -274,7 +233,6 @@ function App() {
   if (!language || language === '') {
     return null;
   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO y resta un warning de "No routes matched location".
-  console.log('activeModal desde App.jsx:', activeModal);
   return (
     <>
       {activeModal.itemKey !== null && activeModal.itemKey.includes('info') ? (

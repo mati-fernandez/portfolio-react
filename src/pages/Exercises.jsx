@@ -8,10 +8,8 @@ const Exercises = ({ notFirstLoad, handleOpenModal }) => {
   const { translate, getImage } = useContext(TranslationContext);
 
   const imagesData = getImage('exercises');
-  console.log('imagesData:', imagesData);
 
   const translationsData = translate('exercises.exercisesList');
-  console.log('translationData:', translationsData);
 
   return (
     <div className="page">

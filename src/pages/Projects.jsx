@@ -5,13 +5,9 @@ import { TranslationContext } from '../context/TranslationContext';
 import Info from '../assets/Info';
 
 const Projects = ({ notFirstLoad, handleOpenModal }) => {
-  const { getImage, translate } = useContext(TranslationContext);
-
-  const imagesData = getImage('projects');
-  console.log('imagesData:', imagesData);
+  const { translate } = useContext(TranslationContext);
 
   const translationsData = translate('projects.projectsList');
-  console.log('translationData:', translationsData);
 
   return (
     <div className="page">

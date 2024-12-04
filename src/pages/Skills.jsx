@@ -9,7 +9,6 @@ const Skills = () => {
   // NO SIRVIÓ NI USEMEMO (PARA LA ESTRUCTURA DEL JSX AHORRANDO EL MAPEO REITERADO) NI PRECARGA DE IMAGENES PARA MEJORAR EL TIEMPO DE CARGA
 
   const data = getImage('skills');
-  console.log('data:', data);
 
   return (
     <div className="page">
