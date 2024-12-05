@@ -87,24 +87,18 @@ export const TranslationProvider = ({ children }) => {
   };
 
   return (
-    <>
-      {!translations ? (
-        <div className="loader"></div>
-      ) : (
-        <TranslationContext.Provider
-          value={{
-            getImage,
-            loadImages,
-            translate,
-            setLanguage,
-            language,
-            fromLanguageBtn,
-            setFromLanguageBtn,
-          }}
-        >
-          {children}
-        </TranslationContext.Provider>
-      )}
-    </>
+    <TranslationContext.Provider
+      value={{
+        getImage,
+        loadImages,
+        translate,
+        setLanguage,
+        language,
+        fromLanguageBtn,
+        setFromLanguageBtn,
+      }}
+    >
+      {!translations ? <div className="loader"></div> : children}
+    </TranslationContext.Provider>
   );
 };
