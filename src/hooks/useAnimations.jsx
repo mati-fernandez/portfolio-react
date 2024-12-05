@@ -63,7 +63,9 @@ export default function useAnimations({
           button.style.opacity = 1;
         });
       } else {
-        // SI ES PRIMERA CARGA...
+        //********************************//
+        //******SI ES PRIMERA CARGA ******//
+        //********************************//
         setFromThemeBtn(false);
         setFromLanguageBtn(false);
         setNotFirstLoad((prevState) => [...prevState, actualPage]);
