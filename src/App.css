@@ -713,6 +713,7 @@ figcaption {
 
   .container {
     top: 51%;
+    width: 100vmin;
   }
 
   #presentacion {

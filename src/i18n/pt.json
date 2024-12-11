@@ -4,7 +4,7 @@
     "text": "Neste projeto, experimentei melhorias na legibilidade e modularidade do código em comparação com o portfolio anterior, que foi feito em Vanilla JS. \n\n Coloquei em prática o uso de hooks como useState e useEffect, hooks personalizados, contexto, componentes, estilos complexos com CSS, renderização condicional com JSX, e gerenciamento de rotas com React Router, entre outras coisas.",
     "continue": "Continuar"
   },
-  "description": "Sou um desenvolvedor web em crescimento, criando projetos com JavaScript e React enquanto exploro novas tecnologias.",
+  "description": "Sou um desenvolvedor web em crescimento com foco em Frontend, trabalhando com JavaScript e React enquanto exploro novas tecnologias. Meus fundamentos em lógica de programação me permitem enfrentar desafios técnicos com confiança, buscando sempre melhorar e me adaptar às tendências do mercado.",
   "menu": {
     "home": "Início",
     "skills": "Habilidades",
