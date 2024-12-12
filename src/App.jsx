@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom';
 import { useContext } from 'react';
 import { TranslationContext } from './context/TranslationContext';
 import { PageContext } from './context/PageContext';
@@ -40,7 +46,11 @@ function App() {
   const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
   const { actualPage, viewMore, $viewLess, $viewMore } =
     useContext(PageContext);
+
+  const location = useLocation();
+
   useAnimations({
+    location,
     theme,
     notFirstLoad,
     setNotFirstLoad,

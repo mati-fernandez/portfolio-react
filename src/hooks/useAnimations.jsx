@@ -3,6 +3,7 @@ import { useContext, useEffect } from 'react';
 import { PageContext } from '../context/PageContext';
 
 export default function useAnimations({
+  location,
   theme,
   notFirstLoad,
   setNotFirstLoad,
@@ -40,8 +41,9 @@ export default function useAnimations({
       }
       if (fromLanguageBtn) setFromLanguageBtn(false);
       if (fromThemeBtn) setFromThemeBtn(false);
-
+      //**********************************************************************************************//
       // SI NO ES PRIMERA CARGA, CANCELA ANIMACIONES SALVO EN HOME Y CAMBIO DE TEMA en cuanto a footer
+      //**********************************************************************************************//
 
       if (
         notFirstLoad.includes(actualPage) &&
@@ -138,5 +140,5 @@ export default function useAnimations({
       }
     }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
-  }, [theme, viewMore, modalVisibility, actualPage]); // No sacar actualPage de las deps porque evita error
+  }, [theme, viewMore, modalVisibility, actualPage, location]); // No sacar actualPage de las deps porque evita error
 }
