@@ -352,7 +352,7 @@ option {
 }
 
 .skills-list img {
-  margin-right: 15px;
+  margin-right: 0.5rem;
   max-width: 1rem;
   max-height: 1rem;
 }
@@ -749,10 +749,6 @@ figcaption {
 
   .skill-container {
     width: 15%;
-  }
-
-  .skills-list img {
-    margin-right: 0.5rem;
   }
 
   #js-icon {
