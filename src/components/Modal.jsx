@@ -34,15 +34,18 @@ const Modal = ({
         <div className="modalBkg" onClick={(e) => e.stopPropagation()}>
           <h3>{translate(activeModal.itemKey)?.title || 'undefined'}</h3>
           <figure>
-            {!isImgLoaded && <div className="loader" />}
             <img
               src={getImage(activeModal.imgKey).src}
               alt={translate(activeModal.itemKey).title || 'undefined'}
               onLoad={() => setIsImgLoaded(true)}
             />
-            <figcaption>
-              {translate(activeModal.itemKey)?.description || 'undefined'}
-            </figcaption>
+            {!isImgLoaded ? (
+              <div className="loader" />
+            ) : (
+              <figcaption>
+                {translate(activeModal.itemKey)?.description || 'undefined'}
+              </figcaption>
+            )}
           </figure>
           <div className="btn-panel">
             <a className="link button" onClick={closeModal}>
