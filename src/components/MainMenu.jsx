@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { TranslationContext } from '../i18n/TranslationContext';
+import { TranslationContext } from '../context/TranslationContext';
 import { useContext } from 'react';
 
 // eslint-disable-next-line react/prop-types

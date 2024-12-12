@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext } from 'react';
-import { TranslationContext } from '../i18n/TranslationContext';
+import { TranslationContext } from '../context/TranslationContext';
 
 const InfoModal = ({
   activeModal,
@@ -13,23 +13,32 @@ const InfoModal = ({
   const closeModal = () => {
     setModalVisibility(false);
     const timeout = setTimeout(() => {
-      setActiveModal('');
+      setActiveModal({
+        itemKey: null,
+        imgKey: null,
+      });
       clearTimeout(timeout);
     }, 150);
   };
 
   return (
-    <article className={`modal`} onClick={closeModal}>
-      <div className={`infoModal${!modalVisibility ? ' hidden' : ''}`}>
-        <div className="infoBkg" onClick={(e) => e.stopPropagation()}>
-          <h3>{translate(`${activeModal}.title`)}</h3>
-          <p>{translate(`${activeModal}.text`)}</p>
-          <a className="link button" onClick={closeModal}>
-            {translate(`${activeModal}.continue`)}
-          </a>
-        </div>
-      </div>
-    </article>
+    <>
+      {activeModal.itemKey === null ? (
+        <div className="loader"></div>
+      ) : (
+        <article className={`modal`} onClick={closeModal}>
+          <div className={`infoModal${!modalVisibility ? ' hidden' : ''}`}>
+            <div className="infoBkg" onClick={(e) => e.stopPropagation()}>
+              <h3>{translate(activeModal.itemKey).title}</h3>
+              <p>{translate(activeModal.itemKey).text}</p>
+              <a className="link button" onClick={closeModal}>
+                {translate(activeModal.itemKey).continue}
+              </a>
+            </div>
+          </div>
+        </article>
+      )}
+    </>
   );
 };
 

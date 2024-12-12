@@ -72,11 +72,15 @@ body {
   text-align: center;
 }
 
+#root {
+  height: inherit;
+}
+
 :hover:not(body, .menu) .button:not(svg, .active-button) {
   transition: color 0.8s ease-in-out;
 }
 
-.modal-img-loader {
+.loader {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -207,7 +211,7 @@ option {
   top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 72vmin;
+  width: 75vmin;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -264,6 +268,10 @@ option {
 
 #avatar {
   width: 40vmin;
+}
+
+#description {
+  transition: all 3s ease-out;
 }
 
 #wrapper {
@@ -324,6 +332,7 @@ option {
 }
 
 .skills-list {
+  margin-left: -3rem;
   padding: 0;
   list-style: none;
   width: 90%;
@@ -343,18 +352,9 @@ option {
 }
 
 .skills-list img {
-  margin-right: 15px;
-  opacity: 0;
-}
-
-.skills-list img.landscape {
-  max-width: calc(var(--font-size-landscape) * 2);
-  opacity: 1;
-}
-
-.skills-list img.portrait {
-  max-height: calc(var(--font-size-landscape) * 1.8);
-  opacity: 1;
+  margin-right: 0.5rem;
+  max-width: 1rem;
+  max-height: 1rem;
 }
 
 #js-icon {
@@ -538,6 +538,14 @@ figcaption {
   animation: fadeIn 1s ease-out forwards;
 }
 
+.long-content .view-more {
+  margin-top: 2vh;
+}
+
+.long-content .view-less {
+  margin-top: 2vh;
+}
+
 .view-more {
   opacity: 0.5;
   cursor: pointer;
@@ -616,7 +624,7 @@ figcaption {
 }
 
 .long-text {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 }
 
 .long-content {
@@ -630,6 +638,11 @@ figcaption {
   }
 }
 
+/*Clases pegadas porque son hermanas*/
+.long-content.expanded {
+  line-height: 1.5vw;
+}
+/*Clase separada porque es hija*/
 .expanded .long-text {
   font-size: 0.9rem;
 }
@@ -716,14 +729,15 @@ figcaption {
     width: 100vmin;
   }
 
-  #presentacion {
-    font-size: 3vmin;
+  #description {
+    font-size: 2.7vmin;
   }
 
   .skills-list {
+    margin-left: 2rem;
     margin-bottom: 20px;
     padding: 0;
-    line-height: calc(var(--font-size-landscape) * 3);
+    line-height: 6vh;
     width: 80%;
   }
 
@@ -735,14 +749,6 @@ figcaption {
 
   .skill-container {
     width: 15%;
-  }
-
-  .skills-list img.landscape {
-    max-width: calc(var(--font-size-landscape) * 1.8);
-  }
-
-  .skills-list img.portrait {
-    max-height: calc(var(--font-size-landscape) * 1.6);
   }
 
   #js-icon {
@@ -913,7 +919,7 @@ figcaption {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    gap: 40px;
+    gap: 1.8vw;
     padding: 0 4vw;
   }
 
