@@ -67,23 +67,14 @@ function App() {
 
   const handleOpenModal = (itemKey, imgKey) => {
     setActiveModal((prev) => {
-      console.log('Prev state:', prev);
-      console.log('New state:', { ...prev, itemKey, imgKey });
       return { ...prev, itemKey, imgKey };
     });
     setModalVisibility(true);
   };
 
-  const imagePreLoad = (urls) => {
-    urls.map((url) => {
-      const img = new Image();
-      img.src = url;
-    });
-  };
-
+  // CLOSE MODAL OR MENU ON NAVIGATION 'Prevent Navigation' Hack:
+  // En el if no usar activeModal porque provoca bucle al tener timeout en el set
   useEffect(() => {
-    // CLOSE MODAL OR MENU ON NAVIGATION 'Prevent Navigation' Hack:
-    // En el if no usar activeModal porque provoca bucle al tener timeout en el set
     if (modalVisibility || (showMenu && !fromMenuBtn && !fromLanguageBtn)) {
       setShowMenu(false);
       setFromMenuBtn(false);
@@ -190,7 +181,6 @@ function App() {
             <Skills
               showMenu={showMenu}
               setShowMenu={setShowMenu}
-              imagePreLoad={imagePreLoad}
               notFirstLoad={notFirstLoad}
             />
           }
@@ -204,7 +194,6 @@ function App() {
               activeModal={activeModal}
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
-              imagePreLoad={imagePreLoad}
               notFirstLoad={notFirstLoad}
             />
           }
@@ -218,7 +207,6 @@ function App() {
               activeModal={activeModal}
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
-              imagePreLoad={imagePreLoad}
               notFirstLoad={notFirstLoad}
             />
           }
@@ -231,7 +219,6 @@ function App() {
               setShowMenu={setShowMenu}
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
-              imagePreLoad={imagePreLoad}
               notFirstLoad={notFirstLoad}
               viewMore={viewMore}
               actualPage={actualPage}

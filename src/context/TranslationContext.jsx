@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DevBtn from '../components/DevBtn';
 
 export const TranslationContext = createContext();
 
@@ -13,29 +14,50 @@ export const TranslationProvider = ({ children }) => {
   );
   const navigate = useNavigate();
   const [fromLanguageBtn, setFromLanguageBtn] = useState(false);
+  const [devMode, setDevMode] = useState(false);
+  const [endpoint, setEndpoint] = useState('build');
+  const [error, setError] = useState(null);
 
-  // CARGA INICIAL DE IMAGENES CON FETCH
+  const contentDevPath = 'http://127.0.0.1:5500/';
+  const contentBuildPath = 'https://portfolio-4oh.pages.dev/';
+
+  const imagesApiEndpoint =
+    endpoint === 'build'
+      ? `${contentBuildPath}images.json`
+      : `${contentDevPath}images.json`;
+
+  const translationsApiEndpoint =
+    endpoint === 'build'
+      ? `${contentBuildPath}${language}.json`
+      : `${contentDevPath}${language}.json`;
+
+  // CARGA DE IMAGENES CON FETCH
   const loadImages = async () => {
     try {
-      const response = await fetch(
-        'https://portfolio-4oh.pages.dev/images.json'
-      );
+      const response = await fetch(imagesApiEndpoint);
       const data = await response.json();
       setImages(data);
     } catch (error) {
+      setError(true);
       console.error('Error al cargar las imágenes:', error);
     }
   };
+  useEffect(() => {
+    loadImages();
+  }, [endpoint]);
 
   useEffect(() => {
+    import.meta.env.MODE === 'development'
+      ? setDevMode(true)
+      : setDevMode(false);
+
     const loadTranslations = async () => {
       try {
-        const response = await fetch(
-          `https://portfolio-4oh.pages.dev/${language}.json`
-        );
+        const response = await fetch(translationsApiEndpoint);
         const data = await response.json();
         setTranslations(data);
       } catch (error) {
+        setError(true);
         console.error('Error al cargar las traducciones:', error);
         // setTranslations({}); // Si falla, asegura un estado vacío
       }
@@ -43,7 +65,7 @@ export const TranslationProvider = ({ children }) => {
     if (language) {
       loadTranslations();
     }
-  }, [language]);
+  }, [language, endpoint]);
 
   useEffect(() => {
     const pathParts = location.hash.split('/').filter(Boolean);
@@ -96,8 +118,16 @@ export const TranslationProvider = ({ children }) => {
         language,
         fromLanguageBtn,
         setFromLanguageBtn,
+        setEndpoint,
+        endpoint,
+        contentBuildPath,
+        contentDevPath,
       }}
     >
+      {devMode ? <DevBtn /> : null}
+      {endpoint === 'dev' && error ? (
+        <p>Error de fecth, revisa si levantaste los JSON con live server!</p>
+      ) : null}
       {!translations ? <div className="loader"></div> : children}
     </TranslationContext.Provider>
   );

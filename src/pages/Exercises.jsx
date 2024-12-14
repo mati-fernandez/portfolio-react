@@ -5,9 +5,7 @@ import { TranslationContext } from '../context/TranslationContext';
 import Info from '../assets/Info';
 
 const Exercises = ({ notFirstLoad, handleOpenModal }) => {
-  const { translate, getImage } = useContext(TranslationContext);
-
-  const imagesData = getImage('exercises');
+  const { translate } = useContext(TranslationContext);
 
   const translationsData = translate('exercises.exercisesList');
 

@@ -16,8 +16,13 @@ const Skills = () => {
     </div>
   );
 };
+
 const SkillItem = ({ skillData }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const { endpoint, contentDevPath, contentBuildPath } =
+    useContext(TranslationContext);
+  const srcPath =
+    endpoint === 'build' ? `${contentBuildPath}` : `${contentDevPath}`;
 
   return (
     <li>
@@ -39,7 +44,7 @@ const SkillItem = ({ skillData }) => {
 
         {/* Imagen que se muestra al cargar */}
         <img
-          src={skillData.src}
+          src={`${srcPath}${skillData.src}`}
           alt={skillData.alt}
           className="tech"
           style={{

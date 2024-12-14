@@ -8,8 +8,11 @@ const Modal = ({
   modalVisibility,
   setModalVisibility,
 }) => {
-  const { translate, getImage } = useContext(TranslationContext);
+  const { translate, getImage, endpoint, contentDevPath, contentBuildPath } =
+    useContext(TranslationContext);
   const [isImgLoaded, setIsImgLoaded] = useState(false);
+  const srcPath =
+    endpoint === 'build' ? `${contentBuildPath}` : `${contentDevPath}`;
 
   const closeModal = () => {
     setModalVisibility(false);
@@ -35,7 +38,7 @@ const Modal = ({
           <h3>{translate(activeModal.itemKey)?.title || 'undefined'}</h3>
           <figure>
             <img
-              src={getImage(activeModal.imgKey).src}
+              src={`${srcPath}${getImage(activeModal.imgKey).src}`}
               alt={translate(activeModal.itemKey).title || 'undefined'}
               onLoad={() => setIsImgLoaded(true)}
             />
