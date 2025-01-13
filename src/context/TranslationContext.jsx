@@ -37,6 +37,7 @@ export const TranslationProvider = ({ children }) => {
       const response = await fetch(imagesApiEndpoint);
       const data = await response.json();
       setImages(data);
+      setError(false);
     } catch (error) {
       setError(true);
       console.error('Error al cargar las imágenes:', error);
@@ -56,6 +57,7 @@ export const TranslationProvider = ({ children }) => {
         const response = await fetch(translationsApiEndpoint);
         const data = await response.json();
         setTranslations(data);
+        setError(false);
       } catch (error) {
         setError(true);
         console.error('Error al cargar las traducciones:', error);
@@ -126,7 +128,19 @@ export const TranslationProvider = ({ children }) => {
     >
       {devMode ? <DevBtn /> : null}
       {endpoint === 'dev' && error ? (
-        <p>Error de fecth, revisa si levantaste los JSON con live server!</p>
+        <p
+          style={{
+            position: 'absolute',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            backgroundColor: 'red',
+            zIndex: 999,
+            padding: '1rem',
+          }}
+        >
+          Error de fecth, revisa si levantaste los JSON con live server o si
+          cambió el puerto!
+        </p>
       ) : null}
       {!translations ? <div className="loader"></div> : children}
     </TranslationContext.Provider>

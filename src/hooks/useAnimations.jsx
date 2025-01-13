@@ -78,8 +78,10 @@ export default function useAnimations({
         // Fade in del view more
         //Se comprueba si el botón existe en esa página
         if ($viewMore.current) {
-          //Se oculta en la primera carga para esperar la animación de entrada
+          // Se oculta en la primera carga para esperar la animación de entrada:
           $viewMore.current.style.opacity = 0;
+          // Evitar intaracción para no cortar la animación si lo tocan antes que se complete:
+          $viewMore.current.style.pointerEvents = 'none';
           // Despues de llegar los enlaces de pagina aparece view more
           fadeIn = setTimeout(() => {
             $viewMore.current.classList.add('fade-in');
@@ -89,8 +91,9 @@ export default function useAnimations({
               console.log($viewMore.current);
               $viewMore.current.style.opacity = 0.5;
               $viewMore.current.classList.remove('fade-in');
+              $viewMore.current.style.pointerEvents = 'all';
             }, 1000);
-          }, 1500);
+          }, 1000);
         }
 
         progress.forEach((item) => item.classList.remove('fill-progress'));
