@@ -21,7 +21,7 @@ import Home from './pages/Home';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Certifications from './pages/Certifications';
-import Exercises from './pages/Exercises';
+import Odyssey from './pages/Odyssey';
 import MobileHeader from './components/MobileHeader';
 import DesktopHeader from './components/DesktopHeader';
 import DesktopFooter from './components/DesktopFooter';
@@ -199,9 +199,9 @@ function App() {
           }
         />
         <Route
-          path={`/${language}/exercises`}
+          path={`/${language}/odyssey`}
           element={
-            <Exercises
+            <Odyssey
               showMenu={showMenu}
               setShowMenu={setShowMenu}
               activeModal={activeModal}

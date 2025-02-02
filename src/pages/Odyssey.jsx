@@ -4,27 +4,24 @@ import { useContext } from 'react';
 import { TranslationContext } from '../context/TranslationContext';
 import Info from '../assets/Info';
 
-const Exercises = ({ notFirstLoad, handleOpenModal }) => {
+const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
   const { translate } = useContext(TranslationContext);
 
-  const translationsData = translate('exercises.exercisesList');
+  const translationsData = translate('odyssey.odysseyList');
 
   return (
     <div className="page">
       <Info
         notFirstLoad={notFirstLoad}
         handleOpenModal={handleOpenModal}
-        itemKey={'exercises.info'}
+        itemKey={'odyssey.info'}
       />
       {Object.keys(translationsData).map((key) => (
         <button
           key={key}
           className="long-text button link"
           onClick={() =>
-            handleOpenModal(
-              `exercises.exercisesList.` + key,
-              `exercises.` + key
-            )
+            handleOpenModal(`odyssey.odysseyList.` + key, `odyssey.` + key)
           }
         >
           {translationsData[key].title}
@@ -34,4 +31,4 @@ const Exercises = ({ notFirstLoad, handleOpenModal }) => {
   );
 };
 
-export default Exercises;
+export default Odyssey;
