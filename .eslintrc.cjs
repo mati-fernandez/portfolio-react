@@ -18,4 +18,8 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
-}
+  env: {
+    browser: true,
+    node: true,
+  },
+};

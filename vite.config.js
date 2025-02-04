@@ -6,5 +6,5 @@ dotenv.config();
 
 export default defineConfig({
   plugins: [react()],
-  base: process.env.VERCEL === '1' ? '/' : '/portfolio-react/',
+  base: process.env.VERCEL ? '/' : '/portfolio-react/',
 });
