@@ -44,8 +44,7 @@ function App() {
   const { language, fromLanguageBtn, setFromLanguageBtn, loadImages } =
     useContext(TranslationContext);
   const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
-  const { actualPage, viewMore, $viewLess, $viewMore } =
-    useContext(PageContext);
+  const { actualPage } = useContext(PageContext);
 
   const location = useLocation();
 
@@ -220,10 +219,6 @@ function App() {
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
               notFirstLoad={notFirstLoad}
-              viewMore={viewMore}
-              actualPage={actualPage}
-              $viewMore={$viewMore}
-              $viewLess={$viewLess}
             />
           }
         />

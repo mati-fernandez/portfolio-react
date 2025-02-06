@@ -5,13 +5,9 @@ import { PageContext } from '../context/PageContext';
 import { TranslationContext } from '../context/TranslationContext';
 import Info from '../assets/Info';
 
-const Certifications = ({
-  notFirstLoad,
-  handleOpenModal,
-  $viewMore,
-  $viewLess,
-}) => {
-  const { actualPage, viewMore, handleViewMore } = useContext(PageContext);
+const Certifications = ({ notFirstLoad, handleOpenModal }) => {
+  const { actualPage, viewMore, handleViewMore, $viewMore, $viewLess } =
+    useContext(PageContext);
   const { translate, getImage } = useContext(TranslationContext);
 
   const imagesData = getImage('certifications');
