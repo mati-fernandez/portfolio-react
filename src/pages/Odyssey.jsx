@@ -5,31 +5,28 @@ import { PageContext } from '../context/PageContext';
 import { TranslationContext } from '../context/TranslationContext';
 import Info from '../assets/Info';
 
-const Certifications = ({ notFirstLoad, handleOpenModal }) => {
+const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
   const { actualPage, viewMore, handleViewMore, $viewMore, $viewLess } =
     useContext(PageContext);
   const { translate, getImage } = useContext(TranslationContext);
 
-  const imagesData = getImage('certifications');
+  const imagesData = getImage('odyssey');
 
-  const translationsData = translate('certifications.certificationsList');
+  const translationsData = translate('odyssey.odysseyList');
 
   return (
     <>
-      <div
-        className={`page long-content ${
-          viewMore.certifications ? 'expanded' : ''
-        }`}
-      >
+      <div className={`page ${viewMore.certifications ? 'expanded' : ''}`}>
         <Info
           notFirstLoad={notFirstLoad}
           handleOpenModal={handleOpenModal}
-          itemKey={'certifications.info'}
+          itemKey={'odyssey.info'}
         />
         <>
           {Object.keys(translationsData).map((key) =>
             !viewMore[actualPage] &&
             imagesData[key]?.class === 'secondary' ? null : (
+              // Odysseys buttons
               <button
                 key={key}
                 className={`long-text button link ${
@@ -37,8 +34,8 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
                 }`}
                 onClick={() =>
                   handleOpenModal(
-                    `certifications.certificationsList.` + key,
-                    `certifications.` + key
+                    `odyssey.odysseyList.` + key,
+                    `odyssey.` + key
                   )
                 }
               >
@@ -54,7 +51,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
               className="view-more"
               onClick={handleViewMore}
             >
-              {translate('certifications.buttons.view-more')}
+              {translate('odyssey.buttons.view-more')}
             </button>
           ) : (
             <button
@@ -62,7 +59,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
               className="view-less"
               onClick={handleViewMore}
             >
-              {translate('certifications.buttons.view-less')}
+              {translate('odyssey.buttons.view-less')}
             </button>
           )}
         </>
@@ -71,4 +68,4 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
   );
 };
 
-export default Certifications;
+export default Odyssey;

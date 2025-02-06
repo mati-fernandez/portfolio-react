@@ -43,10 +43,10 @@ const MainMenu = ({ setFromMenuBtn }) => {
         className={({ isActive }) =>
           isActive ? 'active-button button link' : 'button link'
         }
-        to={`/${language}/exercises`}
+        to={`/${language}/odyssey`}
         onClick={handleClick}
       >
-        {translate('menu.exercises')}
+        {translate('menu.odyssey')}
       </NavLink>
       <NavLink
         className={({ isActive }) =>

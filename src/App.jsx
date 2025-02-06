@@ -21,7 +21,7 @@ import Home from './pages/Home';
 import Skills from './pages/Skills';
 import Projects from './pages/Projects';
 import Certifications from './pages/Certifications';
-import Exercises from './pages/Exercises';
+import Odyssey from './pages/Odyssey';
 import MobileHeader from './components/MobileHeader';
 import DesktopHeader from './components/DesktopHeader';
 import DesktopFooter from './components/DesktopFooter';
@@ -44,8 +44,7 @@ function App() {
   const { language, fromLanguageBtn, setFromLanguageBtn, loadImages } =
     useContext(TranslationContext);
   const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
-  const { actualPage, viewMore, $viewLess, $viewMore } =
-    useContext(PageContext);
+  const { actualPage } = useContext(PageContext);
 
   const location = useLocation();
 
@@ -199,9 +198,9 @@ function App() {
           }
         />
         <Route
-          path={`/${language}/exercises`}
+          path={`/${language}/odyssey`}
           element={
-            <Exercises
+            <Odyssey
               showMenu={showMenu}
               setShowMenu={setShowMenu}
               activeModal={activeModal}
@@ -220,10 +219,6 @@ function App() {
               setActiveModal={setActiveModal}
               handleOpenModal={handleOpenModal}
               notFirstLoad={notFirstLoad}
-              viewMore={viewMore}
-              actualPage={actualPage}
-              $viewMore={$viewMore}
-              $viewLess={$viewLess}
             />
           }
         />
