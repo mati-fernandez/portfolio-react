@@ -51,7 +51,7 @@ const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
               className="view-more"
               onClick={handleViewMore}
             >
-              {translate('odyssey.buttons.view-more')}
+              {translate('odyssey.buttons.viewMore')}
             </button>
           ) : (
             <button
@@ -59,7 +59,7 @@ const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
               className="view-less"
               onClick={handleViewMore}
             >
-              {translate('odyssey.buttons.view-less')}
+              {translate('odyssey.buttons.viewLess')}
             </button>
           )}
         </>

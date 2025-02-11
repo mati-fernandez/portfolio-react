@@ -54,7 +54,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
               className="view-more"
               onClick={handleViewMore}
             >
-              {translate('certifications.buttons.view-more')}
+              {translate('certifications.buttons.viewMore')}
             </button>
           ) : (
             <button
@@ -62,7 +62,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
               className="view-less"
               onClick={handleViewMore}
             >
-              {translate('certifications.buttons.view-less')}
+              {translate('certifications.buttons.viewLess')}
             </button>
           )}
         </>
