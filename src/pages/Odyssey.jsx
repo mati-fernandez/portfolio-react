@@ -16,7 +16,11 @@ const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
 
   return (
     <>
-      <div className={`page ${viewMore.certifications ? 'expanded' : ''}`}>
+      <div
+        className={`page long-content ${
+          viewMore.certifications ? 'expanded' : ''
+        }`}
+      >
         <Info
           notFirstLoad={notFirstLoad}
           handleOpenModal={handleOpenModal}
