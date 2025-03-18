@@ -52,6 +52,7 @@ export const TranslationProvider = ({ children }) => {
       ? setDevMode(true)
       : setDevMode(false);
 
+    // CARGA DE TEXTOS CON FETCH
     const loadTranslations = async () => {
       try {
         const response = await fetch(translationsApiEndpoint);
@@ -80,7 +81,7 @@ export const TranslationProvider = ({ children }) => {
       URLlang = 'pt';
     }
 
-    if (!URLlang) {
+    if (!URLlang && !language) {
       const userLanguage = navigator.language || navigator.userLanguage;
       const detectedLanguage = userLanguage.startsWith('es')
         ? 'es'
