@@ -19,6 +19,7 @@ export const TranslationProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   const contentDevPath = 'http://127.0.0.1:5500/';
+  //   const contentDevPathMobile = 'http://192.168.1.100:5500/'; // Acá deberia usar aspectRatio supongo (esta en app ahora) para ver si es mobile y poner ese endpoint
   const contentBuildPath = 'https://portfolio-4oh.pages.dev/';
 
   const imagesApiEndpoint =

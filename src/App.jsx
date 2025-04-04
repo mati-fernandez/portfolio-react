@@ -12,7 +12,6 @@ import { TranslationContext } from './context/TranslationContext';
 import { PageContext } from './context/PageContext';
 import { ThemeContext } from './context/ThemeContext';
 import { useEffect, useState } from 'react';
-import { updateViewportHeight } from './helpers/updateViewportHeight';
 import './App.css';
 import useAnimations from './hooks/useAnimations';
 
@@ -28,12 +27,8 @@ import DesktopFooter from './components/DesktopFooter';
 import Modal from './components/Modal';
 import InfoModal from './components/InfoModal';
 
-const updateAspectRatio = () =>
-  window.innerWidth / window.innerHeight < 1.2 ? 'portrait' : 'landscape';
-
 function App() {
   const [showMenu, setShowMenu] = useState(false);
-  const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
   const [activeModal, setActiveModal] = useState({
     itemKey: null,
     imgKey: null,
@@ -44,7 +39,7 @@ function App() {
   const { language, fromLanguageBtn, setFromLanguageBtn, loadImages } =
     useContext(TranslationContext);
   const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
-  const { actualPage } = useContext(PageContext);
+  const { actualPage, aspectRatio } = useContext(PageContext);
 
   const location = useLocation();
 
@@ -90,20 +85,6 @@ function App() {
 
     if (!notFirstLoad.includes(actualPage)) loadImages();
   }, [location.pathname]);
-
-  // VSUALIZACION
-  useEffect(() => {
-    updateViewportHeight();
-    window.addEventListener('resize', () =>
-      setAspectRatio(updateAspectRatio())
-    );
-    setAspectRatio(updateAspectRatio());
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
-
-    return () => {
-      document.removeEventListener('contextmenu', (e) => e.preventDefault());
-    };
-  }, []);
 
   // Theme btn rotation mobile
   useEffect(() => {

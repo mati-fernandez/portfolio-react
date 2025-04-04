@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { updateViewportHeight } from '../helpers/updateViewportHeight';
 
 export const PageContext = createContext();
 
@@ -21,11 +22,29 @@ export const PageProvider = ({ children }) => {
     return actual;
   };
 
+  const updateAspectRatio = () =>
+    window.innerWidth / window.innerHeight < 1.2 ? 'portrait' : 'landscape';
+  const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
+
   const [actualPage, setActualPage] = useState(getActualPage());
 
   useEffect(() => {
     setActualPage(getActualPage());
   }, [location.pathname]);
+
+  // VSUALIZACION
+  useEffect(() => {
+    updateViewportHeight();
+    window.addEventListener('resize', () =>
+      setAspectRatio(updateAspectRatio())
+    );
+    setAspectRatio(updateAspectRatio());
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    return () => {
+      document.removeEventListener('contextmenu', (e) => e.preventDefault());
+    };
+  }, []);
 
   const handleViewMore = (e) => {
     if (e.target.matches('.view-more')) {
@@ -48,7 +67,15 @@ export const PageProvider = ({ children }) => {
 
   return (
     <PageContext.Provider
-      value={{ viewMore, handleViewMore, actualPage, $viewLess, $viewMore }}
+      value={{
+        viewMore,
+        handleViewMore,
+        actualPage,
+        $viewLess,
+        $viewMore,
+        aspectRatio,
+        setAspectRatio,
+      }}
     >
       {children}
     </PageContext.Provider>
