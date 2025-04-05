@@ -36,7 +36,11 @@ export default function useAnimations({
         document.querySelectorAll('#desktop-header a')
       );
 
-      if (aspectRatio === 'portrait' && !fromThemeBtn && !fromLanguageBtn) {
+      if (
+        (aspectRatio === 'portrait' || aspectRatio === 'square') &&
+        !fromThemeBtn &&
+        !fromLanguageBtn
+      ) {
         setShowMenu(false);
       }
       if (fromLanguageBtn) setFromLanguageBtn(false);

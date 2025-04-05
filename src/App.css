@@ -128,7 +128,18 @@ button {
   cursor: pointer;
   font: inherit;
   color: inherit;
+  height: fit-content;
 }
+/* 
+.view-less,
+.view-more {
+  position: fixed;
+  bottom: 5.5vh;
+  left: 53%;
+  transform: translateX(-50%);
+  font-size: 5rem;
+  line-height: 0;
+} */
 
 p:not(#name) {
   transition: color 0.8s ease-in-out;
@@ -514,13 +525,14 @@ figcaption {
 }
 
 .page {
-  padding: 5rem 1rem 10rem; /*El bottom hace que se vea bien en tel. No uso medidas viewport porque no se ajusta igual en todos los browsers*/
+  /* padding: 1rem 1rem 15rem; El bottom hace que se vea bien en tel. No uso medidas viewport porque no se ajusta igual en todos los browsers */
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
+  align-content: center;
+  /* align-items: center; */
   height: calc(var(--vh, 1vh) * 90);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .page-item {
@@ -566,13 +578,13 @@ figcaption {
   animation: fadeIn 1s ease-out forwards;
 }
 
-.long-content .view-more {
+/* .long-content .view-more {
   margin-top: 2vh;
 }
 
 .long-content .view-less {
   margin-top: 2vh;
-}
+} */
 
 .view-more {
   opacity: 0.5;
@@ -676,9 +688,9 @@ figcaption {
   figcaption {
     font-size: 0.8rem;
   }
-  /* .page {
+  .page {
     padding: calc(2rem - 1vw) 1vw;
-  } */
+  }
 }
 
 /* Para skill list */

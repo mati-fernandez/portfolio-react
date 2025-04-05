@@ -6,8 +6,14 @@ import { TranslationContext } from '../context/TranslationContext';
 import Info from '../assets/Info';
 
 const Certifications = ({ notFirstLoad, handleOpenModal }) => {
-  const { actualPage, viewMore, handleViewMore, $viewMore, $viewLess } =
-    useContext(PageContext);
+  const {
+    aspectRatio,
+    actualPage,
+    viewMore,
+    handleViewMore,
+    $viewMore,
+    $viewLess,
+  } = useContext(PageContext);
   const { translate, getImage } = useContext(TranslationContext);
 
   const imagesData = getImage('certifications');
@@ -23,13 +29,22 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
 
   const itemCount = visibleKeys.length;
   console.log('itemCount', itemCount);
-  const dynamicFontSize = Math.max(0.5, Math.min(1.2, 10 / itemCount));
+  const dynamicFontSize = Math.max(0.7, Math.min(0.1, 10 / itemCount));
+
   const dynamicPadding = Math.max(0.4, 1 / itemCount);
+
+  const dynamicMargin =
+    aspectRatio === 'portrait'
+      ? Math.max(0.1, 11 / itemCount)
+      : Math.max(0.1, 1 / itemCount);
+
   console.log(
     'dynamicFontSize',
     dynamicFontSize,
     'dynamicPadding',
-    `${dynamicPadding} ${Number(dynamicPadding) * 2}`
+    `${dynamicPadding} ${Number(dynamicPadding) * 2}`,
+    'dynamicMargin',
+    `${dynamicMargin} ${Number(dynamicMargin) * 2}`
   );
 
   return (
@@ -47,9 +62,8 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
               <div
                 style={{
                   fontSize: dynamicFontSize + 'rem',
-                  padding: `${dynamicPadding}rem ${
-                    Number(dynamicPadding) * 2
-                  }rem`,
+                  padding: `${dynamicPadding}rem ${dynamicPadding * 2}rem`,
+                  margin: `${dynamicMargin}rem`,
                 }}
                 key={key}
                 className={`long-text page-item ${

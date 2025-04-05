@@ -22,9 +22,23 @@ export const PageProvider = ({ children }) => {
     return actual;
   };
 
-  const updateAspectRatio = () =>
-    window.innerWidth / window.innerHeight < 1.2 ? 'portrait' : 'landscape';
+  const updateAspectRatio = () => {
+    let aspect = '';
+    if (window.innerWidth / window.innerHeight < 0.53) {
+      aspect = 'portrait';
+      return aspect;
+    } else if (window.innerWidth / window.innerHeight < 1.2) {
+      aspect = 'square';
+      return aspect;
+    } else {
+      aspect = 'landscape';
+      return aspect;
+    }
+  };
+
   const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
+
+  console.log(aspectRatio, 'aspect ratio');
 
   const [actualPage, setActualPage] = useState(getActualPage());
 

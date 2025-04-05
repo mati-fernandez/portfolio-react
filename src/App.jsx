@@ -91,7 +91,7 @@ function App() {
     let timeout = null;
     const themeBtn = document.querySelector('#theme-btn');
 
-    if (themeBtn && aspectRatio === 'portrait') {
+    if (themeBtn && (aspectRatio === 'portrait' || aspectRatio === 'square')) {
       themeBtn.classList.remove('rotate');
       timeout = setTimeout(() => {
         themeBtn.classList.add('rotate');
@@ -125,7 +125,7 @@ function App() {
           />
         )
       )}
-      {aspectRatio === 'portrait' ? (
+      {aspectRatio === 'portrait' || aspectRatio === 'square' ? (
         <MobileHeader
           showMenu={showMenu}
           setShowMenu={setShowMenu}
