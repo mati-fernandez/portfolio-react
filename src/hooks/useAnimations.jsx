@@ -27,7 +27,7 @@ export default function useAnimations({
       let removeFadeIn = null;
       const progress = Array.from(document.querySelectorAll('.progress'));
       const buttons = Array.from(
-        document.querySelectorAll('.page button:not(.view-more, .view-less)')
+        document.querySelectorAll('.page-item')
       ).reverse();
       const icons = Array.from(
         document.querySelectorAll('#desktop-footer a, #desktop-footer button')

@@ -51,7 +51,7 @@ export const TranslationProvider = ({ children }) => {
   useEffect(() => {
     import.meta.env.MODE === 'development'
       ? setDevMode(true)
-      : setDevMode(false);
+      : setDevMode(false); //Podría sacarlo de este useEffect?
 
     // CARGA DE TEXTOS CON FETCH
     const loadTranslations = async () => {

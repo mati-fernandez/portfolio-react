@@ -7,8 +7,8 @@ const Skills = () => {
   const data = getImage('skills');
 
   return (
-    <div className="page">
-      <ul className="skills-list">
+    <div className="page" style={{ padding: '0' }}>
+      <ul className="skills-list" style={{ marginTop: '-1vh' }}>
         {Object.keys(data).map((skill) => (
           <SkillItem key={skill} skillData={data[skill]} />
         ))}

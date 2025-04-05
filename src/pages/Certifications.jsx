@@ -14,13 +14,27 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
 
   const translationsData = translate('certifications.certificationsList');
 
+  const allKeys = Object.keys(translationsData);
+
+  // Filtrás según viewMore
+  const visibleKeys = !viewMore[actualPage]
+    ? allKeys.filter((key) => imagesData[key]?.class !== 'secondary')
+    : allKeys;
+
+  const itemCount = visibleKeys.length;
+  console.log('itemCount', itemCount);
+  const dynamicFontSize = Math.max(0.5, Math.min(1.2, 10 / itemCount));
+  const dynamicPadding = Math.max(0.4, 1 / itemCount);
+  console.log(
+    'dynamicFontSize',
+    dynamicFontSize,
+    'dynamicPadding',
+    `${dynamicPadding} ${Number(dynamicPadding) * 2}`
+  );
+
   return (
     <>
-      <div
-        className={`page long-content ${
-          viewMore.certifications ? 'expanded' : ''
-        }`}
-      >
+      <div className="page long-content">
         <Info
           notFirstLoad={notFirstLoad}
           handleOpenModal={handleOpenModal}
@@ -30,9 +44,15 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
           {Object.keys(translationsData).map((key) =>
             !viewMore[actualPage] &&
             imagesData[key]?.class === 'secondary' ? null : (
-              <button
+              <div
+                style={{
+                  fontSize: dynamicFontSize + 'rem',
+                  padding: `${dynamicPadding}rem ${
+                    Number(dynamicPadding) * 2
+                  }rem`,
+                }}
                 key={key}
-                className={`long-text button link ${
+                className={`long-text page-item ${
                   imagesData[key]?.class === 'secondary' ? 'secondary' : ''
                 }`}
                 onClick={() =>
@@ -43,7 +63,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
                 }
               >
                 {translationsData[key].title}
-              </button>
+              </div>
             )
           )}
           {/*.............................Ver

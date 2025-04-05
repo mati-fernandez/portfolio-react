@@ -15,7 +15,7 @@ const MobileHeader = ({ showMenu, setShowMenu, setFromMenuBtn }) => {
   };
 
   return (
-    <div id="wrapper">
+    <div id="mobile-header-wrapper">
       {showMenu && (
         <MobileMenu translate={translate} setFromMenuBtn={setFromMenuBtn} />
       )}
