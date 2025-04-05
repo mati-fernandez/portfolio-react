@@ -29,22 +29,36 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
 
   const itemCount = visibleKeys.length;
   console.log('itemCount', itemCount);
-  const dynamicFontSize = Math.max(0.7, Math.min(0.1, 10 / itemCount));
+
+  let dynamicFontSize = 0;
+  if (aspectRatio === 'portrait') {
+    dynamicFontSize = Math.max(1, Math.min(1.2, 3.5 / itemCount));
+  } else if (aspectRatio === 'square') {
+    dynamicFontSize = Math.max(0.8, Math.min(1.2, 3.5 / itemCount));
+  } else {
+    dynamicFontSize = Math.max(0.8, Math.min(1, 3.5 / itemCount));
+  }
 
   const dynamicPadding = Math.max(0.4, 1 / itemCount);
 
-  const dynamicMargin =
-    aspectRatio === 'portrait'
-      ? Math.max(0.1, 11 / itemCount)
-      : Math.max(0.1, 1 / itemCount);
+  let dynamicMargin = 0;
+  if (aspectRatio === 'portrait') {
+    dynamicMargin = Math.max(0.1, 7 / itemCount);
+  } else if (aspectRatio === 'square') {
+    dynamicMargin = Math.max(0.4, Math.min(1.2, 3.5 / itemCount));
+  } else {
+    dynamicMargin = Math.max(0.1, 1 / itemCount);
+  }
 
   console.log(
     'dynamicFontSize',
     dynamicFontSize,
     'dynamicPadding',
-    `${dynamicPadding} ${Number(dynamicPadding) * 2}`,
-    'dynamicMargin',
-    `${dynamicMargin} ${Number(dynamicMargin) * 2}`
+    `${dynamicPadding} ${dynamicPadding * 2}`,
+    'dynamicMarginBottom',
+    ` ${dynamicMargin * 2}`,
+    'dynamicMarginInline',
+    `${dynamicMargin / 2}`
   );
 
   return (
@@ -63,7 +77,8 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
                 style={{
                   fontSize: dynamicFontSize + 'rem',
                   padding: `${dynamicPadding}rem ${dynamicPadding * 2}rem`,
-                  margin: `${dynamicMargin}rem`,
+                  marginBottom: `${dynamicMargin * 2}rem `,
+                  marginInline: `${dynamicMargin / 2}rem`,
                 }}
                 key={key}
                 className={`long-text page-item ${

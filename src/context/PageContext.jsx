@@ -24,7 +24,7 @@ export const PageProvider = ({ children }) => {
 
   const updateAspectRatio = () => {
     let aspect = '';
-    if (window.innerWidth / window.innerHeight < 0.53) {
+    if (window.innerWidth / window.innerHeight < 0.7) {
       aspect = 'portrait';
       return aspect;
     } else if (window.innerWidth / window.innerHeight < 1.2) {

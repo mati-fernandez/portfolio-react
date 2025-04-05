@@ -32,7 +32,7 @@ const Projects = ({ notFirstLoad, handleOpenModal }) => {
   );
 
   return (
-    <div className="page" style={{ paddingBottom: '10vh' }}>
+    <div className="page">
       <Info
         notFirstLoad={notFirstLoad}
         handleOpenModal={handleOpenModal}
