@@ -84,6 +84,13 @@ body {
   height: inherit;
 }
 
+/*Reset de ul*/
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
 :hover:not(body, .menu) .button:not(svg, .active-button) {
   transition: color 0.8s ease-in-out;
 }
@@ -705,6 +712,7 @@ figcaption {
 /* Para skill list */
 @media (min-aspect-ratio: 0.85) {
   .skills-list {
+    margin-left: 0.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     font-size: var(--font-size-portrait);
@@ -792,15 +800,14 @@ figcaption {
   }
 
   .skills-list {
-    margin-left: 2rem;
-    margin-bottom: 20px;
+    margin-left: 1rem;
     padding: 0;
     line-height: 6vh;
     width: 80%;
   }
 
   .skills-list li {
-    margin-bottom: 2vh;
+    margin-block: 1vh;
     justify-content: center;
     font-size: 2.5vh;
   }

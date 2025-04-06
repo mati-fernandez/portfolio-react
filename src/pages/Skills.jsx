@@ -8,7 +8,7 @@ const Skills = () => {
 
   return (
     <div className="page" style={{ padding: '0' }}>
-      <ul className="skills-list" style={{ marginTop: '-1vh' }}>
+      <ul className="skills-list">
         {Object.keys(data).map((skill) => (
           <SkillItem key={skill} skillData={data[skill]} />
         ))}
