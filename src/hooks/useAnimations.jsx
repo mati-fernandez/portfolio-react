@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from 'react';
 import { PageContext } from '../context/PageContext';
+import { StylesContext } from '../context/StylesContext';
 
 export default function useAnimations({
   location,
@@ -18,11 +19,16 @@ export default function useAnimations({
   // eslint-disable-next-line no-unused-vars
   const { actualPage, viewMore, $viewLess, $viewMore } =
     useContext(PageContext);
+
+  const { dynamicStyles } = useContext(StylesContext);
+
   // ANIMACIONES
   useEffect(() => {
     // Pequeño retraso porque al cambiar de idioma y volver hacia atrás, el query no llegaba a agarrar los .page a
     // SetTimeOut necesario para "dar tiempo" a que se desmonte bien el componente
     const timeout = setTimeout(() => {
+      if (Object.keys(dynamicStyles).length === 0) return;
+
       let fadeIn = null;
       let removeFadeIn = null;
       const progress = Array.from(document.querySelectorAll('.progress'));
@@ -147,5 +153,5 @@ export default function useAnimations({
       }
     }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
-  }, [theme, viewMore, modalVisibility, actualPage, location]); // No sacar actualPage de las deps porque evita error
+  }, [theme, viewMore, modalVisibility, actualPage, location, dynamicStyles]); // No sacar actualPage de las deps porque evita error
 }

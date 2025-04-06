@@ -198,7 +198,7 @@ p:not(#name) {
   width: 80%;
   pointer-events: auto;
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   align-content: center;
   animation: animate-modal-open 150ms ease-out forwards;
@@ -537,10 +537,11 @@ figcaption {
   /* align-items: center; */
   height: 90svh;
   /* height: calc(var(--vh, 1vh) * 90); */
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .page-item {
+  justify-content: center;
   color: var(--color-primary);
   cursor: pointer;
   border: var(--border);
@@ -549,10 +550,10 @@ figcaption {
   height: fit-content;
   background-color: var(--color-general-primary-alpha);
   color: var(--color-primary);
-  margin: 0;
   &:not(.secondary) {
     opacity: 0;
   }
+  transition: margin 1s ease, font-size 1s ease;
 }
 
 @keyframes slideIn {
@@ -592,11 +593,13 @@ figcaption {
 } */
 
 .view-more {
-  opacity: 0.5;
+  opacity: 0;
   cursor: pointer;
   background: none;
   text-decoration: none;
   color: var(--color-primary);
+  align-self: center;
+  margin: auto;
 }
 
 .view-less {
@@ -605,6 +608,8 @@ figcaption {
   background: none;
   text-decoration: none;
   color: var(--color-primary);
+  align-self: center;
+  margin: auto;
 }
 
 .link {

@@ -1,38 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { PageContext } from '../context/PageContext';
 import { TranslationContext } from '../context/TranslationContext';
+import { StylesContext } from '../context/StylesContext';
 import Info from '../assets/Info';
 
-const Projects = ({ notFirstLoad, handleOpenModal }) => {
-  const { actualPage, viewMore } = useContext(PageContext);
-  const { translate, getImage } = useContext(TranslationContext);
+const Projects = ({ aspectRatio, notFirstLoad, handleOpenModal }) => {
+  const { actualPage, viewMore, $viewMore } = useContext(PageContext);
+
+  const { updateDynamicStyles, dynamicStyles } = useContext(StylesContext);
+
+  const { translate, getImage, endpoint } = useContext(TranslationContext);
 
   const imagesData = getImage('projects');
 
   const translationsData = translate('projects.projectsList');
-
-  const allKeys = Object.keys(translationsData);
-
-  // Filtrás según viewMore
-  const visibleKeys = !viewMore[actualPage]
-    ? allKeys.filter((key) => imagesData[key]?.class !== 'secondary')
-    : allKeys;
-
-  const itemCount = visibleKeys.length;
-  console.log('itemCount', itemCount);
-  const dynamicFontSize = Math.max(1, Math.min(1.2, 3.5 / itemCount));
-  const dynamicPadding = Math.max(0.4, 1 / itemCount);
-  console.log(
-    'dynamicFontSize',
-    dynamicFontSize,
-    'dynamicPadding',
-    `${dynamicPadding} ${Number(dynamicPadding) * 2}`
-  );
+  useEffect(() => {
+    if (notFirstLoad && $viewMore.current)
+      $viewMore.current.style.opacity = 0.5;
+    console.log(updateDynamicStyles, 'updateDynamicStyles');
+    // const delay = setTimeout(() => {
+    updateDynamicStyles(translationsData, imagesData);
+    // }, 1000);
+    // return () => clearTimeout(delay);
+  }, [aspectRatio, actualPage, viewMore, endpoint]);
 
   return (
-    <div className="page">
+    <div className="page ">
       <Info
         notFirstLoad={notFirstLoad}
         handleOpenModal={handleOpenModal}
@@ -41,10 +36,7 @@ const Projects = ({ notFirstLoad, handleOpenModal }) => {
       {Object.keys(translationsData).map((key) =>
         key === 'portfolioReact' ? null : (
           <div
-            style={{
-              fontSize: dynamicFontSize + 'rem',
-              padding: `${dynamicPadding}rem ${Number(dynamicPadding) * 2}rem`,
-            }}
+            style={dynamicStyles}
             key={key}
             className="long-text page-item"
             onClick={() =>

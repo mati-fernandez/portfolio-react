@@ -4,14 +4,17 @@ import { HashRouter } from 'react-router-dom';
 import { PageProvider } from './context/PageContext.jsx';
 import { TranslationProvider } from './context/TranslationContext';
 import { ThemeProvider } from './context/ThemeContext.jsx';
+import { StylesProvider } from './context/StylesContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <HashRouter>
     <PageProvider>
       <TranslationProvider>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
+        <StylesProvider>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </StylesProvider>
       </TranslationProvider>
     </PageProvider>
   </HashRouter>
