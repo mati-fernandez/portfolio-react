@@ -533,6 +533,7 @@ figcaption {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-wrap: wrap;
   align-content: center;
   /* align-items: center; */
   height: 90svh;
@@ -599,7 +600,6 @@ figcaption {
   text-decoration: none;
   color: var(--color-primary);
   align-self: center;
-  margin: auto;
 }
 
 .view-less {
@@ -609,7 +609,6 @@ figcaption {
   text-decoration: none;
   color: var(--color-primary);
   align-self: center;
-  margin: auto;
 }
 
 .link {

@@ -62,6 +62,7 @@ const Odyssey = ({ aspectRatio, notFirstLoad, handleOpenModal }) => {
           más................................*/}
           {!viewMore[actualPage] ? (
             <button
+              style={dynamicStyles}
               ref={$viewMore}
               className="view-more"
               onClick={handleViewMore}
@@ -70,6 +71,7 @@ const Odyssey = ({ aspectRatio, notFirstLoad, handleOpenModal }) => {
             </button>
           ) : (
             <button
+              style={dynamicStyles}
               ref={$viewLess}
               className="view-less"
               onClick={handleViewMore}

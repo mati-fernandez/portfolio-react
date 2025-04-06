@@ -34,11 +34,12 @@ export const StylesProvider = ({ children }) => {
 
     let dynamicMargin = 0;
     if (aspectRatio === 'portrait') {
-      dynamicMargin = Math.max(0.1, 7 / itemCount);
+      dynamicMargin = Math.max(0.1, Math.min(0.4, 3.2 / itemCount));
     } else if (aspectRatio === 'square') {
-      dynamicMargin = Math.max(0.4, Math.min(1.2, 3.5 / itemCount));
+      dynamicMargin = Math.max(0.4, Math.min(0.7, 2.8 / itemCount));
     } else {
-      dynamicMargin = Math.max(0.1, 1 / itemCount);
+      // Landscape / Desktop
+      dynamicMargin = Math.max(0.3, Math.min(0.8, 1 / itemCount));
     }
 
     const newStyles = {

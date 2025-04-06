@@ -67,6 +67,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
           más................................*/}
           {!viewMore[actualPage] ? (
             <button
+              style={dynamicStyles}
               ref={$viewMore}
               className="view-more"
               onClick={handleViewMore}
@@ -75,6 +76,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
             </button>
           ) : (
             <button
+              style={dynamicStyles}
               ref={$viewLess}
               className="view-less"
               onClick={handleViewMore}
