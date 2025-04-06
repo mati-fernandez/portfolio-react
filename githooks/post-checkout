@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Verificamos si el cambio fue un cambio de rama (el tercer parámetro es "1")
+if [ "$3" == "1" ]; then
+  current_branch=$(git branch --show-current)
+  previous_branch=$(git reflog | grep 'checkout: moving from' | head -n 1 | sed -E 's/.*checkout: moving from ([^ ]+) to.*/\1/')
+
+  # Solo mostramos el mensaje si ahora estamos en master y antes no lo estábamos
+  if [ "$current_branch" = "master" ] && [ "$previous_branch" != "master" ]; then
+    echo -e "\n⚠️  Estás ahora en la rama 'master' desde '$previous_branch'."
+    echo "👉 Si vas a hacer merge, usá:"
+    echo "   git merge $previous_branch --commit para que se despliegue en Vercel"
+  fi
+fi
