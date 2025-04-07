@@ -9,7 +9,6 @@
 :root {
   font-size: 4vmin;
   /* VARIABLES */
-  --vh: 1vh; /* Valor inicial para la variable */
   --font-size-landscape: calc((1vw + 1vh) * 0.8);
   --font-size-portrait: calc((1vw + 1vh) * 1.2);
   --color-general-primary: rgb(76, 150, 199);
@@ -69,9 +68,6 @@ html {
 body {
   position: relative;
   height: 90svh;
-  /* height: calc(
-    var(--vh, 1vh) * 100
-  ); No cambiar, evita overflow xq considera el encabezado web (solo te das cuenta desde el tel físico) */
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
   background-color: var(--color-background);
   color: var(--color-primary);
@@ -321,7 +317,6 @@ option {
   position: absolute;
   inset: 0;
   height: 100svh;
-  /* height: calc(var(--vh, 1vh) * 100); */
   overflow: hidden; /*NO BORRAR, sirve en cuadrada minimo*/
 }
 
@@ -331,7 +326,6 @@ option {
   position: absolute;
   top: 0;
   height: 90svh;
-  /* height: calc(var(--vh, 1vh) * 90); */
   width: 100vw;
   background-color: var(--color-background-alpha);
   transition: background-color 0.8s ease-in-out;
@@ -348,7 +342,6 @@ option {
   left: 50%;
   transform: translate(-50%, -50%);
   height: 85svh;
-  /* height: calc(var(--vh, 1vh) * 85); */
   padding-top: 8vh;
 }
 
@@ -541,10 +534,9 @@ figcaption {
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  align-content: center;
-  /* align-items: center; */
+  /* align-content: center; */
+  align-items: center;
   height: 90svh;
-  /* height: calc(var(--vh, 1vh) * 90); */
   overflow: hidden;
 }
 

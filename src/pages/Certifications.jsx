@@ -27,11 +27,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
   useEffect(() => {
     if (notFirstLoad && $viewMore.current)
       $viewMore.current.style.opacity = 0.5;
-    console.log(updateDynamicStyles, 'updateDynamicStyles');
-    // const delay = setTimeout(() => {
     updateDynamicStyles(translationsData, imagesData);
-    // }, 1000);
-    // return () => clearTimeout(delay);
   }, [aspectRatio, actualPage, viewMore, endpoint]);
 
   return (

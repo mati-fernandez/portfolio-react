@@ -2,7 +2,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { updateViewportHeight } from '../helpers/updateViewportHeight';
 
 export const PageContext = createContext();
 
@@ -48,7 +47,6 @@ export const PageProvider = ({ children }) => {
 
   // VSUALIZACION
   useEffect(() => {
-    updateViewportHeight();
     window.addEventListener('resize', () =>
       setAspectRatio(updateAspectRatio())
     );

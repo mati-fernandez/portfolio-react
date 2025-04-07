@@ -102,9 +102,9 @@ export default function useAnimations({
           fadeIn = setTimeout(() => {
             $viewMore.current.classList.add('fade-in');
             // Saco el forwards para que funcione el hover
-            console.log($viewMore.current);
+            // console.log($viewMore.current);
             removeFadeIn = setTimeout(() => {
-              console.log($viewMore.current);
+              //   console.log($viewMore.current);
               $viewMore.current.style.opacity = 0.5;
               $viewMore.current.classList.remove('fade-in');
               $viewMore.current.style.pointerEvents = 'all';
