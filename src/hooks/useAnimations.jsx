@@ -27,7 +27,13 @@ export default function useAnimations({
     // Pequeño retraso porque al cambiar de idioma y volver hacia atrás, el query no llegaba a agarrar los .page a
     // SetTimeOut necesario para "dar tiempo" a que se desmonte bien el componente
     const timeout = setTimeout(() => {
-      if (Object.keys(dynamicStyles).length === 0) return;
+      console.log(actualPage, 'actualPage');
+      if (
+        Object.keys(dynamicStyles).length === 0 &&
+        actualPage !== 'skills' &&
+        actualPage !== 'home'
+      )
+        return;
 
       let fadeIn = null;
       let removeFadeIn = null;
