@@ -472,10 +472,9 @@ option {
 }
 
 .detail {
-  padding-top: -3vh;
   pointer-events: auto;
   position: absolute;
-  top: 46%;
+  top: 44svh;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
@@ -534,7 +533,7 @@ figcaption {
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  /* align-content: center; */
+  /* align-content: space-around; */
   align-items: center;
   height: 90svh;
   overflow: hidden;
@@ -583,14 +582,6 @@ figcaption {
 .fade-in {
   animation: fadeIn 1s ease-out forwards;
 }
-
-/* .long-content .view-more {
-  margin-top: 2vh;
-}
-
-.long-content .view-less {
-  margin-top: 2vh;
-} */
 
 .view-more {
   opacity: 0;
@@ -988,9 +979,10 @@ figcaption {
     }
   }
 
-  .page > button:hover:not(.view-more, .view-less) {
+  /* .page > button:hover:not(.view-more, .view-less) {
     background-color: var(--color-general-primary);
-  }
+    height: 110%;
+  } */
 
   .view-more {
     font-size: 0.7rem;

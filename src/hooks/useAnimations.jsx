@@ -145,8 +145,8 @@ export default function useAnimations({
 
         buttons.forEach((button, index) => {
           const delay = index * delayIncrement;
-          button.classList.add('slide-in');
           button.style.animationDelay = `${delay}s`;
+          button.classList.add('slide-in');
         });
 
         return () => {
@@ -157,7 +157,7 @@ export default function useAnimations({
             clearTimeout(removeFadeIn);
         };
       }
-    }, 1); //Necesario para "dar tiempo" a que se desmonte bien el componente
+    }, 20); //Necesario para "dar tiempo" a que se desmonte bien el componente
     return () => clearTimeout(timeout);
   }, [theme, viewMore, modalVisibility, actualPage, location, dynamicStyles]); // No sacar actualPage de las deps porque evita error
 }

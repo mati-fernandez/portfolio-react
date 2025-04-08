@@ -25,9 +25,9 @@ export const StylesProvider = ({ children }) => {
     if (aspectRatio === 'portrait') {
       dynamicFontSize = Math.max(1, Math.min(1.2, 3.5 / itemCount));
     } else if (aspectRatio === 'square') {
-      dynamicFontSize = Math.max(0.8, Math.min(1.2, 3.5 / itemCount));
+      dynamicFontSize = Math.max(0.7, Math.min(1.2, 3.5 / itemCount));
     } else {
-      dynamicFontSize = Math.max(0.8, Math.min(1, 3.5 / itemCount));
+      dynamicFontSize = Math.max(0.7, Math.min(1, 3.5 / itemCount));
     }
 
     const dynamicPadding = Math.max(0.4, 1 / itemCount);
