@@ -259,7 +259,6 @@ option {
 #language-btn {
   color: var(--color-primary);
   background-color: transparent;
-  background-color: transparent;
   border: none;
   cursor: pointer;
   pointer-events: auto;
@@ -374,7 +373,7 @@ option {
   padding: 0;
   list-style: none;
   width: 90%;
-  line-height: 4.5vh;
+  line-height: 4.5svh;
 }
 
 .skills-list li {
