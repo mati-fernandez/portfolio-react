@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect, useState } from 'react';
 import { TranslationContext } from '../context/TranslationContext';
+import Loader from './Loader';
 
 const Modal = ({
   activeModal,
@@ -43,7 +44,7 @@ const Modal = ({
               onLoad={() => setIsImgLoaded(true)}
             />
             {!isImgLoaded ? (
-              <div className="loader" />
+              <Loader />
             ) : (
               <figcaption>
                 {translate(activeModal.itemKey)?.description || 'undefined'}

@@ -32,7 +32,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
 
   return (
     <>
-      <div className="page long-content">
+      <div className="page long-content flex-grow overflow-y-hidden">
         <Info
           notFirstLoad={notFirstLoad}
           handleOpenModal={handleOpenModal}

@@ -4,7 +4,10 @@ import ThemeButton from './ThemeButton';
 
 const DesktopFooter = () => {
   return (
-    <div id="desktop-footer">
+    <div
+      id="desktop-footer"
+      className="w-full h-[11svh] flex justify-around px-[5vw] box-border py-[1vh]"
+    >
       <ThemeButton />
       <a
         id="linkedin-a"

@@ -5,6 +5,7 @@ import { PageContext } from '../context/PageContext';
 import { TranslationContext } from '../context/TranslationContext';
 import { StylesContext } from '../context/StylesContext';
 import Info from '../assets/Info';
+import { motion } from 'motion/react';
 
 const Odyssey = ({ aspectRatio, notFirstLoad, handleOpenModal }) => {
   const { actualPage, viewMore, handleViewMore, $viewMore, $viewLess } =
@@ -30,7 +31,7 @@ const Odyssey = ({ aspectRatio, notFirstLoad, handleOpenModal }) => {
 
   return (
     <>
-      <div className={`page long-content`}>
+      <div className={`page long-content flex-grow overflow-y-hidden`}>
         <Info
           notFirstLoad={notFirstLoad}
           handleOpenModal={handleOpenModal}
@@ -41,7 +42,8 @@ const Odyssey = ({ aspectRatio, notFirstLoad, handleOpenModal }) => {
             !viewMore[actualPage] &&
             imagesData[key]?.class === 'secondary' ? null : (
               // Odysseys buttons
-              <div
+              <motion.div
+                animate={{ rotate: 360 }}
                 style={dynamicStyles}
                 key={key}
                 className={`long-text page-item ${
@@ -55,7 +57,7 @@ const Odyssey = ({ aspectRatio, notFirstLoad, handleOpenModal }) => {
                 }
               >
                 {translationsData[key].title}
-              </div>
+              </motion.div>
             )
           )}
           {/*.............................Ver

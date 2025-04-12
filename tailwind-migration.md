@@ -1,5 +1,18 @@
-@import 'tailwindcss';
+# CSS to Tailwind Migration
 
+This document serves as a brief record of the migration process from traditional CSS to Tailwind CSS in this project. The goal was to improve code clarity, consistency, and maintainability.  
+
+Initially, the entire styling was written in one global CSS file. As the project grew, it became increasingly harder to navigate and manage style rules, especially when needing to locate or reuse specific elements.
+
+While the design remained simple, there was a significant amount of custom CSS required to support it. Most styles were written manually, and some were duplicated across different components due to the lack of modular structure.
+
+---
+
+## Original CSS (Before Migration)
+
+Below is the full content of the CSS file before migrating to Tailwind. This illustrates how large and difficult to maintain the original approach had become:
+
+```css
 /*
 ███╗   ███╗ ██████╗ ██████╗ ██╗██╗     ███████╗    
 ████╗ ████║██╔═══██╗██╔══██╗██║██║     ██╔════╝    ╔══╗♫ *´”)
@@ -69,7 +82,7 @@ html {
 
 body {
   position: relative;
-  /* height: 90svh; */
+  height: 90svh;
   font-family: 'Raleway', Arial, Helvetica, sans-serif;
   background-color: var(--color-background);
   color: var(--color-primary);
@@ -93,7 +106,7 @@ ul {
   transition: color 0.8s ease-in-out;
 }
 
-/* .loader {
+.loader {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -114,7 +127,7 @@ ul {
   100% {
     transform: translate(-50%, -50%) rotate(360deg);
   }
-} */
+}
 
 a {
   transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
@@ -536,8 +549,8 @@ figcaption {
   flex-wrap: wrap;
   /* align-content: space-around; */
   align-items: center;
-  /* height: 90svh; */
-  /* overflow: hidden; */
+  height: 90svh;
+  overflow: hidden;
 }
 
 .page-item {
@@ -728,11 +741,11 @@ figcaption {
 @media (min-aspect-ratio: 1.2) {
   /**** HEADER ****/
   #desktop-header {
-    /* position: fixed; */
+    position: fixed;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /* top: 2vh; */
+    top: 2vh;
     width: 100%;
     background-color: var(--color-background-secondary);
   }
@@ -960,7 +973,7 @@ figcaption {
   }
 
   .page {
-    /* height: 100vh; */
+    height: 100vh;
     box-sizing: border-box;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1002,7 +1015,7 @@ figcaption {
   }
 
   /**** FOOTER ****/
-  /* @keyframes icons {
+  @keyframes icons {
     0% {
       transform: translateY(0) rotate(0);
     }
@@ -1026,14 +1039,37 @@ figcaption {
   .animate-icon {
     animation: icons 1s;
     animation-timing-function: cubic-bezier(0, 0.75, 0.37, 0.95);
-  } */
+  }
 
-  /* #desktop-footer {
+  #desktop-footer {
     box-sizing: border-box;
     width: 100%;
-    height: 11svh;
+    height: 11vh;
+    position: fixed;
     display: flex;
     justify-content: space-around;
-    padding: 2vh 5vw 0;
-  } */
+    bottom: 2vh;
+    padding: 0 5vw;
+    padding-top: 2vh;
+  }
 }
+
+```
+
+## Notes on the Migration
+- The entire UI was rebuilt using utility classes from Tailwind CSS.
+
+- Styling is now co-located with components, improving readability and consistency.
+
+- Class names are descriptive and directly reflect layout and behavior.
+
+- No custom CSS files remain in the final version, unless strictly necessary (e.g. keyframes or special utilities).
+
+- This migration was part of a general cleanup of the codebase.
+
+## Implementing Motion for better integration with TailWind
+
+
+## Conclusion
+This migration helped me better organize styles and greatly reduced the amount of custom CSS required. It also aligned the project with more modern frontend practices and made future maintenance easier.
+

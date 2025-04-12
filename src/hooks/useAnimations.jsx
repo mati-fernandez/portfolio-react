@@ -2,6 +2,7 @@
 import { useContext, useEffect } from 'react';
 import { PageContext } from '../context/PageContext';
 import { StylesContext } from '../context/StylesContext';
+import { animate, stagger } from 'motion';
 
 export default function useAnimations({
   location,
@@ -41,9 +42,11 @@ export default function useAnimations({
       const buttons = Array.from(
         document.querySelectorAll('.page-item')
       ).reverse();
+
       const icons = Array.from(
         document.querySelectorAll('#desktop-footer a, #desktop-footer button')
       ).reverse();
+
       const desktopHeaderBtns = Array.from(
         document.querySelectorAll('#desktop-header a')
       );
@@ -73,9 +76,9 @@ export default function useAnimations({
         // if (viewMore[actualPage]) handleViewMore();
         progress.forEach((item) => item.classList.remove('fill-progress'));
         desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
-        icons.forEach((icon) => {
-          icon.classList.remove('animate-icon');
-        });
+        // icons.forEach((icon) => {
+        //   icon.classList.remove('animate-icon');
+        // });
         buttons.forEach((button) => {
           button.classList.remove = 'slide-in';
           button.style.opacity = 1;
@@ -132,15 +135,32 @@ export default function useAnimations({
           }, 10);
         }
 
-        icons.forEach((icon) => {
-          icon.classList.remove('animate-icon');
-        });
+        // icons.forEach((icon) => {
+        //   icon.classList.remove('animate-icon');
+        // });
         const footerTimeout = setTimeout(() => {
-          icons.forEach((icon, index) => {
-            const delay = index * delayIncrement;
-            icon.classList.add('animate-icon');
-            icon.style.animationDelay = `${delay}s`;
-          });
+          // const delay = index * delayIncrement;
+          // icon.classList.add('animate-icon');
+          // icon.style.animationDelay = `${delay}s`;
+          animate(
+            icons,
+            {
+              transform: [
+                'translateY(0) rotate(0deg)',
+                'translateY(20px) rotate(1800deg)',
+                'translateY(-12px) rotate(2880deg)',
+                'translateY(10px) rotate(3960deg)',
+                'translateY(-3px) rotate(3960deg)',
+                'translateY(0) rotate(3960deg)',
+              ],
+            },
+            {
+              delay: stagger(delayIncrement),
+              duration: 1,
+              easing: 'cubic-bezier(0, 0.75, 0.37, 0.95)',
+              offset: [0, 0.15, 0.25, 0.45, 0.75, 1],
+            }
+          );
         }, 10);
 
         buttons.forEach((button, index) => {

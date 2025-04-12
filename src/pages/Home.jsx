@@ -3,6 +3,7 @@ import avatar from '../assets/avatar.png';
 import { useContext, useState } from 'react';
 import { TranslationContext } from '../context/TranslationContext';
 import Info from '../assets/Info';
+import Loader from '../components/Loader';
 
 const Home = ({ notFirstLoad, handleOpenModal }) => {
   const { translate } = useContext(TranslationContext);
@@ -13,13 +14,13 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
   };
 
   return (
-    <>
+    <div className="page flex-grow overflow-y-hidden">
       <Info
         notFirstLoad={notFirstLoad}
         handleOpenModal={handleOpenModal}
         itemKey={'info'}
       />
-      <div className="container">
+      <div className="container flex-grow overflow-y-hidden">
         <img
           id="avatar"
           style={{
@@ -29,16 +30,18 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
           alt="avatar"
           onLoad={handleLoad}
         />
-        {!imgLoading && (
+        {!imgLoading ? (
           <p
             id="description"
             style={{ opacity: imgLoading && !notFirstLoad ? 0 : 1 }}
           >
             {translate('description')}
           </p>
+        ) : (
+          <Loader />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

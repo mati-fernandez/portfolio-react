@@ -66,6 +66,16 @@ function App() {
     setModalVisibility(true);
   };
 
+  // Hide scrollbar for all the project
+  const check = () => {
+    if (document.body) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      requestAnimationFrame(check);
+    }
+  };
+  check();
+
   // CLOSE MODAL OR MENU ON NAVIGATION 'Prevent Navigation' Hack:
   // En el if no usar activeModal porque provoca bucle al tener timeout en el set
   useEffect(() => {
@@ -108,6 +118,7 @@ function App() {
   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO y resta un warning de "No routes matched location".
   return (
     <>
+      {/* MODALES */}
       {activeModal.itemKey !== null && activeModal.itemKey.includes('info') ? (
         <InfoModal
           activeModal={activeModal}
@@ -125,87 +136,95 @@ function App() {
           />
         )
       )}
-      {aspectRatio === 'portrait' || aspectRatio === 'square' ? (
-        <MobileHeader
-          showMenu={showMenu}
-          setShowMenu={setShowMenu}
-          setFromMenuBtn={setFromMenuBtn}
-        />
-      ) : (
-        <>
-          <DesktopHeader />
-          <DesktopFooter />
-        </>
-      )}
 
-      <Routes>
-        <Route path="/" element={<Navigate to={`/${language}/home`} />} />
-        <Route
-          path={`/${language}`}
-          element={<Navigate to={`/${language}/home`} />}
-        />
-        <Route
-          path={`/${language}/home`}
-          element={
-            <Home
-              showMenu={showMenu}
-              setShowMenu={setShowMenu}
-              handleOpenModal={handleOpenModal}
-              notFirstLoad={notFirstLoad}
-            />
-          }
-        />
-        <Route
-          path={`/${language}/skills`}
-          element={
-            <Skills
-              showMenu={showMenu}
-              setShowMenu={setShowMenu}
-              notFirstLoad={notFirstLoad}
-            />
-          }
-        />
-        <Route
-          path={`/${language}/projects`}
-          element={
-            <Projects
-              showMenu={showMenu}
-              setShowMenu={setShowMenu}
-              activeModal={activeModal}
-              setActiveModal={setActiveModal}
-              handleOpenModal={handleOpenModal}
-              notFirstLoad={notFirstLoad}
-            />
-          }
-        />
-        <Route
-          path={`/${language}/odyssey`}
-          element={
-            <Odyssey
-              showMenu={showMenu}
-              setShowMenu={setShowMenu}
-              activeModal={activeModal}
-              setActiveModal={setActiveModal}
-              handleOpenModal={handleOpenModal}
-              notFirstLoad={notFirstLoad}
-            />
-          }
-        />
-        <Route
-          path={`/${language}/certifications`}
-          element={
-            <Certifications
-              showMenu={showMenu}
-              setShowMenu={setShowMenu}
-              setActiveModal={setActiveModal}
-              handleOpenModal={handleOpenModal}
-              notFirstLoad={notFirstLoad}
-            />
-          }
-        />
-        {/* <Route path="*" element={<Navigate to={`/${language}/home`} />} /> */}
-        {/* El problema con este fallback es que si apreto btn language me manda acá */}
-      </Routes>
+      {/* LAYOUT PRINCIPAL */}
+      <main className="h-[100svh] flex flex-col">
+        {/* HEADER */}
+        {aspectRatio === 'portrait' || aspectRatio === 'square' ? (
+          <MobileHeader
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+            setFromMenuBtn={setFromMenuBtn}
+          />
+        ) : (
+          <DesktopHeader />
+        )}
+
+        {/* CONTENIDO CENTRAL (crece) */}
+        {/* <div className=""> */}
+        <Routes>
+          <Route path="/" element={<Navigate to={`/${language}/home`} />} />
+          <Route
+            path={`/${language}`}
+            element={<Navigate to={`/${language}/home`} />}
+          />
+          <Route
+            path={`/${language}/home`}
+            element={
+              <Home
+                showMenu={showMenu}
+                setShowMenu={setShowMenu}
+                handleOpenModal={handleOpenModal}
+                notFirstLoad={notFirstLoad}
+              />
+            }
+          />
+          <Route
+            path={`/${language}/skills`}
+            element={
+              <Skills
+                showMenu={showMenu}
+                setShowMenu={setShowMenu}
+                notFirstLoad={notFirstLoad}
+              />
+            }
+          />
+          <Route
+            path={`/${language}/projects`}
+            element={
+              <Projects
+                showMenu={showMenu}
+                setShowMenu={setShowMenu}
+                activeModal={activeModal}
+                setActiveModal={setActiveModal}
+                handleOpenModal={handleOpenModal}
+                notFirstLoad={notFirstLoad}
+              />
+            }
+          />
+          <Route
+            path={`/${language}/odyssey`}
+            element={
+              <Odyssey
+                showMenu={showMenu}
+                setShowMenu={setShowMenu}
+                activeModal={activeModal}
+                setActiveModal={setActiveModal}
+                handleOpenModal={handleOpenModal}
+                notFirstLoad={notFirstLoad}
+              />
+            }
+          />
+          <Route
+            path={`/${language}/certifications`}
+            element={
+              <Certifications
+                showMenu={showMenu}
+                setShowMenu={setShowMenu}
+                setActiveModal={setActiveModal}
+                handleOpenModal={handleOpenModal}
+                notFirstLoad={notFirstLoad}
+              />
+            }
+          />
+          {/* <Route path="*" element={<Navigate to={`/${language}/home`} />} /> */}
+          {/* El problema con este fallback es que si apreto btn language me manda acá */}
+        </Routes>
+        {/* </div> */}
+
+        {/* FOOTER */}
+        {aspectRatio === 'landscape' && <DesktopFooter />}
+      </main>
     </>
   );
 }

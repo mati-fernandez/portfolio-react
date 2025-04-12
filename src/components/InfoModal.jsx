@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext } from 'react';
 import { TranslationContext } from '../context/TranslationContext';
+import Loader from './Loader';
 
 const InfoModal = ({
   activeModal,
@@ -24,7 +25,7 @@ const InfoModal = ({
   return (
     <>
       {activeModal.itemKey === null ? (
-        <div className="loader"></div>
+        <Loader />
       ) : (
         <article className={`modal`} onClick={closeModal}>
           <div className={`infoModal${!modalVisibility ? ' hidden' : ''}`}>

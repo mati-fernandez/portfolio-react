@@ -3,6 +3,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DevBtn from '../components/DevBtn';
+import Loader from '../components/Loader';
 
 export const TranslationContext = createContext();
 
@@ -144,7 +145,7 @@ export const TranslationProvider = ({ children }) => {
           cambió el puerto!
         </p>
       ) : null}
-      {!translations ? <div className="loader"></div> : children}
+      {!translations ? <Loader /> : children}
     </TranslationContext.Provider>
   );
 };
