@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import avatar from '../assets/avatar.png';
 import { useContext, useState } from 'react';
-import { TranslationContext } from '../context/TranslationContext';
+import { TranslationContext } from '../context/contexts';
 import Info from '../assets/Info';
 import Loader from '../components/Loader';
 
@@ -14,7 +14,7 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
   };
 
   return (
-    <div className="page flex-grow overflow-y-hidden">
+    <div className="flex-grow overflow-y-hidden page">
       <Info
         notFirstLoad={notFirstLoad}
         handleOpenModal={handleOpenModal}

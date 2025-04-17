@@ -8,9 +8,9 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { useContext } from 'react';
-import { TranslationContext } from './context/TranslationContext';
-import { PageContext } from './context/PageContext';
-import { ThemeContext } from './context/ThemeContext';
+import { TranslationContext } from './context/contexts';
+import { PageContext } from './context/contexts';
+import { ThemeContext } from './context/contexts';
 import { useEffect, useState } from 'react';
 import './App.css';
 import useAnimations from './hooks/useAnimations';

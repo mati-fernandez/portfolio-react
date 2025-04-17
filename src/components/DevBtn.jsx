@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TranslationContext } from '../context/TranslationContext';
+import { TranslationContext } from '../context/contexts';
 
 const DevBtn = () => {
   const { endpoint, setEndpoint } = useContext(TranslationContext);

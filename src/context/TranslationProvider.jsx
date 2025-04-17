@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DevBtn from '../components/DevBtn';
 import Loader from '../components/Loader';
-
-export const TranslationContext = createContext();
+import { TranslationContext } from './contexts';
 
 export const TranslationProvider = ({ children }) => {
   const [translations, setTranslations] = useState(null);
@@ -33,6 +32,12 @@ export const TranslationProvider = ({ children }) => {
       ? `${contentBuildPath}${language}.json`
       : `${contentDevPath}${language}.json`;
 
+  useEffect(() => {
+    import.meta.env.MODE === 'development'
+      ? setDevMode(true)
+      : setDevMode(false);
+  }, []);
+
   // CARGA DE IMAGENES CON FETCH
   const loadImages = async () => {
     try {
@@ -50,10 +55,6 @@ export const TranslationProvider = ({ children }) => {
   }, [endpoint]);
 
   useEffect(() => {
-    import.meta.env.MODE === 'development'
-      ? setDevMode(true)
-      : setDevMode(false); //Podría sacarlo de este useEffect?
-
     // CARGA DE TEXTOS CON FETCH
     const loadTranslations = async () => {
       try {
@@ -88,8 +89,8 @@ export const TranslationProvider = ({ children }) => {
       const detectedLanguage = userLanguage.startsWith('es')
         ? 'es'
         : userLanguage.startsWith('pt')
-        ? 'pt'
-        : 'en';
+          ? 'pt'
+          : 'en';
       const newPath = `/${detectedLanguage}/${pathParts.slice(2).join('/')}`;
       navigate(newPath, { replace: true });
       setLanguage(detectedLanguage);

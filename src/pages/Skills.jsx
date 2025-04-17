@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState } from 'react';
-import { TranslationContext } from '../context/TranslationContext';
+import { TranslationContext } from '../context/contexts';
+import Loader from '../components/Loader';
 
 const Skills = () => {
   const { getImage } = useContext(TranslationContext);
   const data = getImage('skills');
 
   return (
-    <div className="page flex-grow overflow-y-hidden" style={{ padding: '0' }}>
+    <div className="flex-grow overflow-y-hidden page" style={{ padding: '0' }}>
       <ul className="skills-list">
         {Object.keys(data).map((skill) => (
           <SkillItem key={skill} skillData={data[skill]} />
@@ -29,7 +30,7 @@ const SkillItem = ({ skillData }) => {
       <div className="skill-container">
         {/* Loader se muestra mientras la imagen no está cargada */}
         <div style={{ position: 'relative', marginRight: '.5rem' }}>
-          <div
+          {/* <div
             className="loader"
             style={{
               position: 'absolute',
@@ -39,7 +40,14 @@ const SkillItem = ({ skillData }) => {
               aspectRatio: 1,
               display: isLoaded ? 'none' : 'block', // Se oculta al cargar la imagen
             }}
-          ></div>
+          ></div> */}
+          {!isLoaded && (
+            <Loader
+              size="1rem"
+              borderSize="0.1rem"
+              className="absolute z-10 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 aspect-square"
+            />
+          )}
         </div>
 
         {/* Imagen que se muestra al cargar */}

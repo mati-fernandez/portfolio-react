@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect } from 'react';
-import { PageContext } from '../context/PageContext';
-import { StylesContext } from '../context/StylesContext';
+import { PageContext } from '../context/contexts';
+import { StylesContext } from '../context/contexts';
 import { animate, stagger } from 'motion';
 
 export default function useAnimations({

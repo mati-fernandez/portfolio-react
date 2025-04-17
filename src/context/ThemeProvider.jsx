@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useEffect, useState } from 'react';
-
-export const ThemeContext = createContext();
+import { useEffect, useState } from 'react';
+import { ThemeContext } from './contexts';
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(

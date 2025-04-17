@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
-import { PageContext } from './PageContext';
-
-export const StylesContext = createContext();
+import { PageContext } from './contexts';
+import { StylesContext } from './contexts';
 
 export const StylesProvider = ({ children }) => {
   const [dynamicStyles, setDynamicStyles] = useState({});
