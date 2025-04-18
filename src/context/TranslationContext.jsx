@@ -2,8 +2,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import DevBtn from '../components/DevBtn';
-
-export const TranslationContext = createContext();
+import Loader from '../components/Loader';
+import { TranslationContext } from './contexts';
+import { fetchJSON } from '../helpers/fetchers';
+import { useDetectLanguage } from '../hooks/useDetectLanguage';
 
 export const TranslationProvider = ({ children }) => {
   const [translations, setTranslations] = useState(null);
@@ -28,11 +30,28 @@ export const TranslationProvider = ({ children }) => {
       ? `${contentBuildPath}${language}.json`
       : `${contentDevPath}${language}.json`;
 
+  useEffect(() => {
+    import.meta.env.MODE === 'development'
+      ? setDevMode(true)
+      : setDevMode(false);
+  }, []);
+
+  // CARGA DE TEXTOS CON FETCH
+  const loadTranslations = async () => {
+    try {
+      const data = await fetchJSON(translationsApiEndpoint);
+      setTranslations(data);
+      setError(false);
+    } catch (error) {
+      setError(true);
+      console.error('Error al cargar las traducciones:', error);
+      // setTranslations({}); // Si falla, asegura un estado vacío
+    }
+  };
   // CARGA DE IMAGENES CON FETCH
   const loadImages = async () => {
     try {
-      const response = await fetch(imagesApiEndpoint);
-      const data = await response.json();
+      const data = await fetchJSON(imagesApiEndpoint);
       setImages(data);
       setError(false);
     } catch (error) {
@@ -40,34 +59,18 @@ export const TranslationProvider = ({ children }) => {
       console.error('Error al cargar las imágenes:', error);
     }
   };
+
   useEffect(() => {
     loadImages();
   }, [endpoint]);
 
   useEffect(() => {
-    import.meta.env.MODE === 'development'
-      ? setDevMode(true)
-      : setDevMode(false); //Podría sacarlo de este useEffect?
-
-    // CARGA DE TEXTOS CON FETCH
-    const loadTranslations = async () => {
-      try {
-        const response = await fetch(translationsApiEndpoint);
-        const data = await response.json();
-        setTranslations(data);
-        setError(false);
-      } catch (error) {
-        setError(true);
-        console.error('Error al cargar las traducciones:', error);
-        // setTranslations({}); // Si falla, asegura un estado vacío
-      }
-    };
     if (language) {
       loadTranslations();
     }
   }, [language, endpoint]);
 
-  useDetectLanguage(language, setLanguage);
+  useDetectLanguage(language, setLanguage, navigate);
 
   const translate = (key) => {
     return (
