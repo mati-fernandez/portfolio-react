@@ -70,7 +70,7 @@ export const TranslationProvider = ({ children }) => {
     }
   }, [language, endpoint]);
 
-  useDetectLanguage(language, setLanguage, navigate);
+  useDetectLanguage(language, setLanguage);
 
   const translate = (key) => {
     return (
@@ -114,7 +114,7 @@ export const TranslationProvider = ({ children }) => {
           cambió el puerto!
         </p>
       ) : null}
-      {!translations ? <div className="loader"></div> : children}
+      {!translations ? <Loader /> : children}
     </TranslationContext.Provider>
   );
 };

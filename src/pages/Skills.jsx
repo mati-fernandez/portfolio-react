@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState } from 'react';
-import { TranslationContext } from '../context/TranslationContext';
+import { TranslationContext } from '../context/contexts';
 import Loader from '../components/Loader';
 
 const SkillItem = ({ skillKey, skillData }) => {

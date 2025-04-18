@@ -5,7 +5,7 @@ import Github from '../assets/Github';
 import Cv from '../assets/Cv';
 import LanguageButton from '../components/LanguageButton';
 import { useContext } from 'react';
-import { TranslationContext } from '../context/TranslationContext';
+import { TranslationContext } from '../context/contexts';
 import MainMenu from './MainMenu';
 import ThemeButton from './ThemeButton';
 

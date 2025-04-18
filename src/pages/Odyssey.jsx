@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from 'react';
-import { PageContext } from '../context/PageContext';
-import { TranslationContext } from '../context/TranslationContext';
-import { StylesContext } from '../context/StylesContext';
+import { PageContext } from '../context/contexts';
+import { TranslationContext } from '../context/contexts';
+import { StylesContext } from '../context/contexts';
 import Info from '../assets/Info';
 
 const Odyssey = ({ aspectRatio, notFirstLoad, handleOpenModal }) => {

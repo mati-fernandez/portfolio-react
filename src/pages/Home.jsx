@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import avatar from '../assets/avatar.png';
 import { useContext, useState } from 'react';
-import { TranslationContext } from '../context/TranslationContext';
+import { TranslationContext } from '../context/contexts';
 import Info from '../assets/Info';
 
 const Home = ({ notFirstLoad, handleOpenModal }) => {

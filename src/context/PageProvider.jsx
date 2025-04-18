@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
-export const PageContext = createContext();
+import { PageContext } from './contexts';
 
 export const PageProvider = ({ children }) => {
   const location = useLocation();
