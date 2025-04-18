@@ -1,32 +1,28 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // hooks/useDetectLanguage.js
-export const useDetectLanguage = (language, setLanguage, navigate) => {
+export const useDetectLanguage = (language, setLanguage) => {
+  const navigate = useNavigate();
   useEffect(() => {
     const pathParts = location.hash.split('/').filter(Boolean);
-    let URLlang = '';
-    if (pathParts.includes('es')) URLlang = 'es';
-    else if (pathParts.includes('en')) URLlang = 'en';
-    else if (pathParts.includes('pt') || pathParts.includes('br'))
-      URLlang = 'pt';
 
-    if (!URLlang && !language) {
-      const userLanguage = navigator.language || navigator.userLanguage;
-      const detectedLanguage = userLanguage.startsWith('es')
-        ? 'es'
-        : userLanguage.startsWith('pt')
-          ? 'pt'
-          : 'en';
-      const newPath = `/${detectedLanguage}/${pathParts.slice(2).join('/')}`;
-      navigate(newPath, { replace: true });
-      setLanguage(detectedLanguage);
-    } else if (!language) {
+    const localStorageLang = localStorage.getItem('language');
+    const supported = ['es', 'pt', 'en'];
+    const navLanguage = navigator.language || navigator.userLanguage;
+    const detectedLanguage =
+      supported.find((lang) => navLanguage.startsWith(lang)) || 'en';
+    const URLlang = supported.find((lang) => pathParts.includes(lang)) || '';
+
+    if (URLlang) {
       setLanguage(URLlang);
-    } else if (language && URLlang !== language) {
+    } else if (localStorageLang) {
+      setLanguage(localStorageLang);
+    } else setLanguage(detectedLanguage);
+
+    if (!URLlang && language) {
       const newPath = `/${language}/${pathParts.slice(2).join('/')}`;
       navigate(newPath, { replace: true });
-    } else {
-      setLanguage(URLlang);
     }
   }, [navigate, language, setLanguage]);
 };

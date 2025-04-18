@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import DevBtn from '../components/DevBtn';
 import Loader from '../components/Loader';
 import { TranslationContext } from './contexts';
@@ -11,10 +10,7 @@ import { useDetectLanguage } from '../hooks/useDetectLanguage';
 export const TranslationProvider = ({ children }) => {
   const [translations, setTranslations] = useState(null);
   const [images, setImages] = useState(null);
-  const [language, setLanguage] = useState(
-    localStorage.getItem('language') ?? ''
-  );
-  const navigate = useNavigate();
+  const [language, setLanguage] = useState('');
   const [fromLanguageBtn, setFromLanguageBtn] = useState(false);
   const [devMode, setDevMode] = useState(false);
   const [endpoint, setEndpoint] = useState('build');
@@ -74,7 +70,7 @@ export const TranslationProvider = ({ children }) => {
     }
   }, [language, endpoint]);
 
-  useDetectLanguage(language, setLanguage, navigate);
+  useDetectLanguage(language, setLanguage);
 
   const translate = (key) => {
     return (
