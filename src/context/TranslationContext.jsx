@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import DevBtn from '../components/DevBtn';
 
 export const TranslationContext = createContext();
@@ -9,10 +8,7 @@ export const TranslationContext = createContext();
 export const TranslationProvider = ({ children }) => {
   const [translations, setTranslations] = useState(null);
   const [images, setImages] = useState(null);
-  const [language, setLanguage] = useState(
-    localStorage.getItem('language') ?? ''
-  );
-  const navigate = useNavigate();
+  const [language, setLanguage] = useState('');
   const [fromLanguageBtn, setFromLanguageBtn] = useState(false);
   const [devMode, setDevMode] = useState(false);
   const [endpoint, setEndpoint] = useState('build');
@@ -71,36 +67,7 @@ export const TranslationProvider = ({ children }) => {
     }
   }, [language, endpoint]);
 
-  useEffect(() => {
-    const pathParts = location.hash.split('/').filter(Boolean);
-    let URLlang = '';
-    if (pathParts.includes('es')) {
-      URLlang = 'es';
-    } else if (pathParts.includes('en')) {
-      URLlang = 'en';
-    } else if (pathParts.includes('pt') || pathParts.includes('br')) {
-      URLlang = 'pt';
-    }
-
-    if (!URLlang && !language) {
-      const userLanguage = navigator.language || navigator.userLanguage;
-      const detectedLanguage = userLanguage.startsWith('es')
-        ? 'es'
-        : userLanguage.startsWith('pt')
-        ? 'pt'
-        : 'en';
-      const newPath = `/${detectedLanguage}/${pathParts.slice(2).join('/')}`;
-      navigate(newPath, { replace: true });
-      setLanguage(detectedLanguage);
-    } else if (!language) {
-      setLanguage(URLlang);
-    } else if (language && URLlang !== language) {
-      const newPath = `/${language}/${pathParts.slice(2).join('/')}`;
-      navigate(newPath, { replace: true });
-    } else {
-      setLanguage(URLlang);
-    }
-  }, [navigate, language]);
+  useDetectLanguage(language, setLanguage);
 
   const translate = (key) => {
     return (
