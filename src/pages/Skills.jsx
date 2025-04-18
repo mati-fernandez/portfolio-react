@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState } from 'react';
 import { TranslationContext } from '../context/TranslationContext';
+import Loader from '../components/Loader';
 
 const SkillItem = ({ skillKey, skillData }) => {
   const [isLoaded, setIsLoaded] = useState(false);
