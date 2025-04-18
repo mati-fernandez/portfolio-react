@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import DevBtn from '../components/DevBtn';
 import Loader from '../components/Loader';
 import { TranslationContext } from './contexts';
+import { fetchJSON } from '../helpers/fetchers';
+import { useDetectLanguage } from '../hooks/useDetectLanguage';
 
 export const TranslationProvider = ({ children }) => {
   const [translations, setTranslations] = useState(null);
@@ -38,11 +40,22 @@ export const TranslationProvider = ({ children }) => {
       : setDevMode(false);
   }, []);
 
+  // CARGA DE TEXTOS CON FETCH
+  const loadTranslations = async () => {
+    try {
+      const data = await fetchJSON(translationsApiEndpoint);
+      setTranslations(data);
+      setError(false);
+    } catch (error) {
+      setError(true);
+      console.error('Error al cargar las traducciones:', error);
+      // setTranslations({}); // Si falla, asegura un estado vacío
+    }
+  };
   // CARGA DE IMAGENES CON FETCH
   const loadImages = async () => {
     try {
-      const response = await fetch(imagesApiEndpoint);
-      const data = await response.json();
+      const data = await fetchJSON(imagesApiEndpoint);
       setImages(data);
       setError(false);
     } catch (error) {
@@ -50,59 +63,18 @@ export const TranslationProvider = ({ children }) => {
       console.error('Error al cargar las imágenes:', error);
     }
   };
+
   useEffect(() => {
     loadImages();
   }, [endpoint]);
 
   useEffect(() => {
-    // CARGA DE TEXTOS CON FETCH
-    const loadTranslations = async () => {
-      try {
-        const response = await fetch(translationsApiEndpoint);
-        const data = await response.json();
-        setTranslations(data);
-        setError(false);
-      } catch (error) {
-        setError(true);
-        console.error('Error al cargar las traducciones:', error);
-        // setTranslations({}); // Si falla, asegura un estado vacío
-      }
-    };
     if (language) {
       loadTranslations();
     }
   }, [language, endpoint]);
 
-  useEffect(() => {
-    const pathParts = location.hash.split('/').filter(Boolean);
-    let URLlang = '';
-    if (pathParts.includes('es')) {
-      URLlang = 'es';
-    } else if (pathParts.includes('en')) {
-      URLlang = 'en';
-    } else if (pathParts.includes('pt') || pathParts.includes('br')) {
-      URLlang = 'pt';
-    }
-
-    if (!URLlang && !language) {
-      const userLanguage = navigator.language || navigator.userLanguage;
-      const detectedLanguage = userLanguage.startsWith('es')
-        ? 'es'
-        : userLanguage.startsWith('pt')
-          ? 'pt'
-          : 'en';
-      const newPath = `/${detectedLanguage}/${pathParts.slice(2).join('/')}`;
-      navigate(newPath, { replace: true });
-      setLanguage(detectedLanguage);
-    } else if (!language) {
-      setLanguage(URLlang);
-    } else if (language && URLlang !== language) {
-      const newPath = `/${language}/${pathParts.slice(2).join('/')}`;
-      navigate(newPath, { replace: true });
-    } else {
-      setLanguage(URLlang);
-    }
-  }, [navigate, language]);
+  useDetectLanguage(language, setLanguage, navigate);
 
   const translate = (key) => {
     return (
