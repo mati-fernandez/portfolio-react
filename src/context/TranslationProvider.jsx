@@ -114,7 +114,13 @@ export const TranslationProvider = ({ children }) => {
           cambió el puerto!
         </p>
       ) : null}
-      {!translations ? <Loader /> : children}
+      {!translations ? (
+        <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
+          <Loader />
+        </div>
+      ) : (
+        children
+      )}
     </TranslationContext.Provider>
   );
 };

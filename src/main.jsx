@@ -6,6 +6,7 @@ import { TranslationProvider } from './context/TranslationProvider.jsx';
 import { ThemeProvider } from './context/ThemeProvider.jsx';
 import { StylesProvider } from './context/StylesProvider.jsx';
 
+// eslint-disable-next-line no-undef
 ReactDOM.createRoot(document.getElementById('root')).render(
   <HashRouter>
     <PageProvider>

@@ -9,7 +9,7 @@
 ╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚═╝╚══════╝╚══════╝    
 */
 :root {
-  font-size: 4vmin;
+  font-size: 3.5vmin;
   /* VARIABLES */
   --font-size-landscape: calc((1vw + 1vh) * 0.8);
   --font-size-portrait: calc((1vw + 1vh) * 1.2);
@@ -93,31 +93,10 @@ ul {
   transition: color 0.8s ease-in-out;
 }
 
-/* .loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
-  border-radius: 50%;
-  width: 10vw;
-  height: 10vw;
-  animation: spin 0.5s linear infinite;
-  z-index: 11;
-}
-
-@keyframes spin {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-} */
-
 a {
-  transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
+  transition:
+    background-color 0.8s ease-in-out,
+    color 0.8s ease-in-out;
 }
 
 a,
@@ -245,7 +224,7 @@ option {
   color: var(--color-primary);
   background-color: var(--color-background);
 }
-
+/* 
 .container {
   position: fixed;
   top: 46%;
@@ -256,7 +235,7 @@ option {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 #language-btn {
   color: var(--color-primary);
@@ -396,14 +375,6 @@ option {
   max-height: 1rem;
 }
 
-#js-icon {
-  max-height: calc(var(--font-size-landscape) * 1.5);
-}
-
-#ts-icon {
-  max-height: calc(var(--font-size-landscape) * 1.5);
-}
-
 .skill-name {
   font-weight: bold;
   margin-right: 10px;
@@ -411,13 +382,13 @@ option {
   text-overflow: clip;
 }
 
-.progress-bar {
+/* .progress-bar {
   background-color: var(--color-background-secondary);
   width: 60%;
   height: calc(var(--font-size-landscape) * 0.6);
   margin-left: 10px;
   overflow: hidden;
-}
+} */
 
 @keyframes progress {
   0% {
@@ -553,7 +524,9 @@ figcaption {
   &:not(.secondary) {
     opacity: 0;
   }
-  transition: margin 1s ease, font-size 1s ease;
+  transition:
+    margin 1s ease,
+    font-size 1s ease;
 }
 
 @keyframes slideIn {
@@ -774,13 +747,13 @@ figcaption {
     height: 3vh;
   }
 
-  .container {
+  /* .container {
     top: 51%;
     width: 100vmin;
-  }
+  } */
 
   #description {
-    font-size: 2.7vmin;
+    font-size: 0.7rem;
   }
 
   .skills-list {

@@ -14,15 +14,15 @@ const SkillItem = ({ skillKey, skillData }) => {
     <li>
       <div className="skill-container">
         {/* Loader se muestra mientras la imagen no está cargada */}
-        <div style={{ position: 'relative', marginRight: '.5rem' }}>
-          {!isLoaded && (
+        {!isLoaded && (
+          <div style={{ position: 'relative', marginRight: '.5rem' }}>
             <Loader
               size="1rem"
               borderSize="0.1rem"
               className="absolute z-10 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 aspect-square"
             />
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Imagen que se muestra al cargar */}
         <img
@@ -38,7 +38,7 @@ const SkillItem = ({ skillKey, skillData }) => {
           {translate(`skills.${skillKey}.title`)}
         </span>
       </div>
-      <div className="progress-bar">
+      <div className="bg-[var(--color-background-secondary)] w-[60%] h-[calc(var(--font-size-landscape)*0.6)] ml-[10px] overflow-hidden sm:w-[50%] md:w-[60%] lg:mr-[1vw]">
         <div className="progress" style={{ width: skillData.progress }}></div>
       </div>
     </li>

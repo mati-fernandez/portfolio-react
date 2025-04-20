@@ -14,32 +14,26 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
   };
 
   return (
-    <div className="flex-grow overflow-y-hidden page">
+    <div className="flex flex-col items-center justify-center flex-grow p-4 overflow-y-hidden">
+      {imgLoading && (
+        <Loader className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20" />
+      )}
       <Info
         notFirstLoad={notFirstLoad}
         handleOpenModal={handleOpenModal}
         itemKey={'info'}
       />
-      <div className="container flex-grow overflow-y-hidden">
+      <div className="fixed top-[46%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75vmin] lg:top-[51%] lg:w-[100vmin] flex flex-col justify-center items-center flex-grow overflow-y-hidden">
         <img
           id="avatar"
-          style={{
-            opacity: imgLoading ? 0 : 1,
-          }}
+          className={`${imgLoading ? 'opacity-0' : 'opacity-100'}`}
           src={avatar}
           alt="avatar"
           onLoad={handleLoad}
         />
         {!imgLoading ? (
-          <p
-            id="description"
-            style={{ opacity: imgLoading && !notFirstLoad ? 0 : 1 }}
-          >
-            {translate('description')}
-          </p>
-        ) : (
-          <Loader />
-        )}
+          <p id="description">{translate('description')}</p>
+        ) : null}
       </div>
     </div>
   );
