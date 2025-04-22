@@ -1070,12 +1070,14 @@ figcaption {
 ## Implementing Motion for better integration with TailWind
 
 
-## Simplification of Conditional Styles with JavaScript
-I implemented a cleaner and more efficient approach to manage the conditional styles in the project, replacing the use of data attributes to control the dark and light modes. Instead of relying on those attributes in every component, I developed a JavaScript helper to handle all conditional styles, simplifying the process and making the code easier to maintain.
+## Complete migration to the ThemeProvider: a single place to rule all styles
+I decided to completely eliminate the stylesheet and centralize everything in the ThemeProvider. I use this context not only to manage dynamic CSS variables (colors, sizes, borders, etc.) but also to define reusable classes that were previously scattered across the CSS—like common styles for page-items.
 
-This helper is capable of dynamically managing Tailwind CSS classes, allowing for mode changes with just a few adjustments in the code. Additionally, I improved the flexibility and scalability of the system, as this approach centralizes the style logic in one place, eliminating the need for repetition and errors that arise from handling these changes across different parts of the project.
+This way, I avoid repeating classes in every component and have all shared styles accessible from a single place. I also benefit from passing my own variables and classes via style, keeping Tailwind’s already long classNames from getting even messier. It’s much easier to read and maintain: Tailwind utilities on one side, and my custom styles neatly organized on the other ✨
 
-With this solution, I not only optimized the code but also achieved more efficient performance in loading styles, which is crucial for enhancing the user experience.
+Sure, I miss autocompletion like I had with Tailwind or regular CSS, but honestly, this feels clearer and less chaotic. And well… I still don’t know how to migrate some wild selectors without pure CSS, but we’ll get there… 🤡
+
+At some point, I might add TypeScript for that sweet autocompletion.
 
 ## Conclusion
 This migration helped me better organize styles and greatly reduced the amount of custom CSS required. It also aligned the project with more modern frontend practices and made future maintenance easier.
