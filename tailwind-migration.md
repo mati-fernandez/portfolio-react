@@ -10,7 +10,7 @@ While the design remained simple, there was a significant amount of custom CSS r
 
 ## Original CSS (Before Migration)
 
-Below is the full content of the CSS file before migrating to Tailwind. This illustrates how large and difficult to maintain the original approach had become:
+Below is the full content of the CSS file before migrating to Tailwind. This illustrates how large and difficult to maintain the original approach had become. For example, many times I found myself using Ctrl + F to search for different selectors...
 
 ```css
 /*
@@ -1069,6 +1069,13 @@ figcaption {
 
 ## Implementing Motion for better integration with TailWind
 
+
+## Simplification of Conditional Styles with JavaScript
+I implemented a cleaner and more efficient approach to manage the conditional styles in the project, replacing the use of data attributes to control the dark and light modes. Instead of relying on those attributes in every component, I developed a JavaScript helper to handle all conditional styles, simplifying the process and making the code easier to maintain.
+
+This helper is capable of dynamically managing Tailwind CSS classes, allowing for mode changes with just a few adjustments in the code. Additionally, I improved the flexibility and scalability of the system, as this approach centralizes the style logic in one place, eliminating the need for repetition and errors that arise from handling these changes across different parts of the project.
+
+With this solution, I not only optimized the code but also achieved more efficient performance in loading styles, which is crucial for enhancing the user experience.
 
 ## Conclusion
 This migration helped me better organize styles and greatly reduced the amount of custom CSS required. It also aligned the project with more modern frontend practices and made future maintenance easier.
