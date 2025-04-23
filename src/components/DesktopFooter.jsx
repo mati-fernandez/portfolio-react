@@ -1,12 +1,12 @@
-import Linkedin from '../assets/Linkedin';
-import Github from '../assets/Github';
-import ThemeButton from './ThemeButton';
+import Linkedin from "../assets/Linkedin";
+import Github from "../assets/Github";
+import ThemeButton from "./ThemeButton";
 
 const DesktopFooter = () => {
   return (
     <div
       id="desktop-footer"
-      className="w-full h-[11svh] flex justify-around px-[5vw] box-border py-[1vh]"
+      className="box-border hidden h-[11svh] w-full justify-around px-[5vw] py-[1vh] landscape:flex"
     >
       <ThemeButton />
       <a

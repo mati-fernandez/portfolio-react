@@ -6,26 +6,26 @@ import {
   Navigate,
   useNavigate,
   useLocation,
-} from 'react-router-dom';
-import { useContext } from 'react';
-import { TranslationContext } from './context/contexts';
-import { PageContext } from './context/contexts';
-import { ThemeContext } from './context/contexts';
-import { useEffect, useState } from 'react';
-import './App.css';
-import useAnimations from './hooks/useAnimations';
+} from "react-router-dom";
+import { useContext } from "react";
+import { TranslationContext } from "./context/contexts";
+import { PageContext } from "./context/contexts";
+import { ThemeContext } from "./context/contexts";
+import { useEffect, useState } from "react";
+import "./App.css";
+import useAnimations from "./hooks/useAnimations";
 
 // COMPONENTS/PAGES
-import Home from './pages/Home';
-import Skills from './pages/Skills';
-import Projects from './pages/Projects';
-import Certifications from './pages/Certifications';
-import Odyssey from './pages/Odyssey';
-import MobileHeader from './components/MobileHeader';
-import DesktopHeader from './components/DesktopHeader';
-import DesktopFooter from './components/DesktopFooter';
-import Modal from './components/Modal';
-import InfoModal from './components/InfoModal';
+import Home from "./pages/Home";
+import Skills from "./pages/Skills";
+import Projects from "./pages/Projects";
+import Certifications from "./pages/Certifications";
+import Odyssey from "./pages/Odyssey";
+import MobileHeader from "./components/MobileHeader";
+import DesktopHeader from "./components/DesktopHeader";
+import DesktopFooter from "./components/DesktopFooter";
+import Modal from "./components/Modal";
+import InfoModal from "./components/InfoModal";
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -69,7 +69,7 @@ function App() {
   // Hide scrollbar for all the project
   const check = () => {
     if (document.body) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
       requestAnimationFrame(check);
     }
@@ -99,27 +99,27 @@ function App() {
   // Theme btn rotation mobile
   useEffect(() => {
     let timeout = null;
-    const themeBtn = document.querySelector('#theme-btn');
+    const themeBtn = document.querySelector("#theme-btn");
 
-    if (themeBtn && (aspectRatio === 'portrait' || aspectRatio === 'square')) {
-      themeBtn.classList.remove('rotate');
+    if (themeBtn && (aspectRatio === "portrait" || aspectRatio === "square")) {
+      themeBtn.classList.remove("rotate");
       timeout = setTimeout(() => {
-        themeBtn.classList.add('rotate');
+        themeBtn.classList.add("rotate");
       }, 10);
     }
 
-    document.body.setAttribute('data-theme', theme);
+    document.body.setAttribute("data-theme", theme);
 
     return () => clearTimeout(timeout);
   }, [theme]);
 
-  if (!language || language === '') {
+  if (!language || language === "") {
     return null;
   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO y resta un warning de "No routes matched location".
   return (
     <>
       {/* MODALES */}
-      {activeModal.itemKey !== null && activeModal.itemKey.includes('info') ? (
+      {activeModal.itemKey !== null && activeModal.itemKey.includes("info") ? (
         <InfoModal
           activeModal={activeModal}
           setActiveModal={setActiveModal}
@@ -138,17 +138,14 @@ function App() {
       )}
 
       {/* LAYOUT PRINCIPAL */}
-      <main className="h-[100svh] flex flex-col">
+      <main className="flex h-[90svh] flex-col landscape:h-[100svh]">
         {/* HEADER */}
-        {aspectRatio === 'portrait' || aspectRatio === 'square' ? (
-          <MobileHeader
-            showMenu={showMenu}
-            setShowMenu={setShowMenu}
-            setFromMenuBtn={setFromMenuBtn}
-          />
-        ) : (
-          <DesktopHeader />
-        )}
+        <MobileHeader
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+          setFromMenuBtn={setFromMenuBtn}
+        />
+        <DesktopHeader />
 
         {/* CONTENIDO CENTRAL (crece) */}
         {/* <div className=""> */}
@@ -218,12 +215,12 @@ function App() {
             }
           />
           {/* <Route path="*" element={<Navigate to={`/${language}/home`} />} /> */}
-          {/* El problema con este fallback es que si apreto btn language me manda acá */}
+          {/* El problema con este fallback es que si cambio language desde la url me manda acá */}
         </Routes>
         {/* </div> */}
 
         {/* FOOTER */}
-        {aspectRatio === 'landscape' && <DesktopFooter />}
+        <DesktopFooter />
       </main>
     </>
   );

@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import Hamburguer from '../assets/Hamburguer';
-import MobileMenu from './MobileMenu';
-import { useContext } from 'react';
-import { TranslationContext } from '../context/contexts';
-import { Link } from 'react-router-dom';
+import Hamburguer from "../assets/Hamburguer";
+import MobileMenu from "./MobileMenu";
+import { useContext } from "react";
+import { TranslationContext } from "../context/contexts";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const MobileHeader = ({ showMenu, setShowMenu, setFromMenuBtn }) => {
@@ -15,7 +15,7 @@ const MobileHeader = ({ showMenu, setShowMenu, setFromMenuBtn }) => {
   };
 
   return (
-    <div id="mobile-header-wrapper">
+    <div id="mobile-header-wrapper" className="landscape:hidden">
       {showMenu && (
         <MobileMenu translate={translate} setFromMenuBtn={setFromMenuBtn} />
       )}
