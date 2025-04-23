@@ -1079,6 +1079,23 @@ Sure, I miss autocompletion like I had with Tailwind or regular CSS, but honestl
 
 At some point, I might add TypeScript for that sweet autocompletion.
 
+## Using csstype for Autocomplete
+
+To improve the DX when working with inline styles or style objects in the ThemeContext, we use the csstype package:
+```ts
+import type { Properties } from "csstype";
+
+export interface Styles extends Partial<Properties> {
+  fontSizeLandscape: Properties["fontSize"];
+  colorGeneralPrimary: Properties["color"];
+  colorGeneralPrimaryAlpha: Properties["color"];
+  // ... etc
+}
+```
+This helps TypeScript provide suggestions for CSS values like "1rem", "bold", "#fff", etc.
+
+⚠️ Note: Autocomplete might not work perfectly in all editors or scenarios. Sometimes a reload or TS Server restart is needed.
+
 ## Conclusion
 This migration helped me better organize styles and greatly reduced the amount of custom CSS required. It also aligned the project with more modern frontend practices and made future maintenance easier.
 
