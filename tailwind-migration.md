@@ -23,7 +23,7 @@ Below is the full content of the CSS file before migrating to Tailwind. This ill
 */
 :root {
   font-size: 4vmin;
-  /* VARIABLES */
+  /* Constantes Globales */
   --font-size-landscape: calc((1vw + 1vh) * 0.8);
   --font-size-portrait: calc((1vw + 1vh) * 1.2);
   --color-general-primary: rgb(76, 150, 199);
@@ -1066,6 +1066,18 @@ figcaption {
 - No custom CSS files remain in the final version, unless strictly necessary (e.g. keyframes or special utilities).
 
 - This migration was part of a general cleanup of the codebase.
+- 
+## Removing the `@theme` Warning in VS Code
+
+To get rid of the annoying warning for the `@theme` directive in Tailwind CSS v4, follow these steps in VS Code:
+
+1. Go to **Settings** → **Text Editor** → **Files**.
+2. Click **"Add Item"** under the **Associations** section.
+3. Add the following:
+   - **Key**: `*.css`
+   - **Value**: `tailwindcss`
+
+That’s it! No more yellow squiggly lines ruining your vibe.
 
 ## Implementing Motion for better integration with TailWind
 

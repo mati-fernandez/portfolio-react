@@ -10,11 +10,12 @@ const MainMenu = ({ setFromMenuBtn }) => {
     if (setFromMenuBtn) setFromMenuBtn(true);
   };
 
-  const baseClasses = "bg-none p-0 font-[inherit] h-fit rounded-none";
+  const baseClasses =
+    "bg-none p-0 font-[inherit] h-fit rounded-none  flex h-[100%] flex-col justify-center text-inherit no-underline mx-[6vw] my-[2vh] cursor-pointer rounded-none border-none bg-transparent p-[2vh] landscape:text-[0.8rem] landscape:m-0";
   const activeClasses = "active-button";
 
   return (
-    <div className="[&>a]:rounded-none">
+    <>
       <NavLink
         className={({ isActive }) =>
           isActive ? `${baseClasses} ${activeClasses}` : baseClasses
@@ -26,7 +27,7 @@ const MainMenu = ({ setFromMenuBtn }) => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "active-button button link" : "link"
+          isActive ? `${baseClasses} ${activeClasses}` : baseClasses
         }
         to={`/${language}/skills`}
         onClick={handleClick}
@@ -35,7 +36,9 @@ const MainMenu = ({ setFromMenuBtn }) => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "active-button button link" : "button link"
+          isActive
+            ? "active-button button link"
+            : "button link text-general-primary"
         }
         to={`/${language}/projects`}
         onClick={handleClick}
@@ -60,7 +63,7 @@ const MainMenu = ({ setFromMenuBtn }) => {
       >
         {translate("menu.certifications")}
       </NavLink>
-    </div>
+    </>
   );
 };
 

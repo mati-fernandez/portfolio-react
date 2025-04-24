@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
 
 /*
 ███╗   ███╗ ██████╗ ██████╗ ██╗██╗     ███████╗    
@@ -8,9 +8,8 @@
 ██║ ╚═╝ ██║╚██████╔╝██████╔╝██║███████╗███████╗    ╚══╝ 
 ╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚═╝╚══════╝╚══════╝    
 */
-:root {
+/* :root {
   font-size: 3.5vmin;
-  /* VARIABLES */
   --font-size-landscape: calc((1vw + 1vh) * 0.8);
   --font-size-portrait: calc((1vw + 1vh) * 1.2);
   --color-general-primary: rgb(76, 150, 199);
@@ -18,8 +17,8 @@
   --color-general-secondary: grey;
   --color-general-secondary-alpha: #222222c5;
   --border-general: 1px solid black;
-}
-
+} */
+/* 
 [data-theme="dark"] {
   --color-box-shadow: #737d60;
   --color-primary: white;
@@ -52,7 +51,7 @@
   --title-color: dark;
   --h3-font-weight: 600;
   --font-weight: 500;
-}
+} */
 
 *,
 *::before,
@@ -575,16 +574,16 @@ figcaption {
   align-self: center;
 }
 
-.link {
+/* .link {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-decoration: none;
   color: inherit;
   height: 100%;
-}
+} */
 
-.button {
+/* .button {
   background-color: transparent;
   color: var(--color-primary);
   border: none;
@@ -593,7 +592,7 @@ figcaption {
   padding: 2vh;
   display: flex;
   margin: 2vh 6vw;
-}
+} */
 
 @keyframes rotate {
   0% {
@@ -893,14 +892,14 @@ figcaption {
   .detail .btn-panel .button:last-of-type:hover {
     background-color: var(--color-general-primary);
   }
-
+  /* 
   .link {
     font-size: 0.8rem;
-  }
+  } */
 
-  .button {
+  /* .button {
     margin: 0;
-  }
+  } */
 
   .button:hover,
   .page-item:hover {
