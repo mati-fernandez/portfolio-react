@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState } from "react";
 import { TranslationContext } from "../context/contexts";
-import { ThemeContext } from "../context/contexts";
 import { motion } from "motion/react";
 import Loader from "../components/Loader";
 
@@ -9,7 +8,6 @@ const SkillItem = ({ skillKey, skillData, transition }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const { translate, endpoint, contentDevPath, contentBuildPath } =
     useContext(TranslationContext);
-  const { styles } = useContext(ThemeContext);
   const srcPath =
     endpoint === "build" ? `${contentBuildPath}` : `${contentDevPath}`;
 
@@ -38,19 +36,12 @@ const SkillItem = ({ skillKey, skillData, transition }) => {
           {translate(`skills.${skillKey}.title`)}
         </span>
       </div>
-      <div
-        className="ml-[10px] w-[60%] overflow-hidden landscape:mr-[1vw] landscape:w-[60%]"
-        style={{
-          backgroundColor: styles.colorBackgroundSecondary,
-          height: `calc(${styles.fontSizeLandscape}*0.6)`,
-        }}
-      >
+      <div className="h-landscape bg-secondary bg-general-primary ml-[10px] w-[60%] overflow-hidden landscape:mr-[1vw] landscape:w-[60%]">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: skillData.progress }}
           transition={transition}
           className="h-[100%]"
-          style={{ backgroundColor: styles.colorGeneralPrimary }}
         />
       </div>
     </li>
@@ -59,14 +50,13 @@ const SkillItem = ({ skillKey, skillData, transition }) => {
 
 const Skills = () => {
   const { getImage } = useContext(TranslationContext);
-  const { styles } = useContext(ThemeContext);
   const data = getImage("skills");
 
   return (
     <div className="flex flex-grow flex-col flex-wrap items-center justify-center overflow-y-hidden p-0 landscape:box-border landscape:flex-row landscape:flex-wrap landscape:content-center landscape:gap-[1.8vw] landscape:px-[4vw]">
       <ul
         className="ml-[-4rem] w-[90%] list-none p-0 leading-[4.5svh] landscape:ml-[1rem] landscape:grid landscape:w-[80%] landscape:grid-cols-2 landscape:p-0 landscape:leading-[6vh]"
-        style={{ fontSize: styles.fontSizePortrait }}
+        // style={{ fontSize: styles.fontSizePortrait }}
       >
         {Object.keys(data).map((skill, index) => (
           <SkillItem

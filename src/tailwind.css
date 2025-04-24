@@ -20,7 +20,7 @@
     --color-secondary: #3b3b3b;
     --color-terciary: #394733;
     --color-secondary-alpha: #939e8f80;
-    --color-background: black;
+    --color-background-primary: black;
     --color-background-secondary: #222;
     --color-background-alpha: #2e312bec;
     --color-background-alpha-secondary: #222222ce;
@@ -37,7 +37,7 @@
     --color-secondary: #d3d2d2;
     --color-terciary: #c4e3b8;
     --color-secondary-alpha: #89a18480;
-    --color-background: rgb(233, 233, 233);
+    --color-background-primary: rgb(233, 233, 233);
     --color-background-secondary: #ffffff;
     --color-background-alpha: #ffffffec;
     --color-background-alpha-secondary: #d8d8d8ce;
@@ -50,15 +50,64 @@
 }
 
 @layer utilities {
-  .text-primary {
+  .h-landscape {
+    height: var(--font-size-landscape);
+  }
+  .general-primary {
     color: var(--color-general-primary);
   }
-
-  .bg-primary {
+  .bg-general-primary {
     background-color: var(--color-general-primary);
   }
-
-  .p-default {
-    padding: var(--padding-default);
+  .bg-general-primary-alpha {
+    background-color: var(--color-general-primary-alpha);
+  }
+  .general-secondary {
+    color: var(--color-general-secondary);
+  }
+  .bg-general-secondary {
+    background-color: var(--color-general-secondary);
+  }
+  .bg-general-secondary-alpha {
+    background-color: var(--color-general-secondary-alpha);
+  }
+  .bg-primary {
+    background-color: var(--color-background-primary);
+  }
+  .bg-secondary {
+    background-color: var(--color-background-secondary);
+  }
+  .bg-alpha {
+    background-color: var(--color-background-alpha);
+  }
+  .bg-alpha-secondary {
+    background-color: var(--color-background-alpha-secondary);
+  }
+  .shadow-box {
+    box-shadow: 0 0 10px var(--color-box-shadow);
+  }
+  .border-general {
+    border: var(--border-general);
+  }
+  .border-theme {
+    border: var(--border);
+  }
+  .text-size-landscape {
+    font-size: var(--font-size-landscape);
+  }
+  .text-size-portrait {
+    font-size: var(--font-size-portrait);
+  }
+  .font-h3 {
+    font-weight: var(--h3-font-weight);
+  }
+  .font-base {
+    font-weight: var(--font-weight);
+  }
+  .fill-icon {
+    fill: var(--icon-fill);
+  }
+  .text-title {
+    color: var(--title-color);
   }
 }
