@@ -12,7 +12,7 @@ const SkillItem = ({ skillKey, skillData, transition }) => {
     endpoint === "build" ? `${contentBuildPath}` : `${contentDevPath}`;
 
   return (
-    <li className="flex items-center landscape:my-[1vh] landscape:justify-center landscape:font-[2.5vh]">
+    <li className="flex items-center landscape:my-[1vh] landscape:justify-center landscape:text-[2.5vh]">
       <div className="flex w-[40%] items-center justify-end landscape:w-[15%]">
         {/* Loader se muestra mientras la imagen no está cargada */}
         {!isLoaded && (
@@ -36,12 +36,15 @@ const SkillItem = ({ skillKey, skillData, transition }) => {
           {translate(`skills.${skillKey}.title`)}
         </span>
       </div>
-      <div className="h-landscape bg-secondary bg-general-primary ml-[10px] w-[60%] overflow-hidden landscape:mr-[1vw] landscape:w-[60%]">
+      <div
+        className="bg-secondary ml-[10px] w-[60%] overflow-hidden landscape:mr-[1vw] landscape:w-[60%]"
+        style={{ height: "calc(var(--font-size-landscape) *0.6)" }}
+      >
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: skillData.progress }}
           transition={transition}
-          className="h-[100%]"
+          className="bg-general-primary h-[100%]"
         />
       </div>
     </li>
@@ -54,10 +57,7 @@ const Skills = () => {
 
   return (
     <div className="flex flex-grow flex-col flex-wrap items-center justify-center overflow-y-hidden p-0 landscape:box-border landscape:flex-row landscape:flex-wrap landscape:content-center landscape:gap-[1.8vw] landscape:px-[4vw]">
-      <ul
-        className="ml-[-4rem] w-[90%] list-none p-0 leading-[4.5svh] landscape:ml-[1rem] landscape:grid landscape:w-[80%] landscape:grid-cols-2 landscape:p-0 landscape:leading-[6vh]"
-        // style={{ fontSize: styles.fontSizePortrait }}
-      >
+      <ul className="ml-[-4rem] w-[90%] list-none p-0 leading-[4.5svh] landscape:ml-[1rem] landscape:grid landscape:w-[80%] landscape:grid-cols-2 landscape:p-0 landscape:leading-[6vh]">
         {Object.keys(data).map((skill, index) => (
           <SkillItem
             key={skill}

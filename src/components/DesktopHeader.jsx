@@ -5,7 +5,7 @@ const DesktopHeader = () => {
   return (
     <div
       id="desktop-header"
-      className="hidden w-full items-center justify-around bg-gray-400 landscape:flex"
+      className="bg-secondary mt-2.5 hidden w-full items-center justify-around landscape:flex"
     >
       <MainMenu />
       <LanguageButton />

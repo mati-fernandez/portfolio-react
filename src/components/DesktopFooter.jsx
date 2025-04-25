@@ -1,38 +1,51 @@
 import Linkedin from "../assets/Linkedin";
 import Github from "../assets/Github";
 import ThemeButton from "./ThemeButton";
+import Cv from "../assets/Cv";
+import React from "react";
 
 const DesktopFooter = () => {
+  const classes =
+    "primary flex h-fit cursor-pointer items-center justify-center border-0 bg-transparent bg-none p-[2vh] font-[inherit] rounded-[50px] my-[2vh] mx-[6vw] landscape:m-0 landscape:text-[0.8rem]";
+
+  const links = [
+    {
+      icon: <ThemeButton className={classes} />,
+      id: "theme-btn",
+    },
+    {
+      href: "https://www.linkedin.com/in/mati-fernandez/",
+      icon: <Linkedin />,
+      className: "linkedin-a",
+    },
+    {
+      href: "https://github.com/mati-fernandez",
+      icon: <Github />,
+    },
+    {
+      href: "https://drive.google.com/drive/folders/17_6t9pEX7BIkTsfLXCYRqWZuI0Ygty0P?usp=sharing",
+      icon: <Cv />,
+      id: "cv-mobile-a",
+    },
+  ];
+
   return (
-    <div
-      id="desktop-footer"
-      className="box-border hidden h-[11svh] w-full justify-around px-[5vw] py-[1vh] landscape:flex"
-    >
-      <ThemeButton />
-      <a
-        id="linkedin-a"
-        className="button"
-        href="https://www.linkedin.com/in/mati-fernandez/"
-        target="blank"
-      >
-        <Linkedin />
-      </a>
-      <a
-        id="github-a"
-        className="button"
-        href="https://github.com/mati-fernandez"
-        target="_blank"
-      >
-        <Github />
-      </a>
-      <a
-        id="cv-desktop"
-        className="link button"
-        href="https://drive.google.com/drive/folders/17_6t9pEX7BIkTsfLXCYRqWZuI0Ygty0P?usp=sharing"
-        target="_blank"
-      >
-        CV
-      </a>
+    <div className="px-[5vw]items-center mb-2.5 box-border flex h-[11svh] w-full justify-around">
+      {links.map(({ href, icon, className = "", id, target = "_blank" }, i) =>
+        href ? (
+          <a
+            key={i}
+            href={href}
+            className={`${className} ${classes}`}
+            id={id}
+            target={target}
+          >
+            {icon}
+          </a>
+        ) : (
+          <React.Fragment key={i}>{icon}</React.Fragment>
+        ),
+      )}
     </div>
   );
 };

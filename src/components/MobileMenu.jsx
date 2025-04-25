@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import PropTypes from "prop-types";
 import Linkedin from "../assets/Linkedin";
 import Github from "../assets/Github";
 import Cv from "../assets/Cv";
@@ -12,43 +11,47 @@ import ThemeButton from "./ThemeButton";
 const MobileMenu = ({ setFromMenuBtn }) => {
   const { language, setLanguage } = useContext(TranslationContext);
 
+  const links = [
+    {
+      href: "https://www.linkedin.com/in/mati-fernandez/",
+      icon: <Linkedin />,
+      className: "linkedin-a",
+    },
+    {
+      href: "https://github.com/mati-fernandez",
+      icon: <Github />,
+    },
+    {
+      href: "https://drive.google.com/drive/folders/17_6t9pEX7BIkTsfLXCYRqWZuI0Ygty0P?usp=sharing",
+      icon: <Cv />,
+      id: "cv-mobile-a",
+    },
+  ];
+
   return (
     <div className="menu">
       <LanguageButton language={language} setLanguage={setLanguage} />
       <ThemeButton />
       <nav id="mobile-main-menu" className="rounded-none">
         <MainMenu setFromMenuBtn={setFromMenuBtn} />
-        <div id="contact-wrapper">
-          <a
-            className="button linkedin-a"
-            href="https://www.linkedin.com/in/mati-fernandez/"
-            target="blank"
-          >
-            <Linkedin />
-          </a>
-          <a
-            className="button"
-            href="https://github.com/mati-fernandez"
-            target="_blank"
-          >
-            <Github />
-          </a>
-          <a
-            id="cv-mobile-a"
-            className="button"
-            href="https://drive.google.com/drive/folders/17_6t9pEX7BIkTsfLXCYRqWZuI0Ygty0P?usp=sharing"
-            target="_blank"
-          >
-            <Cv />
-          </a>
+        <div className="flex h-[100%] items-center justify-center">
+          {links.map(
+            ({ href, icon, className = "", id, target = "_blank" }, i) => (
+              <a
+                key={i}
+                href={href}
+                className={`${className} text-primary mx-[6vw] my-[2vh] flex items-center justify-center border-0 bg-transparent p-[2vh]`}
+                id={id}
+                target={target}
+              >
+                {icon}
+              </a>
+            ),
+          )}
         </div>
       </nav>
     </div>
   );
-};
-
-MobileMenu.propTypes = {
-  translate: PropTypes.func.isRequired,
 };
 
 export default MobileMenu;

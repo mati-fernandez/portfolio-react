@@ -14,6 +14,34 @@
   html {
     font-size: 3.5vmin;
   }
+
+  *,
+  *::before,
+  *::after,
+  html {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    position: relative;
+    /* height: 90svh; */
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+    background-color: var(--color-background-primary);
+    color: var(--color-primary);
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+  }
+
+  #root {
+    height: inherit;
+  }
+
   [data-theme="dark"] {
     --color-box-shadow: #737d60;
     --color-primary: white;
@@ -49,15 +77,27 @@
   }
 }
 
+@layer components {
+}
+
 @layer utilities {
   .h-landscape {
     height: var(--font-size-landscape);
+  }
+  .h-portrait {
+    height: var(--font-size-portrait);
+  }
+  .border-general {
+    border: var(--border-general);
   }
   .general-primary {
     color: var(--color-general-primary);
   }
   .bg-general-primary {
     background-color: var(--color-general-primary);
+  }
+  .general-primary-alpha {
+    color: var(--color-general-primary-alpha);
   }
   .bg-general-primary-alpha {
     background-color: var(--color-general-primary-alpha);
@@ -68,8 +108,17 @@
   .bg-general-secondary {
     background-color: var(--color-general-secondary);
   }
+  .general-secondary-alpha {
+    color: var(--color-general-secondary-alpha);
+  }
   .bg-general-secondary-alpha {
     background-color: var(--color-general-secondary-alpha);
+  }
+  .primary {
+    color: var(--color-primary);
+  }
+  .secondary {
+    color: var(--color-secondary);
   }
   .bg-primary {
     background-color: var(--color-background-primary);
@@ -86,9 +135,6 @@
   .shadow-box {
     box-shadow: 0 0 10px var(--color-box-shadow);
   }
-  .border-general {
-    border: var(--border-general);
-  }
   .border-theme {
     border: var(--border);
   }
@@ -104,9 +150,9 @@
   .font-base {
     font-weight: var(--font-weight);
   }
-  .fill-icon {
+  /* .fill-icon { //PARECE QUE NO ES NESARIO XQ AGARRAN EL CURRENTCOLOR DEL BODY
     fill: var(--icon-fill);
-  }
+  } */
   .text-title {
     color: var(--title-color);
   }

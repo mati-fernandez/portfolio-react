@@ -1079,34 +1079,28 @@ To get rid of the annoying warning for the `@theme` directive in Tailwind CSS v4
 
 That’s it! No more yellow squiggly lines ruining your vibe.
 
+## Tailwind v4 & Styles Structure Notes
+
+We no longer use **tailwind.config.js**. With Tailwind CSS v4, all customization is handled inside **tailwind.css**.
+
+Custom CSS variables (colors, sizes, etc.) are defined within the **@theme** block.
+
+We organize styles using the following layers:
+
+- @theme: for CSS variables.
+
+- @layer base: for global styles, complex selectors, or highly reused rules.
+
+- @layer utilities: for specific utility classes that Tailwind doesn’t provide.
+
+To avoid the initial flicker before Tailwind loads, we set a temporary background-color, color, and height inline in the **<body>** tag of index.html.
+
+We use **currentColor** in SVGs so they inherit the correct theme color dynamically.
+
+When a **calc()** operation is needed only once, we apply it inline (e.g. `style={{ height: calc(var(--font-size-landscape) * 0.6) }}`) instead of creating a utility class.
+
 ## Implementing Motion for better integration with TailWind
 
-
-## Complete migration to the ThemeProvider: a single place to rule all styles
-I decided to completely eliminate the stylesheet and centralize everything in the ThemeProvider. I use this context not only to manage dynamic CSS variables (colors, sizes, borders, etc.) but also to define reusable classes that were previously scattered across the CSS—like common styles for page-items.
-
-This way, I avoid repeating classes in every component and have all shared styles accessible from a single place. I also benefit from passing my own variables and classes via style, keeping Tailwind’s already long classNames from getting even messier. It’s much easier to read and maintain: Tailwind utilities on one side, and my custom styles neatly organized on the other ✨
-
-Sure, I miss autocompletion like I had with Tailwind or regular CSS, but honestly, this feels clearer and less chaotic. And well… I still don’t know how to migrate some wild selectors without pure CSS, but we’ll get there… 🤡
-
-At some point, I might add TypeScript for that sweet autocompletion.
-
-## Using csstype for Autocomplete
-
-To improve the DX when working with inline styles or style objects in the ThemeContext, we use the csstype package:
-```ts
-import type { Properties } from "csstype";
-
-export interface Styles extends Partial<Properties> {
-  fontSizeLandscape: Properties["fontSize"];
-  colorGeneralPrimary: Properties["color"];
-  colorGeneralPrimaryAlpha: Properties["color"];
-  // ... etc
-}
-```
-This helps TypeScript provide suggestions for CSS values like "1rem", "bold", "#fff", etc.
-
-⚠️ Note: Autocomplete might not work perfectly in all editors or scenarios. Sometimes a reload or TS Server restart is needed.
 
 ## Conclusion
 This migration helped me better organize styles and greatly reduced the amount of custom CSS required. It also aligned the project with more modern frontend practices and made future maintenance easier.
