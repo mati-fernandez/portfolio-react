@@ -6,7 +6,73 @@ Initially, the entire styling was written in one global CSS file. As the project
 
 While the design remained simple, there was a significant amount of custom CSS required to support it. Most styles were written manually, and some were duplicated across different components due to the lack of modular structure.
 
----
+## Tailwind Layers
+Tailwind CSS uses layers to organize styles with specific specificity and behavior:
+
+- @layer base: Global styles, like resets or basic rules (e.g., margin normalization, font sizes).
+
+- @layer components: Reusable UI components, like buttons, cards, headers.
+
+- @layer utilities: Single-property utilities that apply specific styles to elements (e.g., margins, padding, colors, transitions).
+
+For transitions or styles applied to specific elements (like buttons), I decided to place them under @layer utilities to maintain flexibility and keep everything organized.
+
+## Notes on the Migration
+- The entire UI was rebuilt using utility classes from Tailwind CSS.
+
+- Styling is now co-located with components, improving readability and consistency.
+
+- Class names are descriptive and directly reflect layout and behavior.
+
+- No custom CSS files remain in the final version, unless strictly necessary (e.g. keyframes or special utilities).
+
+- This migration was part of a general cleanup of the codebase. 
+
+## Removing the `@theme` Warning in VS Code
+
+To get rid of the annoying warning for the `@theme` directive in Tailwind CSS v4, follow these steps in VS Code:
+
+1. Go to **Settings** → **Text Editor** → **Files**.
+2. Click **"Add Item"** under the **Associations** section.
+3. Add the following:
+   - **Key**: `*.css`
+   - **Value**: `tailwindcss`
+
+That’s it! No more yellow squiggly lines ruining your vibe.
+
+## Variables & Theme handling (Tailwind v4)
+We now define most of our CSS variables inside the @theme layer of tailwind.css. This allows Tailwind v4 to match them directly with its utility classes (e.g. bg-[--color-primary]), enabling autocomplete and maintaining full compatibility without needing a tailwind.config.js file.
+
+### Structure
+The dark theme is the default, so its variables are defined globally inside @theme.
+
+The light theme variables are defined inside a [data-theme="light"] selector, which is placed in the @layer base, since @theme does not support selectors.
+
+### Why this works
+Utility prefixes like bg-, text-, border-, etc. automatically infer the expected variable type, so Tailwind can match UC usage like `landscape:hover:bg-general-primary` with the variable `--color-general-primary` defined inside @theme.
+
+However, if a variable is defined only in a selector like `[data-theme="light"]` in @layer base, Tailwind won't match it automatically for UC autocomplete. That's why the default theme (dark) goes in @theme.
+
+### Examples of successful matching:
+- `text-general-primary → --color-general-primary`
+- `bg-general-secondary-alpha → --color-general-secondary-alpha`
+- `border-general → --border-general`
+
+### Only complex or frequently reused selectors are kept in @layer base.
+
+## Implementing Motion for better integration with TailWind
+
+## Additional Notes & Practices
+
+- **Initial Flicker Prevention**: To avoid the initial flicker before Tailwind loads, we set a temporary background-color, color, and height inline in the **<body>** tag of `index.html`.
+
+- **SVG Color Inheritance**: We use **currentColor** in SVGs so they inherit the correct theme color dynamically.
+
+- **One-Time `calc()` Operations**: When a **calc()** operation is needed only once, we apply it inline (e.g., `style={{ height: calc(var(--font-size-landscape) * 0.6) }}`) instead of creating a utility class.
+
+## Conclusion
+This migration helped me better organize styles and greatly reduced the amount of custom CSS required. It also aligned the project with more modern frontend practices and made future maintenance easier.
+
 
 ## Original CSS (Before Migration)
 Below is the full content of the CSS file before migrating to Tailwind. This illustrates how large and difficult to maintain the original approach had become. For example, many times I found myself using Ctrl + F to search for different selectors...
@@ -1055,58 +1121,3 @@ figcaption {
 
 ```
 ---
-## Notes on the Migration
-- The entire UI was rebuilt using utility classes from Tailwind CSS.
-
-- Styling is now co-located with components, improving readability and consistency.
-
-- Class names are descriptive and directly reflect layout and behavior.
-
-- No custom CSS files remain in the final version, unless strictly necessary (e.g. keyframes or special utilities).
-
-- This migration was part of a general cleanup of the codebase. 
-## Removing the `@theme` Warning in VS Code
-
-To get rid of the annoying warning for the `@theme` directive in Tailwind CSS v4, follow these steps in VS Code:
-
-1. Go to **Settings** → **Text Editor** → **Files**.
-2. Click **"Add Item"** under the **Associations** section.
-3. Add the following:
-   - **Key**: `*.css`
-   - **Value**: `tailwindcss`
-
-That’s it! No more yellow squiggly lines ruining your vibe.
----
-## Variables & Theme handling (Tailwind v4)
-We now define most of our CSS variables inside the @theme layer of tailwind.css. This allows Tailwind v4 to match them directly with its utility classes (e.g. bg-[--color-primary]), enabling autocomplete and maintaining full compatibility without needing a tailwind.config.js file.
-
-### Structure
-The dark theme is the default, so its variables are defined globally inside @theme.
-
-The light theme variables are defined inside a [data-theme="light"] selector, which is placed in the @layer base, since @theme does not support selectors.
-
-### Why this works
-Utility prefixes like bg-, text-, border-, etc. automatically infer the expected variable type, so Tailwind can match UC usage like `landscape:hover:bg-general-primary` with the variable `--color-general-primary` defined inside @theme.
-
-However, if a variable is defined only in a selector like `[data-theme="light"]` in @layer base, Tailwind won't match it automatically for UC autocomplete. That's why the default theme (dark) goes in @theme.
-
-### Examples of successful matching:
-- `text-general-primary → --color-general-primary`
-- `bg-general-secondary-alpha → --color-general-secondary-alpha`
-- `border-general → --border-general`
-
-### Only complex or frequently reused selectors are kept in @layer base.
----
-## Implementing Motion for better integration with TailWind
----
-## Additional Notes & Practices
-
-- **Initial Flicker Prevention**: To avoid the initial flicker before Tailwind loads, we set a temporary background-color, color, and height inline in the **<body>** tag of `index.html`.
-
-- **SVG Color Inheritance**: We use **currentColor** in SVGs so they inherit the correct theme color dynamically.
-
-- **One-Time `calc()` Operations**: When a **calc()** operation is needed only once, we apply it inline (e.g., `style={{ height: calc(var(--font-size-landscape) * 0.6) }}`) instead of creating a utility class.
----
-## Conclusion
-This migration helped me better organize styles and greatly reduced the amount of custom CSS required. It also aligned the project with more modern frontend practices and made future maintenance easier.
-

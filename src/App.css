@@ -60,10 +60,6 @@
   list-style: none;
 } */
 
-:hover:not(body, .menu) .button:not(svg, .active-button) {
-  transition: color 0.8s ease-in-out;
-}
-
 a {
   transition:
     background-color 0.8s ease-in-out,
