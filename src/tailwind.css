@@ -8,6 +8,21 @@
   --color-general-secondary: grey;
   --color-general-secondary-alpha: #222222c5;
   --border-general: 1px solid black;
+  /*data-theme !light variables:*/
+  --color-box-shadow: #737d60;
+  --color-primary: white;
+  --color-secondary: #3b3b3b;
+  --color-terciary: #394733;
+  --color-secondary-alpha: #939e8f80;
+  --color-background-primary: black;
+  --color-background-secondary: #222;
+  --color-background-alpha: #2e312bec;
+  --color-background-alpha-secondary: #222222ce;
+  --border: 1px solid var(--color-primary);
+  --icon-fill: white;
+  --title-color: white;
+  --h3-font-weight: 400;
+  --font-weight: 400;
 }
 
 @layer base {
@@ -40,23 +55,6 @@
 
   #root {
     height: inherit;
-  }
-
-  [data-theme="dark"] {
-    --color-box-shadow: #737d60;
-    --color-primary: white;
-    --color-secondary: #3b3b3b;
-    --color-terciary: #394733;
-    --color-secondary-alpha: #939e8f80;
-    --color-background-primary: black;
-    --color-background-secondary: #222;
-    --color-background-alpha: #2e312bec;
-    --color-background-alpha-secondary: #222222ce;
-    --border: 1px solid var(--color-primary);
-    --icon-fill: white;
-    --title-color: white;
-    --h3-font-weight: 400;
-    --font-weight: 400;
   }
 
   [data-theme="light"] {
@@ -150,10 +148,10 @@
   .font-base {
     font-weight: var(--font-weight);
   }
-  /* .fill-icon { //PARECE QUE NO ES NESARIO XQ AGARRAN EL CURRENTCOLOR DEL BODY
-    fill: var(--icon-fill);
-  } */
   .text-title {
     color: var(--title-color);
+  }
+  .button-hover {
+    background-color: var(--color-general-primary);
   }
 }

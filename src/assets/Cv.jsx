@@ -3,7 +3,7 @@ const Cv = () => {
     <svg
       id="cv"
       alt="Hoja de vida"
-      className="h-[2rem] cursor-pointer rounded-[50%] landscape:h-[1.3rem] landscape:w-auto"
+      className="h-[2rem] cursor-pointer landscape:h-[1.3rem] landscape:w-auto"
       width="17"
       height="17"
       viewBox="0 0 17 17"

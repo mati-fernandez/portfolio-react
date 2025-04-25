@@ -6,7 +6,7 @@ import React from "react";
 
 const DesktopFooter = () => {
   const classes =
-    "primary flex h-fit cursor-pointer items-center justify-center border-0 bg-transparent bg-none p-[2vh] font-[inherit] rounded-[50px] my-[2vh] mx-[6vw] landscape:m-0 landscape:text-[0.8rem]";
+    "primary flex h-fit cursor-pointer items-center justify-center border-0 bg-transparent bg-none p-[2vh] font-[inherit] y-[2vh] mx-[6vw] landscape:m-0 landscape:text-[0.8rem]";
 
   const links = [
     {
@@ -30,7 +30,7 @@ const DesktopFooter = () => {
   ];
 
   return (
-    <div className="px-[5vw]items-center mb-2.5 box-border flex h-[11svh] w-full justify-around">
+    <div className="mb-2.5 box-border hidden h-[11svh] w-full items-center justify-around px-[5vw] landscape:flex">
       {links.map(({ href, icon, className = "", id, target = "_blank" }, i) =>
         href ? (
           <a

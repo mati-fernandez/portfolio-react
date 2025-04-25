@@ -57,7 +57,7 @@ const Skills = () => {
 
   return (
     <div className="flex flex-grow flex-col flex-wrap items-center justify-center overflow-y-hidden p-0 landscape:box-border landscape:flex-row landscape:flex-wrap landscape:content-center landscape:gap-[1.8vw] landscape:px-[4vw]">
-      <ul className="ml-[-4rem] w-[90%] list-none p-0 leading-[4.5svh] landscape:ml-[1rem] landscape:grid landscape:w-[80%] landscape:grid-cols-2 landscape:p-0 landscape:leading-[6vh]">
+      <ul className="ml-[-4rem] w-[90%] list-none p-0 leading-[4.5svh] landscape:mt-2 landscape:ml-[1rem] landscape:grid landscape:w-[80%] landscape:grid-cols-2 landscape:p-0">
         {Object.keys(data).map((skill, index) => (
           <SkillItem
             key={skill}
