@@ -197,4 +197,7 @@
   .button-hover {
     background-color: var(--color-general-primary);
   }
+  .font-raleway {
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+  }
 }

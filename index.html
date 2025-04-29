@@ -12,14 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Matias</title>
   </head>
-  <body
-    style="
-      background-color: black;
-      color: white;
-      transition: none;
-      height: 100svh;
-    "
-  >
+  <body style="background-color: black; color: white; height: 100svh">
     <!-- Template para usar shadow DOM -->
     <template id="loader-template">
       <style>
@@ -57,29 +50,29 @@
     <!-- Detección temprana, previa a la carga de App del theme -->
     <script>
       const prefersLightMode = window.matchMedia(
-        '(prefers-color-scheme: light)'
+        "(prefers-color-scheme: light)",
       ).matches;
       if (prefersLightMode) {
-        document.body.setAttribute('data-theme', 'light');
+        document.body.setAttribute("data-theme", "light");
       } else {
-        document.body.setAttribute('data-theme', 'dark');
+        document.body.setAttribute("data-theme", "dark");
       }
     </script>
     <!-- Crear shadow DOM para aislar el loader -->
     <script>
-      const loaderContainer = document.getElementById('loader-container');
-      const shadowRoot = loaderContainer.attachShadow({ mode: 'open' });
-      const loaderTemplate = document.getElementById('loader-template');
+      const loaderContainer = document.getElementById("loader-container");
+      const shadowRoot = loaderContainer.attachShadow({ mode: "open" });
+      const loaderTemplate = document.getElementById("loader-template");
       shadowRoot.appendChild(loaderTemplate.content.cloneNode(true));
 
       document.body.insertBefore(
         loaderContainer,
-        document.getElementById('root')
+        document.getElementById("root"),
       );
       const handleLoad = () => {
-        document.querySelector('#loader-container').remove();
+        document.querySelector("#loader-container").remove();
       };
-      window.addEventListener('load', handleLoad);
+      window.addEventListener("load", handleLoad);
     </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
