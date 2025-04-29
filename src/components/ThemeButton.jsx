@@ -10,23 +10,11 @@ const ThemeButton = ({ className = "" }) => {
   const [icon, setIcon] = useState(theme === "dark" ? <Sun /> : <Moon />);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIcon(theme === "dark" ? <Sun /> : <Moon />);
-    }, 600);
-
+    setIcon(theme === "dark" ? <Sun /> : <Moon />);
     localStorage.setItem("theme", theme);
-
-    return () => clearTimeout(timeout);
   }, [theme]);
 
   const handleClick = () => {
-    const header =
-      document.querySelector("#desktop-header") ??
-      document.querySelector("#mobile-header");
-    document.querySelector("body").style.transition =
-      "background-color 0.8s ease-in-out, font-weight 0.8s ease-in-out";
-    header.style.transition =
-      "background-color 0.8s ease-in-out, font-weight 0.8s ease-in-out";
     setTheme(theme === "light" ? "dark" : "light");
     setFromThemeBtn(true);
   };

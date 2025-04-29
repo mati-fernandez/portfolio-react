@@ -75,8 +75,8 @@
     --color-secondary: #d3d2d2;
     --color-terciary: #c4e3b8;
     --color-secondary-alpha: #89a18480;
-    --color-background-primary: rgb(233, 233, 233);
-    --color-background-secondary: #ffffff;
+    --color-background-primary: #ffffff;
+    --color-background-secondary: rgb(233, 233, 233);
     --color-background-alpha: #ffffffec;
     --color-background-alpha-secondary: #d8d8d8ce;
     --border: 1px solid var(--color-primary);

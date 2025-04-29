@@ -3,10 +3,12 @@ import Github from "../assets/Github";
 import ThemeButton from "./ThemeButton";
 import Cv from "../assets/Cv";
 import React from "react";
+import { motion } from "motion/react";
+import { AnimatedFooterItem } from "./AnimatedFooterItem";
 
 const DesktopFooter = () => {
   const classes =
-    "primary flex h-fit cursor-pointer items-center justify-center border-0 bg-transparent bg-none p-[2vh] font-[inherit] y-[2vh] mx-[6vw] landscape:m-0 landscape:text-[0.8rem]";
+    "primary flex h-fit cursor-pointer items-center justify-center border-0 bg-transparent bg-none p-[2vh] font-[inherit] y-[2vh] mx-[6vw] landscape:m-0 landscape:text-[0.8rem] landscape:hover:bg-general-primary rounded-full";
 
   const links = [
     {
@@ -30,9 +32,16 @@ const DesktopFooter = () => {
   ];
 
   return (
-    <div className="mb-2.5 box-border hidden h-[11svh] w-full items-center justify-around px-[5vw] landscape:flex">
-      {links.map(({ href, icon, className = "", id, target = "_blank" }, i) =>
-        href ? (
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        visible: { transition: { staggerChildren: 0.1 } },
+      }}
+      className="mb-2.5 box-border hidden h-[11svh] w-full items-center justify-around px-[5vw] landscape:flex"
+    >
+      {links.map(({ href, icon, className = "", id, target = "_blank" }, i) => {
+        const child = href ? (
           <a
             key={i}
             href={href}
@@ -44,9 +53,11 @@ const DesktopFooter = () => {
           </a>
         ) : (
           <React.Fragment key={i}>{icon}</React.Fragment>
-        ),
-      )}
-    </div>
+        );
+
+        return <AnimatedFooterItem key={i}>{child}</AnimatedFooterItem>;
+      })}
+    </motion.div>
   );
 };
 
