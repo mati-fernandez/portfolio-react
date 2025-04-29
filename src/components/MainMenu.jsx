@@ -11,8 +11,8 @@ const MainMenu = ({ setFromMenuBtn }) => {
   };
 
   const baseClasses =
-    "p-0 font-[inherit] h-fit rounded-none  flex h-[100%] flex-col justify-center text-inherit no-underline mx-[6vw] my-[2vh] cursor-pointer rounded-none border-none p-[2vh] landscape:text-[0.8rem] landscape:m-0 landscape:hover:bg-general-primary bg-secondary-alpha";
-  const activeClasses = "active-button";
+    "p-0 font-[inherit] h-fit rounded-none  flex h-[100%] flex-col justify-center text-inherit no-underline mx-[6vw] my-[2vh] cursor-pointer rounded-none border-none p-[2vh] landscape:text-[0.8rem] landscape:m-0 landscape:hover:bg-general-primary";
+  const activeClasses = "bg-primary primary";
 
   return (
     <>
@@ -36,7 +36,7 @@ const MainMenu = ({ setFromMenuBtn }) => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "active-button button link" : "button link"
+          isActive ? `${baseClasses} ${activeClasses}` : baseClasses
         }
         to={`/${language}/projects`}
         onClick={handleClick}
@@ -45,7 +45,7 @@ const MainMenu = ({ setFromMenuBtn }) => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "active-button button link" : "button link"
+          isActive ? `${baseClasses} ${activeClasses}` : baseClasses
         }
         to={`/${language}/odyssey`}
         onClick={handleClick}
@@ -54,7 +54,7 @@ const MainMenu = ({ setFromMenuBtn }) => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "active-button button link" : "button link"
+          isActive ? `${baseClasses} ${activeClasses}` : baseClasses
         }
         to={`/${language}/certifications`}
         onClick={handleClick}
