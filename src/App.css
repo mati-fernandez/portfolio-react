@@ -97,7 +97,7 @@ button {
   transition: color 0.8s ease-in-out;
 } */
 
-#dev-mode-btn {
+/* #dev-mode-btn {
   position: absolute;
   top: 2.5vh;
   left: 2vh;
@@ -110,7 +110,7 @@ button {
 
 #dev-mode-btn:hover {
   background-color: var(--color-secondary-alpha);
-}
+} */
 
 @keyframes slideInRotate {
   0% {
@@ -692,7 +692,7 @@ figcaption {
     width: auto;
   } */
 
-  #dev-mode-btn {
+  /* #dev-mode-btn {
     position: absolute;
     top: 12.5vh;
     left: 2vh;
@@ -702,7 +702,7 @@ figcaption {
     border-radius: 50px;
     padding: 0.5rem;
     font-size: 0.5rem;
-  }
+  } */
 
   .infoBtn {
     top: 15vh;
