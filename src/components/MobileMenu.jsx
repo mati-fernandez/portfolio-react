@@ -29,10 +29,10 @@ const MobileMenu = ({ setFromMenuBtn }) => {
   ];
 
   return (
-    <div className="menu">
+    <div className="bg-background-alpha pointer-events-auto absolute top-0 z-10 h-[90svh] w-screen">
       <LanguageButton language={language} setLanguage={setLanguage} />
       <ThemeButton />
-      <nav id="mobile-main-menu" className="rounded-none">
+      <nav className="mobile-menu-instance pointer-events-auto absolute top-[50%] left-[50%] flex h-[85svh] w-full -translate-1/2 transform flex-col rounded-none pt-[8vh] text-[1.8rem]">
         <MainMenu setFromMenuBtn={setFromMenuBtn} />
         <div className="flex h-[100%] items-center justify-center">
           {links.map(

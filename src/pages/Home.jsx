@@ -31,7 +31,9 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
           onLoad={handleLoad}
         />
         {!imgLoading ? (
-          <p className="landscape:text-[0.7rem]">{translate("description")}</p>
+          <p className="font-bold landscape:text-[0.7rem] dark:font-normal">
+            {translate("description")}
+          </p>
         ) : null}
       </div>
     </div>

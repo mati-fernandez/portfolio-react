@@ -21,7 +21,7 @@ import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
 import Certifications from "./pages/Certifications";
 import Odyssey from "./pages/Odyssey";
-import MobileHeader from "./components/MobileHeader";
+import MobileFooterWrapper from "./components/MobileFooterWrapper";
 import DesktopHeader from "./components/DesktopHeader";
 import DesktopFooter from "./components/DesktopFooter";
 import Modal from "./components/Modal";
@@ -108,7 +108,7 @@ function App() {
       }, 10);
     }
 
-    document.body.setAttribute("data-theme", theme);
+    document.documentElement.classList.toggle("light", theme === "light");
 
     return () => clearTimeout(timeout);
   }, [theme]);
@@ -140,7 +140,7 @@ function App() {
       {/* LAYOUT PRINCIPAL */}
       <main className="flex h-[90svh] flex-col landscape:h-[100svh]">
         {/* HEADER */}
-        <MobileHeader
+        <MobileFooterWrapper
           showMenu={showMenu}
           setShowMenu={setShowMenu}
           setFromMenuBtn={setFromMenuBtn}

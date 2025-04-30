@@ -3,10 +3,12 @@ const Hamburguer = ({ showMenu }) => {
   return (
     <>
       {showMenu ? (
-        <span id="close-menu">X</span>
+        <span className="-translate-1/4 transform p-4 text-[2.5rem] font-normal">
+          X
+        </span>
       ) : (
         <svg
-          id="hamburguer-svg"
+          className="h-[1.8rem]"
           alt="Hamburguer btn"
           fill="currentColor"
           width="49"

@@ -8,7 +8,7 @@
   --color-general-secondary: grey;
   --color-general-secondary-alpha: #222222c5;
   --border-general: 1px solid black;
-  /*data-theme !light variables:*/
+  /* Dark theme variables (default) */
   --color-box-shadow: #737d60;
   --color-primary: white;
   --color-secondary: #3b3b3b;
@@ -69,7 +69,7 @@
     @apply my-5 leading-6 landscape:leading-4;
   }
 
-  [data-theme="light"] {
+  .light {
     --color-box-shadow: #424739;
     --color-primary: black;
     --color-secondary: #d3d2d2;
@@ -111,9 +111,11 @@
   .infoModal a {
     @apply bg-general-primary-alpha m-auto flex w-fit cursor-pointer rounded-[50px] border-1 border-solid border-[var(--border)] p-[2vh] font-[var(--font-weight)] text-[var(--color-primary)];
   }
-
   .infoBkg {
     @apply border-primary bg-background-primary -z-10 border p-4;
+  }
+  .mobile-menu-instance > a {
+    @apply bg-secondary-alpha rounded-none leading-none;
   }
 }
 
