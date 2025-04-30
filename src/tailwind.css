@@ -200,4 +200,7 @@
   .font-raleway {
     font-family: "Raleway", Arial, Helvetica, sans-serif;
   }
+  .fill-icon {
+    fill: var(--icon-fill);
+  }
 }

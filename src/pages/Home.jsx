@@ -25,14 +25,13 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
       />
       <div className="fixed top-[46%] left-1/2 flex w-[75vmin] flex-grow -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center overflow-y-hidden landscape:top-[51%] landscape:w-[100vmin]">
         <img
-          id="avatar"
-          className={`${imgLoading ? "opacity-0" : "opacity-100"}`}
+          className={`${imgLoading ? "opacity-0" : "w-[40vmin] opacity-100"}`}
           src={avatar}
           alt="avatar"
           onLoad={handleLoad}
         />
         {!imgLoading ? (
-          <p id="description">{translate("description")}</p>
+          <p className="landscape:text-[0.7rem]">{translate("description")}</p>
         ) : null}
       </div>
     </div>

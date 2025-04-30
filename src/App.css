@@ -112,7 +112,7 @@ button {
   background-color: var(--color-secondary-alpha);
 } */
 
-@keyframes slideInRotate {
+/* @keyframes slideInRotate {
   0% {
     opacity: 0;
     transform: translateY(-3vh) rotate(0deg);
@@ -136,7 +136,7 @@ button {
   height: 5vh;
   cursor: pointer;
   opacity: 0.5;
-}
+} */
 
 /* Para ganar en especificidad */
 /* .infoModal.hidden {
@@ -250,9 +250,9 @@ button {
   transform: translate(-25%);
 }
 
-#avatar {
+/* #avatar {
   width: 40vmin;
-}
+} */
 
 /* #description {
   transition: all 3s ease-out;
@@ -704,21 +704,21 @@ figcaption {
     font-size: 0.5rem;
   } */
 
-  .infoBtn {
+  /* .infoBtn {
     top: 15vh;
     right: 3vw;
     width: 3vw;
     height: 3vh;
-  }
+  } */
 
   /* .container {
     top: 51%;
     width: 100vmin;
   } */
 
-  #description {
+  /* #description {
     font-size: 0.7rem;
-  }
+  } */
   /* 
   .skills-list {
     margin-left: 1rem;
