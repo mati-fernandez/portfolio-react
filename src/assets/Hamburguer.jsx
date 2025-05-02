@@ -3,7 +3,7 @@ const Hamburguer = ({ showMenu }) => {
   return (
     <>
       {showMenu ? (
-        <span className="-translate-1/4 transform p-4 text-[2.5rem] font-normal">
+        <span className="-translate-1/4 transform p-4 text-[2rem] font-normal">
           X
         </span>
       ) : (

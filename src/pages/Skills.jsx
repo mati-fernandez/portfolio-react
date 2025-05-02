@@ -29,15 +29,15 @@ const SkillItem = ({ skillKey, skillData, transition }) => {
         <img
           src={`${srcPath}${skillData.src}`}
           alt={translate(`skills.${skillKey}.title`)}
-          className={`${isLoaded ? "visible" : "invisible"} mr-[0.5rem] max-h-[1rem] max-w-[1rem] landscape:mr-[5px]`}
+          className={`${isLoaded ? "visible" : "invisible"} square:mr-[5px] mr-[0.5rem] max-h-[1rem] max-w-[1rem]`}
           onLoad={() => setIsLoaded(true)}
         />
-        <span className="mr-1 overflow-clip font-medium whitespace-nowrap landscape:mr-0">
+        <span className="square:mr-0 mr-1 overflow-clip font-medium whitespace-nowrap">
           {translate(`skills.${skillKey}.title`)}
         </span>
       </div>
       <div
-        className="bg-secondary ml-[10px] w-[60%] overflow-hidden landscape:mr-[1vw] landscape:w-[60%]"
+        className="bg-secondary square:w-1/2 ml-[10px] w-[60%] overflow-hidden landscape:mr-[1vw] landscape:w-[60%]"
         style={{ height: "calc(var(--font-size-landscape) *0.6)" }}
       >
         <motion.div
@@ -57,7 +57,7 @@ const Skills = () => {
 
   return (
     <div className="flex flex-grow flex-col flex-wrap items-center justify-center overflow-y-hidden p-0 landscape:box-border landscape:flex-row landscape:flex-wrap landscape:content-center landscape:gap-[1.8vw] landscape:px-[4vw]">
-      <ul className="ml-[-4rem] w-[90%] list-none p-0 leading-[4.5svh] landscape:mt-2 landscape:ml-[1rem] landscape:grid landscape:w-[80%] landscape:grid-cols-2 landscape:p-0">
+      <ul className="skills-list">
         {Object.keys(data).map((skill, index) => (
           <SkillItem
             key={skill}

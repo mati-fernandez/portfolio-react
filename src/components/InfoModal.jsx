@@ -30,7 +30,7 @@ const InfoModal = ({
         imgKey: null,
       });
       clearTimeout(timeout);
-    }, 500);
+    }, 250);
   };
 
   return (
@@ -42,7 +42,7 @@ const InfoModal = ({
           variants={bkgVariants}
           initial="hidden"
           animate={modalVisibility ? "visible" : "hidden"}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
           className={`modal`}
           onClick={closeModal}
         >
@@ -50,13 +50,13 @@ const InfoModal = ({
             variants={modalVariants}
             initial="hidden"
             animate={modalVisibility ? "visible" : "hidden"}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
             className={`infoModal`}
           >
             <div className="infoBkg" onClick={(e) => e.stopPropagation()}>
               <h3>{translate(activeModal.itemKey).title}</h3>
               <p>{translate(activeModal.itemKey).text}</p>
-              <a className="link button" onClick={closeModal}>
+              <a onClick={closeModal}>
                 {translate(activeModal.itemKey).continue}
               </a>
             </div>

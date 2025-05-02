@@ -15,16 +15,31 @@ Tailwind CSS uses layers to organize styles with specific specificity and behavi
 
 - @layer utilities: Single-property utilities that apply specific styles to elements (e.g., margins, padding, colors, transitions).
 
-For transitions or styles applied to specific elements (like buttons), I decided to place them under @layer utilities to maintain flexibility and keep everything organized.
+When defining custom utilities under @layer utilities, Tailwind automatically matches them with its utility categories if the name includes a known prefix like text-, bg-, or border-. This means:
+
+- .bg-general-primary can be used as bg-general-primary in JSX
+
+- .general-primary won't match anything unless you specify a utility prefix like text- or bg- when using it
+> ⚠️ Note: If you define custom utility classes without a prefix (like .general-primary), they won't automatically match Tailwind's utility categories in JSX. This means you'll need to manually use prefixes like text-general-primary or border-general-primary.
+If you want to avoid thinking about it, just include the appropriate prefix in the class name when defining it (e.g., .text-general-primary), and Tailwind will match it automatically when used in JSX.
+
+> ⚠️ Example:
+A class like .general-primary sets color, so it won’t match Tailwind utilities like bg-, which expect a background-color property.
+To make it match bg-general-primary, the class must explicitly set background-color, like:
+
+```css
+.bg-general-primary {
+  background-color: var(--color-general-primary);
+}
+```
+> That’s why I added the bg- prefix — to clearly differentiate and make it compatible with Tailwind’s utility prefixing system.
 
 ## Notes on the Migration
 - The entire UI was rebuilt using utility classes from Tailwind CSS.
 
 - Styling is now co-located with components, improving readability and consistency.
 
-- Class names are descriptive and directly reflect layout and behavior.
-
-- No custom CSS files remain in the final version, unless strictly necessary (e.g. keyframes or special utilities).
+- Class names are descriptive, shorter than pure styles and directly reflect layout and behavior.
 
 - This migration was part of a general cleanup of the codebase. 
 
@@ -62,13 +77,7 @@ However, if a variable is defined only in a selector like `[data-theme="light"]`
 
 ## Implementing Motion for better integration with TailWind
 
-## Additional Notes & Practices
 
-- **Initial Flicker Prevention**: To avoid the initial flicker before Tailwind loads, we set a temporary background-color, color, and height inline in the **<body>** tag of `index.html`.
-
-- **SVG Color Inheritance**: We use **currentColor** in SVGs so they inherit the correct theme color dynamically.
-
-- **One-Time `calc()` Operations**: When a **calc()** operation is needed only once, we apply it inline (e.g., `style={{ height: calc(var(--font-size-landscape) * 0.6) }}`) instead of creating a utility class.
 - 
 ## Using @apply in Tailwind CSS
 When using @apply inside a Tailwind layer (@layer base, components, or utilities), the rule must only contain utility classes.
@@ -77,8 +86,35 @@ If you mix @apply with pure CSS properties inside the same selector, it will cau
 Quick reminder:
 @apply is used to group Tailwind utility classes together into a custom class, making your code cleaner and reusable without repeating the same utilities over and over.
 
+## Using @variants in @layer components
+To make a component class respond to breakpoints (like landscape:), I used the @variants directive inside the @layer components. Without it, Tailwind doesn't generate responsive versions of custom utility classes. This is required when defining custom classes that need to react to screen conditions.
+
+## Creating a custom breakpoint variant (square)
+To handle specific aspect ratios (like square-ish screens), I created a custom variant using Tailwind v4's @custom-variant:
+
+```css
+    @custom-variant square {
+        @media (min-aspect-ratio: 13/20) and (max-aspect-ratio: 1/1) {
+            @slot;
+        }
+    }
+```
+This allows me to use square: as a prefix in my utility classes (e.g., square:p-[2vh], square:text-[1rem], etc.), just like landscape:. No need to define anything in @layer utilities, unless I want to add specific custom utility classes for square screens.
+
+> Note on @slot  
+@slot is a special directive in Tailwind v4 that acts as a placeholder for where the utility styles will be inserted inside the custom variant. When you use a custom variant like square:bg-red-500, Tailwind replaces @slot with the actual utility (bg-red-500) wrapped in the appropriate media query or selector logic you defined.
+
+## Additional Notes & Practices
+
+- **Initial Flicker Prevention**: To avoid the initial flicker before Tailwind loads, we set a temporary background-color, color, and height inline in the **<body>** tag of `index.html`.
+
+- **SVG Color Inheritance**: We use **currentColor** in SVGs so they inherit the correct theme color dynamically.
+
+- **One-Time `calc()` Operations**: When a **calc()** operation is needed only once, we apply it inline (e.g., `style={{ height: calc(var(--font-size-landscape) * 0.6) }}`) instead of creating a utility class.
+
 ## Conclusion
 This migration helped me better organize styles and greatly reduced the amount of custom CSS required. It also aligned the project with more modern frontend practices and made future maintenance easier.
+
 ## I got rid of useAnimations hook
 The useAnimations hook was complex because I tried to control too many details of the animation, turning it into a massive and hard-to-maintain hook. Now, by transitioning to Tailwind CSS and using motion, I’m adopting a more standard, maintainable approach without the need to control every single animation detail. This change allowed me to get rid of a hook that had a complex logic and a lot of comments scattered across 162 lines of code.
 

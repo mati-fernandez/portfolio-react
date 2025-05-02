@@ -21,9 +21,8 @@ const ThemeButton = ({ className = "" }) => {
 
   return (
     <a
-      className={`${className} pointer-events-auto fixed z-10 landscape:static`}
+      className={`${className} pointer-events-auto fixed z-10 mx-[6vw] my-[2vh] flex cursor-pointer p-[2vh] landscape:static`}
       onClick={handleClick}
-      id="theme-btn"
     >
       {icon}
     </a>
