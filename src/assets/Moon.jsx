@@ -1,7 +1,6 @@
 const Moon = () => {
   return (
     <svg
-      className="h-[2rem] cursor-pointer landscape:h-[1.3rem] landscape:w-auto"
       width="33px"
       height="33px"
       alt="moon-icon"

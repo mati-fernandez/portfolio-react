@@ -3,7 +3,6 @@ const Cv = () => {
     <svg
       id="cv"
       alt="Hoja de vida"
-      className="h-[2rem] cursor-pointer landscape:h-[1.3rem] landscape:w-auto"
       viewBox="0 0 17 17"
       fill="currentColor"
       xmlnsXlink="http://www.w3.org/2000/svg"

@@ -104,6 +104,83 @@ This allows me to use square: as a prefix in my utility classes (e.g., square:p-
 > Note on @slot  
 @slot is a special directive in Tailwind v4 that acts as a placeholder for where the utility styles will be inserted inside the custom variant. When you use a custom variant like square:bg-red-500, Tailwind replaces @slot with the actual utility (bg-red-500) wrapped in the appropriate media query or selector logic you defined.
 
+## Framer Motion Migration: Staggered Buttons for page items
+
+To implement staggered animations for the page buttons using Framer Motion, I replaced the previous loop-based delay logic with `variants`.
+
+### Motion Variants Centralized in PageProvider
+In order to manage common animations across multiple pages, I centralized the animation variants in the PageProvider. This approach eliminates redundancy and makes animations reusable for various components or pages.
+```js
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: (isSquare) => ({
+    opacity: 0,
+    x: isSquare ? -100 : 0,
+    y: isSquare ? 0 : -100,
+  }),
+  visible: { opacity: 1, x: 0, y: 0 },
+};
+```
+
+- `containerVariants` handles the `staggerChildren` timing.
+- `itemVariants` defines the individual button animations.
+- Even though `hidden` in `containerVariants` is empty, it's required for `staggerChildren` to work.
+
+By defining the variants in the PageProvider, I ensure that animations are consistent and easier to maintain across different components, reducing duplicated logic.
+
+### Implementation in JSX
+
+```jsx
+<motion.div
+  variants={containerVariants}
+  initial="hidden"
+  animate="visible"
+>
+  {Object.keys(translationsData).map((key) =>
+    !viewMore[actualPage] && imagesData[key]?.class === "secondary"
+      ? null
+      : (
+          <motion.button
+            variants={itemVariants}
+            key={key}
+            className={`long-text page-item ${
+              imagesData[key]?.class === "secondary" ? "sec" : ""
+            }`}
+            onClick={() =>
+              handleOpenModal(
+                `odyssey.odysseyList.` + key,
+                `odyssey.` + key
+              )
+            }
+          >
+            {translationsData[key].title}
+          </motion.button>
+        )
+  )}
+  {/* View More / View Less buttons */}
+  {!viewMore[actualPage] ? (
+    <button ref={$viewMore} className="view-more" onClick={handleViewMore}>
+      {translate("odyssey.buttons.viewMore")}
+    </button>
+  ) : (
+    <button ref={$viewLess} className="view-less" onClick={handleViewMore}>
+      {translate("odyssey.buttons.viewLess")}
+    </button>
+  )}
+</motion.div>
+```
+
+This is a clean and scalable way to apply entrance animations with staggered timing using Framer Motion, without manually managing delays with JavaScript.
+
+
 ## Additional Notes & Practices
 
 - **Initial Flicker Prevention**: To avoid the initial flicker before Tailwind loads, we set a temporary background-color, color, and height inline in the **<body>** tag of `index.html`.

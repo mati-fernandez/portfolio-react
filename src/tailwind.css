@@ -42,6 +42,12 @@
 @layer base {
   html {
     font-size: 3.5vmin;
+    @variant square {
+      font-size: 2.7vmin;
+    }
+    @variant landscape {
+      font-size: 2.3vmin;
+    }
   }
 
   *,
@@ -62,7 +68,7 @@
     font-family: "Raleway", Arial, Helvetica, sans-serif;
     background-color: var(--color-background-primary);
     color: var(--color-primary);
-    margin: 0 auto;
+    /* margin: 0 auto; */
     padding: 0;
     text-align: center;
   }
@@ -75,9 +81,13 @@
     @apply text-[1.17em] font-bold;
   }
 
-  p {
-    @apply my-5 leading-6 landscape:leading-4;
+  svg {
+    @apply h-[2rem] cursor-pointer landscape:h-[1.5rem] landscape:w-auto;
   }
+
+  /* p {
+    @apply my-5 leading-6;
+  } */
 
   .light {
     --color-box-shadow: #424739;
@@ -103,7 +113,7 @@
 
 @layer components {
   .modal {
-    @apply bg-background-alpha pointer-events-auto fixed top-1/2 left-1/2 z-10 h-full w-screen -translate-x-1/2 -translate-y-1/2;
+    @apply bg-background-alpha-secondary pointer-events-auto fixed top-1/2 left-1/2 z-10 box-border h-[100svh] w-screen -translate-x-1/2 -translate-y-1/2;
   }
   .modalBkg {
     @variant wide {
@@ -111,16 +121,16 @@
     }
   }
   .infoModal {
-    @apply pointer-events-auto absolute top-1/2 left-1/2 w-[80%] origin-center -translate-x-1/2 -translate-y-1/2 content-center text-[2.2vh] whitespace-pre-wrap;
+    @apply pointer-events-auto absolute top-1/2 left-1/2 w-[80%] origin-center -translate-x-1/2 -translate-y-1/2 content-center whitespace-pre-wrap landscape:max-w-[50%];
   }
   .infoModal h3 {
-    @apply m-0;
+    @apply m-2;
   }
   .infoModal p {
     @apply font-[var(--weight)];
   }
   .modal a {
-    @apply bg-general-primary-alpha hover:bg-general-primary mx-auto my-3 flex w-fit cursor-pointer rounded-[50px] border-1 border-solid border-[var(--border)] px-[2vh] py-[1vh] font-[var(--weight)] text-[var(--color-primary)];
+    @apply bg-general-primary-alpha hover:bg-general-primary mx-auto my-3 flex w-fit cursor-pointer rounded-[50px] border-1 border-solid border-[var(--border)] p-2 font-[var(--weight)] text-[var(--color-primary)];
   }
   .infoBkg {
     @apply border-primary bg-background-primary -z-10 border p-4;
@@ -178,6 +188,19 @@
     @variant wide {
       @apply mt-2 ml-[1rem] grid w-[80%] grid-cols-2 p-0;
     }
+  }
+  .page {
+    @apply flex flex-col flex-wrap content-center items-center justify-center;
+    @variant square {
+      @apply box-border flex-row flex-wrap content-center gap-[1.8vw] px-[4vw] py-0;
+    }
+  }
+  .page-item {
+    @apply text-primary border-primary bg-general-primary-alpha hover:bg-general-primary m-3 flex h-fit cursor-pointer justify-center rounded-[50px] border-1 border-solid p-2 text-nowrap;
+  }
+  .view-more,
+  .view-less {
+    @apply m-3 cursor-pointer hover:opacity-100;
   }
 }
 

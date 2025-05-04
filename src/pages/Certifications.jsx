@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useContext, useEffect } from 'react';
-import { PageContext } from '../context/contexts';
-import { TranslationContext } from '../context/contexts';
-import { StylesContext } from '../context/contexts';
-import Info from '../assets/Info';
+import { useContext, useEffect } from "react";
+import { PageContext } from "../context/contexts";
+import { TranslationContext } from "../context/contexts";
+import { StylesContext } from "../context/contexts";
+import { motion } from "motion/react";
+import Info from "../assets/Info";
 
 const Certifications = ({ notFirstLoad, handleOpenModal }) => {
   const {
@@ -14,15 +15,17 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
     handleViewMore,
     $viewMore,
     $viewLess,
+    containerVariants,
+    itemVariants,
   } = useContext(PageContext);
 
-  const { updateDynamicStyles, dynamicStyles } = useContext(StylesContext);
+  const { updateDynamicStyles } = useContext(StylesContext);
 
   const { translate, getImage, endpoint } = useContext(TranslationContext);
 
-  const imagesData = getImage('certifications');
+  const imagesData = getImage("certifications");
 
-  const translationsData = translate('certifications.certificationsList');
+  const translationsData = translate("certifications.certificationsList");
 
   useEffect(() => {
     if (notFirstLoad && $viewMore.current)
@@ -36,51 +39,56 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
         <Info
           notFirstLoad={notFirstLoad}
           handleOpenModal={handleOpenModal}
-          itemKey={'certifications.info'}
+          itemKey={"certifications.info"}
         />
-        <>
+        <motion.div
+          className="page justify-items-center"
+          custom={aspectRatio !== "portrait"}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {Object.keys(translationsData).map((key) =>
             !viewMore[actualPage] &&
-            imagesData[key]?.class === 'secondary' ? null : (
-              <div
-                style={dynamicStyles}
+            imagesData[key]?.class === "secondary" ? null : (
+              <motion.button
+                custom={aspectRatio !== "portrait"}
+                variants={itemVariants}
                 key={key}
                 className={`long-text page-item ${
-                  imagesData[key]?.class === 'secondary' ? 'secondary' : ''
+                  imagesData[key]?.class === "secondary" ? "sec" : ""
                 }`}
                 onClick={() =>
                   handleOpenModal(
                     `certifications.certificationsList.` + key,
-                    `certifications.` + key
+                    `certifications.` + key,
                   )
                 }
               >
                 {translationsData[key].title}
-              </div>
-            )
+              </motion.button>
+            ),
           )}
           {/*.............................Ver
           más................................*/}
           {!viewMore[actualPage] ? (
             <button
-              style={dynamicStyles}
               ref={$viewMore}
               className="view-more"
               onClick={handleViewMore}
             >
-              {translate('certifications.buttons.viewMore')}
+              {translate("certifications.buttons.viewMore")}
             </button>
           ) : (
             <button
-              style={dynamicStyles}
               ref={$viewLess}
               className="view-less"
               onClick={handleViewMore}
             >
-              {translate('certifications.buttons.viewLess')}
+              {translate("certifications.buttons.viewLess")}
             </button>
           )}
-        </>
+        </motion.div>
       </div>
     </>
   );

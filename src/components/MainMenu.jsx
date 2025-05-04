@@ -11,7 +11,7 @@ const MainMenu = ({ setFromMenuBtn }) => {
   };
 
   const baseClasses =
-    "p-0 font-[inherit] rounded-none  flex h-[100%] flex-col justify-center text-inherit no-underline mx-[6vw] my-[2vh] cursor-pointer rounded-none border-none p-[2vh] landscape:text-[0.8rem] landscape:m-0 landscape:hover:bg-general-primary";
+    "p-0 font-[inherit] rounded-none  flex h-[100%] flex-col justify-center text-inherit no-underline mx-[6vw] my-[2vh] cursor-pointer rounded-none border-none p-[2vh] landscape:m-0 landscape:hover:bg-general-primary";
   const activeClasses = "bg-primary primary";
 
   return (

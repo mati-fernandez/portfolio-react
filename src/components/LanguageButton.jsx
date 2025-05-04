@@ -20,7 +20,7 @@ const LanguageButton = () => {
 
   return (
     <select
-      className="fixed top-0 right-0 z-10 mx-[6vw] my-[2vh] cursor-pointer bg-transparent p-[2vh] text-[1.3rem] focus-visible:outline-none landscape:static landscape:m-0 landscape:h-full landscape:rounded-none landscape:p-0 landscape:text-[0.8rem]"
+      className="fixed top-0 right-0 z-10 mx-[6vw] my-[2vh] cursor-pointer bg-transparent p-[2vh] text-[1.3rem] focus-visible:outline-none landscape:static landscape:m-0 landscape:h-full landscape:rounded-none landscape:p-0"
       value={language}
       onChange={handleLanguageChange}
     >

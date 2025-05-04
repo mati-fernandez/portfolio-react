@@ -36,9 +36,9 @@ export default function useAnimations({
       let fadeIn = null;
       let removeFadeIn = null;
       const progress = Array.from(document.querySelectorAll(".progress"));
-      const buttons = Array.from(
-        document.querySelectorAll(".page-item"),
-      ).reverse();
+      //   const buttons = Array.from(
+      //     document.querySelectorAll(".page-item"),
+      //   ).reverse();
 
       const desktopHeaderBtns = Array.from(
         document.querySelectorAll("#desktop-header a"),
@@ -67,10 +67,10 @@ export default function useAnimations({
         progress.forEach((item) => item.classList.remove("fill-progress"));
         desktopHeaderBtns.forEach((item) => item.classList.remove("glowing"));
 
-        buttons.forEach((button) => {
-          button.classList.remove = "slide-in";
-          button.style.opacity = 1;
-        });
+        // buttons.forEach((button) => {
+        //   button.classList.remove = "slide-in";
+        //   button.style.opacity = 1;
+        // });
       } else {
         setFromThemeBtn(false);
         setFromLanguageBtn(false);
@@ -120,11 +120,11 @@ export default function useAnimations({
           }, 10);
         }
 
-        buttons.forEach((button, index) => {
-          const delay = index * delayIncrement;
-          button.style.animationDelay = `${delay}s`;
-          button.classList.add("slide-in");
-        });
+        // buttons.forEach((button, index) => {
+        //   const delay = index * delayIncrement;
+        //   button.style.animationDelay = `${delay}s`;
+        //   button.classList.add("slide-in");
+        // });
 
         return () => {
           clearTimeout(fillTimeout),

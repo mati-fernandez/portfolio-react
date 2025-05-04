@@ -465,16 +465,12 @@ button {
   font-weight: var(--font-weight);
 } */
 
-.page {
-  /* padding: 1rem 1rem 15rem; El bottom hace que se vea bien en tel. No uso medidas viewport porque no se ajusta igual en todos los browsers */
+/* .page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  /* align-content: space-around; */
   align-items: center;
-  /* height: 90svh; */
-  /* overflow: hidden; */
 }
 
 .page-item {
@@ -493,9 +489,9 @@ button {
   transition:
     margin 1s ease,
     font-size 1s ease;
-}
+} */
 
-@keyframes slideIn {
+/* @keyframes slideIn {
   from {
     transform: translateY(-100vh);
     opacity: 0;
@@ -508,7 +504,7 @@ button {
 
 .slide-in {
   animation: slideIn 200ms ease-out forwards;
-}
+} */
 
 @keyframes fadeIn {
   from {
@@ -523,23 +519,23 @@ button {
   animation: fadeIn 1s ease-out forwards;
 }
 
-.view-more {
+/* .view-more {
   opacity: 0;
   cursor: pointer;
   background: none;
   text-decoration: none;
   color: var(--color-primary);
   align-self: center;
-}
+} */
 
-.view-less {
+/* .view-less {
   opacity: 0.5;
   cursor: pointer;
   background: none;
   text-decoration: none;
   color: var(--color-primary);
   align-self: center;
-}
+} */
 
 /* .link {
   display: flex;
@@ -611,6 +607,7 @@ button {
   box-sizing: border-box;
   flex-direction: row;
   flex-wrap: wrap;
+  align-content: center;
 }
 
 /******** Aspect 0.53 ********/
@@ -627,9 +624,9 @@ button {
   figcaption {
     font-size: 0.8rem;
   } */
-  .page {
+  /* .page {
     padding: calc(2rem - 1vw) 1vw;
-  }
+  } */
 }
 
 /* Para skill list */
@@ -916,12 +913,7 @@ button {
     }
   }
 
-  /* .page > button:hover:not(.view-more, .view-less) {
-    background-color: var(--color-general-primary);
-    height: 110%;
-  } */
-
-  .view-more {
+  /* .view-more {
     font-size: 0.7rem;
   }
 
@@ -935,7 +927,7 @@ button {
 
   .view-less:hover {
     opacity: 1;
-  }
+  } */
 
   /**** FOOTER ****/
   /* @keyframes icons {

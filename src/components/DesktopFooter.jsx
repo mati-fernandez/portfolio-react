@@ -8,7 +8,7 @@ import { AnimatedFooterItem } from "./AnimatedFooterItem";
 
 const DesktopFooter = () => {
   const classes =
-    "primary flex h-fit cursor-pointer items-center justify-center border-0 bg-transparent bg-none p-[2vh] font-[inherit] y-[2vh] mx-[6vw] landscape:m-0 landscape:text-[0.8rem] landscape:hover:bg-general-primary rounded-full";
+    "flex h-fit cursor-pointer items-center justify-center border-0 bg-transparent bg-none p-[2vh] y-[2vh] mx-[6vw] landscape:m-0 landscape:hover:bg-general-primary rounded-full";
 
   const links = [
     {
