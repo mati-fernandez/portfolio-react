@@ -54,9 +54,9 @@ const Modal = ({
         className="detail"
       >
         <div className="modalBkg" onClick={(e) => e.stopPropagation()}>
-          <h3 className="modalH3">
+          <h1 className="modalTitle">
             {translate(activeModal.itemKey)?.title || "undefined"}
-          </h3>
+          </h1>
           <figure className="modalFigure">
             <img
               className="modalImg"
@@ -73,11 +73,14 @@ const Modal = ({
             )}
           </figure>
           <div className="m-0 flex justify-around">
-            <a className="panelBtn left-[9vw]" onClick={closeModal}>
+            <a
+              className="panelBtn wide:scale-75 left-[9vw]"
+              onClick={closeModal}
+            >
               {translate(activeModal.itemKey).close}
             </a>
             <a
-              className="panelBtn wide:text-[2.2vw] right-[9vw]"
+              className="panelBtn right-[9vw]"
               href={getImage(activeModal.imgKey).link}
               target="_blank"
             >

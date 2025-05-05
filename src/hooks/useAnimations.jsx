@@ -59,10 +59,10 @@ export default function useAnimations({
         !fromThemeBtn &&
         !fromLanguageBtn
       ) {
-        if ($viewMore.current) {
-          $viewMore.current.style.animation = "none";
-          $viewMore.current.style.display = "block";
-        }
+        // if ($viewMore.current) {
+        //   $viewMore.current.style.animation = "none";
+        //   $viewMore.current.style.display = "block";
+        // }
 
         progress.forEach((item) => item.classList.remove("fill-progress"));
         desktopHeaderBtns.forEach((item) => item.classList.remove("glowing"));
@@ -79,26 +79,26 @@ export default function useAnimations({
         let headerTimeout = null;
         const delayIncrement = 0.1;
 
-        // Fade in del view more
-        //Se comprueba si el botón existe en esa página
-        if ($viewMore.current) {
-          // Se oculta en la primera carga para esperar la animación de entrada:
-          $viewMore.current.style.opacity = 0;
-          // Evitar intaracción para no cortar la animación si lo tocan antes que se complete:
-          $viewMore.current.style.pointerEvents = "none";
-          // Despues de llegar los enlaces de pagina aparece view more
-          fadeIn = setTimeout(() => {
-            $viewMore.current.classList.add("fade-in");
-            // Saco el forwards para que funcione el hover
-            // console.log($viewMore.current);
-            removeFadeIn = setTimeout(() => {
-              //   console.log($viewMore.current);
-              $viewMore.current.style.opacity = 0.5;
-              $viewMore.current.classList.remove("fade-in");
-              $viewMore.current.style.pointerEvents = "all";
-            }, 1000);
-          }, 1000);
-        }
+        // // Fade in del view more
+        // //Se comprueba si el botón existe en esa página
+        // if ($viewMore.current) {
+        //   // Se oculta en la primera carga para esperar la animación de entrada:
+        //   $viewMore.current.style.opacity = 0;
+        //   // Evitar intaracción para no cortar la animación si lo tocan antes que se complete:
+        //   $viewMore.current.style.pointerEvents = "none";
+        //   // Despues de llegar los enlaces de pagina aparece view more
+        //   fadeIn = setTimeout(() => {
+        //     $viewMore.current.classList.add("fade-in");
+        //     // Saco el forwards para que funcione el hover
+        //     // console.log($viewMore.current);
+        //     removeFadeIn = setTimeout(() => {
+        //       //   console.log($viewMore.current);
+        //       $viewMore.current.style.opacity = 0.5;
+        //       $viewMore.current.classList.remove("fade-in");
+        //       $viewMore.current.style.pointerEvents = "all";
+        //     }, 1000);
+        //   }, 1000);
+        // }
 
         progress.forEach((item) => item.classList.remove("fill-progress"));
         const fillTimeout = setTimeout(() => {

@@ -506,7 +506,7 @@ button {
   animation: slideIn 200ms ease-out forwards;
 } */
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -517,7 +517,7 @@ button {
 
 .fade-in {
   animation: fadeIn 1s ease-out forwards;
-}
+} */
 
 /* .view-more {
   opacity: 0;
@@ -601,14 +601,13 @@ button {
 /* .long-text {
   font-size: clamp(0.1rem, 0.3rem, 0.5rem);
 } NOVAMAAASS!*/
-
+/* 
 .long-content {
-  /* height: 90svh; */
   box-sizing: border-box;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
-}
+} */
 
 /******** Aspect 0.53 ********/
 

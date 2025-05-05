@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { PageContext } from "../context/contexts";
 import { TranslationContext } from "../context/contexts";
 import { StylesContext } from "../context/contexts";
 import { motion } from "motion/react";
 import Info from "../assets/Info";
+import ViewToggleButton from "../components/ViewToggleButton";
 
 const Projects = ({ notFirstLoad, handleOpenModal }) => {
   const {
@@ -22,6 +23,8 @@ const Projects = ({ notFirstLoad, handleOpenModal }) => {
   const { translate, getImage, endpoint } = useContext(TranslationContext);
 
   const imagesData = getImage("projects");
+
+  const alreadyShownOnce = useRef(false);
 
   const translationsData = translate("projects.projectsList");
   useEffect(() => {
@@ -49,7 +52,8 @@ const Projects = ({ notFirstLoad, handleOpenModal }) => {
         animate="visible"
       >
         {Object.keys(translationsData).map((key) =>
-          key === "portfolioReact" ? null : (
+          key === "portfolioReact" ? null : !viewMore[actualPage] &&
+            imagesData[key]?.class === "secondary" ? null : (
             <motion.button
               custom={aspectRatio !== "portrait"}
               variants={itemVariants}
@@ -66,6 +70,10 @@ const Projects = ({ notFirstLoad, handleOpenModal }) => {
             </motion.button>
           ),
         )}
+        <ViewToggleButton
+          alreadyShownOnce={alreadyShownOnce}
+          translateKey={"projects"}
+        />
       </motion.div>
     </div>
   );

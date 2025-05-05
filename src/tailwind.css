@@ -77,6 +77,9 @@
     height: inherit;
   }
 
+  h1 {
+    @apply text-[1.5rem] font-bold;
+  }
   h3 {
     @apply text-[1.17em] font-bold;
   }
@@ -113,7 +116,7 @@
 
 @layer components {
   .modal {
-    @apply bg-background-alpha-secondary pointer-events-auto fixed top-1/2 left-1/2 z-10 box-border h-[100svh] w-screen -translate-x-1/2 -translate-y-1/2;
+    @apply bg-background-alpha wide:bg-background-alpha-secondary pointer-events-auto fixed top-1/2 left-1/2 z-10 box-border h-[100svh] w-screen -translate-x-1/2 -translate-y-1/2;
   }
   .modalBkg {
     @variant wide {
@@ -123,7 +126,7 @@
   .infoModal {
     @apply pointer-events-auto absolute top-1/2 left-1/2 w-[80%] origin-center -translate-x-1/2 -translate-y-1/2 content-center whitespace-pre-wrap landscape:max-w-[50%];
   }
-  .infoModal h3 {
+  .infoModal h1 {
     @apply m-2;
   }
   .infoModal p {
@@ -139,24 +142,24 @@
     @apply bg-secondary-alpha rounded-none leading-none;
   }
   .panelBtn {
-    @apply border-primary bg-general-primary-alpha m-0 h-fit w-fit border-1 border-solid text-[4vw] font-[var(--weight)];
+    @apply border-primary bg-general-primary-alpha m-0 h-fit w-fit border-1 border-solid font-[var(--weight)];
     @variant landscape {
       @apply text-[2vw];
     }
     @variant wide {
-      @apply absolute -bottom-[5vh] text-[1.5vw] font-normal;
+      @apply absolute -bottom-[5vh] font-normal;
     }
   }
   .detail {
     @apply square:p-[2vh] pointer-events-auto absolute top-1/2 left-1/2 flex h-full w-full origin-center -translate-x-1/2 -translate-y-1/2 flex-col justify-center landscape:h-[80vh] landscape:w-[85vw];
   }
-  .modalH3 {
-    @apply text-primary mb-0 text-[6vw];
+  .modalTitle {
+    @apply text-primary mb-0;
     @variant square {
-      @apply mt-[2vh] text-[1rem];
+      @apply mt-[4vh];
     }
     @variant wide {
-      @apply bg-background-secondary border-primary absolute top-[-10%] left-1/2 z-10 -translate-x-1/2 rounded-[50px] border-1 border-solid px-[1.2vw] py-0 text-[4vw] font-[var(--font-weight-h3)] text-nowrap;
+      @apply bg-background-secondary border-primary absolute top-[-10%] left-1/2 z-10 -translate-x-1/2 rounded-[50px] border-1 border-solid px-[1.2vw] py-0 font-[var(--font-weight-h3)] text-nowrap;
     }
   }
   .modalFigure {
@@ -172,9 +175,9 @@
     }
   }
   .modalCaption {
-    @apply square:text-[0.8rem] m-[2vh] text-[4.3vw] font-[var(--font-weight)];
+    @apply m-[2vh] font-[var(--font-weight)];
     @variant wide {
-      @apply bg-background-secondary border-primary -mr-[2vw] h-fit w-[60%] rounded-[50px] border-1 border-solid px-[1.3vw] py-[2vh] text-[1.7vw] font-normal;
+      @apply bg-background-secondary border-primary -mr-[2vw] h-fit w-[60%] rounded-[50px] border-1 border-solid px-[1.3vw] py-[2vh] font-normal;
     }
   }
   .skills-list {
@@ -192,15 +195,11 @@
   .page {
     @apply flex flex-col flex-wrap content-center items-center justify-center;
     @variant square {
-      @apply box-border flex-row flex-wrap content-center gap-[1.8vw] px-[4vw] py-0;
+      @apply box-border flex-row flex-wrap content-center px-[4vw] py-0;
     }
   }
   .page-item {
-    @apply text-primary border-primary bg-general-primary-alpha hover:bg-general-primary m-3 flex h-fit cursor-pointer justify-center rounded-[50px] border-1 border-solid p-2 text-nowrap;
-  }
-  .view-more,
-  .view-less {
-    @apply m-3 cursor-pointer hover:opacity-100;
+    @apply text-primary border-primary bg-general-primary-alpha hover:bg-general-primary m-2 flex h-fit cursor-pointer justify-center rounded-[50px] border-1 border-solid p-2 text-nowrap;
   }
 }
 

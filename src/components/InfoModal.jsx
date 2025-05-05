@@ -54,7 +54,7 @@ const InfoModal = ({
             className={`infoModal`}
           >
             <div className="infoBkg" onClick={(e) => e.stopPropagation()}>
-              <h3>{translate(activeModal.itemKey).title}</h3>
+              <h1>{translate(activeModal.itemKey).title}</h1>
               <p>{translate(activeModal.itemKey).text}</p>
               <a onClick={closeModal}>
                 {translate(activeModal.itemKey).continue}

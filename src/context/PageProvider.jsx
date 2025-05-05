@@ -83,14 +83,14 @@ export const PageProvider = ({ children }) => {
     };
   }, []);
 
-  const handleViewMore = (e) => {
-    if (e.target.matches(".view-more")) {
+  const handleViewMore = (action) => {
+    if (action === "show") {
       setViewMore((prevState) => ({
         ...prevState,
         [actualPage]: true,
       }));
     }
-    if (e.target.matches(".view-less")) {
+    if (action === "hide") {
       setViewMore((prevState) => ({
         ...prevState,
         [actualPage]: false,

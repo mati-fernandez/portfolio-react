@@ -23,7 +23,7 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
         handleOpenModal={handleOpenModal}
         itemKey={"info"}
       />
-      <div className="fixed top-[46%] left-1/2 flex w-[75vmin] flex-grow -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center overflow-y-hidden landscape:top-[51%] landscape:w-[100vmin]">
+      <div className="square:p-4 fixed top-[46%] left-1/2 flex w-[75vmin] flex-grow -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center overflow-y-hidden landscape:top-[51%] landscape:w-[100vmin]">
         <img
           className={`${imgLoading ? "opacity-0" : "w-[40vmin] opacity-100"}`}
           src={avatar}
@@ -31,7 +31,7 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
           onLoad={handleLoad}
         />
         {!imgLoading ? (
-          <p className="font-bold dark:font-normal">
+          <p className="mt-1 text-sm font-bold dark:font-normal">
             {translate("description")}
           </p>
         ) : null}
