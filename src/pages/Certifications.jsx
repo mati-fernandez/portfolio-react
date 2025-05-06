@@ -27,6 +27,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
         itemKey={"certifications.info"}
       />
       <motion.div
+        key={`certs-${viewMore[actualPage]}`}
         className={`page justify-items-center ${viewMore ? "flex-row" : "flex-col"}`}
         variants={containerVariants}
         initial="hidden"
@@ -39,7 +40,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
               custom={aspectRatio !== "portrait"}
               variants={itemVariants}
               key={key}
-              className={`long-text page-item ${
+              className={`page-item ${
                 imagesData[key]?.class === "secondary" ? "sec" : ""
               }`}
               onClick={() =>

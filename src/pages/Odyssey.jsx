@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { TranslationContext } from "../context/contexts";
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { PageContext } from "../context/contexts";
 import { motion } from "motion/react";
 import Info from "../assets/Info";
@@ -17,8 +17,6 @@ const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
 
   const translationsData = translate("odyssey.odysseyList");
 
-  const alreadyShownOnce = useRef(false);
-
   return (
     <main className={`page flex-grow overflow-y-hidden`}>
       <Info
@@ -27,6 +25,7 @@ const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
         itemKey={"odyssey.info"}
       />
       <motion.div
+        key={`odysseys-${viewMore[actualPage]}`}
         className="page justify-items-center"
         variants={containerVariants}
         initial="hidden"
@@ -39,7 +38,7 @@ const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
               custom={aspectRatio !== "portrait"}
               variants={itemVariants}
               key={key}
-              className={`long-text page-item ${
+              className={`page-item ${
                 imagesData[key]?.class === "secondary" ? "sec" : ""
               }`}
               onClick={() =>
@@ -50,10 +49,7 @@ const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
             </motion.button>
           ),
         )}
-        <ViewToggleButton
-          alreadyShownOnce={alreadyShownOnce}
-          translateKey={"odyssey"}
-        />
+        <ViewToggleButton translateKey={"odyssey"} />
       </motion.div>
     </main>
   );

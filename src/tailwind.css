@@ -200,6 +200,9 @@
   .page-item {
     @apply text-primary border-primary bg-general-primary-alpha hover:bg-general-primary m-2 flex h-fit cursor-pointer justify-center rounded-[50px] border-1 border-solid p-2 text-nowrap;
   }
+  .sec {
+    @apply bg-general-secondary-alpha;
+  }
 }
 
 /************************************/

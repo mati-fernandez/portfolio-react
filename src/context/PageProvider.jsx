@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { PageContext } from "./contexts";
 
@@ -39,9 +39,6 @@ export const PageProvider = ({ children }) => {
     exercises: false,
     certifications: false,
   });
-
-  const $viewMore = useRef(null);
-  const $viewLess = useRef(null);
 
   const getActualPage = () => {
     const actual = location.pathname.match(/(\w+)$/)?.[0] || ""; // Captura la última palabra del pathname
@@ -104,8 +101,6 @@ export const PageProvider = ({ children }) => {
         viewMore,
         handleViewMore,
         actualPage,
-        $viewLess,
-        $viewMore,
         aspectRatio,
         setAspectRatio,
         itemVariants,

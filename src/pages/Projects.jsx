@@ -27,6 +27,7 @@ const Projects = ({ notFirstLoad, handleOpenModal }) => {
         itemKey={"projects.info"}
       />
       <motion.div
+        key={`projects-${viewMore[actualPage]}`}
         className="page justify-items-center"
         custom={aspectRatio !== "portrait"}
         variants={containerVariants}
@@ -40,7 +41,9 @@ const Projects = ({ notFirstLoad, handleOpenModal }) => {
               custom={aspectRatio !== "portrait"}
               variants={itemVariants}
               key={key}
-              className="long-text page-item"
+              className={`page-item ${
+                imagesData[key]?.class === "secondary" ? "sec" : ""
+              }`}
               onClick={() =>
                 handleOpenModal(
                   `projects.projectsList.` + key,

@@ -1,40 +1,33 @@
 /* eslint-disable react/prop-types */
 import { motion } from "motion/react";
 import { useContext } from "react";
-import { PageContext } from "../context/contexts";
-import { TranslationContext } from "../context/contexts";
+import { PageContext, TranslationContext } from "../context/contexts";
 
-const ViewToggleButton = ({ alreadyShownOnce, translateKey }) => {
+const ViewToggleButton = ({ translateKey }) => {
   const { actualPage, viewMore, handleViewMore } = useContext(PageContext);
   const { translate } = useContext(TranslationContext);
 
+  const isExpanded = viewMore[actualPage];
+  const labelKey = isExpanded ? "viewLess" : "viewMore";
+
+  const motionProps = {
+    initial: { opacity: 0 },
+    animate: { opacity: 0.5 },
+    transition: { delay: 0.5, duration: 2 },
+  };
+
+  const handleClick = () => {
+    handleViewMore(isExpanded ? "hide" : "show");
+  };
+
   return (
-    <>
-      {!viewMore[actualPage] ? (
-        <motion.button
-          initial={!alreadyShownOnce.current ? { opacity: 0 } : false}
-          animate={!alreadyShownOnce.current ? { opacity: 0.5 } : false}
-          transition={
-            !alreadyShownOnce.current ? { delay: 0.5, duration: 2 } : undefined
-          }
-          ref={alreadyShownOnce}
-          className="m-3 cursor-pointer opacity-50"
-          onClick={() => handleViewMore("show")}
-        >
-          {translate(`${translateKey}.buttons.viewMore`)}
-        </motion.button>
-      ) : (
-        <button
-          className="m-3 cursor-pointer opacity-50"
-          onClick={() => {
-            alreadyShownOnce.current = true;
-            handleViewMore("hide");
-          }}
-        >
-          {translate(`${translateKey}.buttons.viewLess`)}
-        </button>
-      )}
-    </>
+    <motion.button
+      {...motionProps}
+      className="m-3 cursor-pointer opacity-50"
+      onClick={handleClick}
+    >
+      {translate(`${translateKey}.buttons.${labelKey}`)}
+    </motion.button>
   );
 };
 
