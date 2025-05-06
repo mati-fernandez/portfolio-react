@@ -1,10 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { TranslationContext } from "../context/contexts";
 import { useContext } from "react";
+import { motion } from "motion/react";
 
 // eslint-disable-next-line react/prop-types
 const MainMenu = ({ setFromMenuBtn }) => {
   const { translate, language } = useContext(TranslationContext);
+
+  const MotionNavLink = motion(NavLink);
 
   const handleClick = () => {
     if (setFromMenuBtn) setFromMenuBtn(true);
@@ -21,7 +24,15 @@ const MainMenu = ({ setFromMenuBtn }) => {
   return (
     <>
       {routes.map(({ path, label }) => (
-        <NavLink
+        <MotionNavLink
+          variants={{
+            hidden: { y: 0, rotate: 0 },
+            visible: {
+              y: [0, 20, -12, 10, -3, 0],
+              rotate: [0, 1800, 2880, 3960, 3960, 3960],
+            },
+          }}
+          transition={{ duration: 1, ease: [0, 0.75, 0.37, 0.95] }}
           key={path}
           to={`/${language}/${path}`}
           onClick={handleClick}
@@ -30,7 +41,7 @@ const MainMenu = ({ setFromMenuBtn }) => {
           }
         >
           {translate(label)}
-        </NavLink>
+        </MotionNavLink>
       ))}
     </>
   );

@@ -9,11 +9,8 @@ import {
 } from "react-router-dom";
 import { useContext } from "react";
 import { TranslationContext } from "./context/contexts";
-import { PageContext } from "./context/contexts";
-import { ThemeContext } from "./context/contexts";
 import { useEffect, useState } from "react";
 import "./App.css";
-import useAnimations from "./hooks/useAnimations";
 
 // COMPONENTS/PAGES
 import Home from "./pages/Home";
@@ -35,27 +32,9 @@ function App() {
   });
   const [modalVisibility, setModalVisibility] = useState(false);
   const [fromMenuBtn, setFromMenuBtn] = useState(false);
-  const [notFirstLoad, setNotFirstLoad] = useState([]);
-  const { language, fromLanguageBtn, setFromLanguageBtn, loadImages } =
-    useContext(TranslationContext);
-  const { theme, fromThemeBtn, setFromThemeBtn } = useContext(ThemeContext);
-  const { actualPage, aspectRatio } = useContext(PageContext);
+  const { language, fromLanguageBtn } = useContext(TranslationContext);
 
   const location = useLocation();
-
-  useAnimations({
-    location,
-    theme,
-    notFirstLoad,
-    setNotFirstLoad,
-    modalVisibility,
-    setShowMenu,
-    fromLanguageBtn,
-    setFromLanguageBtn,
-    fromThemeBtn,
-    setFromThemeBtn,
-    aspectRatio,
-  });
 
   const navigate = useNavigate();
 
@@ -92,8 +71,6 @@ function App() {
       }, 150);
       navigate(1);
     }
-
-    if (!notFirstLoad.includes(actualPage)) loadImages();
   }, [location.pathname]);
 
   if (!language || language === "") {
@@ -145,19 +122,12 @@ function App() {
                 showMenu={showMenu}
                 setShowMenu={setShowMenu}
                 handleOpenModal={handleOpenModal}
-                notFirstLoad={notFirstLoad}
               />
             }
           />
           <Route
             path={`/${language}/skills`}
-            element={
-              <Skills
-                showMenu={showMenu}
-                setShowMenu={setShowMenu}
-                notFirstLoad={notFirstLoad}
-              />
-            }
+            element={<Skills showMenu={showMenu} setShowMenu={setShowMenu} />}
           />
           <Route
             path={`/${language}/projects`}
@@ -168,7 +138,6 @@ function App() {
                 activeModal={activeModal}
                 setActiveModal={setActiveModal}
                 handleOpenModal={handleOpenModal}
-                notFirstLoad={notFirstLoad}
               />
             }
           />
@@ -181,7 +150,6 @@ function App() {
                 activeModal={activeModal}
                 setActiveModal={setActiveModal}
                 handleOpenModal={handleOpenModal}
-                notFirstLoad={notFirstLoad}
               />
             }
           />
@@ -193,7 +161,6 @@ function App() {
                 setShowMenu={setShowMenu}
                 setActiveModal={setActiveModal}
                 handleOpenModal={handleOpenModal}
-                notFirstLoad={notFirstLoad}
               />
             }
           />

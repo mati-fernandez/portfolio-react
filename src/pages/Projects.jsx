@@ -1,41 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import { PageContext } from "../context/contexts";
 import { TranslationContext } from "../context/contexts";
-import { StylesContext } from "../context/contexts";
 import { motion } from "motion/react";
 import Info from "../assets/Info";
 import ViewToggleButton from "../components/ViewToggleButton";
 
 const Projects = ({ notFirstLoad, handleOpenModal }) => {
-  const {
-    actualPage,
-    viewMore,
-    $viewMore,
-    containerVariants,
-    itemVariants,
-    aspectRatio,
-  } = useContext(PageContext);
+  const { actualPage, viewMore, containerVariants, itemVariants, aspectRatio } =
+    useContext(PageContext);
 
-  const { updateDynamicStyles } = useContext(StylesContext);
-
-  const { translate, getImage, endpoint } = useContext(TranslationContext);
+  const { translate, getImage } = useContext(TranslationContext);
 
   const imagesData = getImage("projects");
 
   const alreadyShownOnce = useRef(false);
 
   const translationsData = translate("projects.projectsList");
-  useEffect(() => {
-    if (notFirstLoad && $viewMore.current)
-      $viewMore.current.style.opacity = 0.5;
-    console.log(updateDynamicStyles, "updateDynamicStyles");
-    // const delay = setTimeout(() => {
-    updateDynamicStyles(translationsData, imagesData);
-    // }, 1000);
-    // return () => clearTimeout(delay);
-  }, [aspectRatio, actualPage, viewMore, endpoint]);
 
   return (
     <main className="page flex-grow overflow-y-clip">

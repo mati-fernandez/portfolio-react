@@ -15,7 +15,7 @@ const ViewToggleButton = ({ alreadyShownOnce, translateKey }) => {
           initial={!alreadyShownOnce.current ? { opacity: 0 } : false}
           animate={!alreadyShownOnce.current ? { opacity: 0.5 } : false}
           transition={
-            !alreadyShownOnce.current ? { delay: 1.5, duration: 2 } : undefined
+            !alreadyShownOnce.current ? { delay: 0.5, duration: 2 } : undefined
           }
           ref={alreadyShownOnce}
           className="m-3 cursor-pointer opacity-50"
