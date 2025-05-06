@@ -8,11 +8,6 @@ const headerVariants = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: -10 },
-  visible: { opacity: 1, y: 0 },
-};
-
 const DesktopHeader = () => {
   const hasMounted = useRef(false);
 
@@ -24,12 +19,9 @@ const DesktopHeader = () => {
       onAnimationComplete={() => {
         hasMounted.current = true;
       }}
-      transition={{ duration: 1, ease: [0, 0.75, 0.37, 0.95] }}
       className="bg-secondary mt-2.5 hidden w-full items-center justify-around landscape:flex"
     >
-      <motion.div variants={itemVariants}>
-        <MainMenu />
-      </motion.div>
+      <MainMenu />
       <LanguageButton />
     </motion.header>
   );

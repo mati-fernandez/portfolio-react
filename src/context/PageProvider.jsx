@@ -64,8 +64,6 @@ export const PageProvider = ({ children }) => {
 
   const [aspectRatio, setAspectRatio] = useState(updateAspectRatio());
 
-  console.log(aspectRatio, "aspect ratio");
-
   const [actualPage, setActualPage] = useState(getActualPage());
 
   useEffect(() => {

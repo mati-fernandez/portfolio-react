@@ -11,7 +11,6 @@ import { useContext } from "react";
 import { TranslationContext } from "./context/contexts";
 import { PageContext } from "./context/contexts";
 import { useEffect, useState } from "react";
-import "./App.css";
 
 // COMPONENTS/PAGES
 import Home from "./pages/Home";
@@ -60,7 +59,6 @@ function App() {
   // CLOSE MODAL OR MENU ON NAVIGATION 'Prevent Navigation' Hack:
   // En el if no usar activeModal porque provoca bucle al tener timeout en el set
   useEffect(() => {
-    console.log(fromLanguageBtn, fromMenuBtn);
     if (modalVisibility || (showMenu && !fromMenuBtn && !fromLanguageBtn)) {
       setShowMenu(false);
       setFromMenuBtn(false);

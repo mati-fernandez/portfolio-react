@@ -64,11 +64,10 @@
 
   body {
     position: relative;
-    /* height: 90svh; */
+    overflow: hidden;
     font-family: "Raleway", Arial, Helvetica, sans-serif;
     background-color: var(--color-background-primary);
     color: var(--color-primary);
-    /* margin: 0 auto; */
     padding: 0;
     text-align: center;
   }
