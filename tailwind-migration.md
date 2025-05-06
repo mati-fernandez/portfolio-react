@@ -75,10 +75,6 @@ However, if a variable is defined only in a selector like `[data-theme="light"]`
 
 ### Only complex or frequently reused selectors are kept in @layer base.
 
-## Implementing Motion for better integration with TailWind
-
-
-- 
 ## Using @apply in Tailwind CSS
 When using @apply inside a Tailwind layer (@layer base, components, or utilities), the rule must only contain utility classes.
 If you mix @apply with pure CSS properties inside the same selector, it will cause a build error.
@@ -104,11 +100,14 @@ This allows me to use square: as a prefix in my utility classes (e.g., square:p-
 > Note on @slot  
 @slot is a special directive in Tailwind v4 that acts as a placeholder for where the utility styles will be inserted inside the custom variant. When you use a custom variant like square:bg-red-500, Tailwind replaces @slot with the actual utility (bg-red-500) wrapped in the appropriate media query or selector logic you defined.
 
-## Framer Motion Migration: Staggered Buttons for page items
+## Implementing Motion for better integration with TailWind
+To improve the animation workflow and avoid juggling between CSS and utility classes, I decided to migrate all animations to motion/react. This allowed me to keep styling and animation logic unified within components, leveraging Tailwind for layout and visual styles while using Motion for smooth transitions and staggering effects. It simplified maintenance and removed the need for custom animation logic or external CSS rules.
+ 
+### Motion Migration: Staggered Buttons for page items
 
 To implement staggered animations for the page buttons using Framer Motion, I replaced the previous loop-based delay logic with `variants`.
 
-### Motion Variants Centralized in PageProvider
+#### Motion Variants Centralized in PageProvider
 In order to manage common animations across multiple pages, I centralized the animation variants in the PageProvider. This approach eliminates redundancy and makes animations reusable for various components or pages.
 ```js
 const containerVariants = {
@@ -136,7 +135,7 @@ const itemVariants = {
 
 By defining the variants in the PageProvider, I ensure that animations are consistent and easier to maintain across different components, reducing duplicated logic.
 
-### Implementation in JSX
+#### Implementation in JSX
 
 ```jsx
 <motion.div
