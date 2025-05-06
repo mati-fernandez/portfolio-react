@@ -15,7 +15,6 @@ const MobileMenu = ({ setFromMenuBtn }) => {
     {
       href: "https://www.linkedin.com/in/mati-fernandez/",
       icon: <Linkedin />,
-      className: "linkedin-a",
     },
     {
       href: "https://github.com/mati-fernandez",
@@ -24,7 +23,6 @@ const MobileMenu = ({ setFromMenuBtn }) => {
     {
       href: "https://drive.google.com/drive/folders/17_6t9pEX7BIkTsfLXCYRqWZuI0Ygty0P?usp=sharing",
       icon: <Cv />,
-      id: "cv-mobile-a",
     },
   ];
 

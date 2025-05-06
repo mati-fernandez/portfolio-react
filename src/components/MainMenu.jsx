@@ -10,57 +10,28 @@ const MainMenu = ({ setFromMenuBtn }) => {
     if (setFromMenuBtn) setFromMenuBtn(true);
   };
 
-  const baseClasses =
-    "p-0 font-[inherit] rounded-none  flex h-[100%] flex-col justify-center text-inherit no-underline mx-[6vw] my-[2vh] cursor-pointer rounded-none border-none p-[2vh] landscape:m-0 landscape:hover:bg-general-primary";
-  const activeClasses = "bg-primary primary";
+  const routes = [
+    { path: "home", label: "menu.home" },
+    { path: "skills", label: "menu.skills" },
+    { path: "projects", label: "menu.projects" },
+    { path: "odyssey", label: "menu.odyssey" },
+    { path: "certifications", label: "menu.certifications" },
+  ];
 
   return (
     <>
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? `${baseClasses} ${activeClasses}` : baseClasses
-        }
-        to={`/${language}/home`}
-        onClick={handleClick}
-      >
-        {translate("menu.home")}
-      </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? `${baseClasses} ${activeClasses}` : baseClasses
-        }
-        to={`/${language}/skills`}
-        onClick={handleClick}
-      >
-        {translate("menu.skills")}
-      </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? `${baseClasses} ${activeClasses}` : baseClasses
-        }
-        to={`/${language}/projects`}
-        onClick={handleClick}
-      >
-        {translate("menu.projects")}
-      </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? `${baseClasses} ${activeClasses}` : baseClasses
-        }
-        to={`/${language}/odyssey`}
-        onClick={handleClick}
-      >
-        {translate("menu.odyssey")}
-      </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? `${baseClasses} ${activeClasses}` : baseClasses
-        }
-        to={`/${language}/certifications`}
-        onClick={handleClick}
-      >
-        {translate("menu.certifications")}
-      </NavLink>
+      {routes.map(({ path, label }) => (
+        <NavLink
+          key={path}
+          to={`/${language}/${path}`}
+          onClick={handleClick}
+          className={({ isActive }) =>
+            `landscape:hover:bg-general-primary mx-[6vw] my-[2vh] flex h-[100%] cursor-pointer flex-col justify-center rounded-none border-none p-[2vh] font-[inherit] text-inherit no-underline landscape:m-0 ${isActive ? "bg-primary primary" : ""}`
+          }
+        >
+          {translate(label)}
+        </NavLink>
+      ))}
     </>
   );
 };

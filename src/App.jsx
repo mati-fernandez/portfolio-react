@@ -96,23 +96,6 @@ function App() {
     if (!notFirstLoad.includes(actualPage)) loadImages();
   }, [location.pathname]);
 
-  // Theme btn rotation mobile
-  useEffect(() => {
-    let timeout = null;
-    const themeBtn = document.querySelector("#theme-btn");
-
-    if (themeBtn && (aspectRatio === "portrait" || aspectRatio === "square")) {
-      themeBtn.classList.remove("rotate");
-      timeout = setTimeout(() => {
-        themeBtn.classList.add("rotate");
-      }, 10);
-    }
-
-    document.documentElement.classList.toggle("light", theme === "light");
-
-    return () => clearTimeout(timeout);
-  }, [theme]);
-
   if (!language || language === "") {
     return null;
   } // NO BORRAR, ESTO ASEGURA QUE LANGBTN TENGA CONTENIDO y resta un warning de "No routes matched location".
@@ -138,7 +121,7 @@ function App() {
       )}
 
       {/* LAYOUT PRINCIPAL */}
-      <main className="flex h-[90svh] flex-col landscape:h-[100svh]">
+      <div className="flex h-[90svh] flex-col landscape:h-[100svh]">
         {/* HEADER */}
         <MobileFooterWrapper
           showMenu={showMenu}
@@ -221,7 +204,7 @@ function App() {
 
         {/* FOOTER */}
         <DesktopFooter />
-      </main>
+      </div>
     </>
   );
 }

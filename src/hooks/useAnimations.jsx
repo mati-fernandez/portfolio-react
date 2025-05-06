@@ -35,14 +35,14 @@ export default function useAnimations({
 
       let fadeIn = null;
       let removeFadeIn = null;
-      const progress = Array.from(document.querySelectorAll(".progress"));
+      //   const progress = Array.from(document.querySelectorAll(".progress"));
       //   const buttons = Array.from(
       //     document.querySelectorAll(".page-item"),
       //   ).reverse();
 
-      const desktopHeaderBtns = Array.from(
-        document.querySelectorAll("#desktop-header a"),
-      );
+      //   const desktopHeaderBtns = Array.from(
+      //     document.querySelectorAll("#desktop-header a"),
+      //   );
 
       if (
         (aspectRatio === "portrait" || aspectRatio === "square") &&
@@ -63,10 +63,8 @@ export default function useAnimations({
         //   $viewMore.current.style.animation = "none";
         //   $viewMore.current.style.display = "block";
         // }
-
-        progress.forEach((item) => item.classList.remove("fill-progress"));
-        desktopHeaderBtns.forEach((item) => item.classList.remove("glowing"));
-
+        // progress.forEach((item) => item.classList.remove("fill-progress"));
+        // desktopHeaderBtns.forEach((item) => item.classList.remove("glowing"));
         // buttons.forEach((button) => {
         //   button.classList.remove = "slide-in";
         //   button.style.opacity = 1;
@@ -76,8 +74,8 @@ export default function useAnimations({
         setFromLanguageBtn(false);
         setNotFirstLoad((prevState) => [...prevState, actualPage]);
 
-        let headerTimeout = null;
-        const delayIncrement = 0.1;
+        // let headerTimeout = null;
+        // const delayIncrement = 0.1;
 
         // // Fade in del view more
         // //Se comprueba si el botón existe en esa página
@@ -100,25 +98,25 @@ export default function useAnimations({
         //   }, 1000);
         // }
 
-        progress.forEach((item) => item.classList.remove("fill-progress"));
-        const fillTimeout = setTimeout(() => {
-          progress.forEach((item, index) => {
-            const delay = index * delayIncrement;
-            item.classList.add("fill-progress");
-            item.style.animationDelay = `${delay}s`;
-          });
-        }, 10);
+        // progress.forEach((item) => item.classList.remove("fill-progress"));
+        // const fillTimeout = setTimeout(() => {
+        //   progress.forEach((item, index) => {
+        //     const delay = index * delayIncrement;
+        //     item.classList.add("fill-progress");
+        //     item.style.animationDelay = `${delay}s`;
+        //   });
+        // }, 10);
 
-        desktopHeaderBtns.forEach((item) => item.classList.remove("glowing"));
-        if (location.pathname.endsWith("home")) {
-          headerTimeout = setTimeout(() => {
-            desktopHeaderBtns.forEach((item, index) => {
-              const delay = index * delayIncrement;
-              item.classList.add("glowing");
-              item.style.animationDelay = `${delay}s`;
-            });
-          }, 10);
-        }
+        // desktopHeaderBtns.forEach((item) => item.classList.remove("glowing"));
+        // if (location.pathname.endsWith("home")) {
+        //   headerTimeout = setTimeout(() => {
+        //     desktopHeaderBtns.forEach((item, index) => {
+        //       const delay = index * delayIncrement;
+        //       item.classList.add("glowing");
+        //       item.style.animationDelay = `${delay}s`;
+        //     });
+        //   }, 10);
+        // }
 
         // buttons.forEach((button, index) => {
         //   const delay = index * delayIncrement;
@@ -127,10 +125,9 @@ export default function useAnimations({
         // });
 
         return () => {
-          clearTimeout(fillTimeout),
-            clearTimeout(headerTimeout),
-            clearTimeout(fadeIn),
-            clearTimeout(removeFadeIn);
+          //   clearTimeout(fillTimeout),
+          // clearTimeout(headerTimeout),
+          clearTimeout(fadeIn), clearTimeout(removeFadeIn);
         };
       }
     }, 20); //Necesario para "dar tiempo" a que se desmonte bien el componente

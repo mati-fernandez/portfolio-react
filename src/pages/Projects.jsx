@@ -38,7 +38,7 @@ const Projects = ({ notFirstLoad, handleOpenModal }) => {
   }, [aspectRatio, actualPage, viewMore, endpoint]);
 
   return (
-    <div className="page flex-grow overflow-y-clip">
+    <main className="page flex-grow overflow-y-clip">
       <Info
         notFirstLoad={notFirstLoad}
         handleOpenModal={handleOpenModal}
@@ -75,7 +75,7 @@ const Projects = ({ notFirstLoad, handleOpenModal }) => {
           translateKey={"projects"}
         />
       </motion.div>
-    </div>
+    </main>
   );
 };
 

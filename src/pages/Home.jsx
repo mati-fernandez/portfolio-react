@@ -14,7 +14,7 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
   };
 
   return (
-    <div className="flex flex-grow flex-col items-center justify-center overflow-y-hidden p-4">
+    <main className="flex flex-grow flex-col items-center justify-center overflow-y-hidden p-4">
       {imgLoading && (
         <Loader className="absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2 transform" />
       )}
@@ -36,7 +36,7 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
           </p>
         ) : null}
       </div>
-    </div>
+    </main>
   );
 };
 

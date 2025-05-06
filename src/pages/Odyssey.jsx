@@ -20,47 +20,42 @@ const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
   const alreadyShownOnce = useRef(false);
 
   return (
-    <>
-      <div className={`page flex-grow overflow-y-hidden`}>
-        <Info
-          notFirstLoad={notFirstLoad}
-          handleOpenModal={handleOpenModal}
-          itemKey={"odyssey.info"}
+    <main className={`page flex-grow overflow-y-hidden`}>
+      <Info
+        notFirstLoad={notFirstLoad}
+        handleOpenModal={handleOpenModal}
+        itemKey={"odyssey.info"}
+      />
+      <motion.div
+        className="page justify-items-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {Object.keys(translationsData).map((key) =>
+          !viewMore[actualPage] &&
+          imagesData[key]?.class === "secondary" ? null : (
+            <motion.button
+              custom={aspectRatio !== "portrait"}
+              variants={itemVariants}
+              key={key}
+              className={`long-text page-item ${
+                imagesData[key]?.class === "secondary" ? "sec" : ""
+              }`}
+              onClick={() =>
+                handleOpenModal(`odyssey.odysseyList.` + key, `odyssey.` + key)
+              }
+            >
+              {translationsData[key].title}
+            </motion.button>
+          ),
+        )}
+        <ViewToggleButton
+          alreadyShownOnce={alreadyShownOnce}
+          translateKey={"odyssey"}
         />
-        <motion.div
-          className="page justify-items-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {Object.keys(translationsData).map((key) =>
-            !viewMore[actualPage] &&
-            imagesData[key]?.class === "secondary" ? null : (
-              <motion.button
-                custom={aspectRatio !== "portrait"}
-                variants={itemVariants}
-                key={key}
-                className={`long-text page-item ${
-                  imagesData[key]?.class === "secondary" ? "sec" : ""
-                }`}
-                onClick={() =>
-                  handleOpenModal(
-                    `odyssey.odysseyList.` + key,
-                    `odyssey.` + key,
-                  )
-                }
-              >
-                {translationsData[key].title}
-              </motion.button>
-            ),
-          )}
-          <ViewToggleButton
-            alreadyShownOnce={alreadyShownOnce}
-            translateKey={"odyssey"}
-          />
-        </motion.div>
-      </div>
-    </>
+      </motion.div>
+    </main>
   );
 };
 

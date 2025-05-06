@@ -557,7 +557,7 @@ button {
   margin: 2vh 6vw;
 } */
 
-@keyframes rotate {
+/* @keyframes rotate {
   0% {
     transform: rotate(0);
   }
@@ -568,7 +568,7 @@ button {
 
 .rotate {
   animation: rotate 0.8s cubic-bezier(0, 0.24, 0.59, 0.92);
-}
+} */
 /* 
 #contact-wrapper {
   display: flex;
@@ -588,11 +588,11 @@ button {
   justify-content: center;
 } */
 
-.linkedin {
+/* .linkedin {
   width: 80%;
   border-radius: 0;
   aspect-ratio: 1;
-}
+} */
 
 /* #cv {
   width: 66px;
@@ -733,13 +733,13 @@ button {
     width: 15%;
   } */
 
-  #js-icon {
+  /* #js-icon {
     max-height: calc(var(--font-size-landscape) * 1.3);
   }
 
   #ts-icon {
     max-height: calc(var(--font-size-landscape) * 1.3);
-  }
+  } */
 
   /* .progress-bar {
     width: 60%;
@@ -885,12 +885,12 @@ button {
   #theme-btn {
     position: static;
   } */
-
+  /* 
   #cv-desktop {
     font-size: 1rem;
     font-weight: 600;
     aspect-ratio: 1;
-  }
+  } */
   /* 
   .page { 
     box-sizing: border-box;
@@ -901,7 +901,7 @@ button {
     padding: 0 4vw;
   } */
 
-  @keyframes slideIn {
+  /* @keyframes slideIn {
     from {
       transform: translateX(-100vw);
       opacity: 0;
@@ -910,7 +910,7 @@ button {
       transform: translateX(0);
       opacity: 1;
     }
-  }
+  } */
 
   /* .view-more {
     font-size: 0.7rem;

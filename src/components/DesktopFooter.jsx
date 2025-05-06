@@ -13,12 +13,10 @@ const DesktopFooter = () => {
   const links = [
     {
       icon: <ThemeButton className={classes} />,
-      id: "theme-btn",
     },
     {
       href: "https://www.linkedin.com/in/mati-fernandez/",
       icon: <Linkedin />,
-      className: "linkedin-a",
     },
     {
       href: "https://github.com/mati-fernandez",
@@ -27,12 +25,11 @@ const DesktopFooter = () => {
     {
       href: "https://drive.google.com/drive/folders/17_6t9pEX7BIkTsfLXCYRqWZuI0Ygty0P?usp=sharing",
       icon: <Cv />,
-      id: "cv-mobile-a",
     },
   ];
 
   return (
-    <motion.div
+    <motion.footer
       initial="hidden"
       animate="visible"
       variants={{
@@ -57,7 +54,7 @@ const DesktopFooter = () => {
 
         return <AnimatedFooterItem key={i}>{child}</AnimatedFooterItem>;
       })}
-    </motion.div>
+    </motion.footer>
   );
 };
 
