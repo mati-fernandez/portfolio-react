@@ -1,6 +1,18 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useState } from 'react';
-import { TranslationContext } from '../context/contexts';
+import { useContext, useState } from "react";
+import { TranslationContext } from "../context/contexts";
+import Loader from "./Loader";
+import { motion } from "motion/react";
+
+const modalVariants = {
+  hidden: { opacity: 0, scale: 0 },
+  visible: { opacity: 1, scale: 1 },
+};
+
+const bkgVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
 
 const Modal = ({
   activeModal,
@@ -12,7 +24,7 @@ const Modal = ({
     useContext(TranslationContext);
   const [isImgLoaded, setIsImgLoaded] = useState(false);
   const srcPath =
-    endpoint === 'build' ? `${contentBuildPath}` : `${contentDevPath}`;
+    endpoint === "build" ? `${contentBuildPath}` : `${contentDevPath}`;
 
   const closeModal = () => {
     setModalVisibility(false);
@@ -22,49 +34,62 @@ const Modal = ({
         imgKey: null,
       });
       clearTimeout(timeout);
-    }, 150);
+    }, 250);
   };
 
-  useEffect(() => {
-    if (activeModal && activeModal.itemKey) {
-      setModalVisibility(true);
-    }
-  }, [activeModal, setModalVisibility]);
-
   return (
-    <article className={`modal`} onClick={closeModal}>
-      <div className={`detail${!modalVisibility ? ' hidden' : ''}`}>
+    <motion.article
+      variants={bkgVariants}
+      initial="hidden"
+      animate={modalVisibility ? "visible" : "hidden"}
+      transition={{ duration: 0.25, ease: "easeInOut" }}
+      className="modal"
+      onClick={closeModal}
+    >
+      <motion.div
+        variants={modalVariants}
+        initial="hidden"
+        animate={modalVisibility ? "visible" : "hidden"}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
+        className="detail"
+      >
         <div className="modalBkg" onClick={(e) => e.stopPropagation()}>
-          <h3>{translate(activeModal.itemKey)?.title || 'undefined'}</h3>
-          <figure>
+          <h1 className="modalTitle">
+            {translate(activeModal.itemKey)?.title || "undefined"}
+          </h1>
+          <figure className="modalFigure">
             <img
+              className="modalImg"
               src={`${srcPath}${getImage(activeModal.imgKey).src}`}
-              alt={translate(activeModal.itemKey).title || 'undefined'}
+              alt={translate(activeModal.itemKey).title || "undefined"}
               onLoad={() => setIsImgLoaded(true)}
             />
             {!isImgLoaded ? (
-              <div className="loader" />
+              <Loader />
             ) : (
-              <figcaption>
-                {translate(activeModal.itemKey)?.description || 'undefined'}
+              <figcaption className="modalCaption">
+                {translate(activeModal.itemKey)?.description || "undefined"}
               </figcaption>
             )}
           </figure>
-          <div className="btn-panel">
-            <a className="link button" onClick={closeModal}>
+          <div className="m-0 flex justify-around">
+            <a
+              className="panelBtn wide:scale-75 left-[9vw]"
+              onClick={closeModal}
+            >
               {translate(activeModal.itemKey).close}
             </a>
             <a
+              className="panelBtn right-[9vw]"
               href={getImage(activeModal.imgKey).link}
               target="_blank"
-              className="link button"
             >
               {translate(activeModal.itemKey).open}
             </a>
           </div>
         </div>
-      </div>
-    </article>
+      </motion.div>
+    </motion.article>
   );
 };
 

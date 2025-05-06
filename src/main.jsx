@@ -1,21 +1,20 @@
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import { HashRouter } from 'react-router-dom';
-import { PageProvider } from './context/PageProvider.jsx';
-import { TranslationProvider } from './context/TranslationProvider.jsx';
-import { ThemeProvider } from './context/ThemeProvider.jsx';
-import { StylesProvider } from './context/StylesProvider.jsx';
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { HashRouter } from "react-router-dom";
+import { PageProvider } from "./context/PageProvider";
+import { TranslationProvider } from "./context/TranslationProvider";
+import { ThemeProvider } from "./context/ThemeProvider";
+import "./tailwind.css";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// eslint-disable-next-line no-undef
+ReactDOM.createRoot(document.getElementById("root")).render(
   <HashRouter>
     <PageProvider>
       <TranslationProvider>
-        <StylesProvider>
-          <ThemeProvider>
-            <App />
-          </ThemeProvider>
-        </StylesProvider>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
       </TranslationProvider>
     </PageProvider>
-  </HashRouter>
+  </HashRouter>,
 );

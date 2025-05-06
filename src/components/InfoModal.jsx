@@ -1,6 +1,18 @@
 /* eslint-disable react/prop-types */
-import { useContext } from 'react';
-import { TranslationContext } from '../context/contexts';
+import { useContext } from "react";
+import { TranslationContext } from "../context/contexts";
+import { motion } from "motion/react";
+import Loader from "./Loader";
+
+const modalVariants = {
+  hidden: { opacity: 0, scale: 0 },
+  visible: { opacity: 1, scale: 1 },
+};
+
+const bkgVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
 
 const InfoModal = ({
   activeModal,
@@ -18,25 +30,38 @@ const InfoModal = ({
         imgKey: null,
       });
       clearTimeout(timeout);
-    }, 150);
+    }, 250);
   };
 
   return (
     <>
       {activeModal.itemKey === null ? (
-        <div className="loader"></div>
+        <Loader />
       ) : (
-        <article className={`modal`} onClick={closeModal}>
-          <div className={`infoModal${!modalVisibility ? ' hidden' : ''}`}>
+        <motion.div
+          variants={bkgVariants}
+          initial="hidden"
+          animate={modalVisibility ? "visible" : "hidden"}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
+          className={`modal`}
+          onClick={closeModal}
+        >
+          <motion.div
+            variants={modalVariants}
+            initial="hidden"
+            animate={modalVisibility ? "visible" : "hidden"}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className={`infoModal`}
+          >
             <div className="infoBkg" onClick={(e) => e.stopPropagation()}>
-              <h3>{translate(activeModal.itemKey).title}</h3>
+              <h1>{translate(activeModal.itemKey).title}</h1>
               <p>{translate(activeModal.itemKey).text}</p>
-              <a className="link button" onClick={closeModal}>
+              <a onClick={closeModal}>
                 {translate(activeModal.itemKey).continue}
               </a>
             </div>
-          </div>
-        </article>
+          </motion.div>
+        </motion.div>
       )}
     </>
   );

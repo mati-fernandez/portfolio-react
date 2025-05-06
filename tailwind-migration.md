@@ -1,3 +1,370 @@
+# CSS to Tailwind Migration
+
+This document serves as a brief record of the migration process from traditional CSS to Tailwind CSS in this project. The goal was to improve code clarity, consistency, and maintainability.  
+
+Initially, the entire styling was written in one global CSS file. As the project grew, it became increasingly harder to navigate and manage style rules, especially when needing to locate or reuse specific elements.
+
+While the design remained simple, there was a significant amount of custom CSS required to support it. Most styles were written manually, and some were duplicated across different components due to the lack of modular structure.
+
+## Tailwind Layers
+Tailwind CSS uses layers to organize styles with specific specificity and behavior:
+
+- @layer base: Global styles, like resets or basic rules (e.g., margin normalization, font sizes).
+
+- @layer components: Reusable UI components, like buttons, cards, headers.
+
+- @layer utilities: Single-property utilities that apply specific styles to elements (e.g., margins, padding, colors, transitions).
+
+When defining custom utilities under @layer utilities, Tailwind automatically matches them with its utility categories if the name includes a known prefix like text-, bg-, or border-. This means:
+
+- .bg-general-primary can be used as bg-general-primary in JSX
+
+- .general-primary won't match anything unless you specify a utility prefix like text- or bg- when using it
+> ⚠️ Note: If you define custom utility classes without a prefix (like .general-primary), they won't automatically match Tailwind's utility categories in JSX. This means you'll need to manually use prefixes like text-general-primary or border-general-primary.
+If you want to avoid thinking about it, just include the appropriate prefix in the class name when defining it (e.g., .text-general-primary), and Tailwind will match it automatically when used in JSX.
+
+> ⚠️ Example:
+A class like .general-primary sets color, so it won’t match Tailwind utilities like bg-, which expect a background-color property.
+To make it match bg-general-primary, the class must explicitly set background-color, like:
+
+```css
+.bg-general-primary {
+  background-color: var(--color-general-primary);
+}
+```
+> That’s why I added the bg- prefix — to clearly differentiate and make it compatible with Tailwind’s utility prefixing system.
+
+## Notes on the Migration
+- The entire UI was rebuilt using utility classes from Tailwind CSS.
+
+- Styling is now co-located with components, improving readability and consistency.
+
+- Class names are descriptive, shorter than pure styles and directly reflect layout and behavior.
+
+- This migration was part of a general cleanup of the codebase. 
+
+## Removing the `@theme` Warning in VS Code
+
+To get rid of the annoying warning for the `@theme` directive in Tailwind CSS v4, follow these steps in VS Code:
+
+1. Go to **Settings** → **Text Editor** → **Files**.
+2. Click **"Add Item"** under the **Associations** section.
+3. Add the following:
+   - **Key**: `*.css`
+   - **Value**: `tailwindcss`
+
+That’s it! No more yellow squiggly lines ruining your vibe.
+
+## Variables & Theme handling (Tailwind v4)
+We now define most of our CSS variables inside the @theme layer of tailwind.css. This allows Tailwind v4 to match them directly with its utility classes (e.g. bg-[--color-primary]), enabling autocomplete and maintaining full compatibility without needing a tailwind.config.js file.
+
+### Structure
+The dark theme is the default, so its variables are defined globally inside @theme.
+
+The light theme variables are defined inside a [data-theme="light"] selector, which is placed in the @layer base, since @theme does not support selectors.
+
+### Why this works
+Utility prefixes like bg-, text-, border-, etc. automatically infer the expected variable type, so Tailwind can match UC usage like `landscape:hover:bg-general-primary` with the variable `--color-general-primary` defined inside @theme.
+
+However, if a variable is defined only in a selector like `[data-theme="light"]` in @layer base, Tailwind won't match it automatically for UC autocomplete. That's why the default theme (dark) goes in @theme.
+
+### Examples of successful matching:
+- `text-general-primary → --color-general-primary`
+- `bg-general-secondary-alpha → --color-general-secondary-alpha`
+- `border-general → --border-general`
+
+### Only complex or frequently reused selectors are kept in @layer base.
+
+## Using @apply in Tailwind CSS
+When using @apply inside a Tailwind layer (@layer base, components, or utilities), the rule must only contain utility classes.
+If you mix @apply with pure CSS properties inside the same selector, it will cause a build error.
+
+Quick reminder:
+@apply is used to group Tailwind utility classes together into a custom class, making your code cleaner and reusable without repeating the same utilities over and over.
+
+## Using @variants in @layer components
+To make a component class respond to breakpoints (like landscape:), I used the @variants directive inside the @layer components. Without it, Tailwind doesn't generate responsive versions of custom utility classes. This is required when defining custom classes that need to react to screen conditions.
+
+## Creating a custom breakpoint variant (square)
+To handle specific aspect ratios (like square-ish screens), I created a custom variant using Tailwind v4's @custom-variant:
+
+```css
+    @custom-variant square {
+        @media (min-aspect-ratio: 13/20) and (max-aspect-ratio: 1/1) {
+            @slot;
+        }
+    }
+```
+This allows me to use square: as a prefix in my utility classes (e.g., square:p-[2vh], square:text-[1rem], etc.), just like landscape:. No need to define anything in @layer utilities, unless I want to add specific custom utility classes for square screens.
+
+> Note on @slot  
+@slot is a special directive in Tailwind v4 that acts as a placeholder for where the utility styles will be inserted inside the custom variant. When you use a custom variant like square:bg-red-500, Tailwind replaces @slot with the actual utility (bg-red-500) wrapped in the appropriate media query or selector logic you defined.
+
+## Implementing Motion for better integration with TailWind
+To improve the animation workflow and avoid juggling between CSS and utility classes, I decided to migrate all animations to motion/react. This allowed me to keep styling and animation logic unified within components, leveraging Tailwind for layout and visual styles while using Motion for smooth transitions and staggering effects. It simplified maintenance and removed the need for custom animation logic or external CSS rules.
+ 
+### Motion Migration: Staggered Buttons for page items
+
+To implement staggered animations for the page buttons using Framer Motion, I replaced the previous loop-based delay logic with `variants`.
+
+#### Motion Variants Centralized in PageProvider
+In order to manage common animations across multiple pages, I centralized the animation variants in the PageProvider. This approach eliminates redundancy and makes animations reusable for various components or pages.
+```js
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: (isSquare) => ({
+    opacity: 0,
+    x: isSquare ? -100 : 0,
+    y: isSquare ? 0 : -100,
+  }),
+  visible: { opacity: 1, x: 0, y: 0 },
+};
+```
+
+- `containerVariants` handles the `staggerChildren` timing.
+- `itemVariants` defines the individual button animations.
+- Even though `hidden` in `containerVariants` is empty, it's required for `staggerChildren` to work.
+
+By defining the variants in the PageProvider, I ensure that animations are consistent and easier to maintain across different components, reducing duplicated logic.
+
+#### Implementation in JSX
+
+```jsx
+<motion.div
+  variants={containerVariants}
+  initial="hidden"
+  animate="visible"
+>
+  {Object.keys(translationsData).map((key) =>
+    !viewMore[actualPage] && imagesData[key]?.class === "secondary"
+      ? null
+      : (
+          <motion.button
+            variants={itemVariants}
+            key={key}
+            className={`long-text page-item ${
+              imagesData[key]?.class === "secondary" ? "sec" : ""
+            }`}
+            onClick={() =>
+              handleOpenModal(
+                `odyssey.odysseyList.` + key,
+                `odyssey.` + key
+              )
+            }
+          >
+            {translationsData[key].title}
+          </motion.button>
+        )
+  )}
+  {/* View More / View Less buttons */}
+  {!viewMore[actualPage] ? (
+    <button ref={$viewMore} className="view-more" onClick={handleViewMore}>
+      {translate("odyssey.buttons.viewMore")}
+    </button>
+  ) : (
+    <button ref={$viewLess} className="view-less" onClick={handleViewMore}>
+      {translate("odyssey.buttons.viewLess")}
+    </button>
+  )}
+</motion.div>
+```
+
+This is a clean and scalable way to apply entrance animations with staggered timing using Framer Motion, without manually managing delays with JavaScript.
+
+
+## Additional Notes & Practices
+
+- **Initial Flicker Prevention**: To avoid the initial flicker before Tailwind loads, we set a temporary background-color, color, and height inline in the **<body>** tag of `index.html`.
+
+- **SVG Color Inheritance**: We use **currentColor** in SVGs so they inherit the correct theme color dynamically.
+
+- **One-Time `calc()` Operations**: When a **calc()** operation is needed only once, we apply it inline (e.g., `style={{ height: calc(var(--font-size-landscape) * 0.6) }}`) instead of creating a utility class.
+
+## Conclusion
+This migration helped me better organize styles and greatly reduced the amount of custom CSS required. It also aligned the project with more modern frontend practices and made future maintenance easier.
+
+## I got rid of useAnimations hook
+The useAnimations hook was complex because I tried to control too many details of the animation, turning it into a massive and hard-to-maintain hook. Now, by transitioning to Tailwind CSS and using motion, I’m adopting a more standard, maintainable approach without the need to control every single animation detail. This change allowed me to get rid of a hook that had a complex logic and a lot of comments scattered across 162 lines of code.
+
+Next, I will show you the code:
+
+```jsx
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect } from 'react';
+import { PageContext } from '../context/contexts';
+import { StylesContext } from '../context/contexts';
+
+export default function useAnimations({
+  location,
+  theme,
+  notFirstLoad,
+  setNotFirstLoad,
+  modalVisibility,
+  setShowMenu,
+  fromLanguageBtn,
+  setFromLanguageBtn,
+  fromThemeBtn,
+  setFromThemeBtn,
+  aspectRatio,
+}) {
+  // eslint-disable-next-line no-unused-vars
+  const { actualPage, viewMore, $viewLess, $viewMore } =
+    useContext(PageContext);
+
+  const { dynamicStyles } = useContext(StylesContext);
+
+  // ANIMACIONES
+  useEffect(() => {
+    // Pequeño retraso porque al cambiar de idioma y volver hacia atrás, el query no llegaba a agarrar los .page a
+    // SetTimeOut necesario para "dar tiempo" a que se desmonte bien el componente
+    const timeout = setTimeout(() => {
+      console.log(actualPage, 'actualPage');
+      if (
+        Object.keys(dynamicStyles).length === 0 &&
+        actualPage !== 'skills' &&
+        actualPage !== 'home'
+      )
+        return;
+
+      let fadeIn = null;
+      let removeFadeIn = null;
+      const progress = Array.from(document.querySelectorAll('.progress'));
+      const buttons = Array.from(
+        document.querySelectorAll('.page-item')
+      ).reverse();
+      const icons = Array.from(
+        document.querySelectorAll('#desktop-footer a, #desktop-footer button')
+      ).reverse();
+      const desktopHeaderBtns = Array.from(
+        document.querySelectorAll('#desktop-header a')
+      );
+
+      if (
+        (aspectRatio === 'portrait' || aspectRatio === 'square') &&
+        !fromThemeBtn &&
+        !fromLanguageBtn
+      ) {
+        setShowMenu(false);
+      }
+      if (fromLanguageBtn) setFromLanguageBtn(false);
+      if (fromThemeBtn) setFromThemeBtn(false);
+      //**********************************************************************************************//
+      // SI NO ES PRIMERA CARGA, CANCELA ANIMACIONES SALVO EN HOME Y CAMBIO DE TEMA en cuanto a footer
+      //**********************************************************************************************//
+
+      if (
+        notFirstLoad.includes(actualPage) &&
+        !fromThemeBtn &&
+        !fromLanguageBtn
+      ) {
+        if ($viewMore.current) {
+          $viewMore.current.style.animation = 'none';
+          $viewMore.current.style.display = 'block';
+        }
+        // if (viewMore[actualPage]) handleViewMore();
+        progress.forEach((item) => item.classList.remove('fill-progress'));
+        desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
+        icons.forEach((icon) => {
+          icon.classList.remove('animate-icon');
+        });
+        buttons.forEach((button) => {
+          button.classList.remove = 'slide-in';
+          button.style.opacity = 1;
+        });
+      } else {
+        //********************************//
+        //******SI ES PRIMERA CARGA ******//
+        //********************************//
+        setFromThemeBtn(false);
+        setFromLanguageBtn(false);
+        setNotFirstLoad((prevState) => [...prevState, actualPage]);
+
+        let headerTimeout = null;
+        const delayIncrement = 0.1;
+
+        // Fade in del view more
+        //Se comprueba si el botón existe en esa página
+        if ($viewMore.current) {
+          // Se oculta en la primera carga para esperar la animación de entrada:
+          $viewMore.current.style.opacity = 0;
+          // Evitar intaracción para no cortar la animación si lo tocan antes que se complete:
+          $viewMore.current.style.pointerEvents = 'none';
+          // Despues de llegar los enlaces de pagina aparece view more
+          fadeIn = setTimeout(() => {
+            $viewMore.current.classList.add('fade-in');
+            // Saco el forwards para que funcione el hover
+            // console.log($viewMore.current);
+            removeFadeIn = setTimeout(() => {
+              //   console.log($viewMore.current);
+              $viewMore.current.style.opacity = 0.5;
+              $viewMore.current.classList.remove('fade-in');
+              $viewMore.current.style.pointerEvents = 'all';
+            }, 1000);
+          }, 1000);
+        }
+
+        progress.forEach((item) => item.classList.remove('fill-progress'));
+        const fillTimeout = setTimeout(() => {
+          progress.forEach((item, index) => {
+            const delay = index * delayIncrement;
+            item.classList.add('fill-progress');
+            item.style.animationDelay = `${delay}s`;
+          });
+        }, 10);
+
+        desktopHeaderBtns.forEach((item) => item.classList.remove('glowing'));
+        if (location.pathname.endsWith('home')) {
+          headerTimeout = setTimeout(() => {
+            desktopHeaderBtns.forEach((item, index) => {
+              const delay = index * delayIncrement;
+              item.classList.add('glowing');
+              item.style.animationDelay = `${delay}s`;
+            });
+          }, 10);
+        }
+
+        icons.forEach((icon) => {
+          icon.classList.remove('animate-icon');
+        });
+        const footerTimeout = setTimeout(() => {
+          icons.forEach((icon, index) => {
+            const delay = index * delayIncrement;
+            icon.classList.add('animate-icon');
+            icon.style.animationDelay = `${delay}s`;
+          });
+        }, 10);
+
+        buttons.forEach((button, index) => {
+          const delay = index * delayIncrement;
+          button.style.animationDelay = `${delay}s`;
+          button.classList.add('slide-in');
+        });
+
+        return () => {
+          clearTimeout(footerTimeout),
+            clearTimeout(fillTimeout),
+            clearTimeout(headerTimeout),
+            clearTimeout(fadeIn),
+            clearTimeout(removeFadeIn);
+        };
+      }
+    }, 20); //Necesario para "dar tiempo" a que se desmonte bien el componente
+    return () => clearTimeout(timeout);
+  }, [theme, viewMore, modalVisibility, actualPage, location, dynamicStyles]); // No sacar actualPage de las deps porque evita error
+}
+```
+## Original CSS (Before Migration)
+Below is the full content of the CSS file before migrating to Tailwind. This illustrates how large and difficult to maintain the original approach had become. For example, many times I found myself using Ctrl + F to search for different selectors...
+
+```css
 /*
 ███╗   ███╗ ██████╗ ██████╗ ██╗██╗     ███████╗    
 ████╗ ████║██╔═══██╗██╔══██╗██║██║     ██╔════╝    ╔══╗♫ *´”)
@@ -8,7 +375,7 @@
 */
 :root {
   font-size: 4vmin;
-  /* VARIABLES */
+  /* Constantes Globales */
   --font-size-landscape: calc((1vw + 1vh) * 0.8);
   --font-size-portrait: calc((1vw + 1vh) * 1.2);
   --color-general-primary: rgb(76, 150, 199);
@@ -1038,3 +1405,6 @@ figcaption {
     padding-top: 2vh;
   }
 }
+
+```
+---

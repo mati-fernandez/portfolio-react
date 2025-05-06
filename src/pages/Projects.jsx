@@ -1,53 +1,66 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useContext, useEffect } from 'react';
-import { PageContext } from '../context/contexts';
-import { TranslationContext } from '../context/contexts';
-import { StylesContext } from '../context/contexts';
-import Info from '../assets/Info';
+import { useContext, useRef } from "react";
+import { PageContext } from "../context/contexts";
+import { TranslationContext } from "../context/contexts";
+import { motion } from "motion/react";
+import Info from "../assets/Info";
+import ViewToggleButton from "../components/ViewToggleButton";
 
-const Projects = ({ aspectRatio, notFirstLoad, handleOpenModal }) => {
-  const { actualPage, viewMore, $viewMore } = useContext(PageContext);
+const Projects = ({ notFirstLoad, handleOpenModal }) => {
+  const { actualPage, viewMore, containerVariants, itemVariants, aspectRatio } =
+    useContext(PageContext);
 
-  const { updateDynamicStyles, dynamicStyles } = useContext(StylesContext);
+  const { translate, getImage } = useContext(TranslationContext);
 
-  const { translate, getImage, endpoint } = useContext(TranslationContext);
+  const imagesData = getImage("projects");
 
-  const imagesData = getImage('projects');
+  const alreadyShownOnce = useRef(false);
 
-  const translationsData = translate('projects.projectsList');
-  useEffect(() => {
-    if (notFirstLoad && $viewMore.current)
-      $viewMore.current.style.opacity = 0.5;
-    console.log(updateDynamicStyles, 'updateDynamicStyles');
-    // const delay = setTimeout(() => {
-    updateDynamicStyles(translationsData, imagesData);
-    // }, 1000);
-    // return () => clearTimeout(delay);
-  }, [aspectRatio, actualPage, viewMore, endpoint]);
+  const translationsData = translate("projects.projectsList");
 
   return (
-    <div className="page ">
+    <main className="page flex-grow overflow-y-clip">
       <Info
         notFirstLoad={notFirstLoad}
         handleOpenModal={handleOpenModal}
-        itemKey={'projects.info'}
+        itemKey={"projects.info"}
       />
-      {Object.keys(translationsData).map((key) =>
-        key === 'portfolioReact' ? null : (
-          <div
-            style={dynamicStyles}
-            key={key}
-            className="long-text page-item"
-            onClick={() =>
-              handleOpenModal(`projects.projectsList.` + key, `projects.` + key)
-            }
-          >
-            {translationsData[key].title}
-          </div>
-        )
-      )}
-    </div>
+      <motion.div
+        key={`projects-${viewMore[actualPage]}`}
+        className="page justify-items-center"
+        custom={aspectRatio !== "portrait"}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {Object.keys(translationsData).map((key) =>
+          key === "portfolioReact" ? null : !viewMore[actualPage] &&
+            imagesData[key]?.class === "secondary" ? null : (
+            <motion.button
+              custom={aspectRatio !== "portrait"}
+              variants={itemVariants}
+              key={key}
+              className={`page-item ${
+                imagesData[key]?.class === "secondary" ? "sec" : ""
+              }`}
+              onClick={() =>
+                handleOpenModal(
+                  `projects.projectsList.` + key,
+                  `projects.` + key,
+                )
+              }
+            >
+              {translationsData[key].title}
+            </motion.button>
+          ),
+        )}
+        <ViewToggleButton
+          alreadyShownOnce={alreadyShownOnce}
+          translateKey={"projects"}
+        />
+      </motion.div>
+    </main>
   );
 };
 

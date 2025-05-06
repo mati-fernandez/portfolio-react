@@ -1,87 +1,57 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useContext, useEffect } from 'react';
-import { PageContext } from '../context/contexts';
-import { TranslationContext } from '../context/contexts';
-import { StylesContext } from '../context/contexts';
-import Info from '../assets/Info';
+import { TranslationContext } from "../context/contexts";
+import { useContext } from "react";
+import { PageContext } from "../context/contexts";
+import { motion } from "motion/react";
+import Info from "../assets/Info";
+import ViewToggleButton from "../components/ViewToggleButton";
 
-const Odyssey = ({ aspectRatio, notFirstLoad, handleOpenModal }) => {
-  const { actualPage, viewMore, handleViewMore, $viewMore, $viewLess } =
+const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
+  const { actualPage, viewMore, containerVariants, itemVariants, aspectRatio } =
     useContext(PageContext);
 
-  const { updateDynamicStyles, dynamicStyles } = useContext(StylesContext);
+  const { translate, getImage } = useContext(TranslationContext);
 
-  const { translate, getImage, endpoint } = useContext(TranslationContext);
+  const imagesData = getImage("odyssey");
 
-  const imagesData = getImage('odyssey');
-
-  const translationsData = translate('odyssey.odysseyList');
-
-  useEffect(() => {
-    if (notFirstLoad && $viewMore.current)
-      $viewMore.current.style.opacity = 0.5;
-    console.log(updateDynamicStyles, 'updateDynamicStyles');
-    // const delay = setTimeout(() => {
-    updateDynamicStyles(translationsData, imagesData);
-    // }, 1000);
-    // return () => clearTimeout(delay);
-  }, [aspectRatio, actualPage, viewMore, endpoint]);
+  const translationsData = translate("odyssey.odysseyList");
 
   return (
-    <>
-      <div className={`page long-content`}>
-        <Info
-          notFirstLoad={notFirstLoad}
-          handleOpenModal={handleOpenModal}
-          itemKey={'odyssey.info'}
-        />
-        <>
-          {Object.keys(translationsData).map((key) =>
-            !viewMore[actualPage] &&
-            imagesData[key]?.class === 'secondary' ? null : (
-              // Odysseys buttons
-              <div
-                style={dynamicStyles}
-                key={key}
-                className={`long-text page-item ${
-                  imagesData[key]?.class === 'secondary' ? 'secondary' : ''
-                }`}
-                onClick={() =>
-                  handleOpenModal(
-                    `odyssey.odysseyList.` + key,
-                    `odyssey.` + key
-                  )
-                }
-              >
-                {translationsData[key].title}
-              </div>
-            )
-          )}
-          {/*.............................Ver
-          más................................*/}
-          {!viewMore[actualPage] ? (
-            <button
-              style={dynamicStyles}
-              ref={$viewMore}
-              className="view-more"
-              onClick={handleViewMore}
+    <main className={`page flex-grow overflow-y-hidden`}>
+      <Info
+        notFirstLoad={notFirstLoad}
+        handleOpenModal={handleOpenModal}
+        itemKey={"odyssey.info"}
+      />
+      <motion.div
+        key={`odysseys-${viewMore[actualPage]}`}
+        className="page justify-items-center"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {Object.keys(translationsData).map((key) =>
+          !viewMore[actualPage] &&
+          imagesData[key]?.class === "secondary" ? null : (
+            <motion.button
+              custom={aspectRatio !== "portrait"}
+              variants={itemVariants}
+              key={key}
+              className={`page-item ${
+                imagesData[key]?.class === "secondary" ? "sec" : ""
+              }`}
+              onClick={() =>
+                handleOpenModal(`odyssey.odysseyList.` + key, `odyssey.` + key)
+              }
             >
-              {translate('odyssey.buttons.viewMore')}
-            </button>
-          ) : (
-            <button
-              style={dynamicStyles}
-              ref={$viewLess}
-              className="view-less"
-              onClick={handleViewMore}
-            >
-              {translate('odyssey.buttons.viewLess')}
-            </button>
-          )}
-        </>
-      </div>
-    </>
+              {translationsData[key].title}
+            </motion.button>
+          ),
+        )}
+        <ViewToggleButton translateKey={"odyssey"} />
+      </motion.div>
+    </main>
   );
 };
 

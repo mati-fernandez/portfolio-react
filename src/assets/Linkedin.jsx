@@ -1,7 +1,6 @@
 const Linkedin = () => (
   <svg
     alt="linkedin"
-    className="contact-img linkedin"
     fill="currentColor"
     xmlnsXlink="http://www.w3.org/2000/svg"
     viewBox="0 0 460 512"

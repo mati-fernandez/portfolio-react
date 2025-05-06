@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+@custom-variant square {
+  @media (min-aspect-ratio: 0.6) {
+    @slot;
+  }
+}
+@custom-variant wide {
+  @media (min-aspect-ratio: 1.2) {
+    @slot;
+  }
+}
+
+@theme {
+  --font-size-landscape: calc((1vw + 1vh) * 0.8);
+  --font-size-portrait: calc((1vw + 1vh) * 1.2);
+  --color-general-primary: rgb(76, 150, 199);
+  --color-general-primary-alpha: rgba(76, 150, 199, 0.363);
+  --color-general-secondary: grey;
+  --color-general-secondary-alpha: #222222c5;
+  --border-general: 1px solid black;
+  /* Dark theme variables (default) */
+  --color-box-shadow: #737d60;
+  --color-primary: white;
+  --color-secondary: #3b3b3b;
+  --color-terciary: #394733;
+  --color-secondary-alpha: #939e8f80;
+  --color-background-primary: black;
+  --color-background-secondary: #222;
+  --color-background-alpha: #2e312bec;
+  --color-background-alpha-secondary: #222222ce;
+  /* --border: 1px solid var(--color-primary); */
+  --icon-fill: white;
+  --font-weight-h3: 400;
+  --font-weight: 400;
+}
+
+/************************************/
+/*************** Base ***************/
+/************************************/
+
+@layer base {
+  html {
+    font-size: 3.5vmin;
+    @variant square {
+      font-size: 2.7vmin;
+    }
+    @variant landscape {
+      font-size: 2.3vmin;
+    }
+  }
+
+  *,
+  *::before,
+  *::after,
+  html {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    position: relative;
+    overflow: hidden;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+    background-color: var(--color-background-primary);
+    color: var(--color-primary);
+    padding: 0;
+    text-align: center;
+  }
+
+  #root {
+    height: inherit;
+  }
+
+  h1 {
+    @apply text-[1.5rem] font-bold;
+  }
+  h3 {
+    @apply text-[1.17em] font-bold;
+  }
+
+  svg {
+    @apply h-[2rem] cursor-pointer landscape:h-[1.5rem] landscape:w-auto;
+  }
+
+  /* p {
+    @apply my-5 leading-6;
+  } */
+
+  .light {
+    --color-box-shadow: #424739;
+    --color-primary: black;
+    --color-secondary: #d3d2d2;
+    --color-terciary: #c4e3b8;
+    --color-secondary-alpha: #89a18480;
+    --color-background-primary: #ffffff;
+    --color-background-secondary: rgb(233, 233, 233);
+    --color-background-alpha: #ddddddea;
+    --color-background-alpha-secondary: #d8d8d8ce;
+    /* --border: 1px solid var(--color-primary); */
+    --icon-fill: black;
+    --title-color: dark;
+    --font-weight-h3: 600;
+    --font-weight: 500;
+  }
+}
+
+/************************************/
+/************ Components ************/
+/************************************/
+
+@layer components {
+  .modal {
+    @apply bg-background-alpha wide:bg-background-alpha-secondary pointer-events-auto fixed top-1/2 left-1/2 z-10 box-border h-[100svh] w-screen -translate-x-1/2 -translate-y-1/2;
+  }
+  .modalBkg {
+    @variant wide {
+      @apply border-secondary bg-background-primary absolute top-[5vh] right-[5vw] bottom-[5vh] left-[5vw] -z-10 rounded-[200px] border-1 border-solid;
+    }
+  }
+  .infoModal {
+    @apply pointer-events-auto absolute top-1/2 left-1/2 w-[80%] origin-center -translate-x-1/2 -translate-y-1/2 content-center whitespace-pre-wrap landscape:max-w-[50%];
+  }
+  .infoModal h1 {
+    @apply m-2;
+  }
+  .infoModal p {
+    @apply font-[var(--weight)];
+  }
+  .modal a {
+    @apply bg-general-primary-alpha hover:bg-general-primary mx-auto my-3 flex w-fit cursor-pointer rounded-[50px] border-1 border-solid border-[var(--border)] p-2 font-[var(--weight)] text-[var(--color-primary)];
+  }
+  .infoBkg {
+    @apply border-primary bg-background-primary -z-10 border p-4;
+  }
+  .mobile-menu-instance > a {
+    @apply bg-secondary-alpha rounded-none leading-none;
+  }
+  .panelBtn {
+    @apply border-primary bg-general-primary-alpha m-0 h-fit w-fit border-1 border-solid font-[var(--weight)];
+    @variant landscape {
+      @apply text-[2vw];
+    }
+    @variant wide {
+      @apply absolute -bottom-[5vh] font-normal;
+    }
+  }
+  .detail {
+    @apply square:p-[2vh] pointer-events-auto absolute top-1/2 left-1/2 flex h-full w-full origin-center -translate-x-1/2 -translate-y-1/2 flex-col justify-center landscape:h-[80vh] landscape:w-[85vw];
+  }
+  .modalTitle {
+    @apply text-primary mb-0;
+    @variant square {
+      @apply mt-[4vh];
+    }
+    @variant wide {
+      @apply bg-background-secondary border-primary absolute top-[-10%] left-1/2 z-10 -translate-x-1/2 rounded-[50px] border-1 border-solid px-[1.2vw] py-0 font-[var(--font-weight-h3)] text-nowrap;
+    }
+  }
+  .modalFigure {
+    @apply flex flex-col justify-self-center;
+    @variant wide {
+      @apply absolute m-0 h-full w-full flex-row items-center justify-between;
+    }
+  }
+  .modalImg {
+    @apply max-h-[50vh] w-[90vw] self-center object-contain;
+    @variant wide {
+      @apply -ml-[2vw] max-h-[55vh] w-fit max-w-[60%];
+    }
+  }
+  .modalCaption {
+    @apply m-[2vh] font-[var(--font-weight)];
+    @variant wide {
+      @apply bg-background-secondary border-primary -mr-[2vw] h-fit w-[60%] rounded-[50px] border-1 border-solid px-[1.3vw] py-[2vh] font-normal;
+    }
+  }
+  .skills-list {
+    @apply ml-[-4rem] w-[90%] list-none p-0 leading-[4.5svh];
+    @variant square {
+      @apply ml-[1rem] grid grid-cols-2 leading-[8vh] text-[var(--font-size-portrait)];
+    }
+    @variant landscape {
+      @apply leading-[5vh];
+    }
+    @variant wide {
+      @apply mt-2 ml-[1rem] grid w-[80%] grid-cols-2 p-0;
+    }
+  }
+  .page {
+    @apply flex flex-col flex-wrap content-center items-center justify-center;
+    @variant square {
+      @apply box-border flex-row flex-wrap content-center px-[4vw] py-0;
+    }
+  }
+  .page-item {
+    @apply text-primary border-primary bg-general-primary-alpha hover:bg-general-primary m-2 flex h-fit cursor-pointer justify-center rounded-[50px] border-1 border-solid p-2 text-nowrap;
+  }
+  .sec {
+    @apply bg-general-secondary-alpha;
+  }
+}
+
+/************************************/
+/************ Utilities* ************/
+/************************************/
+
+@layer utilities {
+  /*Comento las que no se están usando para ver si las vuelo*/
+  /* .h-landscape {
+    height: var(--font-size-landscape);
+  } */
+  /* .h-portrait {
+    height: var(--font-size-portrait);
+  } */
+  /* .border-general {
+    border: var(--border-general);
+  } */
+  /* .general-primary {
+    color: var(--color-general-primary);
+  } */
+  .bg-general-primary {
+    background-color: var(--color-general-primary);
+  }
+  /* .general-primary-alpha {
+    color: var(--color-general-primary-alpha);
+  } */
+  .bg-general-primary-alpha {
+    background-color: var(--color-general-primary-alpha);
+  }
+  /* .general-secondary {
+    color: var(--color-general-secondary);
+  } */
+  /* .bg-general-secondary {
+    background-color: var(--color-general-secondary);
+  } */
+  /* .general-secondary-alpha {
+    color: var(--color-general-secondary-alpha);
+  } */
+  /* .bg-general-secondary-alpha {
+    background-color: var(--color-general-secondary-alpha);
+  } */
+  .primary {
+    color: var(--color-primary);
+  }
+  .secondary {
+    color: var(--color-secondary);
+  }
+  .bg-primary {
+    background-color: var(--color-background-primary);
+  }
+  .bg-secondary {
+    background-color: var(--color-background-secondary);
+  }
+  /* .bg-alpha {
+    background-color: var(--color-background-alpha);
+  }
+  .bg-alpha-secondary {
+    background-color: var(--color-background-alpha-secondary);
+  } */
+  /* .shadow-box {
+    box-shadow: 0 0 10px var(--color-box-shadow);
+  }
+  .border-theme {
+    border: var(--border);
+  }
+  .text-size-landscape {
+    font-size: var(--font-size-landscape);
+  }
+  */
+  .text-size-portrait {
+    font-size: var(--font-size-portrait);
+  }
+  /*
+  .font-h3 {
+    font-weight: var(--h3-font-weight);
+  }
+  .font-base {
+    font-weight: var(--weight);
+  }
+  .text-title {
+    color: var(--title-color);
+  }
+  .button-hover {
+    background-color: var(--color-general-primary);
+  }
+  .font-raleway {
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+  } */
+  .fill-icon {
+    fill: var(--icon-fill);
+  }
+}
