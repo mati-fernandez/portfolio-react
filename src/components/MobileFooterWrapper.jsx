@@ -3,11 +3,13 @@ import Hamburguer from "../assets/Hamburguer";
 import MobileMenu from "./MobileMenu";
 import { useContext } from "react";
 import { TranslationContext } from "../context/contexts";
+import { PageContext } from "../context/contexts";
 import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const MobileFooterWrapper = ({ showMenu, setShowMenu, setFromMenuBtn }) => {
+const MobileFooterWrapper = ({ setFromMenuBtn }) => {
   const { translate } = useContext(TranslationContext);
+  const { showMenu, setShowMenu } = useContext(PageContext);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);

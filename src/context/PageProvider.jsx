@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import { PageContext } from "./contexts";
 
 export const PageProvider = ({ children }) => {
+  const [showMenu, setShowMenu] = useState(false);
+
   const containerVariants = {
     hidden: {},
     visible: {
@@ -110,6 +112,8 @@ export const PageProvider = ({ children }) => {
         setAspectRatio,
         itemVariants,
         containerVariants,
+        showMenu,
+        setShowMenu,
       }}
     >
       {children}

@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { useContext } from "react";
 import { TranslationContext } from "./context/contexts";
+import { PageContext } from "./context/contexts";
 import { useEffect, useState } from "react";
 import "./App.css";
 
@@ -25,7 +26,6 @@ import Modal from "./components/Modal";
 import InfoModal from "./components/InfoModal";
 
 function App() {
-  const [showMenu, setShowMenu] = useState(false);
   const [activeModal, setActiveModal] = useState({
     itemKey: null,
     imgKey: null,
@@ -33,6 +33,7 @@ function App() {
   const [modalVisibility, setModalVisibility] = useState(false);
   const [fromMenuBtn, setFromMenuBtn] = useState(false);
   const { language, fromLanguageBtn } = useContext(TranslationContext);
+  const { showMenu, setShowMenu } = useContext(PageContext);
 
   const location = useLocation();
 
