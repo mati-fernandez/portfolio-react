@@ -32,7 +32,8 @@ function App() {
   });
   const [modalVisibility, setModalVisibility] = useState(false);
   const [fromMenuBtn, setFromMenuBtn] = useState(false);
-  const { language, fromLanguageBtn } = useContext(TranslationContext);
+  const { language, fromLanguageBtn, setFromLanguageBtn } =
+    useContext(TranslationContext);
   const { showMenu, setShowMenu } = useContext(PageContext);
 
   const location = useLocation();
@@ -59,6 +60,7 @@ function App() {
   // CLOSE MODAL OR MENU ON NAVIGATION 'Prevent Navigation' Hack:
   // En el if no usar activeModal porque provoca bucle al tener timeout en el set
   useEffect(() => {
+    console.log(fromLanguageBtn, fromMenuBtn);
     if (modalVisibility || (showMenu && !fromMenuBtn && !fromLanguageBtn)) {
       setShowMenu(false);
       setFromMenuBtn(false);
@@ -72,6 +74,7 @@ function App() {
       }, 150);
       navigate(1);
     }
+    if (fromLanguageBtn) setFromLanguageBtn(false);
   }, [location.pathname]);
 
   if (!language || language === "") {
