@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { motion } from "motion/react";
-import { useRef } from "react";
 import LanguageButton from "./LanguageButton";
 import MainMenu from "./MainMenu";
+import { useContext } from "react";
+import { ThemeContext } from "../context/contexts";
 
 const headerVariants = {
   hidden: {},
@@ -9,15 +11,15 @@ const headerVariants = {
 };
 
 const DesktopHeader = () => {
-  const hasMounted = useRef(false);
-
+  const { hasAnimatedHeader, setHasAnimatedHeader } = useContext(ThemeContext);
+  console.log("Header render");
   return (
     <motion.header
       variants={headerVariants}
-      initial={hasMounted.current ? false : "hidden"}
+      initial={!hasAnimatedHeader ? "hidden" : false}
       animate="visible"
       onAnimationComplete={() => {
-        hasMounted.current = true;
+        if (!hasAnimatedHeader) setHasAnimatedHeader(true);
       }}
       className="bg-secondary mt-2.5 hidden w-full items-center justify-around landscape:flex"
     >
