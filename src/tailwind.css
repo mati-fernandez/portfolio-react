@@ -84,7 +84,7 @@
   }
 
   svg {
-    @apply h-[2rem] cursor-pointer landscape:h-[1.5rem] landscape:w-auto;
+    @apply min-h-[3.7vh] cursor-pointer landscape:h-[1.5rem] landscape:w-auto;
   }
 
   /* p {
