@@ -26,8 +26,6 @@ export const ThemeProvider = ({ children }) => {
     }
   };
 
-  const [hasAnimatedHeader, setHasAnimatedHeader] = useState(false);
-
   useEffect(() => {
     removeInlineStyles();
   }, []);
@@ -39,8 +37,6 @@ export const ThemeProvider = ({ children }) => {
         setTheme,
         fromThemeBtn,
         setFromThemeBtn,
-        hasAnimatedHeader,
-        setHasAnimatedHeader,
       }}
     >
       {children}
