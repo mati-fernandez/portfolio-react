@@ -201,7 +201,7 @@
     @apply text-primary border-primary bg-general-primary-alpha hover:bg-general-primary m-2 flex h-fit cursor-pointer justify-center rounded-[50px] border-1 border-solid p-2 text-nowrap;
   }
   .sec {
-    @apply bg-general-secondary-alpha text-white;
+    @apply bg-general-secondary-alpha font-extralight text-white;
   }
 }
 
@@ -210,40 +210,12 @@
 /************************************/
 
 @layer utilities {
-  /*Comento las que no se están usando para ver si las vuelo*/
-  /* .h-landscape {
-    height: var(--font-size-landscape);
-  } */
-  /* .h-portrait {
-    height: var(--font-size-portrait);
-  } */
-  /* .border-general {
-    border: var(--border-general);
-  } */
-  /* .general-primary {
-    color: var(--color-general-primary);
-  } */
   .bg-general-primary {
     background-color: var(--color-general-primary);
   }
-  /* .general-primary-alpha {
-    color: var(--color-general-primary-alpha);
-  } */
   .bg-general-primary-alpha {
     background-color: var(--color-general-primary-alpha);
   }
-  /* .general-secondary {
-    color: var(--color-general-secondary);
-  } */
-  /* .bg-general-secondary {
-    background-color: var(--color-general-secondary);
-  } */
-  /* .general-secondary-alpha {
-    color: var(--color-general-secondary-alpha);
-  } */
-  /* .bg-general-secondary-alpha {
-    background-color: var(--color-general-secondary-alpha);
-  } */
   .primary {
     color: var(--color-primary);
   }
@@ -256,41 +228,12 @@
   .bg-secondary {
     background-color: var(--color-background-secondary);
   }
-  /* .bg-alpha {
-    background-color: var(--color-background-alpha);
-  }
-  .bg-alpha-secondary {
-    background-color: var(--color-background-alpha-secondary);
-  } */
-  /* .shadow-box {
-    box-shadow: 0 0 10px var(--color-box-shadow);
-  }
-  .border-theme {
-    border: var(--border);
-  }
-  .text-size-landscape {
-    font-size: var(--font-size-landscape);
-  }
-  */
   .text-size-portrait {
     font-size: var(--font-size-portrait);
-  }
-  /*
-  .font-h3 {
-    font-weight: var(--h3-font-weight);
   }
   .font-base {
     font-weight: var(--weight);
   }
-  .text-title {
-    color: var(--title-color);
-  }
-  .button-hover {
-    background-color: var(--color-general-primary);
-  }
-  .font-raleway {
-    font-family: "Raleway", Arial, Helvetica, sans-serif;
-  } */
   .fill-icon {
     fill: var(--icon-fill);
   }
