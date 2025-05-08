@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import avatar from "../assets/avatar.png";
+import avatar from "../assets/avatar.webp";
 import { useContext, useState } from "react";
 import { TranslationContext } from "../context/contexts";
 import Info from "../assets/Info";
