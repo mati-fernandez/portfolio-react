@@ -9,7 +9,7 @@ const DesktopHeader = () => {
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="bg-secondary mt-2.5 hidden w-full items-center justify-around landscape:flex"
+      className="bg-secondary mt-5 hidden w-full items-center justify-around landscape:flex"
     >
       <MainMenu />
       <LanguageButton />

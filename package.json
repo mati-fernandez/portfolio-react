@@ -31,5 +31,18 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.1.3",
     "vite": "^5.3.4"
-  }
+  },
+  "description": "[➡ View project](https://matifer.vercel.app/)\r (Mouse wheel click to open in new tab)",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mati-fernandez/portfolio-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mati-fernandez/portfolio-react/issues"
+  },
+  "homepage": "https://github.com/mati-fernandez/portfolio-react#readme"
 }

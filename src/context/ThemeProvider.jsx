@@ -38,6 +38,8 @@ export const ThemeProvider = ({ children }) => {
       ? (body.style.backgroundImage = `url(${bgDark})`)
       : (body.style.backgroundImage = `url(${bgLight})`);
     body.style.backgroundPosition = "center";
+    body.style.backgroundSize = "cover";
+    body.style.backgroundRepeat = "no-repeat";
   }, [theme]);
 
   return (
