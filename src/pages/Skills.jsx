@@ -57,6 +57,7 @@ const Skills = () => {
 
   return (
     <main className="flex flex-grow flex-col flex-wrap items-center justify-center overflow-y-hidden p-0 landscape:box-border landscape:flex-row landscape:flex-wrap landscape:content-center landscape:gap-[1.8vw] landscape:px-[4vw]">
+      <img src="	https://i.redd.it/d2hd73xxwvaa1.jpg" />
       <ul className="skills-list">
         {Object.keys(data).map((skill, index) => (
           <SkillItem

@@ -1,11 +1,33 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DevBtn from "../components/DevBtn";
 import Loader from "../components/Loader";
 import { TranslationContext } from "./contexts";
 import { fetchJSON } from "../helpers/fetchers";
 import { useDetectLanguage } from "../hooks/useDetectLanguage";
+
+// Pre-carga de Imágenes
+function extractAllSrc(obj) {
+  const srcs = [];
+
+  function traverse(node) {
+    if (Array.isArray(node)) {
+      node.forEach(traverse);
+    } else if (node && typeof node === "object") {
+      for (const key in node) {
+        if (key === "src" && typeof node[key] === "string") {
+          srcs.push(node[key]);
+        } else {
+          traverse(node[key]);
+        }
+      }
+    }
+  }
+
+  traverse(obj);
+  return srcs;
+}
 
 export const TranslationProvider = ({ children }) => {
   const [translations, setTranslations] = useState(null);
@@ -19,6 +41,9 @@ export const TranslationProvider = ({ children }) => {
   const contentDevPath = "http://127.0.0.1:5500/";
   //   const contentDevPathMobile = 'http://192.168.1.100:5500/'; // Acá deberia usar aspectRatio supongo (esta en app ahora) para ver si es mobile y poner ese endpoint
   const contentBuildPath = "https://portfolio-4oh.pages.dev/";
+
+  const imgEndpoint =
+    endpoint === "build" ? `${contentBuildPath}/` : `${contentDevPath}/`;
 
   const imagesApiEndpoint =
     endpoint === "build"
@@ -48,7 +73,7 @@ export const TranslationProvider = ({ children }) => {
       // setTranslations({}); // Si falla, asegura un estado vacío
     }
   };
-  // CARGA DE IMAGENES CON FETCH
+  // CARGA DEL JSON DE IMAGENES CON FETCH
   const loadImages = async () => {
     try {
       const data = await fetchJSON(imagesApiEndpoint);
@@ -63,6 +88,28 @@ export const TranslationProvider = ({ children }) => {
   useEffect(() => {
     loadImages();
   }, [endpoint]);
+
+  useEffect(() => {
+    if (!images) return;
+
+    const allImages = extractAllSrc(images);
+
+    allImages.forEach((src) => {
+      const fullSrc = `${imgEndpoint}${src}`;
+
+      // Preload en el head
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = fullSrc;
+
+      document.head.appendChild(link);
+
+      // Precarga tradicional (para asegurar caching)
+      const img = new Image();
+      img.src = fullSrc;
+    });
+  }, [images, imgEndpoint]);
 
   useEffect(() => {
     if (language) {
