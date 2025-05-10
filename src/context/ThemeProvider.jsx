@@ -2,6 +2,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { ThemeContext } from "./contexts";
+import bgDark from "../assets/bg-dark.webp";
+import bgLight from "../assets/bg-light.webp";
 
 export const ThemeProvider = ({ children }) => {
   const body = document.querySelector("body");
@@ -23,10 +25,6 @@ export const ThemeProvider = ({ children }) => {
   const removeInlineStyles = () => {
     if (body) {
       body.removeAttribute("style");
-      theme === "dark"
-        ? (body.style.backgroundImage = "url(src/assets/bg-dark.webp)")
-        : (body.style.backgroundImage = "url(src/assets/bg-light.webp)");
-      body.style.backgroundPosition = "center";
     }
   };
 
@@ -37,10 +35,9 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     document.documentElement.classList.toggle("light", theme === "light");
     theme === "dark"
-      ? (body.style.backgroundImage = "url(src/assets/bg-dark.webp)")
-      : (body.style.backgroundImage = "url(src/assets/bg-light.webp)");
+      ? (body.style.backgroundImage = `url(${bgDark})`)
+      : (body.style.backgroundImage = `url(${bgLight})`);
     body.style.backgroundPosition = "center";
-    body.style.backgroundColor = "#777777";
   }, [theme]);
 
   return (
