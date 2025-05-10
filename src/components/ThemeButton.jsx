@@ -1,24 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "../context/contexts";
 import { motion, useAnimation } from "motion/react";
 import Sun from "../assets/Sun";
 import Moon from "../assets/Moon";
 
 const ThemeButton = ({ className = "" }) => {
-  const { theme, setTheme, setFromThemeBtn } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const controls = useAnimation();
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("light", theme === "light");
-  }, [theme]);
 
   const handleClick = () => {
     localStorage.setItem("theme", theme === "light" ? "dark" : "light");
     setTheme(theme === "light" ? "dark" : "light");
-    setFromThemeBtn(true);
     controls.start({
       rotate: [0, 720],
       transition: {

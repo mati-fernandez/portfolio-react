@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { ThemeContext } from "./contexts";
 
 export const ThemeProvider = ({ children }) => {
+  const body = document.querySelector("body");
+
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
 
@@ -17,12 +19,14 @@ export const ThemeProvider = ({ children }) => {
 
     return isLightMode ? "light" : "dark";
   });
-  const [fromThemeBtn, setFromThemeBtn] = useState(false);
 
   const removeInlineStyles = () => {
-    const body = document.querySelector("body");
     if (body) {
       body.removeAttribute("style");
+      theme === "dark"
+        ? (body.style.backgroundImage = "url(src/assets/bg-dark.webp)")
+        : (body.style.backgroundImage = "url(src/assets/bg-light.webp)");
+      body.style.backgroundPosition = "center";
     }
   };
 
@@ -30,13 +34,20 @@ export const ThemeProvider = ({ children }) => {
     removeInlineStyles();
   }, []);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle("light", theme === "light");
+    theme === "dark"
+      ? (body.style.backgroundImage = "url(src/assets/bg-dark.webp)")
+      : (body.style.backgroundImage = "url(src/assets/bg-light.webp)");
+    body.style.backgroundPosition = "center";
+    body.style.backgroundColor = "#777777";
+  }, [theme]);
+
   return (
     <ThemeContext.Provider
       value={{
         theme,
         setTheme,
-        fromThemeBtn,
-        setFromThemeBtn,
       }}
     >
       {children}

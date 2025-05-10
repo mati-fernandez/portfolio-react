@@ -4,34 +4,34 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { PageContext } from "./contexts";
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: (notPortrait) => ({
+    opacity: 0.5,
+    x: notPortrait ? "-100vw" : 0,
+    y: notPortrait ? 0 : "-100vh",
+  }),
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: {
+      ease: "easeOut",
+    },
+  },
+};
+
 export const PageProvider = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false);
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-        staggerDirection: -1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: (notPortrait) => ({
-      opacity: 0.5,
-      x: notPortrait ? "-100vw" : 0,
-      y: notPortrait ? 0 : "-100vh",
-    }),
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        ease: "easeOut",
-      },
-    },
-  };
 
   const location = useLocation();
   const [viewMore, setViewMore] = useState({

@@ -30,12 +30,16 @@ const DesktopFooter = () => {
 
   return (
     <motion.footer
-      initial="hidden"
+      initial={{ y: 100, opacity: 0 }}
       animate="visible"
       variants={{
-        visible: { transition: { staggerChildren: 0.1 } },
+        visible: {
+          transition: { staggerChildren: 0.1, delay: 0.25 },
+          y: 0,
+          opacity: 1,
+        },
       }}
-      className="mb-2.5 box-border hidden h-[11svh] w-full items-center justify-around px-[5vw] landscape:flex"
+      className="bg-secondary mx-[25vw] mb-3 box-border hidden h-[11svh] items-center justify-between rounded-[50px] px-[5vw] shadow-none landscape:flex"
     >
       {links.map(({ href, icon, className = "", id, target = "_blank" }, i) => {
         const child = href ? (
