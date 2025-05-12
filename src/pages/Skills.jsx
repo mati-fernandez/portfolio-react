@@ -8,8 +8,7 @@ const SkillItem = ({ skillKey, skillData, transition }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const { translate, endpoint, contentDevPath, contentBuildPath } =
     useContext(TranslationContext);
-  const srcPath =
-    endpoint === "build" ? `${contentBuildPath}` : `${contentDevPath}`;
+  const srcPath = endpoint === "build" ? "" : `${contentDevPath}`;
 
   return (
     <li className="flex items-center landscape:my-[1vh] landscape:justify-center landscape:text-[2.5vh]">
