@@ -39,7 +39,7 @@ const DesktopFooter = () => {
           opacity: 1,
         },
       }}
-      className="bg-secondary mx-[25vw] mb-5 box-border hidden items-center justify-between rounded-[50px] px-[4vw] shadow-none landscape:flex"
+      className="bg-secondary mx-[25vw] mb-5 box-border hidden items-center justify-between rounded-[50px] px-[5vw] shadow-none landscape:flex"
     >
       {links.map(({ href, icon, className = "", id, target = "_blank" }, i) => {
         const child = href ? (

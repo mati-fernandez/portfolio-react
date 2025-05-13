@@ -18,12 +18,11 @@ export const TranslationProvider = ({ children }) => {
 
   const contentDevPath = "http://192.168.68.103:5500/";
   //   const contentDevPathMobile = 'http://192.168.1.100:5500/'; // Acá deberia usar aspectRatio supongo (esta en app ahora) para ver si es mobile y poner ese endpoint
-  const contentBuildPath =
-    "https://res.cloudinary.com/dxfgoor17/raw/upload/jsons/";
+  const contentBuildPath = "https://portfolio-4oh.pages.dev/";
 
   const imagesApiEndpoint =
     endpoint === "build"
-      ? `${contentBuildPath}images.json?v=${Date.now()}`
+      ? `${contentBuildPath}images.json`
       : `${contentDevPath}images.json`;
 
   const translationsApiEndpoint =
