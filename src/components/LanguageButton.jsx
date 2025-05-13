@@ -9,12 +9,13 @@ const LanguageButton = () => {
   const navigate = useNavigate();
 
   const handleLanguageChange = (event) => {
-    const pathParts = location.hash.split("/").filter(Boolean);
+    const pathParts = location.pathname.split("/").filter(Boolean);
+    console.log(location.pathname);
     const newLanaguage = event.target.value;
     setFromLanguageBtn(true);
     setLanguage(newLanaguage);
     localStorage.setItem("language", newLanaguage);
-    const newPath = `/${newLanaguage}/${pathParts.slice(2).join("/")}`;
+    const newPath = `/${newLanaguage}/${pathParts.slice(1).join("/")}`;
     navigate(newPath, { replace: true });
   };
 

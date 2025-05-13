@@ -104,13 +104,14 @@ export const TranslationProvider = ({ children }) => {
           style={{
             position: "absolute",
             top: "50%",
-            transform: "translateY(-50%)",
+            left: "50%",
+            transform: "translate(-50%)",
             backgroundColor: "red",
             zIndex: 999,
             padding: "1rem",
           }}
         >
-          Error de fecth, revisa si levantaste los JSON con live server o si
+          Error de fetch, revisa si levantaste los JSON con live server o si
           cambió el puerto!
         </p>
       ) : null}
