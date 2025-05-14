@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/portfolio-react/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matias</title>
+    <script type="module" crossorigin src="/portfolio-react/assets/index-C0Q6txMP.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio-react/assets/index-R3jjdO5R.css">
+  </head>
+  <body style="background-color: black; color: white; transition: none">
+    <!-- Template para usar shadow DOM -->
+    <template id="loader-template">
+      <style>
+        #loader-container {
+          position: relative;
+          height: 90vh;
+        }
+        .loader {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border: 8px solid #f3f3f3;
+          border-top: 8px solid #3498db;
+          border-radius: 50%;
+          width: 10vw;
+          height: 10vw;
+          animation: spin 0.5s linear infinite;
+          z-index: 11;
+        }
+
+        @keyframes spin {
+          0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+          }
+          100% {
+            transform: translate(-50%, -50%) rotate(360deg);
+          }
+        }
+      </style>
+      <div class="loader"></div>
+    </template>
+    <div id="loader-container"></div>
+    <div id="root"></div>
+    <!-- Detección temprana, previa a la carga de App del theme -->
+    <script>
+      const prefersLightMode = window.matchMedia(
+        '(prefers-color-scheme: light)'
+      ).matches;
+      if (prefersLightMode) {
+        document.body.setAttribute('data-theme', 'light');
+      } else {
+        document.body.setAttribute('data-theme', 'dark');
+      }
+    </script>
+    <!-- Crear shadow DOM para aislar el loader -->
+    <script>
+      const loaderContainer = document.getElementById('loader-container');
+      const shadowRoot = loaderContainer.attachShadow({ mode: 'open' });
+      const loaderTemplate = document.getElementById('loader-template');
+      shadowRoot.appendChild(loaderTemplate.content.cloneNode(true));
+
+      document.body.insertBefore(
+        loaderContainer,
+        document.getElementById('root')
+      );
+      const handleLoad = () => {
+        document.querySelector('#loader-container').remove();
+      };
+      window.addEventListener('load', handleLoad);
+    </script>
+  </body>
+</html>
