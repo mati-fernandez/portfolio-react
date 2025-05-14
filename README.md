@@ -1,7 +1,10 @@
 # Portfolio React
+(Mouse wheel click or Ctrl + Click to open in new tab)
 
 [➡ View project](https://matifer.vercel.app/)
-(Mouse wheel click to open in new tab)
+
+[➡ Documentation](https://deepwiki.com/mati-fernandez/portfolio-react)
+    
 
 ## 🔧 Git Hooks
 
