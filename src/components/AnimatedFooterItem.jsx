@@ -10,7 +10,7 @@ export const AnimatedFooterItem = ({ children }) => (
         rotate: [0, 1800, 2880, 3960, 3960, 3960],
       },
     }}
-    transition={{ delay: 0.25, duration: 1, ease: [0, 0.75, 0.37, 0.95] }}
+    transition={{ delay: 0.5, duration: 1, ease: [0, 0.75, 0.37, 0.95] }}
   >
     {children}
   </motion.div>

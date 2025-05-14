@@ -34,7 +34,7 @@ const DesktopFooter = () => {
       animate="visible"
       variants={{
         visible: {
-          transition: { staggerChildren: 0.1, delay: 0.25 },
+          transition: { staggerChildren: 0.1, delay: 0.5 },
           y: 0,
           opacity: 1,
         },
