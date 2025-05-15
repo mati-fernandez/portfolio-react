@@ -11,11 +11,6 @@ const MobileFooterWrapper = ({ setFromMenuBtn }) => {
   const { translate } = useContext(TranslationContext);
   const { showMenu, setShowMenu } = useContext(PageContext);
 
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-    showMenu ? setFromMenuBtn(true) : setFromMenuBtn(false);
-  };
-
   return (
     <div className="pointer-events-none absolute inset-0 h-[100svh] overflow-hidden landscape:hidden">
       {showMenu && (
@@ -25,9 +20,7 @@ const MobileFooterWrapper = ({ setFromMenuBtn }) => {
         <Link className="link" to="/" onClick={() => setShowMenu(false)}>
           <p className="m-0 p-[2vw] text-[1.8rem] font-normal">Matias</p>
         </Link>
-        <a className="cursor-pointer p-[2vh]" onClick={toggleMenu}>
-          <Hamburguer showMenu={showMenu} />
-        </a>
+        <Hamburguer setFromMenuBtn={setFromMenuBtn} />
       </footer>
     </div>
   );
