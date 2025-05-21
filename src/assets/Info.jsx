@@ -6,7 +6,7 @@ const Info = ({ handleOpenModal, itemKey }) => {
     <motion.svg
       onClick={() => handleOpenModal(itemKey)}
       alt="Info"
-      className="fill-icon absolute top-[1.5vh] right-[2vh] h-[5vh] w-[5vw] cursor-pointer opacity-50 landscape:top-[15vh] landscape:right-[3vw] landscape:h-[3vh] landscape:w-[3vw]"
+      className="fill-icon absolute top-8 right-8 w-fit cursor-pointer opacity-50 landscape:top-30 landscape:right-18"
       xmlnsXlink="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"

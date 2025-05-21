@@ -100,7 +100,7 @@ function App() {
       )}
 
       {/* LAYOUT PRINCIPAL */}
-      <div className="flex h-[90svh] flex-col landscape:h-[100svh]">
+      <div className="flex h-[90svh] flex-col items-center landscape:h-[100svh]">
         {/* HEADER */}
         <MobileFooterWrapper
           showMenu={showMenu}

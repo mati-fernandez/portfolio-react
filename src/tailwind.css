@@ -41,13 +41,7 @@
 
 @layer base {
   html {
-    font-size: 3.5vmin;
-    @variant square {
-      font-size: 2.7vmin;
-    }
-    @variant landscape {
-      font-size: 2.3vmin;
-    }
+    font-size: 16px;
   }
 
   *,
@@ -84,12 +78,8 @@
   }
 
   svg {
-    @apply min-h-[3.7vh] cursor-pointer landscape:h-[1.5rem] landscape:w-auto;
+    @apply h-6 cursor-pointer landscape:w-auto;
   }
-
-  /* p {
-    @apply my-5 leading-6;
-  } */
 
   .light {
     --color-box-shadow: #424739;
@@ -138,7 +128,7 @@
     @apply border-primary bg-background-primary -z-10 border p-4;
   }
   .mobile-menu-instance > a {
-    @apply bg-secondary-alpha rounded-none leading-none;
+    @apply bg-secondary-alpha border-primary border-1 border-solid;
   }
   .panelBtn {
     @apply border-primary bg-general-primary-alpha m-0 h-fit w-fit border-1 border-solid font-[var(--weight)];
@@ -179,18 +169,6 @@
       @apply bg-background-secondary border-primary -mr-[2vw] h-fit w-[60%] rounded-[50px] border-1 border-solid px-[1.3vw] py-[2vh] font-normal;
     }
   }
-  .skills-list {
-    @apply ml-[-4rem] w-[90%] list-none p-0 leading-[4.5svh];
-    @variant square {
-      @apply ml-[1rem] grid grid-cols-2 leading-[8vh] text-[var(--font-size-portrait)];
-    }
-    @variant landscape {
-      @apply leading-[5vh];
-    }
-    @variant wide {
-      @apply mt-2 ml-[1rem] grid w-[80%] grid-cols-2 p-0;
-    }
-  }
   .page {
     @apply flex flex-col flex-wrap content-center items-center justify-center;
     @variant square {
@@ -198,7 +176,7 @@
     }
   }
   .page-item {
-    @apply text-primary border-primary bg-general-primary-alpha hover:bg-general-primary m-2 flex h-fit cursor-pointer justify-center rounded-[50px] border-1 border-solid p-2 text-nowrap;
+    @apply text-primary border-primary bg-general-primary-alpha hover:bg-general-primary m-2 flex h-fit cursor-pointer justify-center rounded-full border-1 border-solid p-2 text-sm text-nowrap;
   }
   .sec {
     @apply bg-general-secondary-alpha font-extralight text-white;

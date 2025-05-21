@@ -27,7 +27,7 @@ const ThemeButton = ({ className = "" }) => {
     <motion.button
       animate={controls}
       initial={false}
-      className={`${className} pointer-events-auto absolute top-0 left-0 z-10 mx-[6vw] my-[2vh] flex cursor-pointer p-[2vh] landscape:static`}
+      className={`${className} pointer-events-auto cursor-pointer`}
       onClick={handleClick}
     >
       {theme === "dark" ? <Sun /> : <Moon />}
