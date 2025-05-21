@@ -18,9 +18,9 @@ const Hamburguer = ({ setFromMenuBtn }) => {
   };
 
   return (
-    <a className="mr-1 cursor-pointer p-[2vh]" onClick={toggleMenu}>
+    <a className="cursor-pointer p-4" onClick={toggleMenu}>
       {showMenu ? (
-        <span className="-translate-1/4 transform p-4 text-[2rem] font-normal">
+        <span className="-translate-1/4 transform p-4 text-2xl font-normal">
           X
         </span>
       ) : (
@@ -29,20 +29,20 @@ const Hamburguer = ({ setFromMenuBtn }) => {
             [8, 8.2].map((delay, i) => (
               <motion.div
                 key={i}
-                className="border-general-primary absolute -top-[5vh] -right-[3vh] h-[1.8rem] origin-center rounded-full border-2 border-solid p-[10vh]"
+                className="border-general-primary-alpha square:-right-8 absolute top-1/2 -right-11 -translate-1/2 rounded-full border-10 border-dotted p-10"
                 initial={{ opacity: 0, scale: 1 }}
                 animate={{ scale: 0, opacity: 1 }}
                 transition={{ duration: 1, repeat: Infinity, delay }}
               />
             ))}
           <svg
-            className="h-[1.8rem]"
+            className="h-6"
             alt="Hamburguer btn"
             fill="currentColor"
             width="49"
             height="33"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="1"
             viewBox="0 0 49 33"
             xmlnsXlink="http://www.w3.org/2000/svg"
           >

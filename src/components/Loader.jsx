@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 const Loader = ({ size = "10vw", borderSize = "8px", className = "" }) => {
   return (
     <motion.div
-      className={`absolute top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2 rounded-full border-white border-t-blue-500 ${className}`}
+      className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-white border-t-blue-500 ${className}`}
       style={{
         width: size,
         height: size,

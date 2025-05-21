@@ -74,13 +74,13 @@ const Modal = ({
           </figure>
           <div className="m-0 flex justify-around">
             <a
-              className="panelBtn wide:scale-75 left-[9vw]"
+              className="detailBtn wide:scale-80 left-2/6"
               onClick={closeModal}
             >
               {translate(activeModal.itemKey).close}
             </a>
             <a
-              className="panelBtn right-[9vw]"
+              className="detailBtn right-1/4"
               href={getImage(activeModal.imgKey).link}
               target="_blank"
             >

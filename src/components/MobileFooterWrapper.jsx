@@ -16,9 +16,9 @@ const MobileFooterWrapper = ({ setFromMenuBtn }) => {
       {showMenu && (
         <MobileMenu translate={translate} setFromMenuBtn={setFromMenuBtn} />
       )}
-      <footer className="bg-background-alpha pointer-events-auto absolute bottom-0 flex h-[10vh] w-screen items-center justify-between px-[4vw] py-0">
+      <footer className="bg-background-alpha pointer-events-auto absolute bottom-0 flex h-[10svh] w-screen items-center justify-between px-4 py-0">
         <Link className="link" to="/" onClick={() => setShowMenu(false)}>
-          <p className="m-0 ml-1 p-[2vw] text-[1.8rem] font-normal">Matias</p>
+          <p className="m-0 p-4 text-2xl font-normal">Matias</p>
         </Link>
         <Hamburguer setFromMenuBtn={setFromMenuBtn} />
       </footer>
