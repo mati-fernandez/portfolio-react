@@ -17,7 +17,10 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
   return (
     <main className="flex w-full flex-grow flex-col items-center justify-center overflow-y-hidden p-4">
       {imgLoading && (
-        <Loader className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform" />
+        <Loader
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform"
+          size="4rem"
+        />
       )}
       <Info
         notFirstLoad={notFirstLoad}
