@@ -32,13 +32,19 @@ const itemVariants = {
 
 export const PageProvider = ({ children }) => {
   const [showMenu, setShowMenu] = useState(false);
-
   const location = useLocation();
   const [viewMore, setViewMore] = useState({
     projects: false,
     exercises: false,
     certifications: false,
   });
+  const [firstLoad, setFirstLoad] = useState({
+    home: true,
+    projects: true,
+    odyssey: true,
+    certifications: true,
+  });
+  console.log(firstLoad);
 
   const getActualPage = () => {
     const actual = location.pathname.match(/(\w+)$/)?.[0] || ""; // Captura la última palabra del pathname
@@ -107,6 +113,8 @@ export const PageProvider = ({ children }) => {
         containerVariants,
         showMenu,
         setShowMenu,
+        firstLoad,
+        setFirstLoad,
       }}
     >
       {children}
