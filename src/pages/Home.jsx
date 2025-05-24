@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import Info from "../assets/Info";
 import Loader from "../components/Loader";
 
-const Home = ({ notFirstLoad, handleOpenModal }) => {
+const Home = ({ handleOpenModal }) => {
   const { translate } = useContext(TranslationContext);
   const [imgLoading, setImgLoading] = useState(true);
 
@@ -22,11 +22,7 @@ const Home = ({ notFirstLoad, handleOpenModal }) => {
           size="4rem"
         />
       )}
-      <Info
-        notFirstLoad={notFirstLoad}
-        handleOpenModal={handleOpenModal}
-        itemKey={"info"}
-      />
+      <Info handleOpenModal={handleOpenModal} itemKey={"info"} />
       <div className="square:p-4 fixed top-3/7 left-1/2 flex w-3/4 flex-grow -translate-1/2 flex-col items-center justify-center overflow-y-hidden landscape:top-1/2 landscape:w-1/2">
         <motion.img
           initial={{ opacity: 0, y: 50 }}

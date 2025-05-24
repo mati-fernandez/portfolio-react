@@ -4,7 +4,6 @@ import MainMenu from "./MainMenu";
 import { motion } from "motion/react";
 
 const DesktopHeader = () => {
-  console.log("Header render");
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}

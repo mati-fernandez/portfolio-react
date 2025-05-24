@@ -1,43 +1,52 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { motion, useAnimation } from "framer-motion";
+import { color, motion, useAnimation } from "framer-motion";
 import { PageContext } from "../context/contexts";
 import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { filter } from "motion/react-client";
 
 /* eslint-disable react/prop-types */
 
 const Info = ({ handleOpenModal, itemKey }) => {
-  const { firstLoad, setFirstLoad } = useContext(PageContext);
+  const { wasClicked, setWasClicked } = useContext(PageContext);
   const location = useLocation();
   const page = location.pathname.split("/").at(-1);
   const controls = useAnimation();
 
   useEffect(() => {
-    if (firstLoad[page]) {
+    if (wasClicked[page]) {
+      controls.start("normal");
+    } else {
       controls.start("normal").then(() => {
         controls.start("shake");
       });
-    } else {
-      controls.start("normal");
     }
-
-    setFirstLoad((prev) => ({ ...prev, [page]: false }));
-  }, []);
+  }, [wasClicked[page]]);
 
   const variants = {
     initial: { opacity: 0, y: "-5vh", rotate: 0 },
-    normal: { opacity: 0.5, y: 0, rotate: 360 },
+    normal: { opacity: 0.5, y: 0, rotate: 360, scale: 1, filter: "none" },
     shake: {
-      opacity: 0.5,
+      opacity: [0.5, 0.8, 1, 0.95, 0.8, 0.5],
       y: [0, -5, 5, -5, 5, 0],
+      scale: [1, 1.2, 0.9, 1.1, 0.95, 1],
       rotate: 360,
+      filter: [
+        "drop-shadow(0 0 0px #fff)",
+        "drop-shadow(0 0 20px red)",
+        "drop-shadow(0 0 80px red)",
+        "drop-shadow(0 0 20px red)",
+        "drop-shadow(0 0 0px #fff)",
+      ],
       transition: { duration: 0.6, repeat: Infinity, repeatDelay: 2, delay: 2 },
     },
   };
 
   return (
     <motion.svg
-      onClick={() => handleOpenModal(itemKey)}
+      onClick={() => {
+        setWasClicked((prev) => ({ ...prev, [page]: true }));
+        handleOpenModal(itemKey);
+      }}
       alt="Info"
       className="fill-icon absolute top-8 right-8 w-fit cursor-pointer opacity-50 landscape:top-30 landscape:right-18"
       xmlnsXlink="http://www.w3.org/2000/svg"

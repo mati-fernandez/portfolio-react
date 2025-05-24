@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 import Info from "../assets/Info";
 import ViewToggleButton from "../components/ViewToggleButton";
 
-const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
+const Odyssey = ({ handleOpenModal }) => {
   const { actualPage, viewMore, containerVariants, itemVariants, aspectRatio } =
     useContext(PageContext);
 
@@ -19,11 +19,7 @@ const Odyssey = ({ notFirstLoad, handleOpenModal }) => {
 
   return (
     <main className={`page flex-grow overflow-y-hidden`}>
-      <Info
-        notFirstLoad={notFirstLoad}
-        handleOpenModal={handleOpenModal}
-        itemKey={"odyssey.info"}
-      />
+      <Info handleOpenModal={handleOpenModal} itemKey={"odyssey.info"} />
       <motion.div
         key={`odysseys-${viewMore[actualPage]}`}
         className="page justify-items-center"

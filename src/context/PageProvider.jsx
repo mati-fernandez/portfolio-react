@@ -13,7 +13,6 @@ const containerVariants = {
     },
   },
 };
-
 const itemVariants = {
   hidden: (notPortrait) => ({
     opacity: 0.5,
@@ -38,13 +37,12 @@ export const PageProvider = ({ children }) => {
     exercises: false,
     certifications: false,
   });
-  const [firstLoad, setFirstLoad] = useState({
-    home: true,
-    projects: true,
-    odyssey: true,
-    certifications: true,
+  const [wasClicked, setWasClicked] = useState({
+    home: false,
+    projects: false,
+    odyssey: false,
+    certifications: false,
   });
-  console.log(firstLoad);
 
   const getActualPage = () => {
     const actual = location.pathname.match(/(\w+)$/)?.[0] || ""; // Captura la última palabra del pathname
@@ -113,8 +111,8 @@ export const PageProvider = ({ children }) => {
         containerVariants,
         showMenu,
         setShowMenu,
-        firstLoad,
-        setFirstLoad,
+        wasClicked,
+        setWasClicked,
       }}
     >
       {children}
