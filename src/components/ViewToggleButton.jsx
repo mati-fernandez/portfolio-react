@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { useContext } from "react";
 import { PageContext, TranslationContext } from "../context/contexts";
 
-const ViewToggleButton = ({ translateKey }) => {
+const ViewToggleButton = ({ translateKey, className = `` }) => {
   const { actualPage, viewMore, handleViewMore } = useContext(PageContext);
   const { translate } = useContext(TranslationContext);
 
@@ -23,7 +23,7 @@ const ViewToggleButton = ({ translateKey }) => {
   return (
     <motion.button
       {...motionProps}
-      className="m-3 cursor-pointer opacity-50"
+      className={`m-3 cursor-pointer opacity-50 ${className}`}
       onClick={handleClick}
     >
       {translate(`${translateKey}.buttons.${labelKey}`)}

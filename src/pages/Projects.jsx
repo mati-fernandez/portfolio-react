@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { PageContext } from "../context/contexts";
 import { TranslationContext } from "../context/contexts";
 import { motion } from "motion/react";
@@ -14,8 +14,6 @@ const Projects = ({ notFirstLoad, handleOpenModal }) => {
   const { translate, getImage } = useContext(TranslationContext);
 
   const imagesData = getImage("projects");
-
-  const alreadyShownOnce = useRef(false);
 
   const translationsData = translate("projects.projectsList");
 
@@ -55,10 +53,7 @@ const Projects = ({ notFirstLoad, handleOpenModal }) => {
             </motion.button>
           ),
         )}
-        <ViewToggleButton
-          alreadyShownOnce={alreadyShownOnce}
-          translateKey={"projects"}
-        />
+        <ViewToggleButton translateKey={"projects"} />
       </motion.div>
     </main>
   );

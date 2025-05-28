@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { TranslationContext } from "../context/contexts";
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { PageContext } from "../context/contexts";
 import { motion } from "motion/react";
 import ViewToggleButton from "../components/ViewToggleButton";
@@ -16,8 +16,6 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
   const imagesData = getImage("certifications");
 
   const translationsData = translate("certifications.certificationsList");
-
-  const alreadyShownOnce = useRef(false);
 
   return (
     <main className="page flex-grow overflow-y-hidden">
@@ -42,7 +40,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
               key={key}
               className={`page-item ${
                 imagesData[key]?.class === "secondary" ? "sec" : ""
-              }`}
+              } ${viewMore[actualPage] ? "long-content" : ""}`}
               onClick={() =>
                 handleOpenModal(
                   `certifications.certificationsList.` + key,
@@ -55,7 +53,7 @@ const Certifications = ({ notFirstLoad, handleOpenModal }) => {
           ),
         )}
         <ViewToggleButton
-          alreadyShownOnce={alreadyShownOnce}
+          className={`${viewMore[actualPage] ? "long-content" : ""}`}
           translateKey={"certifications"}
         />
       </motion.div>
