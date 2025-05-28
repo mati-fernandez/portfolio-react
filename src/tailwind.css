@@ -104,7 +104,7 @@
   }
   .modalBkg {
     @variant wide {
-      @apply border-secondary bg-background-primary absolute top-1/2 left-1/2 h-4/5 w-3/4 -translate-1/2 rounded-full border-1 border-solid;
+      @apply border-secondary bg-background-primary absolute top-1/2 left-1/2 h-4/5 w-3/4 -translate-1/2 rounded-[3rem] border-1 border-solid;
     }
   }
   .infoModal {
@@ -120,10 +120,10 @@
     }
   }
   .modal a {
-    @apply bg-general-primary-alpha hover:bg-general-primary mx-auto my-3 flex w-fit cursor-pointer rounded-full border-1 border-solid p-2 font-[var(--weight)] text-[var(--color-primary)];
+    @apply bg-general-primary-alpha hover:bg-general-primary mx-auto my-3 flex w-fit cursor-pointer rounded-xl border-1 border-solid p-2 font-[var(--weight)] text-[var(--color-primary)];
   }
   .infoBkg {
-    @apply border-primary bg-background-primary gap-3 border p-4;
+    @apply border-primary bg-background-primary gap-3 rounded-2xl border p-4;
     @variant landscape {
       @apply py-8;
     }
@@ -152,7 +152,7 @@
       @apply mt-[4vh];
     } */
     @variant wide {
-      @apply bg-background-secondary border-primary absolute -top-4 left-1/2 z-10 -translate-x-1/2 rounded-full border-1 border-solid px-2 py-0 font-[var(--font-weight-h3)] text-nowrap;
+      @apply bg-background-secondary border-primary absolute -top-4 left-1/2 z-10 -translate-x-1/2 rounded-xl border-1 border-solid px-2 py-0 font-[var(--font-weight-h3)] text-nowrap;
     }
   }
   .modalFigure {
@@ -168,7 +168,7 @@
     }
   }
   .modalCaption {
-    @apply m-4 font-[var(--font-weight)];
+    @apply m-2 text-sm font-[var(--font-weight)];
     @variant wide {
       @apply bg-background-secondary border-primary -mr-8 h-fit w-6/10 rounded-r-2xl border-1 border-solid p-4 font-normal;
     }
