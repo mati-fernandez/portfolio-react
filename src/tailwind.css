@@ -168,7 +168,7 @@
     }
   }
   .modalCaption {
-    @apply m-2 text-sm font-[var(--font-weight)];
+    @apply m-2 text-sm font-[var(--font-weight)] whitespace-pre-line;
     @variant wide {
       @apply bg-background-secondary border-primary -mr-8 h-fit w-6/10 rounded-r-2xl border-1 border-solid p-4 font-normal;
     }
