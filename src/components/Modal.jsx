@@ -20,11 +20,8 @@ const Modal = ({
   modalVisibility,
   setModalVisibility,
 }) => {
-  const { translate, getImage, endpoint, contentDevPath, contentBuildPath } =
-    useContext(TranslationContext);
+  const { translate, getImage, actualPath } = useContext(TranslationContext);
   const [isImgLoaded, setIsImgLoaded] = useState(false);
-  const srcPath =
-    endpoint === "build" ? `${contentBuildPath}` : `${contentDevPath}`;
 
   const closeModal = () => {
     setModalVisibility(false);
@@ -36,6 +33,11 @@ const Modal = ({
       clearTimeout(timeout);
     }, 250);
   };
+
+  // Enlace condicional para certificados que no están en la nube
+  const link = getImage(activeModal.imgKey).link;
+  console.log("actual path", actualPath);
+  const realLink = link.includes("images") ? `${actualPath}${link}` : link;
 
   return (
     <motion.article
@@ -60,7 +62,7 @@ const Modal = ({
           <figure className="modalFigure">
             <img
               className="modalImg"
-              src={`${srcPath}${getImage(activeModal.imgKey).src}`}
+              src={`${actualPath}${getImage(activeModal.imgKey).src}`}
               alt={translate(activeModal.itemKey).title || "undefined"}
               onLoad={() => setIsImgLoaded(true)}
             />
@@ -79,11 +81,7 @@ const Modal = ({
             >
               {translate(activeModal.itemKey).close}
             </a>
-            <a
-              className="detailBtn right-1/4"
-              href={getImage(activeModal.imgKey).link}
-              target="_blank"
-            >
+            <a className="detailBtn right-1/4" href={realLink} target="_blank">
               {translate(activeModal.itemKey).open}
             </a>
           </div>

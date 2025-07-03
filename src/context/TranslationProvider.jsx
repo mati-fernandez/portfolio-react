@@ -20,15 +20,11 @@ export const TranslationProvider = ({ children }) => {
   //   const contentDevPathMobile = 'http://192.168.1.100:5500/'; // Acá deberia usar aspectRatio supongo (esta en app ahora) para ver si es mobile y poner ese endpoint
   const contentBuildPath = "https://portfolio-4oh.pages.dev/";
 
-  const imagesApiEndpoint =
-    endpoint === "build"
-      ? `${contentBuildPath}images.json`
-      : `${contentDevPath}images.json`;
+  const actualPath = endpoint === "build" ? contentBuildPath : contentDevPath;
 
-  const translationsApiEndpoint =
-    endpoint === "build"
-      ? `${contentBuildPath}${language}.json`
-      : `${contentDevPath}${language}.json`;
+  const imagesApiEndpoint = `${actualPath}images.json`;
+
+  const translationsApiEndpoint = `${actualPath}${language}.json`;
 
   useEffect(() => {
     import.meta.env.MODE === "development"
@@ -96,6 +92,7 @@ export const TranslationProvider = ({ children }) => {
         endpoint,
         contentBuildPath,
         contentDevPath,
+        actualPath,
       }}
     >
       {devMode ? <DevBtn /> : null}
