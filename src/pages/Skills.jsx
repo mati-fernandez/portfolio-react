@@ -36,12 +36,12 @@ const SkillItem = ({ skillKey, skillData, transition }) => {
           {translate(`skills.${skillKey}.title`)}
         </span>
       </div>
-      <div className="bg-secondary square:w-1/2 ml-2 h-1 w-1/2 overflow-hidden">
+      <div className="square:w-1/2 ml-2 h-[0.15rem] w-1/2 overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: skillData.progress }}
           transition={transition}
-          className="bg-general-primary h-full"
+          className="bg-background-terciary h-full"
         />
       </div>
     </li>
@@ -54,7 +54,7 @@ const Skills = () => {
 
   return (
     <main className="flex w-full flex-grow flex-col flex-wrap items-center justify-center overflow-y-hidden p-0 landscape:box-border landscape:flex-row landscape:flex-wrap landscape:content-center">
-      <ul className="square:grid square:grid-cols-2 square:-translate-x-7 w-9/10 -translate-x-1/9 list-none p-0 text-sm leading-6 landscape:w-1/2 landscape:leading-8">
+      <ul className="square:grid square:grid-cols-2 square:-translate-x-0 wide:w-1/2 wide:max-w-2xl wide:min-w-lg w-9/10 -translate-x-1 list-none p-0 text-sm leading-6 landscape:w-7/9 landscape:leading-8">
         {Object.keys(data).map((skill, index) => (
           <SkillItem
             key={skill}
