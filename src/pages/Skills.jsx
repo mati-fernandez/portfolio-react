@@ -32,7 +32,7 @@ const SkillItem = ({ skillKey, skillData, transition }) => {
           className={`${isLoaded ? "visible" : "invisible"} max-h-4 max-w-4`}
           onLoad={() => setIsLoaded(true)}
         />
-        <span className="square:mr-0 mr-1 overflow-clip font-medium whitespace-nowrap">
+        <span className="square:mr-0 my-1 mr-1 overflow-clip leading-4 font-medium whitespace-pre">
           {translate(`skills.${skillKey}.title`)}
         </span>
       </div>
